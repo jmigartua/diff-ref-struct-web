@@ -58,6 +58,35 @@ export function followSwitch(clip, before, on, range = null) {
   return { clip: before === undefined ? clip : before, before: null };
 }
 
+/** The points a line keeps per pixel column (Plots' step 22, W9 b; PL13r): of the points `i0…i1` (in x order),
+    `colOf(i)` their pixel column and `yOf(i)` their pixel height, at most four per column in drawing order, the
+    column's first, its lowest, its highest and its last, so that the line drawn is what the full line would show at
+    this width; a point with no height (NaN) breaks the line (a null entry). Screen layout: a choice of points, nothing
+    summed or averaged; a series with fewer points than three per column is drawn whole by the caller. */
+export function pickPerColumn(i0, i1, colOf, yOf) {
+  const out = [];
+  let col = null, first = -1, lo = -1, hi = -1, last = -1, loY = 0, hiY = 0;
+  const flush = () => { if (col == null) return; out.push(first); if (lo !== first) out.push(lo); if (hi !== lo && hi !== first) out.push(hi); if (last !== hi && last !== lo && last !== first) out.push(last); };
+  for (let i = i0; i <= i1; i++) {
+    const Y = yOf(i);
+    if (!isFinite(Y)) { flush(); col = null; out.push(null); continue; }
+    const c = colOf(i);
+    if (c !== col) { flush(); col = c; first = lo = hi = last = i; loY = hiY = Y; }
+    else { if (Y < loY) { lo = i; loY = Y; } if (Y > hiY) { hi = i; hiY = Y; } last = i; }
+  }
+  flush();
+  return out;
+}
+
+/** The slices a drawing of `n` series is cut into, `per` series each, for one frame apiece (step 22): [[from, to)…];
+    one slice when `per` is not a positive number or `n` fits in it. */
+export function sliceBounds(n, per) {
+  if (!(per > 0) || n <= per) return n > 0 ? [[0, n]] : [];
+  const out = [];
+  for (let a = 0; a < n; a += per) out.push([a, Math.min(n, a + per)]);
+  return out;
+}
+
 /** The column whose edges hold `xv` (`xEdges` ascending, one more than the columns), or −1. */
 export function columnAt(xv, xEdges) {
   for (let q = 0; q + 1 < xEdges.length; q++) if (xv >= xEdges[q] && xv < xEdges[q + 1]) return q;

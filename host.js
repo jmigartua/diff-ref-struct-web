@@ -434,10 +434,10 @@ async function startOffline() {
   try {
     await navigator.serviceWorker.register("sw.js");
     navigator.serviceWorker.addEventListener("message", (e) => { if (e.data && e.data.kept) { const k = e.data.kept; offline.line = `Offline: ${k.files} files, ${fmtSize(k.bytes)} kept by this browser (web ${k.version}${core.version ? `, core ${core.version}` : ""}): the page opens again without the network.`; paintOffline(); } });
-    const ask = () => { if (navigator.serviceWorker.controller) navigator.serviceWorker.controller.postMessage({ ask: "kept" }); };
-    navigator.serviceWorker.addEventListener("controllerchange", ask);
+    const askKept = () => { if (navigator.serviceWorker.controller) navigator.serviceWorker.controller.postMessage({ ask: "kept" }); };   // a message to the worker, not a dialog of the app's (named apart from the dialog helpers)
+    navigator.serviceWorker.addEventListener("controllerchange", askKept);
     offline.line = navigator.serviceWorker.controller ? "Offline: counting what this browser keeps…" : "Offline: being kept now (the first visit installs it; it is ready from the next).";
-    paintOffline(); ask();
+    paintOffline(); askKept();
   } catch (e) { offline.line = `Offline: not kept (${e.message || e}).`; paintOffline(); }
 }
 function paintOffline() { const n = $("offline-line"); if (n) n.textContent = offline.line; }

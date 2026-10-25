@@ -73,6 +73,8 @@ const activePlots = () => { const t = activeTab(); return t && t.module === "plo
 /** The tab's own state: the set as the core gave it, the view, the members chosen (in the order clicked), each
     member's opacity, the displacement rule, the y scale, the reference of the difference map, the core's answers. */
 const stateOf = (tab) => (tab.plots ||= { set: null, view: "overlay", sel: [], opacity: {}, rule: { kind: "step", dx: 0, dy: null }, prule: { kind: "step", dx: null, dy: null }, scale: "linear", mapScale: "log", reference: null, disp: null, map: null, proj: null, wins: [], wbg: "auto", at: [], quantity: "integral", winres: null, seq: null, param: null, xby: "parameter", seqcol: null, linked: true, zoomwin: null, diff: null, nc: null, xc: null, xg: {}, look: false, pbar: null, sbar: null, figmm: 160, figname: "UPV/EHU TFG, full width", figfont: { label_pt: 11, tick_pt: 10 }, surfOf: "map", clip: { map: null, difference: null }, cursors: true, pin: null, cell: null, regions: [], selregion: null, rangeFromView: false, clipBefore: { map: null, difference: null }, mapZoom: null, regionsRefused: null, yInterval: "shared", sortBy: "set", extent: null });
+/** A member's pattern from a map of patterns by member index (step 22), or null. */
+const patternOf = (pats, m) => (pats ? pats.get(m.index) || null : null);
 /** The word of the x quantity the map is shown in (PL37's `x_quantity`): the view's, else the files' own (none for TOF
     or energy, or members in different quantities). */
 function xWordOf(ps) {
@@ -156,6 +158,7 @@ function tabFor(set, title, path = null, settings = null, drv = null) {
   const id = tabOf(set.id);
   const tab = { id, module: "plots", path, title, setId: set.id, drv };
   const ps = stateOf(tab); ps.set = set;
+  ps.timing = { t0: performance.now(), opened: performance.now(), firstFrame: null, whole: null, patterns: null };   // step 22: the clock of a large set's drawing (ms since the window's start)
   ps.reference = placed(ps).length ? placed(ps)[placed(ps).length - 1].key : null;   // the last placed member (the warmest, by the core's order)
   if (settings) applySettings(ps, settings);
   // the view's normalisation and x quantity the set file keeps (PL27), as the Rust side opened it
@@ -186,6 +189,7 @@ function applySettings(ps, st) {
   ps.clip = { map: st.map_range ? { from: st.map_range.from, to: st.map_range.to, scale: ps.mapScale } : null, difference: st.difference_range ? { from: st.difference_range.from, to: st.difference_range.to, scale: diffScaleOf(ps.mapScale) } : null };
   ps.regions = (st.regions || []).map((r) => ({ name: r.name, x: [r.x[0], r.x[1]], x_quantity: r.x_quantity || null, variable: [r.variable[0], r.variable[1]], map_range: r.map_range ? { from: r.map_range.from, to: r.map_range.to } : null, difference_range: r.difference_range ? { from: r.difference_range.from, to: r.difference_range.to } : null, window: r.window || null }));
   ps.regionsRefused = st.regions_refused || null; ps.selregion = null; ps.mapZoom = null; ps.rangeFromView = false;
+  ps.yInterval = st.y_interval === "own" ? "own" : "shared";   // PL41 met by core 0.80.0: the set file keeps it
 }
 async function adopt(set, title, path = null, settings = null, drv = null) {
   const tab = tabFor(set, title, path, settings, drv);
@@ -228,6 +232,7 @@ function settingsOf(ps) {
   return { order: ps.order || "variable", rule: d ? d.kind : "none", dx: d ? d.dx || 0 : 0, dy: d ? d.dy : 0, scale: (d && d.scale) || ps.scale, stack_scale: d ? d.scale || ps.scale : null, prule: proj ? proj.kind : "none", pdx: proj ? proj.dx : 0, pdy: proj ? proj.dy : 0, pscale: proj ? proj.scale || ps.scale : null, map_scale: ps.mapScale, reference: ps.reference && ms.some((m) => m.key === ps.reference) ? ms.findIndex((m) => m.key === ps.reference) : null, windows: ps.wins, opacity: ms.map((m) => (ps.opacity[m.key] == null ? null : ps.opacity[m.key])),
     // PL37 (step 17): each clip written as { from, to } only while its scale is the set's map scale (the difference map's
     // on the scale it is drawn on for that map scale); the regions as the window keeps them
+    y_interval: ps.yInterval === "own" ? "own" : "shared",   // PL41 met by core 0.80.0
     map_range: (() => { const c = clipOf(ps, "map", ps.mapScale); return c ? { from: c.from, to: c.to } : null; })(),
     difference_range: (() => { const c = clipOf(ps, "difference", diffScaleOf(ps.mapScale)); return c ? { from: c.from, to: c.to } : null; })(),
     regions: ps.regions.map((r) => ({ name: r.name, x: r.x, x_quantity: r.x_quantity || null, variable: r.variable, map_range: r.map_range || null, difference_range: r.difference_range || null, window: r.window || null })) };
@@ -554,7 +559,7 @@ function viewOf(tab, box) {
     return {
       title: tab.title, path: tab.drv || tab.path || null, core: null, written: null,
       variable: { name: set.variable_name, unit: set.variable_unit }, x: { label: xLabelOf(ps), quantity: xWordOf(ps) }, y_word: yWord(ps),
-      members: set.members.map((m) => ({ key: m.key, label: m.label, variable: m.variable ? { value: m.variable.value, source: m.variable.source } : null, pattern: m.shown.left_out ? null : { x: m.x, y: m.y }, kind: m.format, kind_name: m.format_name, points: m.points, counting_time: m.counting_time, time: m.modified, others: m.others || [], facts: memberFacts(ps, m) })),
+      members: set.members.map((m) => ({ key: m.key, label: m.label, variable: m.variable ? { value: m.variable.value, source: m.variable.source } : null, pattern: m.shown.left_out ? null : patternOf(fetchPatterns(), m), kind: m.format, kind_name: m.format_name, points: m.points, counting_time: m.counting_time, time: m.modified, others: m.others || [], facts: memberFacts(ps, m) })),
       maps: { map: mapOf("map"), difference: mapOf("difference") },
       clip: { map: null, difference: null },
       regions: ps.regions.map((r) => ({ ...r, blocks: { map: null, difference: null }, refused: null })),
@@ -592,6 +597,26 @@ function viewOf(tab, box) {
     if (asked === key || !hasCore()) return null;
     asked = key;
     try { const v = await invoke("plots_displace", { id: tab.setId, rule: r.kind, dx: r.dx || 0, dy: r.dy || 0, scale: ps.scale }); ps.disp = { key, v }; asked = null; redraw(); return v; } catch (e) { asked = null; status(String(e), true); return null; }
+  }
+  /** The members' patterns as the view shows them (W9 a, step 22): asked of the core once per view rule
+      (`plots_patterns`, every member; a set view carries no x and y since core 0.81.0 and the app's bridge of this
+      step), kept by the tab as a map by member index; a set view that still carries them (an older core) is read as
+      it is. Null while the core answers (the view draws again when they come). */
+  function fetchPatterns() {
+    const set = ps.set; if (!set) return null;
+    if (set.members.length && set.members.every((m) => Array.isArray(m.x))) return new Map(set.members.map((m, i) => [i, { x: m.x, y: m.y, sigma: m.sigma || null }]));
+    const key = `${set.id}:${set.normalisation ? JSON.stringify(set.normalisation) : ""}:${set.x_quantity || ""}:${set.members.map((m) => m.key).join("|")}`;
+    if (ps.patterns && ps.patterns.key === key) return ps.patterns.v;
+    if (asked === "patterns:" + key || !hasCore()) return null;
+    asked = "patterns:" + key;
+    const t0 = performance.now();
+    invoke("plots_patterns", { id: tab.setId, members: null }).then((list) => {
+      asked = null;
+      ps.patterns = { key, v: new Map(list.map((p) => [p.member, { x: p.x, y: p.y, sigma: p.sigma }])) };
+      if (ps.timing) ps.timing.patterns = performance.now() - t0;
+      redraw();
+    }).catch((e) => { asked = null; status(String(e), true); });
+    return null;
   }
   async function fetchMap(diff) {
     const ref = diff ? members(ps).findIndex((m) => m.key === ps.reference) : -1;
@@ -755,11 +780,23 @@ function viewOf(tab, box) {
     popts.right = ps.view === "overlay" || ps.view === "series" ? 16 : "auto";
     // editable where they can be drawn: the overlay and the stack, in the files' x
     const windowBands = ps.wins.length && inFilesX(ps) ? [{ id: "windows", kind: "bands", x: [], ranges: ps.wins.map((w) => [w.from, w.to]), color: "--accent", editable: (ps.view === "overlay" || ps.view === "stack") && !ps.look }] : [];
+    // step 22 (W9 b): the overlay and the stack of many members drawn in slices across frames by the shared plot, the
+    // status saying how far; the tab's clock takes the first frame and the whole drawing (a large set's timing)
+    const many = set.members.length > 30 && (ps.view === "overlay" || ps.view === "stack");
+    popts.slice = many ? { per: 10, onProgress: (done, total) => { if (ps.timing && ps.timing.firstFrame == null) ps.timing.firstFrame = performance.now() - ps.timing.t0; if (done < total) status(`${ps.view === "stack" ? "Stack" : "Overlay"}: drawing ${done} of ${total} members…`); else { if (ps.timing && ps.timing.whole == null) ps.timing.whole = performance.now() - ps.timing.t0; status(`${ps.view === "stack" ? "Stack" : "Overlay"}: ${total} members drawn${ps.timing && ps.timing.firstFrame != null ? ` (first frame ${Math.round(ps.timing.firstFrame)} ms, whole ${Math.round(ps.timing.whole)} ms after the set)` : ""}.`); } } } : null;
+    zopts.slice = popts.slice;
     if (ps.view === "overlay") {
       plot.setAxes({ xLabel: xl, yLabel: yw, yScale: ps.scale });
-      const curves = set.members.filter((m) => !m.shown.left_out).map((m) => ({ id: m.key, kind: "line", label: m.label, x: m.x, y: m.y, color: colourOf(ps, m), opacity: opacityOf(ps, m), width: widthOf(ps, m), legend: false }));
+      const pats = fetchPatterns();
+      if (!pats) { note.textContent = hasCore() ? "The core gives the members' patterns…" : "The overlay needs a core (the members' patterns)."; return; }
+      const curves = set.members.filter((m) => !m.shown.left_out && patternOf(pats, m)).map((m) => ({ id: m.key, kind: "line", label: m.label, x: patternOf(pats, m).x, y: patternOf(pats, m).y, color: colourOf(ps, m), opacity: opacityOf(ps, m), width: widthOf(ps, m), legend: false }));
       if (!linked) {
+        const t0 = performance.now();
         plot.setSeries([...windowBands, ...curves], true); markWin();
+        // the overlay's first frame (the axes and the first slice, drawn at once) from the set's arrival; the whole
+        // drawing when the last slice is done (onProgress), at once when not sliced
+        if (ps.timing && ps.timing.firstFrame == null) { ps.timing.firstFrame = performance.now() - ps.timing.t0; if (!popts.slice) ps.timing.whole = performance.now() - ps.timing.t0; }
+        void t0;
         note.textContent = `Every member as measured, in the core's order by ${set.variable_name}; chosen members bright, the others dimmed (Solo Member, Dim Others, the opacity bars in the sidebar).${mon ? " " + mon + "." : ""}${apartText}`;
       } else {
         // F6: the whole range on the left, the window on the right, the core's difference of two members under both
@@ -790,9 +827,11 @@ function viewOf(tab, box) {
       const sbar = figLook ? scaleBarOf(set, yw) : null;
       plot.setAxes(figLook ? { xLabel: xl, yLabel: sbar ? "" : `${yw}, bottom member`, yScale: ps.scale, look: "figure", xSpan: null, scaleBar: sbar } : { xLabel: xl, yLabel: `${yw} + each member's step`, yScale: ps.scale });
       const series = [...windowBands];
+      const pats = fetchPatterns();   // the readout's counts (`values`): the member's pattern as the set holds it
       v.forEach((dv) => {
         const m = set.members[dv.member]; if (!dv.placed) return;
-        series.push({ id: m.key, kind: "line", label: m.label, legend: false, x: dv.x, y: dv.y, values: m.y, scaled: true, color: colourOf(ps, m), opacity: opacityOf(ps, m), width: widthOf(ps, m), baselineLabel: { text: m.variable ? `${fmt(m.variable.value)} ${set.variable_unit}` : ps.look ? m.label : `${m.label} (no ${set.variable_name})`, at: dv.baseline, priority: (m.variable ? 0 : 2) + (ps.sel.includes(m.key) ? 1 : 0) } });
+        const p = patternOf(pats, m);
+        series.push({ id: m.key, kind: "line", label: m.label, legend: false, x: dv.x, y: dv.y, values: p ? p.y : dv.y, scaled: true, color: colourOf(ps, m), opacity: opacityOf(ps, m), width: widthOf(ps, m), baselineLabel: { text: m.variable ? `${fmt(m.variable.value)} ${set.variable_unit}` : ps.look ? m.label : `${m.label} (no ${set.variable_name})`, at: dv.baseline, priority: (m.variable ? 0 : 2) + (ps.sel.includes(m.key) ? 1 : 0) } });
       });
       plot.setSeries(series, true); markWin();
       const unplaced = v.filter((dv) => !dv.placed).map((dv) => set.members[dv.member].label);
@@ -1208,6 +1247,41 @@ async function renameRegion(tab = activePlots(), i = null, name = null) {
   const ok = await v.renameRegion(i, name); if (ok) tab.dirty = true; return ok;
 }
 function removeRegion(tab = activePlots(), i = null) { const v = viewerOf(tab); if (v) { v.removeRegion(i); tab.dirty = true; } }
+// ------------------------------------------------------------------ step 22 (W9 c): a large set rebinned on opening
+/** How large a set is before the rebin is offered: members × points, the first member's points standing for all. */
+const LARGE_POINTS = 2000000;
+const isLarge = (set) => !!(set && set.members.length && set.members.length * (set.members[0].points || 0) > LARGE_POINTS);
+/** A large set just opened: the core's rebin offered ("101 scans of 27 000 points: open rebinned to 0.01°, or as
+    measured"), the choice kept in the tab (`ps.rebin`) and said in the note. The step is the one the ESRF case was
+    worked on (0.01°, W9); the core's own proposal comes with 0.81.0, and the field is read when it is there
+    (`set.rebin_proposal`). Nothing is asked twice: a set answered keeps its choice. */
+async function offerRebin(tab) {
+  const ps = stateOf(tab); const set = ps.set;
+  if (!set || !isLarge(set) || ps.rebin !== undefined || !hasCore()) return;
+  const n = set.members.length, pts = set.members[0].points, step = set.rebin_proposal != null ? set.rebin_proposal : 0.01;
+  const v = await pickOne("A Large Set", `${n} scans of ${pts} points: open rebinned to ${fmt(step)}° (the core's rebin, each new bin the average of its points; ${set.rebin_proposal != null ? "the core's proposal" : "the step the ESRF case was worked on; the core's proposal comes with 0.81.0"}), or as measured? Rebinned, the views draw in a moment; as measured, the overlay of every scan is drawn in slices and takes longer. The choice is kept with this tab (Reload Members keeps it) and said in the note.`, [{ value: "rebin", label: `rebinned to ${fmt(step)}°` }, { value: "raw", label: "as measured" }], "rebin", "Open");
+  if (v == null) { ps.rebin = null; return; }
+  if (v === "raw") { ps.rebin = null; renderActive(); return; }
+  try {
+    status(`Rebinning ${n} scans to ${fmt(step)}° (the core)…`);
+    const s = await invoke("plots_rebin", { id: tab.setId, step });
+    ps.rebin = step; ps.patterns = null; setSet(tab, s);
+    status(`${n} scans rebinned to ${fmt(step)}° by the core: ${s.members[0] ? s.members[0].points : "?"} points each.`);
+  } catch (e) { ps.rebin = null; status(`Not rebinned: ${e}`, true); }
+}
+/** What the note says of the rebin, in every view. */
+const rebinText = (ps) => (ps.rebin ? ` Rebinned to ${fmt(ps.rebin)}° by the core on opening (each new bin the average of its points); as measured on Reload Members after Rebin… ▸ as measured.` : "");
+/** Rebin…: the choice made again (the core's rebin to a step, or as measured). */
+async function rebinSet(tab = activePlots()) {
+  if (!tab || !hasCore()) return;
+  const ps = stateOf(tab); const set = ps.set; if (!set) return;
+  const v = await askForm("Rebin", `The members read again by the core rebinned to a step (each new bin the average of its points), or as measured (empty). Now: ${ps.rebin ? `rebinned to ${fmt(ps.rebin)}°` : "as measured"}.`, [{ id: "step", label: "Step (°)", value: ps.rebin || "", kind: "number" }], "Rebin");
+  if (!v) return;
+  const step = v.step == null ? null : v.step;
+  if (step != null && !(isFinite(step) && step > 0)) { status("The step is a positive number, or empty for the scans as measured.", true); return; }
+  try { const s = await invoke("plots_rebin", { id: tab.setId, step }); ps.rebin = step; ps.patterns = null; setSet(tab, s); status(step ? `${set.members.length} members rebinned to ${fmt(step)}° by the core.` : "The members as measured again."); } catch (e) { status(String(e), true); }
+}
+
 // ------------------------------------------------------------------ step 20 (W4): the y interval, the members' list
 /** The y interval shared by the whole set or adapted to the member chosen (Overlay, Stack) and to the row under the
     pointer (the strip under the map); kept in the tab (the set file has no field for it: PL41). */
@@ -1302,10 +1376,13 @@ async function exportViewerPage(tab = activePlots(), path = null) {
       regions.push({ ...r, blocks, refused });
     }
     const mapClip = clipOf(ps, "map", ps.mapScale), diffClip = clipOf(ps, "difference", diffScaleOf(ps.mapScale));
+    // the members' patterns for the page (W9 a): asked of the core here, the set view carrying none
+    const pageList = await invoke("plots_patterns", { id: tab.setId, members: null });
+    const pagePats = new Map(pageList.map((p) => [p.member, { x: p.x, y: p.y }]));
     const data = {
       title: tab.title, path: tab.drv || tab.path || null, core: null, written: `written by the app on ${new Date().toISOString().slice(0, 10)}`,
       variable: { name: set.variable_name, unit: set.variable_unit }, x: { label: xLabelOf(ps), quantity: xWordOf(ps) }, y_word: yWord(ps),
-      members: set.members.map((m) => ({ label: m.label, variable: m.variable ? { value: m.variable.value, source: m.variable.source } : null, pattern: m.shown.left_out ? null : { x: m.x, y: m.y } })),
+      members: set.members.map((m) => ({ label: m.label, variable: m.variable ? { value: m.variable.value, source: m.variable.source } : null, pattern: m.shown.left_out ? null : patternOf(pagePats, m) })),
       maps, clip: { map: mapClip ? { from: mapClip.from, to: mapClip.to } : null, difference: diffClip ? { from: diffClip.from, to: diffClip.to } : null },
       regions, regions_refused: ps.regionsRefused, same_grid: set.same_grid,
     };
@@ -1739,9 +1816,20 @@ export const plots = {
     const t0 = activePlots();
     const t = [...state.tabs.values()].find((x) => x.module === "plots" && x.setId != null && /\.buf$/i.test(x.path || "")) || t0;
     if (!t) { await note("plots: no Plots tab"); return; }
-    if (t !== t0) { activateTab(t.id); await sleep(500); await note(`plots: the startup buffer's tab ${t.title} made active (the launch had made ${t0 ? t0.title : "none"} active)`); }
     const ps = stateOf(t); const set = ps.set;
     const wait = async (f, ms = 20000) => { const t0 = Date.now(); while (!f()) { if (Date.now() - t0 > ms) return false; await sleep(100); } return true; };
+    // step 22 (W9): a large set opened at start (the ESRF run, 101 scans of 27 000 points): the times measured and
+    // nothing else checked. The times are the tab's (`ps.timing`: the set's arrival, the overlay's first frame, its
+    // whole drawing), written by the module as it draws.
+    if (stateOf(t).set && stateOf(t).set.members.length > 50) {
+      const sp = stateOf(t); sp.view = "overlay"; sp.linked = false; renderActive();
+      await wait(() => !!(sp.timing && sp.timing.whole != null), 1200000);
+      const tm = sp.timing || {};
+      const pts = sp.set.members[0] ? sp.set.members[0].points : 0;
+      await note(`plots: large set ${t.title}: ${sp.set.members.length} members of ${pts} points (the first's); the set arrived ${tm.opened != null ? `${Math.round(tm.opened)} ms` : "?"} after the launch's start; the overlay's first frame ${tm.firstFrame != null ? `${Math.round(tm.firstFrame)} ms` : "?"} after the set, whole ${tm.whole != null ? `${Math.round(tm.whole)} ms` : "not finished"} after the set${tm.patterns != null ? `; the patterns asked of the core in ${Math.round(tm.patterns)} ms` : ""}: ${tm.whole != null ? "OK" : "FAIL"}`);
+      await note("done"); return;
+    }
+    if (t !== t0) { activateTab(t.id); await sleep(500); await note(`plots: the startup buffer's tab ${t.title} made active (the launch had made ${t0 ? t0.title : "none"} active)`); }
     await note(`plots: opened ${t.title}: ${set.members.length} members, ${set.apart.length} apart (${set.apart.map((k) => set.members[k].label).join(", ")}), first ${variableText(ps, set.members[0], true)}; ${monitorNote(ps) || "monitors stated"}; same grid ${set.same_grid}`);
     for (const [k] of VIEWS) {
       if (k === "stack") { ps.rule = { kind: "step", dx: 0, dy: null, proposed: null }; ps.disp = null; }   // the core proposes the step (PL19)
@@ -1878,14 +1966,17 @@ export const plots = {
     {
       const sp = stateOf(t); const vw = views.get(t.id);
       const before = sp.set.members.find((m) => m.file.endsWith("tb_t10.dat"));
-      const y0 = before ? before.y[100] : null;
+      // the members' patterns as the view shows them are asked of the core (plots_patterns, step 22), not read off the set view
+      const patternsNow = async () => new Map((await invoke("plots_patterns", { id: t.setId, members: null })).map((p) => [p.member, p]));
+      const p0 = await patternsNow(); const y0 = before && p0.get(before.index) ? p0.get(before.index).y[100] : null;
       await applyViewRule(t, { by: "area", to: 1, from: 20, until: 30, member: null, background: null }, null); await sleep(300);
+      const p1 = await patternsNow();
       sp.view = "overlay"; sp.linked = false; renderActive(); await sleep(600);
       let s = sp.set; const fs = s.members.map((m) => m.shown.factor).filter((f) => f != null);
       const m10 = s.members.find((m) => m.file.endsWith("tb_t10.dat"));
       const said = vw ? vw.note() : "";
       const series = vw ? vw.plot.state.series.filter((x) => x.kind !== "bands").length : 0;
-      await note(`plots: Normalise… by the same area over 20–30°: ${fs.length} of ${s.members.length} members normalised, factors ${fs.length ? `${fmt(fs[0])} (${s.members[0].label}) … ${fmt(fs[fs.length - 1])} (${s.members[s.members.length - 1].label})` : "none"}; tb_t10.dat y[100] ${fmt(y0)} shown as ${m10 ? fmt(m10.y[100]) : "?"} (× ${m10 ? fmt(m10.shown.factor) : "?"}); ${series} curves; the note: "${said.slice(0, 110)}…": ${fs.length === s.members.length && /Normalised by the core/.test(said) && series === s.members.length ? "OK" : "FAIL"}`);
+      await note(`plots: Normalise… by the same area over 20–30°: ${fs.length} of ${s.members.length} members normalised, factors ${fs.length ? `${fmt(fs[0])} (${s.members[0].label}) … ${fmt(fs[fs.length - 1])} (${s.members[s.members.length - 1].label})` : "none"}; tb_t10.dat y[100] ${fmt(y0)} shown as ${m10 && p1.get(m10.index) ? fmt(p1.get(m10.index).y[100]) : "?"} (× ${m10 ? fmt(m10.shown.factor) : "?"}); ${series} curves; the note: "${said.slice(0, 110)}…": ${fs.length === s.members.length && /Normalised by the core/.test(said) && series === s.members.length ? "OK" : "FAIL"}`);
       await exportView("normalised overlay");
       await applyViewRule(t, { by: "monitor", to: 1, member: null, background: null, from: null, until: null }, null); await sleep(300);
       s = sp.set; const out = s.members.filter((m) => m.shown.left_out);
@@ -1959,7 +2050,10 @@ export const plots = {
           vw.cell({ id: "map", j: cj, r: ri }); await sleep(400);
           const st2 = vw.strips(); const rs = st2.row && st2.row.state.series[0], cs = st2.col && st2.col.state.series[0];
           const m22 = sp.set.members[M.rows[ri].member];
-          const rowOk = !!(rs && rs.x === m22.x && rs.y === m22.y && rs.label.includes(m22.label));
+          // the strip's pattern is the one the viewer's data holds for the member (asked of the core once, step 22)
+          const patOf = (i) => { const d = vw.viewerData(); return d.members[i] ? d.members[i].pattern : null; };
+          const p22 = patOf(M.rows[ri].member);
+          const rowOk = !!(rs && p22 && rs.x === p22.x && rs.y === p22.y && rs.label.includes(m22.label));
           const colOk = !!(cs && cs.x.length === M.rows.length && cs.x[ri] === M.rows[ri].value && cs.y[ri] === M.z[ri][cj]);
           const cc = vw.plot.state.cellCursor; const marked = !!(cc && cc.j === cj && cc.r === ri);
           const rcv = document.querySelector(".pl-rcanvas"), ccv = document.querySelector(".pl-ccanvas"), areaEl = document.querySelector(".pl-areas");
@@ -1969,11 +2063,12 @@ export const plots = {
           const roomRow = ar.height > 260, roomCol = ar.width > 520;
           vw.cellClick({ id: "map", j: cj, r: ri }); await sleep(300); const pinned = !!(sp.pin && sp.pin.r === ri && sp.pin.j === cj);
           vw.cell({ id: "map", j: cj + 5, r: 0 }); await sleep(300);
-          const held = !!(st2.row.state.series[0] && st2.row.state.series[0].x === m22.x);
+          const held = !!(st2.row.state.series[0] && p22 && st2.row.state.series[0].x === p22.x);
           await exportView("map cursors");
           vw.cellClick({ id: "map", j: cj + 5, r: 0 }); await sleep(400);
           const m0 = sp.set.members[M.rows[0].member];
-          const released = !sp.pin && !!(st2.row.state.series[0] && st2.row.state.series[0].x === m0.x);
+          const p0r = patOf(M.rows[0].member); void m0;
+          const released = !sp.pin && !!(st2.row.state.series[0] && p0r && st2.row.state.series[0].x === p0r.x);
           curOk = rowOk && colOk && marked && pinned && held && released && (rr.height > 40 || !roomRow) && (cr.width > 40 || !roomCol);
           what = `over ${fmt(M.rows[ri].value)} K, ${M.x[cj].toFixed(2)}°: the row strip ${rowOk ? `draws ${m22.label}'s pattern as the set holds it, ${rs.x.length} points` : "does not draw the member's pattern"} (${roomRow ? `${Math.round(rr.height)} px high` : `not shown: the plot area is ${Math.round(ar.height)} px tall, under the 260 px it needs`}); the column strip ${colOk ? `${cs.x.length} values against T, at 22 K ${cs.y[ri].toFixed(3)} (the core's)` : "does not draw the core's column"} (${roomCol ? `${Math.round(cr.width)} px wide` : `not shown: the plot area is ${Math.round(ar.width)} px wide, under the 520 px it needs`}); the cell marked on the map ${marked ? "yes" : "no"}; a click pins ${pinned ? "yes" : "no"}, the strips held while the pointer moves ${held ? "yes" : "no"}, a click again releases ${released ? "yes" : "no"}`;
         } else what = `no row at 22 K or no column at 19.1° (${ri}, ${cj})`;
@@ -2212,6 +2307,42 @@ export const plots = {
       } catch (e) { what = `failed: ${e}`; }
       await note(`plots: the right-hand axis lit, the host and Save's words (W3, W6, W7; step 21): ${what}: ${ok ? "OK" : "FAIL"}`);
       sp.view = "overlay"; renderActive(); await sleep(200);
+    }
+    // step 22 (W9): the patterns asked of the core and not carried by the set view; the overlay of this small set
+    // drawn whole (slices are for more than thirty members); the core's rebin to a step and back as measured; the y
+    // interval kept by the set file (PL41)
+    if (activePlots() !== t) { activateTab(t.id); await sleep(400); }
+    {
+      const sp = stateOf(t); const vw = views.get(t.id);
+      let what = "", ok = false;
+      try {
+        sp.view = "overlay"; sp.linked = false; renderActive(); await wait(() => !!(sp.patterns && sp.patterns.v)); await sleep(300);
+        const noXY = sp.set.members.every((m) => !Array.isArray(m.x) && !Array.isArray(m.y));
+        const asked = !!(sp.patterns && sp.patterns.v && sp.patterns.v.size === sp.set.members.length);
+        const curves = vw.plot.state.series.filter((x) => x.kind === "line").length;
+        const first = sp.set.members[0], pf = sp.patterns.v.get(first.index);
+        const drawn = curves === sp.set.members.length && !!pf && vw.plot.state.series.some((x) => x.id === first.key && x.x === pf.x);
+        const whole = !vw.plot.state.drawToken || (vw.plot.state.series.length <= 30 && !(vw.plot.state.pendingDraw));
+        // the core's rebin: the members read again rebinned to 0.5° (the Tb files' own step is 0.1°: fewer points), then as measured again
+        const n0 = first.points;
+        const r1 = await invoke("plots_rebin", { id: t.setId, step: 0.5 }); sp.rebin = 0.5; sp.patterns = null; setSet(t, r1); await sleep(300);
+        const n1 = stateOf(t).set.members[0].points;
+        const r2 = await invoke("plots_rebin", { id: t.setId, step: null }); sp.rebin = null; sp.patterns = null; setSet(t, r2); await sleep(300);
+        const n2 = stateOf(t).set.members[0].points;
+        const rebinOk = n1 < n0 && n2 === n0;
+        // PL41: the y interval kept by the set file
+        let yiOk = false, yiw = "not checked (no project of one's own)";
+        if (state.project && state.project.root && writable()) {
+          sp.yInterval = "own"; t.saveName = "selfcheck yinterval"; await saveSet(t); await sleep(300);
+          const [bs, bst] = await invoke("plots_open_set", { path: `${state.project.root}/${t.drv}`, root: state.project.root }); await invoke("plots_close", { id: bs.id });
+          yiOk = bst.y_interval === "own"; yiw = `y_interval ${bst.y_interval} read back from ${t.drv}`;
+          sp.yInterval = "shared";
+        } else yiOk = true;
+        ok = noXY && asked && drawn && whole && rebinOk && yiOk;
+        what = `the set view carries no x or y ${noXY ? "yes" : "no"}; the patterns asked of the core for ${sp.patterns ? sp.patterns.v.size : 0} members in ${sp.timing && sp.timing.patterns != null ? `${Math.round(sp.timing.patterns)} ms` : "?"}; the overlay's ${curves} curves drawn from them ${drawn ? "yes" : "no"}, in one frame (${sp.set.members.length} members, slices from 31) ${whole ? "yes" : "no"}; rebinned to 0.5° by the core: ${n0} → ${n1} points, as measured again ${n2} ${rebinOk ? "yes" : "no"}; ${yiw} ${yiOk ? "yes" : "no"}`;
+      } catch (e) { what = `failed: ${e}`; }
+      await note(`plots: a large set's patterns, slices and rebin (W9; step 22): ${what}: ${ok ? "OK" : "FAIL"}`);
+      sp.rebin = null; sp.view = "overlay"; renderActive(); await sleep(200);
     }
     // steps 6 and 7: each of the five views in the figure's look, exported by Export ▸ Plot's path at 17 cm; Send to Publish
     if (activePlots() !== t) { activateTab(t.id); await sleep(400); }

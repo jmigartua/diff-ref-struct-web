@@ -6,7 +6,7 @@
    Refine's Rietveld plot is on it since app 0.8.0 (reflection ticks as marker rows at a height, the difference offset). */
 import { axisTicks, sqrtTicks, logTicks, symlogTicks, symlog, symlogInv, fmtTick } from "./ticks.js";
 import { svgRecorder, legendItems, drawLegend, svgText } from "./svgexport.js";
-import { clipPlace, barValue, clipMoved, cellAt, columnAt, blockOf } from "./mapclip.js";   // PL13l, PL13m: a map's clip, the cell under the pointer, the cells in view; pure
+import { clipPlace, barValue, clipMoved, cellAt, columnAt, blockOf, pickPerColumn, sliceBounds } from "./mapclip.js";   // PL13l, PL13m, PL13r: a map's clip, the cell under the pointer, the cells in view, a line's points per column, the slices; pure
 
 // the theme's colours, read once a drawing (PL13: hundreds of series asked the style sheet each time)
 let cssCache = null;
@@ -92,7 +92,14 @@ export function rampColour(name, t) {
     PL13p (Plots, step 20; W4), additive: an image's `rightLabels: [{ at, text }]` (a label at the height `at`, data
     units, in the right margin before the colour bar: a row's second variable, W3) with `rightTitle`, the labels
     thinned as the baseline labels are and the margin measured for them; `opts.fitTo: [ids]` (read at each fit): the
-    y range fitted to those series alone, the others drawn as they fall (a y interval adapted to the member chosen). */
+    y range fitted to those series alone, the others drawn as they fall (a y interval adapted to the member chosen).
+    PL13r (Plots, step 22; W9 b), additive, for a hundred series of thousands of points: `opts.slice = { per,
+    onProgress(done, total) }` draws the series in slices of `per` across frames (requestAnimationFrame): the axes
+    and the first slice at once, the rest a slice a frame, the labels, cursor and frame after the last, `onProgress`
+    after each; a new drawing cancels what is pending; an export draws whole. The y fit over the series is kept
+    between drawings while the series, the view and the scale stay (`st.yFit`), so a redraw costs no pass over the
+    points. A line of more points than three per pixel column is drawn as each column's first, lowest, highest and
+    last point (`pickPerColumn`, mapclip.js: a choice of points, nothing summed), of the points in view only. */
 /** Settings ▸ Plots ▸ Marker size (§4): the scale of the points the plots draw on screen, which the app keeps in the
     page's `--marker-scale`; each plot draws again when it changes (the "drs-markers" event). */
 export function markerScale() {
@@ -132,9 +139,16 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
     return isFinite(lo) ? [lo, hi] : [0, 1];
   }
   function yRange(x0, x1) {
-    let lo = Infinity, hi = -Infinity, ilo = Infinity, ihi = -Infinity;
-    // PL13p: fitted to the series named in `opts.fitTo` when they are drawn, else to every series
+    // PL13r: the fit kept while the series (their stamp), the view, the scale and the fit's series stay
     const fitTo = opts.fitTo && opts.fitTo.length && st.series.some((s) => !s.hidden && opts.fitTo.includes(s.id)) ? opts.fitTo : null;
+    const key = `${st.stamp}|${x0}|${x1}|${st.yScale}|${opts.yFromZero}|${fitTo ? fitTo.join(",") : ""}|${st.series.map((s) => (s.hidden ? 1 : 0)).join("")}`;
+    if (st.yFit && st.yFit.key === key) return st.yFit.range;
+    const range = yRangeNow(x0, x1, fitTo);
+    st.yFit = { key, range };
+    return range;
+  }
+  function yRangeNow(x0, x1, fitTo) {
+    let lo = Infinity, hi = -Infinity, ilo = Infinity, ihi = -Infinity;
     for (const s of st.series) {
       if (s.hidden || (fitTo && !fitTo.includes(s.id))) continue;
       if (s.kind === "image") { for (const r of s.rows) { ilo = Math.min(ilo, r.lo); ihi = Math.max(ihi, r.hi); } continue; }
@@ -151,12 +165,19 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
   }
 
   function draw() {
+    st.drawToken = (st.drawToken || 0) + 1;   // PL13r: a new drawing cancels the slices pending of the last
     cssCache = new Map();
-    try { drawNow(); } finally { cssCache = null; }
+    try { drawNow(null); } finally { cssCache = null; }
   }
-  function drawNow() {
+  /** PL13r: the next slice of a sliced drawing, a frame later; `resume` = { from, token, k }. */
+  function continueDraw(resume) {
+    if (resume.token !== st.drawToken) return;
+    cssCache = new Map();
+    try { drawNow(resume); } finally { cssCache = null; }
+  }
+  function drawNow(resume) {
     const { w, h } = layout();
-    ctx.clearRect(0, 0, w, h);
+    if (!resume) ctx.clearRect(0, 0, w, h);
     if (!st.series.length || w < 40 || h < 40) { st.geom = null; return; }
     const ink = css("--ink"), muted = st.look === "figure" ? ink : css("--muted"), line = css("--line");   // PL13g: a figure's text in ink
     // PL30: the text in points for a figure (`opts.font`, `toSVG`'s sizes), else 11 px; the margins measured from what
@@ -221,12 +242,18 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
     sa = sa || 1;
     const sys = (v) => stripTop + stripH / 2 - v / sa * (stripH / 2 - 3);
     st.geom = { left, right, top, bottom, w, h, sx, sy, y0, y1, bandTop, stripTop, stripBottom, sys, axisTop: stripBottom, apartTop };
+    // PL13r: which series this call draws: all (one frame), or the slice from `resume.from` of a sliced drawing
+    const drawable = st.series.filter((s) => !s.hidden && s.kind !== "bands" && s.kind !== "image");
+    const sliced = opts.slice && !exporting && opts.slice.per > 0 && drawable.length > opts.slice.per ? sliceBounds(drawable.length, opts.slice.per) : null;
+    const sliceFrom = resume ? resume.from : 0;
+    const sliceTo = sliced ? Math.min(drawable.length, sliceFrom + opts.slice.per) : drawable.length;
+    const fig = st.look === "figure";
+    if (!resume) {
     // grid and axes
     ctx.font = fontOf(tickPx); ctx.fillStyle = muted; ctx.strokeStyle = line; ctx.lineWidth = 1;
     const xt = axisTicks(st.x0, st.x1, w - left - right, (l) => ctx.measureText(l).width);
     // E10m (Explore): an axis of whole numbers (cycles, steps) labelled at whole numbers only
     if (opts.xIntegers && xt.step < 1) xt.ticks = xt.ticks.filter((t) => Math.abs(t.value - Math.round(t.value)) < 1e-9).map((t) => ({ value: Math.round(t.value), label: String(Math.round(t.value)) }));
-    const fig = st.look === "figure";
     // PL13f: a figure's x axis, a line with ticks only over its span (the front member's range), no grid
     const [xa, xb] = fig && st.xSpan ? [Math.max(st.x0, st.xSpan[0]), Math.min(st.x1, st.xSpan[1])] : [st.x0, st.x1];
     if (fig) { ctx.strokeStyle = ink; ctx.beginPath(); ctx.moveTo(Math.round(sx(xa)), Math.round(stripBottom) + 0.5); ctx.lineTo(Math.round(sx(xb)), Math.round(stripBottom) + 0.5); ctx.stroke(); }
@@ -393,10 +420,12 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
     }
     // the band being created
     if (st.drag && st.drag.band) { const d = st.drag; ctx.fillStyle = css("--accent"); ctx.globalAlpha = 0.15; ctx.fillRect(Math.min(d.x, d.cx), top, Math.abs(d.cx - d.x), bottom - top); ctx.globalAlpha = 1; }
-    // series
-    let k = 0;
-    for (const s of st.series) {
-      if (s.hidden || s.kind === "bands" || s.kind === "image") continue;
+    }   // end of what one frame draws before the series (PL13r)
+    // series: this slice's (all, when not sliced); a series' palette colour is its place among those drawn, `k`
+    let k = resume ? resume.k : 0;
+    ctx.save(); ctx.beginPath(); ctx.rect(0, 0, w, h); ctx.clip();
+    for (let si = sliceFrom; si < sliceTo; si++) {
+      const s = drawable[si];
       const color = colourOf(s.color, null) || css(PALETTE[k++ % PALETTE.length]);
       const x = s.x, y = s.y, f = fy(s), op = s.opacity == null ? 1 : s.opacity;
       if (s.strip && y) {
@@ -506,16 +535,14 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
         }
         ctx.strokeStyle = color; ctx.lineWidth = s.width || 1.2; ctx.globalAlpha = op; ctx.beginPath(); let pen = false;
         if (i1 - i0 > 3 * cols) {
-          // PL13: more points than pixels: each pixel column's first, lowest, highest and last point, in order, which
-          // draws what the full line would show at this width and keeps hundreds of series quick
-          let col = null, first = 0, lo = 0, hi = 0, lastY = 0;
-          const flush = () => { if (col == null) return; const X = left + col + 0.5; pen ? ctx.lineTo(X, first) : ctx.moveTo(X, first); ctx.lineTo(X, lo); ctx.lineTo(X, hi); ctx.lineTo(X, lastY); pen = true; };
-          for (let i = i0; i <= i1; i++) {
-            const v = f(y[i]); if (!isFinite(v)) { flush(); col = null; pen = false; continue; }
-            const Y = sy(v), c = Math.floor(sx(x[i]) - left);
-            if (c !== col) { flush(); col = c; first = lo = hi = lastY = Y; } else { if (Y < lo) lo = Y; if (Y > hi) hi = Y; lastY = Y; }
+          // PL13, PL13r: more points than pixels: each pixel column's first, lowest, highest and last point, in order
+          // (`pickPerColumn`), which draws what the full line would show at this width and keeps hundreds of series quick
+          const picks = pickPerColumn(i0, i1, (i) => Math.floor(sx(x[i]) - left), (i) => { const v = f(y[i]); return isFinite(v) ? sy(v) : NaN; });
+          for (const i of picks) {
+            if (i == null) { pen = false; continue; }
+            const X = Math.floor(sx(x[i]) - left) + left + 0.5, Y = sy(f(y[i]));
+            pen ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y); pen = true;
           }
-          flush();
         } else {
           for (let i = i0; i <= i1; i++) { const v = f(y[i]); if (!isFinite(v)) { pen = false; continue; } const X = sx(x[i]), Y = sy(v); pen ? ctx.lineTo(X, Y) : ctx.moveTo(X, Y); pen = true; }
         }
@@ -527,6 +554,15 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
         ctx.setLineDash([]);
       }
     }
+    ctx.restore();
+    // PL13r: more slices to draw: the next a frame later, the caller told how far this one went
+    if (sliced && sliceTo < drawable.length) {
+      const token = st.drawToken;
+      if (opts.slice.onProgress) opts.slice.onProgress(sliceTo, drawable.length);
+      requestAnimationFrame(() => continueDraw({ from: sliceTo, token, k }));
+      return;
+    }
+    if (sliced && opts.slice.onProgress) opts.slice.onProgress(drawable.length, drawable.length);
     // PL13: labels at the series' baselines, in the right margin, in each series' colour and opacity; a label that
     // would touch one already drawn is left out, those with the higher `priority` and then the brightest drawn first
     ctx.textAlign = "left";
@@ -613,6 +649,7 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
   }
   function setSeries(series, keepView = false) {
     st.series = series.map((s) => ({ kind: "both", ...s }));
+    st.stamp = (st.stamp || 0) + 1;   // PL13r: the y fit kept per set of series
     if (!keepView || st.fit) { [st.x0, st.x1] = xRange(); st.y0 = st.y1 = null; st.fit = true; }
     describe(); draw();
   }
