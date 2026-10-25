@@ -1,0 +1,11 @@
+{
+  "name": "diff-ref-struct Web",
+  "short_name": "drs Web",
+  "description": "Powder diffraction data as plot sets in the browser: the diff-ref-struct core in WebAssembly, your files read here and never uploaded.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fbfbfa",
+  "theme_color": "#0a7f6f",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
