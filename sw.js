@@ -5,7 +5,7 @@
    cache (a request not listed passes to the network untouched). VERSION is stamped by
    web/tools/stage.sh for the published site, so that a new version installs anew; "dev" (a local checkout) asks the
    network first and keeps what it gets for offline. */
-const VERSION = "24d8619";
+const VERSION = "51efff2";
 const CACHE = "drs-web-" + VERSION;
 
 async function listed() {
