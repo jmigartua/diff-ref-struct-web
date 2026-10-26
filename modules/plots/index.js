@@ -2054,7 +2054,9 @@ export const plots = {
           const patOf = (i) => { const d = vw.viewerData(); return d.members[i] ? d.members[i].pattern : null; };
           const p22 = patOf(M.rows[ri].member);
           const rowOk = !!(rs && p22 && rs.x === p22.x && rs.y === p22.y && rs.label.includes(m22.label));
-          const colOk = !!(cs && cs.x.length === M.rows.length && cs.x[ri] === M.rows[ri].value && cs.y[ri] === M.z[ri][cj]);
+          // step 23: the column strip's path has the variable up (y) and the core's values across (x), the rows holding a value only
+          const k22 = cs ? cs.y.indexOf(M.rows[ri].value) : -1;
+          const colOk = !!(cs && k22 >= 0 && cs.x[k22] === M.z[ri][cj] && cs.x.length === M.z.filter((zr) => zr[cj] != null).length);
           const cc = vw.plot.state.cellCursor; const marked = !!(cc && cc.j === cj && cc.r === ri);
           const rcv = document.querySelector(".pl-rcanvas"), ccv = document.querySelector(".pl-ccanvas"), areaEl = document.querySelector(".pl-areas");
           const rr = rcv ? rcv.getBoundingClientRect() : { height: 0 }, cr = ccv ? ccv.getBoundingClientRect() : { width: 0 }, ar = areaEl ? areaEl.getBoundingClientRect() : { width: 0, height: 0 };
@@ -2070,10 +2072,44 @@ export const plots = {
           const p0r = patOf(M.rows[0].member); void m0;
           const released = !sp.pin && !!(st2.row.state.series[0] && p0r && st2.row.state.series[0].x === p0r.x);
           curOk = rowOk && colOk && marked && pinned && held && released && (rr.height > 40 || !roomRow) && (cr.width > 40 || !roomCol);
-          what = `over ${fmt(M.rows[ri].value)} K, ${M.x[cj].toFixed(2)}°: the row strip ${rowOk ? `draws ${m22.label}'s pattern as the set holds it, ${rs.x.length} points` : "does not draw the member's pattern"} (${roomRow ? `${Math.round(rr.height)} px high` : `not shown: the plot area is ${Math.round(ar.height)} px tall, under the 260 px it needs`}); the column strip ${colOk ? `${cs.x.length} values against T, at 22 K ${cs.y[ri].toFixed(3)} (the core's)` : "does not draw the core's column"} (${roomCol ? `${Math.round(cr.width)} px wide` : `not shown: the plot area is ${Math.round(ar.width)} px wide, under the 520 px it needs`}); the cell marked on the map ${marked ? "yes" : "no"}; a click pins ${pinned ? "yes" : "no"}, the strips held while the pointer moves ${held ? "yes" : "no"}, a click again releases ${released ? "yes" : "no"}`;
+          what = `over ${fmt(M.rows[ri].value)} K, ${M.x[cj].toFixed(2)}°: the row strip ${rowOk ? `draws ${m22.label}'s pattern as the set holds it, ${rs.x.length} points` : "does not draw the member's pattern"} (${roomRow ? `${Math.round(rr.height)} px high` : `not shown: the plot area is ${Math.round(ar.height)} px tall, under the 260 px it needs`}); the column strip ${colOk ? `${cs.x.length} values against T, at 22 K ${cs.x[k22].toFixed(3)} (the core's)` : "does not draw the core's column"} (${roomCol ? `${Math.round(cr.width)} px wide` : `not shown: the plot area is ${Math.round(ar.width)} px wide, under the 520 px it needs`}); the cell marked on the map ${marked ? "yes" : "no"}; a click pins ${pinned ? "yes" : "no"}, the strips held while the pointer moves ${held ? "yes" : "no"}, a click again releases ${released ? "yes" : "no"}`;
         } else what = `no row at 22 K or no column at 19.1° (${ri}, ${cj})`;
       }
       await note(`plots: the row and column cursors (I08 step 3): ${what}: ${curOk ? "OK" : "FAIL"}`);
+      // step 23 (L431): the strips' frames are the map's — the row strip's left and right and its x view, the column
+      // strip's top and bottom and its y view — at the whole map and in a zoom; each strip's own label carries no scale
+      // word (the plot says it once). A strip without room (the container queries) has no frame to compare: said so.
+      let frOk = false; what = "no map";
+      if (M) {
+        const ri = M.rows.findIndex((row) => row.value === 22), cj = M.x.findIndex((x) => x >= 19.1);
+        // the check's window is short (the relaunch's ~100 px, the first run's 243 px): the plot area is given room for
+        // the check (a minimum of 960 × 640 px, overflowing the window) so that both strips are shown, and given back after
+        const areaEl = document.querySelector(".pl-areas"); const was = areaEl ? { h: areaEl.style.minHeight, w: areaEl.style.minWidth } : null;
+        if (areaEl) { areaEl.style.minHeight = "640px"; areaEl.style.minWidth = "960px"; await sleep(500); }
+        vw.cellClick({ id: "map", j: cj, r: ri }); await sleep(400);   // pinned, so that the strips stay while the view changes
+        const st3 = vw.strips(); const ar = areaEl ? areaEl.getBoundingClientRect() : { width: 0, height: 0 };
+        const roomRow = ar.height > 260, roomCol = ar.width > 520;
+        const same = () => {
+          const g = vw.plot.state.geom, rg = st3.row ? st3.row.state.geom : null, cg = st3.col ? st3.col.state.geom : null;
+          const mv = vw.plot.getView(), rv = st3.row ? st3.row.getView() : null, cv = st3.col ? st3.col.getView() : null;
+          const row = !!(g && rg && rg.left === g.left && rg.right === g.right && rv.x0 === mv.x0 && rv.x1 === mv.x1);
+          const col = !!(g && cg && cg.top === g.top && cg.bottom === g.bottom && cv.y0 === g.y0 && cv.y1 === g.y1);
+          return { g, rg, cg, row, col, mv };
+        };
+        const whole = same();
+        vw.plot.setView({ x0: 18.95, x1: 19.25, y0: 20, y1: 26 }); await sleep(400);
+        const zoomed = same(); await exportView("map strips framed");
+        vw.plot.fitAll(); await sleep(300);
+        const rl = st3.row ? st3.row.state.yLabel : "", cl = st3.col ? st3.col.state.xLabel : "";
+        const once = !/\(√\)|\(log\)/.test(rl) && !/\(√\)|\(log\)/.test(cl);   // the plot adds " (√)" or " (log)" to its y label itself, so the strip's own carries none
+        const rowOk = !roomRow || (whole.row && zoomed.row), colOk = !roomCol || (whole.col && zoomed.col);
+        frOk = rowOk && colOk && once && !!whole.g;
+        const edges = (q) => (q ? `${q.left}–${q.w - q.right} px across, ${q.top}–${q.bottom} px down` : "none");
+        what = `the plot area given ${Math.round(ar.width)} × ${Math.round(ar.height)} px for the check; the map's frame ${edges(whole.g)}; the row strip ${roomRow ? (rowOk ? `the same left and right (${whole.rg.left}–${whole.rg.w - whole.rg.right} px) and the same x view, whole and zoomed to 18.95–19.25°` : `not the map's (${edges(whole.rg)}, zoomed ${edges(zoomed.rg)}; x ${whole.rg ? `${st3.row.getView().x0}–${st3.row.getView().x1}` : "?"})`) : `not shown (the plot area is ${Math.round(ar.height)} px tall, under the 260 px it needs)`}; the column strip ${roomCol ? (colOk ? `the same top and bottom (${whole.cg.top}–${whole.cg.bottom} px) and the same y view, whole (${fmt(whole.g.y0)}–${fmt(whole.g.y1)} K) and zoomed to 20–26 K` : `not the map's (${edges(whole.cg)}, zoomed ${edges(zoomed.cg)})`) : `not shown (the plot area is ${Math.round(ar.width)} px wide, under the 520 px it needs)`}; the labels "${rl}" and "${cl}" ${once ? "say the unit once" : "repeat the scale"}`;
+        sp.pin = null; vw.cellClick({ id: "map", j: cj, r: ri }); await sleep(200); sp.pin = null;
+        if (areaEl) { areaEl.style.minHeight = was.h; areaEl.style.minWidth = was.w; await sleep(300); }
+      }
+      await note(`plots: the strips' frames are the map's (L431; step 23): ${what}: ${frOk ? "OK" : "FAIL"}`);
       sp.pin = null; sp.view = "overlay"; renderActive(); await sleep(300);
     }
     // step 17 (I08 step 4, R33; PL37 met by core 0.76.0): the zoom in the T–2θ plane kept across redraws, the wheel on

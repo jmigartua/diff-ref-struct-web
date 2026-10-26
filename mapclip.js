@@ -87,6 +87,15 @@ export function sliceBounds(n, per) {
   return out;
 }
 
+/** The frames the cursors' strips take from the map's plot (Plots' step 23, L431; PL13s): the row strip under the
+    map its left and right, so that every x is on one vertical line in both; the column strip beside it its top and
+    bottom, so that every row is on one horizontal line. From the map plot's `state.geom` ({ left, right, top, bottom,
+    …}); null frames when the map has none yet (the strip then measures its own). */
+export function stripFrames(geom) {
+  if (!geom) return { row: null, col: null };
+  return { row: { left: geom.left, right: geom.right }, col: { top: geom.top, bottom: geom.bottom } };
+}
+
 /** The column whose edges hold `xv` (`xEdges` ascending, one more than the columns), or −1. */
 export function columnAt(xv, xEdges) {
   for (let q = 0; q + 1 < xEdges.length; q++) if (xv >= xEdges[q] && xv < xEdges[q + 1]) return q;

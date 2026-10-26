@@ -99,7 +99,11 @@ export function rampColour(name, t) {
     after each; a new drawing cancels what is pending; an export draws whole. The y fit over the series is kept
     between drawings while the series, the view and the scale stay (`st.yFit`), so a redraw costs no pass over the
     points. A line of more points than three per pixel column is drawn as each column's first, lowest, highest and
-    last point (`pickPerColumn`, mapclip.js: a choice of points, nothing summed), of the points in view only. */
+    last point (`pickPerColumn`, mapclip.js: a choice of points, nothing summed), of the points in view only.
+    PL13s (Plots, step 23; L431), additive: `setAxes({ frame: { left, right, top, bottom } })` takes a frame's edges
+    from outside (another plot's `state.geom`, so that the strip under a map shares its vertical lines and the strip
+    beside it its horizontal ones) in place of the measured or fixed margins, each edge optional; a y tick label wider
+    than a given left margin is left out, never widening it; `frame: null` measures again. */
 /** Settings ▸ Plots ▸ Marker size (§4): the scale of the points the plots draw on screen, which the app keeps in the
     page's `--marker-scale`; each plot draws again when it changes (the "drs-markers" event). */
 export function markerScale() {
@@ -185,7 +189,9 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
     const tickPx = fontPt ? ptPx(fontPt.tick_pt || 9) : 11, labelPx = fontPt ? ptPx(fontPt.label_pt || 10) : 11;
     const measured = !!fontPt || st.look === "figure";
     const legendBottom = legendEl ? legendEl.offsetTop + legendEl.offsetHeight : 0;
-    const top = measured ? Math.max(Math.round(tickPx / 2) + 4, legendBottom + 6) : Math.max(30, legendBottom + 10);
+    const topOwn = measured ? Math.max(Math.round(tickPx / 2) + 4, legendBottom + 6) : Math.max(30, legendBottom + 10);
+    // PL13s (Plots, step 23; L431): a frame's top given from outside (the map's, for the strip beside it)
+    const top = st.frame && st.frame.top != null && st.frame.top >= 0 ? st.frame.top : topOwn;
     const axisH = measured ? Math.round(tickPx + 8 + labelPx + 6) : 34;
     // the tick band (one row per marker series with `row`) and the strip (the difference) sit under the frame; an
     // image's rows apart (PL13) sit right under the frame, above the tick band
@@ -196,7 +202,9 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
     const images = st.series.filter((s) => !s.hidden && s.kind === "image");
     const apartN = images.reduce((m, s) => Math.max(m, (s.apart || []).length), 0);
     const apartH = apartN ? 8 + 18 * apartN : 0;
-    const bottom = h - axisH - stripH - bandH - apartH;
+    let bottom = h - axisH - stripH - bandH - apartH;
+    // PL13s: a frame's bottom given from outside, taken when it leaves room for the frame and the x axis
+    if (st.frame && st.frame.bottom != null && st.frame.bottom > top + 10 && st.frame.bottom <= h - axisH) bottom = st.frame.bottom;
     const apartTop = bottom + 8, bandTop = bottom + apartH, stripTop = bandTop + bandH, stripBottom = stripTop + stripH;
     const [y0, y1] = st.y0 == null ? yRange(st.x0, st.x1) : [st.y0, st.y1];
     // the y ticks first: their widest label sets a measured left margin (PL30 b)
@@ -233,6 +241,12 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
         }
       }
       right = Math.round(r);
+    }
+    // PL13s (Plots, step 23; L431): a frame given from outside (another plot's, so that two plots share their vertical
+    // or horizontal lines) replaces the measured or fixed margins; its y tick labels fit in the left margin or go
+    if (st.frame) {
+      if (st.frame.left != null) left = st.frame.left;
+      if (st.frame.right != null) right = st.frame.right;
     }
     const sx = (x) => left + (x - st.x0) / (st.x1 - st.x0) * (w - left - right);
     const sy = (v) => bottom - (v - y0) / (y1 - y0) * (bottom - top);
@@ -291,7 +305,7 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
         const Y = Math.round(sy(t.value)) + 0.5;
         if (fig) { ctx.strokeStyle = ink; ctx.beginPath(); ctx.moveTo(left - 4, Y); ctx.lineTo(left, Y); ctx.stroke(); ctx.strokeStyle = line; }
         else { ctx.globalAlpha = 0.25; ctx.beginPath(); ctx.moveTo(left, Y); ctx.lineTo(w - right, Y); ctx.stroke(); ctx.globalAlpha = 1; }
-        ctx.fillText(t.label, left - 6, Y + tickPx * 0.36);
+        if (!st.frame || st.frame.left == null || ctx.measureText(t.label).width <= left - 8) ctx.fillText(t.label, left - 6, Y + tickPx * 0.36);   // PL13s: a label wider than a given margin goes
       }
       const said = fig ? (st.yScale === "sqrt" ? ", √ scale" : st.yScale === "log" ? ", log scale" : st.yScale === "symlog" ? ", symmetric log scale" : "") : (st.yScale === "sqrt" ? " (√)" : st.yScale === "log" ? " (log)" : st.yScale === "symlog" ? " (symlog)" : "");   // PL13g
       ctx.font = fontOf(labelPx);
@@ -653,7 +667,7 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
     if (!keepView || st.fit) { [st.x0, st.x1] = xRange(); st.y0 = st.y1 = null; st.fit = true; }
     describe(); draw();
   }
-  function setAxes({ xLabel, yLabel, yScale, look, xSpan, scaleBar, keepView }) { if (xLabel != null) st.xLabel = xLabel; if (yLabel != null) st.yLabel = yLabel; if (yScale) st.yScale = yScale; if (look !== undefined) st.look = look; if (xSpan !== undefined) st.xSpan = xSpan; if (scaleBar !== undefined) st.scaleBar = scaleBar; if (!keepView) st.y0 = st.y1 = null; describe(); draw(); }   // PL13m: keepView keeps a y zoom
+  function setAxes({ xLabel, yLabel, yScale, look, xSpan, scaleBar, keepView, frame }) { if (xLabel != null) st.xLabel = xLabel; if (yLabel != null) st.yLabel = yLabel; if (yScale) st.yScale = yScale; if (look !== undefined) st.look = look; if (xSpan !== undefined) st.xSpan = xSpan; if (scaleBar !== undefined) st.scaleBar = scaleBar; if (frame !== undefined) st.frame = frame; if (!keepView) st.y0 = st.y1 = null; describe(); draw(); }   // PL13m: keepView keeps a y zoom; PL13s: frame { left, right, top, bottom } given from outside (null: measured)
   function fitAll() { [st.x0, st.x1] = xRange(); st.y0 = st.y1 = null; st.fit = true; draw(); }
   const modeCursor = (mode) => (mode === "select" ? "cell" : mode === "pick" ? "copy" : mode === "region" ? "col-resize" : "crosshair");
   function setMode(mode) { st.mode = mode; canvas.style.cursor = modeCursor(mode); }
@@ -976,7 +990,7 @@ export function createPlot(canvas, readout, legendEl, opts = {}) {
     if (px < g.left || px > g.w - g.right || py < g.top || py > g.bottom) return null;
     return { x: toX(px), y: Tinv[st.yScale](toY(py)) };
   }
-  const api = { setSeries, setAxes, fitAll, setMode, setSelection, clearSelection, selection, getView, setView, copyImage, toSVG, draw, pixelOf, dataAt, state: st, setCursor, onViewChange, setFont, setCellCursor };
+  const api = { setSeries, setAxes, fitAll, setMode, setSelection, clearSelection, selection, getView, setView, copyImage, toSVG, draw, pixelOf, dataAt, state: st, setCursor, onViewChange, setFont, setCellCursor, canvas };   // PL13s: `canvas`, so that a plot beside this one follows its resizes
   if (!canvas.dataset.tour) canvas.dataset.tour = "plot";   // TU5: the tour's handle on every plot
   canvas.__drsPlot = api;
   return api;

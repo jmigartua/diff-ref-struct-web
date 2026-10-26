@@ -55,7 +55,7 @@
    regions, selregion, regionsRefused; step 20 (W4): yInterval ("shared" | "own"), sel (the keys of the members
    chosen), sortBy ("set" | "variable" | "time" | "name", the members' list order). */
 import { createPlot } from "../plot.js";
-import { keptZoom, followSwitch } from "../mapclip.js";
+import { keptZoom, followSwitch, stripFrames } from "../mapclip.js";
 
 /** A number for the eye (as the shell's `fmt`): 7 significant digits at most, exponent form far from one. */
 export function fmtNumber(v) {
@@ -162,8 +162,10 @@ export function createMapViewer(els, host, state) {
   // ---------------------------------------------------------------- the cursors' strips (step 16)
   function ensureStrips() {
     if (!rplot) {
+      // step 23 (L431): the strips take the map's frame edges at each draw (`stripFrames`), so the row strip shares
+      // the map's vertical lines and the column strip, drawn with the variable up (a path: the values across), its rows
       rplot = createPlot(els.rowCanvas, els.rowReadout, null, { xLabel: "2θ (°)", yLabel: "counts", right: 16 });
-      cplot = createPlot(els.colCanvas, els.colReadout, null, { xLabel: "T (K)", yLabel: "counts", right: 16, yFromZero: false });
+      cplot = createPlot(els.colCanvas, els.colReadout, null, { xLabel: "counts", yLabel: "T (K)", right: 16, yFromZero: false });
     }
     return [rplot, cplot];
   }
@@ -179,7 +181,8 @@ export function createMapViewer(els, host, state) {
     if (!stripsOn()) { if (rplot) { rplot.setSeries([]); cplot.setSeries([]); } return; }
     const [rp, cp] = ensureStrips();
     const m = current(), c = state.pin || state.cell, xl = data.x.label, yw = data.y_word, vn = data.variable.name, vu = data.variable.unit;
-    if (!m || !c) { rp.setAxes({ xLabel: xl, yLabel: `${yw}: the row under the pointer` }); cp.setAxes({ xLabel: `${vn} (${vu})`, yLabel: "the column under the pointer" }); rp.setSeries([]); cp.setSeries([]); return; }
+    const frames = stripFrames(plot.state.geom);
+    if (!m || !c) { rp.setAxes({ xLabel: xl, yLabel: `${yw}: the row under the pointer`, frame: frames.row }); cp.setAxes({ xLabel: "the column under the pointer", yLabel: `${vn} (${vu})`, frame: frames.col }); rp.setSeries([]); cp.setSeries([]); return; }
     const M = m.map, scale = m.scale, zWord = zWordOf(scale, yw);
     const apartK = typeof c.r === "string" ? parseInt(c.r.slice(6)) : -1;
     const row = apartK >= 0 ? null : M.rows[c.r];
@@ -190,25 +193,34 @@ export function createMapViewer(els, host, state) {
     const colour = memberColour(mIdx);
     // the row cursor: the Map draws the member's pattern as the set holds it (when the data carries it; the page draws
     // the map's own row); the Difference Map the core's row of it (the member less the reference), what that map shows
+    // the y label says the unit once: the plot itself adds the scale's word to its y label, so none is added here (L431)
     if (diff() || !mem.pattern) {
       const z = apartK >= 0 ? m.apart[apartK].z || null : M.z[c.r];
       const zs = z ? z.map((v) => (v == null ? NaN : v)) : null;
-      rp.setAxes({ xLabel: xl, yLabel: `${diff() ? "less the reference, " : ""}${yw}${scale === "sqrt" ? (diff() ? ", signed √" : " (√)") : scale === "log" ? " (log)" : ""}`, yScale: scale });
+      rp.setAxes({ xLabel: xl, yLabel: `${diff() ? "less the reference, " : ""}${yw}`, yScale: scale, frame: frames.row });
       rp.setSeries(zs ? [{ id: "row", kind: "line", label: `${mem.label}${diff() ? " less the reference" : ""}, ${T}`, x: M.x, y: zs, scaled: true, values: zs, color: colour, width: 1 }] : [], true);
     } else {
-      rp.setAxes({ xLabel: xl, yLabel: `${yw}${scale === "log" ? " (log)" : scale === "sqrt" ? " (√)" : ""}`, yScale: scale });
+      rp.setAxes({ xLabel: xl, yLabel: yw, yScale: scale, frame: frames.row });
       rp.setSeries([{ id: `m${mIdx}`, kind: "line", label: `${mem.label}, ${T}`, x: mem.pattern.x, y: mem.pattern.y, color: colour, width: 1 }], true);
     }
-    // the strip's x is the map's; its y the set's extent (shared, the core's: the map's range for the difference's
-    // rows, `y_extent` on the map's scale for a member's pattern) or the row's own (step 20, W4)
+    // the strip's x is the map's (its frame's left and right the map's, step 23); its y the set's extent (shared, the
+    // core's: the map's range for the difference's rows, `y_extent` on the map's scale for a member's pattern) or the
+    // row's own (step 20, W4)
     const v = plot.getView();
     const shared = state.yInterval === "shared" ? (diff() || !mem.pattern ? { from: M.range[0], to: M.range[1] } : data.y_extent || null) : null;
     rp.setView({ x0: v.x0, x1: v.x1, y0: shared ? shared.from : null, y1: shared ? shared.to : null });
-    // the column cursor: the matrix's column at the cell's x against each row's temperature (the rows apart have none)
-    const xs = M.rows.map((r) => r.value), ys = M.z.map((zr) => (zr[c.j] == null ? NaN : zr[c.j]));
-    cp.setAxes({ xLabel: `${vn} (${vu})`, yLabel: `${diff() ? "less the reference, " : ""}${zWord}`, yScale: scale });
-    cp.setSeries([{ id: "column", kind: "both", points: true, marker: "circle", label: `${xName()} ${M.x[c.j].toFixed(3)}`, x: xs, y: ys, scaled: true, values: ys, color: "--ink", width: 1 }]);
+    // the column cursor: the matrix's column at the cell's x, the variable up (a path, the values across on the map's
+    // scale), the frame's top and bottom and the y view the map's (step 23), so that each row sits on its line
+    const held = M.rows.map((r, i) => i).filter((i) => M.z[i][c.j] != null);
+    const xs = held.map((i) => M.rows[i].value), ys = held.map((i) => M.z[i][c.j]);
+    cp.setAxes({ xLabel: `${diff() ? "less the reference, " : ""}${zWord}`, yLabel: `${vn} (${vu})`, yScale: "linear", frame: frames.col });
+    cp.setSeries([{ id: "column", kind: "both", path: true, points: true, radius: 2.5, label: `${xName()} ${M.x[c.j].toFixed(3)}`, x: ys, y: xs, color: "--ink", width: 1 }]);
+    const g = plot.state.geom;
+    if (g) { cp.fitAll(); const cv = cp.getView(); cp.setView({ x0: cv.x0, x1: cv.x1, y0: g.y0, y1: g.y1 }); }
   }
+  // step 23: the map's frame moves with its canvas (its bottom with the height, its right with the bar), so the strips
+  // take it again after each resize of the map; the plot's own observer, registered first, has redrawn the map by then
+  if (typeof ResizeObserver !== "undefined" && plot.canvas) new ResizeObserver(() => { if (stripsOn() && rplot) redrawStrips(); }).observe(plot.canvas);
   /** A member's colour by its place among the members with a value (magma's middle part, as the module's), grey apart. */
   const MAGMA = ["#2c115f", "#51127c", "#721f81", "#932b80", "#b73779", "#d8456c", "#f1605d", "#fc8961"];
   function memberColour(k) {
@@ -234,7 +246,7 @@ export function createMapViewer(els, host, state) {
 
   // ---------------------------------------------------------------- the zoom kept and range from the view (step 17)
   plot.onViewChange((v) => {
-    if (rplot && stripsOn()) rplot.setView({ x0: v.x0, x1: v.x1, y0: null, y1: null });
+    if (rplot && stripsOn()) redrawStrips();   // step 23: the row strip's x view and the column strip's y view follow the map's (its frame is set by then)
     if (!active) return;
     const z = keptZoom(v, plot.state.fit);
     const same = (z == null && state.mapZoom == null) || (z && state.mapZoom && z.x0 === state.mapZoom.x0 && z.x1 === state.mapZoom.x1 && z.y0 === state.mapZoom.y0 && z.y1 === state.mapZoom.y1);
