@@ -5,7 +5,7 @@
    cache (a request not listed passes to the network untouched), except the guide's own files under guide/ (below). VERSION is stamped by
    web/tools/stage.sh for the published site, so that a new version installs anew; "dev" (a local checkout) asks the
    network first and keeps what it gets for offline. */
-const VERSION = "1.0.0+b4820d8";
+const VERSION = "1.0.0+75727c9";
 const CACHE = "drs-web-" + VERSION;
 /** The guide beside the page (/guide/, web/site/): its pages and the manual's PDFs kept too, from the list the guide
     publishes (guide/offline.json, written after its render); any other guide file (a screenshot) kept once fetched.
