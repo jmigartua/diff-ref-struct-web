@@ -12,6 +12,9 @@ license: Apache-2.0
 doi: 10.5281/zenodo.23682726
 identifiers:
   - type: doi
+    value: 10.5281/zenodo.23683238
+    description: "diff-ref-struct Web 1.1.0"
+  - type: doi
     value: 10.5281/zenodo.23682727
     description: "diff-ref-struct Web 1.0.0"
 authors:

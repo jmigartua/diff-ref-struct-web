@@ -4,7 +4,7 @@
 
 ## 1.1.0 · The 2θ interval of the analysis
 
-*2026-10-27 · to be published · core 0.82.0 · build next*
+*2026-10-27 · published · core 0.82.0 · build 1005d96*
 
 On core 0.82.0: a plot set file may cut every member to an interval of 2θ on opening, so that every view, window, map and difference works on the cut set; the core answers the patterns in the app's words.
 
@@ -23,7 +23,7 @@ On core 0.82.0: a plot set file may cut every member to an interval of 2θ on op
 - Proposals against time open with each scan's temperature as its variable: open a hold or a run from a .drv that types the times (recipe: A hold).
 - No figure or CSV export in the browser; text formats only.
 
-*Closes W11; log L435, L441, L442; evidence: Web host tests 39 of 39 and the package's 10 of 10 on core 0.82.0; a Tb₂Pd₂Sn set file cut to 24–36° opened in the page on its Map (24 to 36°, the cut set's colour range 2.982–4.605 log₁₀ counts); every view drawn; the leak guard clean on the guide, its PDFs and the source..*
+*Closes W11; log L435, L441, L442; evidence: Web host tests 39 of 39 and the package's 10 of 10 on core 0.82.0; a Tb₂Pd₂Sn set file cut to 24–36° opened in the page on its Map (24 to 36°, the cut set's colour range 2.982–4.605 log₁₀ counts); every view drawn; the leak guard clean on the guide, its PDFs and the source.; archived as [doi:10.5281/zenodo.23683238](https://doi.org/10.5281/zenodo.23683238).*
 
 ## 1.0.0 · The guide, open source, the record
 

@@ -2,6 +2,22 @@
 
 Release notes. Generated from `ecosystem/data/releases.yml` by `ecosystem/tools/build.py`; the same text is on the project site. Do not edit by hand.
 
+## web 1.1.0 — 2026-10-27 — diff-ref-struct Web 1.1.0: the 2θ interval of the analysis
+
+On core 0.82.0 (L442): a set file's x_interval cuts every member to an interval of 2θ as the set opens, every view, window and map working on the cut set. Archived as doi:10.5281/zenodo.23683238. Its own release notes: https://jmigartua.github.io/diff-ref-struct-web/guide/releases/
+
+### Added
+
+- A set file's `x_interval = [from, to]` honoured by the page (core 0.82.0, PL42).
+
+### Changed
+
+- The page's core 0.82.0; the patterns in the app's words (W11 met).
+
+### Known limitations
+
+- No control in the page for the interval yet (Plots' step 25).
+
 ## web 1.0.0 — 2026-10-27 — diff-ref-struct Web 1.0.0: the guide, open source, the record
 
 The page in the browser gets its own site (/guide/) with the manual in HTML and PDF, a licence and a citation, a place for requests, and a record (releases, log, roadmap, conventions) rendered in the guide and the manuals; its versions become semantic (L436, L437). Its own release notes: https://jmigartua.github.io/diff-ref-struct-web/guide/releases/
