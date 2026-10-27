@@ -1,0 +1,31 @@
+diff-ref-struct Web
+Copyright 2026 Josu M. Igartua, Departamento de Física, Universidad del País Vasco / Euskal Herriko Unibertsitatea
+(UPV/EHU), josu.igartua@ehu.eus
+
+This product includes software developed as part of diff-ref-struct, a program for Rietveld refinement of powder
+diffraction data (https://jmigartua.github.io/diff-ref-struct-site/).
+
+Licences
+- The code: Apache License, Version 2.0 (LICENSE).
+- The guide, the manuals, the screenshots and the example data: Creative Commons Attribution 4.0 International
+  (LICENSE-docs). Credit: "Josu M. Igartua, diff-ref-struct Web", with the version and a link.
+
+Third-party software shipped in the page, unchanged, each under its own licence (LICENCES.md of the published page):
+- dockview-core 4.13.1, MIT licence;
+- three.js 0.186.1, MIT licence.
+The guide's typefaces (Source Serif 4, Source Sans 3 by Adobe; IBM Plex Mono by IBM) are under the SIL Open Font
+Licence 1.1.
+
+Reference programs and data
+- FullProf Suite (J. Rodríguez-Carvajal, Institut Laue-Langevin) and GSAS-II (B. H. Toby, R. B. Von Dreele, Argonne
+  National Laboratory) are the references the core's results are checked against; neither is distributed here.
+- The Tb2Pd2Sn patterns shown in the guide come from the WinPLOTR tutorial of the FullProf Suite (T. Roisnel,
+  J. Rodríguez-Carvajal); they are not distributed here.
+- The example heating run is synthetic, computed by the diff-ref-struct core.
+
+How it was made
+diff-ref-struct and diff-ref-struct Web are written with AI assistance: Claude (Anthropic), used through Claude Code,
+writes code and documents under the direction of Josu M. Igartua, who sets the requirements, reads the results and
+decides every change. Nothing is accepted on the assistant's word: every number the tool shows is computed by the core
+and checked by its tests against reference programs and published data, and every change is recorded in the project's
+log with its evidence. The responsibility for the tool and its results is the author's.

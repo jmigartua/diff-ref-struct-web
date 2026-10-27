@@ -1,0 +1,81 @@
+/* diff-ref-struct Web · the browser host's own layout (web/DESIGN.md §4), on the shell's style sheet (../style.css: the
+   kit's variables, light and dark, the panels' classes) and the module's own styles. Only what the page adds. */
+
+body.wh { display: flex; flex-direction: column; }
+.wh-bar { flex: none; display: flex; align-items: center; gap: 8px; padding: 6px 12px; background: var(--panel); border-bottom: 1px solid var(--line); }
+.wh-brand { font-size: 13px; margin-right: 6px; white-space: nowrap; }
+.wh-brand b { color: var(--accent); font-weight: 600; }
+.wh-gap { flex: 1; }
+.wh-chip { font-size: 11px; padding: 2px 8px; border-radius: 10px; border: 1px solid var(--accent); color: var(--accent); white-space: nowrap; }
+.wh-chip.off { border-color: var(--line); color: var(--muted); }
+
+/* the Plots menu: the module's commands, as the app's menu bar lists them */
+.wh-menuwrap { position: relative; }
+.wh-menu { position: absolute; top: calc(100% + 4px); left: 0; z-index: 50; min-width: 260px; max-height: 70vh; overflow: auto; padding: 4px; background: var(--bg); border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18); }
+.wh-mitem { display: flex; width: 100%; text-align: left; border: none; border-radius: 5px; padding: 3px 10px 3px 4px; background: transparent; white-space: nowrap; }
+.wh-mitem:hover:not(:disabled), .wh-mitem:focus-visible { background: var(--sel); }
+.wh-check { display: inline-block; width: 18px; color: var(--accent); }
+.wh-msep { height: 1px; margin: 4px 6px; background: var(--line); }
+
+/* the inspector at the left, the separator, the views */
+.wh-main { flex: 1; min-height: 0; display: grid; grid-template-columns: var(--insp-w, 320px) 5px minmax(0, 1fr); }
+.wh-insp { min-width: 0; display: flex; flex-direction: column; background: var(--panel); overflow: hidden; }
+.wh-insp-head { flex: none; display: flex; align-items: baseline; gap: 8px; padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.wh-insp-head #btn-rail { min-width: 24px; padding: 0 6px; font-weight: 600; }
+.wh-insp-title { font-weight: 600; }
+.wh-insp-head .sub { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.wh-scroll { flex: 1; min-height: 0; overflow: auto; }
+.wh-sec { border-bottom: 1px solid var(--line); }
+.wh-actions { padding: 0 12px 6px; }
+.wh-tree { padding-bottom: 8px; }
+.wh-row { display: flex; align-items: baseline; gap: 6px; padding: 2px 10px 2px 8px; cursor: default; white-space: nowrap; }
+.wh-row:hover { background: var(--panel2); }
+.wh-row.sel { background: var(--sel); }
+.wh-row .wh-caret { flex: none; width: 10px; color: var(--muted); font-size: 10px; }
+.wh-row .wh-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.wh-row .sub { flex: none; font-size: 11px; }
+.wh-row .wh-dirset { visibility: hidden; font-size: 10px; padding: 0 6px; }
+.wh-row:hover .wh-dirset, .wh-row .wh-dirset:focus-visible { visibility: visible; }
+.wh-row .wh-kind { flex: none; font-size: 10px; padding: 0 5px; border-radius: 4px; border: 1px solid var(--line); color: var(--muted); max-width: 40%; overflow: hidden; text-overflow: ellipsis; }
+.wh-row .wh-kind.none { border-style: dashed; }
+.wh-live { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 2px 12px 6px; font-size: 12px; }
+.wh-live .sub { flex-basis: 100%; font-size: 11px; line-height: 1.35; }
+.wh-version { margin-top: 18px; }
+.wh-prop { display: flex; align-items: baseline; gap: 8px; padding: 3px 12px; }
+.wh-prop .wh-name { flex: 1; min-width: 0; }
+.wh-prop .sub { flex: none; font-size: 11px; }
+.wh-members .child { display: flex; align-items: center; gap: 6px; padding: 3px 12px; cursor: default; }
+.wh-members .child:hover { background: var(--panel2); }
+.wh-members .child.sel { background: var(--sel); }
+.wh-member summary { cursor: default; list-style: none; }
+.wh-member summary::before { content: "▸ "; }
+.wh-member[open] summary::before { content: "▾ "; }
+.wh-member-body .inspector { padding: 0 12px 12px; }
+.wh-local { flex: none; margin: 0; padding: 7px 12px 8px; font-size: 11px; line-height: 1.4; color: var(--muted); border-top: 1px solid var(--line); }
+
+/* `<` : the inspector shrunk to a rail, its `>` the way back */
+.wh-insp.rail .wh-scroll, .wh-insp.rail .wh-local, .wh-insp.rail .wh-insp-title, .wh-insp.rail #folder-name { display: none; }
+.wh-insp.rail .wh-insp-head { border-bottom: none; padding: 6px 5px; justify-content: center; }
+
+.wh-sep { background: var(--divider); cursor: col-resize; touch-action: none; }
+.wh-sep:hover, .wh-sep:focus-visible, body.wh-dragging .wh-sep { background: var(--accent); outline: none; }
+body.wh-dragging { cursor: col-resize; }
+body.wh-dragging * { pointer-events: none; }
+body.wh-dragging .wh-sep { pointer-events: auto; }
+
+.wh-views { min-width: 0; min-height: 0; position: relative; background: var(--bg); }
+.wh-dock { position: absolute; inset: 0; }
+.wh-dock .zone-stub { display: none; }   /* the app's hidden-panel edges: this page has no side panels in the dock */
+.wh-start { max-width: 560px; padding: 24px; line-height: 1.5; }
+.wh-start h1 { font-size: 20px; font-weight: 600; margin: 0 0 8px; }
+.wh-start .lede { font-size: 14px; }
+
+/* a drop anywhere: the page says it takes it */
+body.wh-dropping .wh-main { outline: 2px dashed var(--accent); outline-offset: -6px; }
+
+@media (max-width: 640px) {
+  .wh-main { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 0 minmax(0, 1fr); }
+  .wh-insp { max-height: 45vh; }
+  .wh-sep { display: none; }
+  .wh-brand { display: none; }
+}

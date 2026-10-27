@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Log · diff-ref-struct Web – diff-ref-struct Web · powder diffraction series in the browser</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<link href="../assets/favicon.svg" rel="icon" type="image/svg+xml">
+<script src="../site_libs/quarto-html/tabby.min.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-html-afe927e19676d0e50b1726048be49fb1.min.css" rel="stylesheet" append-hash="true" data-mode="light">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- KaTeX auto-render: publication titles carry TeX inside generated HTML that
+     Quarto's own math pipeline never sees (same approach as thermomat). -->
+<script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer="" src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<script>
+/* The header ribbon is sticky; the side columns and anchor targets need its height. */
+(function () {
+  function headH() {
+    var t = document.querySelector(".topline"), h = document.querySelector(".site-head");
+    var px = (t ? t.offsetHeight : 0) + (h ? h.offsetHeight : 0);
+    if (px) document.documentElement.style.setProperty("--head-h", px + "px");
+  }
+  document.addEventListener("DOMContentLoaded", headH);
+  window.addEventListener("load", headH);
+  window.addEventListener("resize", headH);
+})();
+document.addEventListener("DOMContentLoaded", function () {
+  if (window.renderMathInElement) {
+    renderMathInElement(document.body, {
+      delimiters: [{ left: "$$", right: "$$", display: true }, { left: "$", right: "$", display: false }, { left: "\\(", right: "\\)", display: false }],
+      throwOnError: false
+    });
+  }
+  /* Quarto's KaTeX pipeline writes <span class="math inline">TeX</span> without delimiters and renders
+     them in a loop that reads firstChild.data; that loop dies at the first span the auto-render above
+     has already turned into KaTeX markup, leaving every later formula raw. Render the rest here. */
+  if (window.katex) {
+    document.querySelectorAll(".math").forEach(function (el) {
+      if (!el.querySelector(".katex")) {
+        var t = el.textContent.replace(/^\s*\\[\(\[]/, "").replace(/\\[\)\]]\s*$/, "");
+        try { katex.render(t, el, { displayMode: el.classList.contains("display"), throwOnError: false }); } catch (e) {}
+      }
+      /* Quarto's loop would still visit this span and wipe it (firstChild is now an element, not text):
+         take it out of its sight. No stylesheet of the site depends on the class; KaTeX's own output carries the layout. */
+      el.classList.remove("math"); el.classList.add("math-done");
+    });
+  }
+});
+</script>
+
+
+<link rel="stylesheet" href="../assets/styles/theme.css">
+<link rel="stylesheet" href="../assets/styles/site.css">
+<link rel="stylesheet" href="../assets/styles/project.css">
+</head>
+
+<body>
+
+<!-- Site header, family kit. Root-absolute hrefs are rewritten by Quarto to page-relative links at render time; the
+     app's link is absolute (the site lives at /guide/, the app at the root of the same address). The entries are the
+     groups of data/nav.yml, in the same order. -->
+<div class="topline"></div>
+<header class="site-head">
+  <div class="site-head__inner">
+    <a href="../index.html" class="wordmark">diff <span class="accent">ref</span> struct <span class="accent">Web</span>
+      <span class="wordmark-sub">Powder diffraction series in the browser · maps, stacks and growth curves · nothing uploaded</span>
+    </a>
+    <nav class="site-nav">
+      <a href="../index.html">Overview</a>
+      <a href="../start/index.html">Start</a>
+      <a href="../manual/index.html">Manual</a>
+      <a href="../recipes/index.html">Recipes</a>
+      <a href="../how/index.html">How it works</a>
+      <span class="nav-right">
+        <span class="nav-pair"><a href="../releases/index.html">Releases</a><span class="sl">/</span><a href="../log/index.html">Log</a></span>
+        <span class="nav-pair"><a href="../roadmap/index.html">Roadmap</a><span class="sl">/</span><a href="../requests/index.html">Requests</a></span>
+        <a href="../about/index.html">About</a>
+        <a class="nav-app" href="https://jmigartua.github.io/diff-ref-struct-web/">Open the app →</a>
+      </span>
+    </nav>
+  </div>
+</header>
+<!-- generated by tools/build.py: left navigation + opening of the reading column -->
+<div class="docs">
+<nav class="docs-nav" aria-label="Site sections">
+<button class="docs-fold" type="button" data-fold="nav" aria-label="Hide the navigation" title="Hide the navigation">‹</button>
+<details class="group" open=""><summary class="t">Overview</summary><ul><li><a href="../index.html">Overview</a></li></ul></details>
+<details class="group" open=""><summary class="t">Start</summary><ul><li><a href="../start/index.html">Start in five minutes</a></li></ul></details>
+<details class="group" open=""><summary class="t">Manual</summary><ul><li><a href="../manual/index.html">The manual</a></li><li><a href="../manual/quick-reference/index.html">Quick reference</a></li><li><a href="../conventions/index.html">Conventions</a></li></ul></details>
+<details class="group" open=""><summary class="t">Recipes</summary><ul><li><a href="../recipes/index.html">Recipes: the analyses</a></li><li><a href="../recipes/ramp/index.html">A ramp: when does a phase appear?</a></li><li><a href="../recipes/hold/index.html">A hold: growth curves</a></li><li><a href="../recipes/compare/index.html">Two patterns: what changed?</a></li><li><a href="../recipes/live/index.html">Live at the instrument</a></li><li><a href="../recipes/share/index.html">Share a view, keep a set</a></li></ul></details>
+<details class="group" open=""><summary class="t">How it works</summary><ul><li><a href="../how/index.html">How it works</a></li><li><a href="../how/formats/index.html">File formats</a></li></ul></details>
+<details class="group" open=""><summary class="t">Releases / Log</summary><ul><li><a href="../releases/index.html">Releases</a></li><li><a href="../log/index.html">Log</a></li></ul></details>
+<details class="group" open=""><summary class="t">Roadmap / Requests</summary><ul><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../requests/index.html">Requests: bugs and features</a></li></ul></details>
+<details class="group" open=""><summary class="t">About</summary><ul><li><a href="../about/index.html">About, licence, citing</a></li><li><a href="../about/privacy/index.html">Privacy and accessibility</a></li></ul></details>
+</nav>
+<div class="docs-main">
+
+<header id="title-block-header">
+<h1 class="title">Log</h1>
+
+</header>
+
+
+<div class="manual-head">
+<h1>Log</h1>
+<p class="sub">The dated record of the work on this tool: findings, decisions with their reasons and the options set aside, work done. Taken from the diff-ref-struct project's log, which records every step of the project. Feed: <a href="../feeds/log.xml">log.xml</a>.</p>
+</div>
+<p>11 entries about this tool, newest first, from the project’s log; 6 more concern a team’s unpublished data and are not shown here.</p>
+<h3 id="l438-the-web-stream-merged-diff-ref-struct-web-1.0.0-and-its-guide-published-on-gh-pages-the-source-waits-for-w13">L438 · The web stream merged; diff-ref-struct Web 1.0.0 and its guide published on gh-pages; the source waits for W13</h3>
+<p><em>2026-10-27 · work</em></p>
+<p>Josu asked the four publication steps of L437. Main fast-forwarded to the web branch (3c942b52, 16 commits; no other stream merged: the core’s 0.82.0 (PL42) and Plots’ step 24 wait for their own merge, so that 1.0.0 stays on core 0.81.0 as its record says). The push runs publish-web.yml, which writes the page and the guide to the public repository’s new gh-pages branch; the Pages source switched from main to gh-pages; the page and the guide then checked live. The source is not published: <code>publish-source.yml</code> stops on the four core files of W13, by design. Zenodo needs Josu’s login to link the repository (the DOI per release).</p>
+<p class="cite">
+main 3c942b52 · .github/workflows/publish-web.yml · web/REQUESTS.md W13, W14 · L436, L437
+</p>
+<h3 id="l437-diff-ref-struct-web-goes-public-and-open-source-by-the-open-tool-kit-every-recommendation-taken-english-only-for-now">L437 · diff-ref-struct Web goes public and open source, by the open-tool kit: every recommendation taken, English only for now</h3>
+<p><em>2026-10-26 · decision</em></p>
+<p>Josu, 26 October 2026, on <code>web/PROPOSAL-open-tool.md</code>: “go for all your recommendations”, the AI-assistance statement with a proposed wording, English only for now. Decided: - the code under the Apache License 2.0, the guide, manuals, screenshots and example data under CC BY 4.0; CITATION.cff and a Zenodo DOI per release. Set aside: MIT (no patent grant, no NOTICE), GPL-3.0 (no reuse in closed tools); - the public repository <code>diff-ref-struct-web</code>: its main holds the source subset (the core, the page’s files of app/ui, web/) published by an Action, its gh-pages the built page and guide. Set aside: the whole private repository made public (other programs’ manuals, a team’s unpublished data); - requests as the public repository’s issues (bug and feature forms) with an e-mail path; a third-party form set aside (users’ words to a server we do not control); - the vocabulary appendix named Conventions (words, files and suffixes, naming scans, units, versions and ids); - semantic versions from diff-ref-struct Web 1.0.0, the core’s version and the build beside it; - the example computed by the core; FullProf’s tutorial files linked, not hosted (the ILL’s to distribute); - the statement in NOTICE and the guide’s About: written with AI assistance (Claude, through Claude Code) under Josu’s direction, every number the core’s and checked by its tests, the responsibility the author’s; - the open-tool kit as the standard of every public tool of the family, with its skill <code>_OPENTOOL</code>.</p>
+<p class="cite">
+web/PROPOSAL-open-tool.md · web/public/NOTICE · web/REQUESTS.md W14 · L436
+</p>
+<h3 id="l436-the-web-streams-steps-6-and-7-diff-ref-struct-webs-own-site-the-guide-its-manuals-in-html-and-pdf-and-1.0.0-with-the-open-tool-kit">L436 · The web stream’s steps 6 and 7: diff-ref-struct Web’s own site (the guide), its manuals in HTML and PDF, and 1.0.0 with the open-tool kit</h3>
+<p><em>2026-10-26 · work</em></p>
+<p>The web stream (web branch, 16 commits from eb9d2813 to 3c942b52) wrote the user manual of the page (<code>web/manual/user-manual.md</code>, 22 sections), a one-page quick reference, and a team’s worked use case of the ESRF ID22 run (<code>web/manual/team/</code>, PDF and one HTML page, never published). Then the guide: a Quarto site in the family kit (<code>web/site/</code>), published with the app at /guide/: overview, start in five minutes (a browser check, the Tb₂Pd₂Sn tutorial folder), the manual and quick reference with their PDFs (LuaLaTeX in the kit’s typefaces), five recipes, how it works, formats, conventions, releases, log, roadmap, requests, about, privacy and accessibility; screenshots taken from the app by <code>web/site/tools/shots.mjs</code> (Chrome over the DevTools protocol, each view at 3× in both themes). Version 1.0.0 applies the open-tool kit (<code>web/PROPOSAL-open-tool.md</code>): releases, roadmap and conventions as records rendered in the guide and in three appendices of every manual; the page’s Help ▾ menu (the manual at the view shown, report a problem, ask for a feature, cite this view), Try the example (21 scans computed by <code>drs simulate</code>, <code>web/examples/tools/make_example.py</code>), the guide kept offline by the page’s worker; open source files in <code>web/public/</code> (Apache-2.0, CC BY 4.0, NOTICE, CITATION.cff, issue forms), the public selection <code>web/tools/source.mjs</code> guarded by <code>web/private/guard.txt</code>, the Actions <code>publish-web.yml</code> (page and guide to gh-pages) and <code>publish-source.yml</code> (source to main, by hand or a tag); the release gate <code>web/site/tools/release.py</code>. Found while taking the screenshots and fixed in the host: the Overlay drew no curves on the public page (0.4.0: the package’s <code>plots_patterns</code> says <code>index</code> where the module reads <code>member</code>; W11 to the core), and Sum, Average, Difference of Members computed and never saved (now downloaded). The proposals against time open by temperature (W10, measured on core 0.81.0). The gate on 1.0.0: every line OK (versions, notes, PDFs, the guide’s links and guard, licences, 39 tests, 9 of 9 views drawn) but the source’s guard, which stops on four of the core’s files that name the team’s run (W13). Also the skill <code>_OPENTOOL</code>, created through CreateSkill, for the next public tool.</p>
+<p class="cite">
+web branch eb9d2813…3c942b52 · web/README.md steps 6 and 7 · web/DESIGN.md · web/REQUESTS.md W10–W14 · web/PROPOSAL-open-tool.md · ~/.claude/skills/_OPENTOOL
+</p>
+<h3 id="l433-on-the-public-web-page-the-strips-still-do-not-take-the-maps-frame-and-the-unit-is-still-said-twice-step-23s-fix-acts-in-the-app-and-not-in-the-browser-host">L433 · On the public web page the strips still do not take the map’s frame, and the unit is still said twice: step 23’s fix acts in the app and not in the browser host</h3>
+<p><em>2026-10-26 · finding</em></p>
+<p>Checked on the public page right after the Action published web a1c308d (Plots’ step 23 in it; the page’s <code>viewer/map.js</code> holds <code>stripFrames</code>, the live and the cached copy alike, the worker current): the Tb₂Pd₂Sn files dropped, the Map shown, the cursors pinned at 29.9°. The map’s frame ends at the colour bar (its right margin measured for the bar and the right-hand axis), the row strip’s frame runs on to the canvas’s edge less its own 16 px: in the capture the map’s 44° sits where the strip draws 42°, and the strip’s y label reads “counts (log) (log)”; the column strip’s bottom is its own x axis, not the map’s bottom. A forced resize and a wheel zoom changed nothing. So what the step’s self-check measured in the Tauri host (the frames equal, the unit once) does not happen in the browser host: the two hosts differ in something the viewer’s draw depends on (the order of the map’s draw and the strips’, the plot the host hands over, the <code>frame</code> call reaching the strips’ plots), and the step’s check ran in the app only. Capture: <code>~/Downloads/interceptor-capture-20261026-081600-60098.png</code>. For Plots’ step 24: reproduce in the browser host (serve the repository root, open <code>app/ui/host-web/index.html</code>, drop the Tb files through a DataTransfer in eval, pin a cursor) and fix where the hosts part; the web host’s node tests gain a check of the strips’ frames.</p>
+<p class="cite">
+https://jmigartua.github.io/diff-ref-struct-web/ (web a1c308d, core 0.81.0) · ~/Downloads/interceptor-capture-20261026-081600-60098.png · app/ui/viewer/map.js · L431, L432
+</p>
+<h3 id="l432-plots-step-23-merged-the-strips-frames-are-the-maps-the-unit-said-once-l431">L432 · Plots step 23 merged: the strips’ frames are the map’s, the unit said once (L431)</h3>
+<p><em>2026-10-26 · work</em></p>
+<p>Plots’ step 23 (plots branch 6770438c), fast-forwarded into main. At each draw the row strip under the map takes the map plot’s frame (<code>plot.state.geom</code>, the left fixed and the right measured for the colour bar and the right-hand axis) through the shared plot’s new <code>setAxes({ frame })</code>, with the map’s x view, so a peak sits under its column whatever room the bar and the second axis take; the frame is taken again on the map’s resize and on every change of its view. The column strip is drawn with the variable up and the core’s values across, its top and bottom and its y view the map’s, so each point sits on its row. The scale’s word is added once, by the shared plot (“counts (√)”, “√counts”). Self-check 161 OK, 0 FAIL, relaunch 168 OK, 0 FAIL, Josu’s files unchanged; the check gives the plot area 960 × 640 px for its duration so that the strips are shown. On main: the UI suite 268, the viewer’s assets fresh. The web app takes it at this push; the Mac app at its next release.</p>
+<p class="cite">
+plots branch 6770438c (README twenty-third step, PL13s) · app/ui/viewer/map.js · app/ui/plot.js · app/ui/mapclip.js (stripFrames) · L431
+</p>
+<h3 id="l431-in-the-map-views-row-strip-the-profiles-frame-is-wider-than-the-maps-so-a-peak-does-not-sit-under-its-column-josu-on-the-web-app-the-column-strip-the-same-way">L431 · In the Map view’s row strip the profile’s frame is wider than the map’s, so a peak does not sit under its column (Josu, on the web app); the column strip the same way</h3>
+<p><em>2026-10-26 · finding</em></p>
+<p>Josu, on diff-ref-struct Web with the ESRF temperature series: the strip under the map that draws the member under the pointer should share the map’s vertical lines, so that what the user sees in the map coincides with the profile below; as it is there is a shift. Seen in his capture and in the viewer’s code: the map’s plot has its right margin measured for the right-hand axis (the second variable, <code>t</code>) and the colour bar, so its frame ends well before the canvas’s edge, while the row strip is a second instance of the shared plot with its own margins (<code>right: 16</code>, its own measured left for its y ticks), so its frame runs to the edge: the two x scales differ and a reflection at 14.5° in the map sits over 15.5° in the strip. The column strip beside the map has the same fault in height against the map’s rows. A second small thing in the capture: the strip’s y label reads “counts (√) (√)”, the unit’s root said twice.</p>
+<p>The fix is the viewer’s (the shared module, both hosts): at each draw the row strip takes the map’s frame edges (the map plot’s measured <code>left</code> and <code>right</code>, <code>plot.state.geom</code>) as its own and the same x view, and the column strip the map’s <code>top</code> and <code>bottom</code> and the same y view; the shared plot takes explicit margins as an additive option (PL13s). Plots’ step 23, a short one; it reaches the web app at the next push and the Mac app at its next release.</p>
+<p class="cite">
+Josu's capture of the web app, 26 October 2026 · app/ui/viewer/map.js:151–166 (the strips' createPlot) · app/ui/plot.js (the measured margins, PL30) · L406, L412
+</p>
+<h3 id="l430-app-0.54.0-on-core-0.81.0-built-self-checked-and-installed-plots-steps-20-to-22-in-the-mac-app">L430 · App 0.54.0 on core 0.81.0 built, self-checked and installed: Plots’ steps 20 to 22 in the Mac app</h3>
+<p><em>2026-10-25 · work</em></p>
+<p>The release cycle of L418 on main b26709c2: the self-check bundle built with its own identifier, Plots’ self-check run on a copy to its quit and relaunched: 165 OK, 0 FAIL, then 150 OK, 0 FAIL; Josu’s own files of the app unchanged. The release bundle built under <code>eus.ehu.diffrefstruct</code> as 0.54.0 and installed in /Applications, 0.53.1 to the Trash. Josu’s app now holds, on core 0.81.0 and drs-publish 0.36.1, what the web round brought to the shared module (L425–L428): the y interval shared or own, the members table with icons, checkboxes, all/none/class/range and three orders, the right-hand axis from a member’s second variable, the shell’s host object, the patterns asked when drawn, a hundred raw scans opened and overlaid in seconds with the core’s rebin offered. The desktop app and the web app are now the same module on the same core.</p>
+<p class="cite">
+scratchpad self0540 (run.log) · app/src-tauri/target/release/bundle/macos · data/releases.yml app 0.54.0 · L418, L421, L429
+</p>
+<h3 id="l429-core-0.81.0-plots-step-22-and-the-web-hosts-steps-4-and-5-merged-diff-ref-struct-web-published-by-its-action-the-101-esrf-files-on-the-public-page-the-three-sets-proposed-the-hold-mapped-in-a-second-i10-migrated">L429 · Core 0.81.0, Plots’ step 22 and the web host’s steps 4 and 5 merged; diff-ref-struct Web published by its Action; the 101 ESRF files on the public page: the three sets proposed, the hold mapped in a second; I10 migrated</h3>
+<p><em>2026-10-25 · work</em></p>
+<p>The three orders of L427 came back and are merged into main: core 0.81.0 (core branch f0cc2149, L428: the ESRF names read, the exposure classes by σ²/y, <code>propose</code> giving the run’s three sets scan for scan as they were built by hand, a large set rebinned on opening, the patterns out of every SetView), Plots’ step 22 (plots branch 616a660d: the patterns asked and not carried, the overlay in slices, the core’s rebin offered on opening; the ESRF folder’s overlay from 31.3 s with the window blocked to 1.69 s to the first frame; self-check 150 OK, 0 FAIL, relaunch 167 OK, 0 FAIL), the web host’s steps 4 and 5 (web branch 6fbc5632: live mode growing a proposal’s set from a folder read again, the service worker and the install manifest, the view in the address, the staged site with its licences, <code>publish-web.yml</code> with the deploy key, the first publication by hand).</p>
+<p>Three seams closed here: the host’s local function <code>ask</code> (a message to the worker) renamed, since the app’s dialogs test reads every <code>ask(</code> as a dialog; the wasm test’s 10 s budget for opening the run’s 100 scans made a reported time with a 60 s ceiling (9.7 s in the cloud, 12.4 then 14.8 s on this throttled Mac: a budget, not a tolerance); and the Action’s <code>node --test web/tests/</code>, which Node 22 on the runner does not expand, made a glob. Then every suite on main: core wasm 9, UI 267, web 38, app Rust 100, assets fresh. Pushed; the Action published the app from main for the first time (web 24d8619, core 0.81.0, 2 min 32 s; the first run failed on the glob).</p>
+<p>Checked on the public page (Interceptor, the isolated profile; the 101 ESRF files served read-only from a local server with CORS and dropped on the page through a DataTransfer, so that the public origin read them as a user’s drop would): the page first showed core 0.80.0 — the worker of the stream’s hand publication kept serving its cache, and the raw-scan path of that build blocked the tab for minutes; a fresh tab with the registration updated showed 0.81.0 (the worker’s take-over on a new version is for the web stream to make visible: a line and a reload). On 0.81.0: the 101 files (111.8 MB) listed by kind, opened as one set of 101 members in the Overlay with the core’s difference of first and last scan below (the overlay drawn, the page answering throughout); through the host’s own dispatcher, <code>plots_propose</code> on the 101 texts in 38 s gave the three titles of L428 exactly, the background scan left out; the hold opened rebinned in 1 s and mapped in under a second: 39 rows, 2699 columns, 0 to 28.26 √counts, the desktop’s numbers (L021). Loose files dropped open as one set; the proposals come with a folder (Open Folder…), as the stream’s own check with a directory handle showed. Capture: <code>~/Downloads/interceptor-capture-20261025-154334-44870.png</code>.</p>
+<p>I10 migrated with its version. For Josu: the core’s choice of σ²/y for the exposure classes (L428) is his to accept; and the ESRF files are now analysable at the public address by anyone with the folder: Open Folder…, the three proposals, the Map with the clip and the regions.</p>
+<p class="cite">
+core branch f0cc2149 (L428) · plots branch 616a660d (README twenty-second step) · web branch 6fbc5632 (README steps 4 and 5) · .github/workflows/publish-web.yml · app/ui/host-web/host.js · core/wasm/tests/map.test.mjs · https://jmigartua.github.io/diff-ref-struct-web/version.json · data/ideas.yml I10 · L427
+</p>
+<h3 id="l425-core-0.79.0-w1-w3-plots-step-20-w4-and-the-web-hosts-step-2-merged-diff-ref-struct-web-runs-the-plots-module-on-the-wasm-core-in-the-browser-the-tb₂pd₂sn-map-from-dropped-files">L425 · Core 0.79.0 (W1, W3), Plots’ step 20 (W4) and the web host’s step 2 merged; diff-ref-struct Web runs the Plots module on the wasm core in the browser, the Tb₂Pd₂Sn map from dropped files</h3>
+<p><em>2026-10-25 · work</em></p>
+<p>The three orders of L423 came back the same morning and are merged into main: core 0.79.0 (core branch 4c5fc3fe, L424: <code>plots::open_from</code>, a member’s other variables, the crate <code>drs-wasm</code> with the Plots module’s commands, 1184 kB of wasm, the Tb₂Pd₂Sn map to the bit in node), Plots’ step 20 (plots branch 440db714: the y interval shared or own, the members’ list richer with icons, checkboxes, all/none/class/range and three orders, the right axis built for W3 and absent until 0.79.0 reaches the app; PL41 filed: <code>y_interval</code> in the set file and <code>plots::extent</code>), the web host’s step 2 (web branch 1c2e68da: <code>app/ui/host-web/</code>, the shell’s files and the module loaded from <code>app/ui/</code> as they are behind <code>dispatch.js</code>, the inspector at the left with <code>&lt;</code> and the separator, a folder picked or dropped, the stub refusing in one sentence; W5–W7 filed: the path commands as text and <code>plots_names_in</code>, the host taken from the page instead of a Tauri stand-in, <code>plots.adopt</code> and Save’s words).</p>
+<p>Checked on main: the app’s UI suite (263), the viewer’s assets fresh, the web host’s node tests (16 of 17: the one that asks the stub’s manifest fails only while a built package sits in <code>wasm/</code>, an environment matter for the stream to make explicit), the wasm package’s node test (5 of 5 once the command line was rebuilt at 0.79.0: its two failures against a stale 0.78.0 binary were mine). Then the whole thing in the real browser (Interceptor): <code>web/tools/build-wasm.sh</code> put the package in <code>app/ui/host-web/wasm/</code>; the page loaded with “core 0.79.0 in WebAssembly”; the first call failed on one line of the dispatcher, which parsed the package’s answer as JSON text while <code>dispatch</code> returns a promise of the parsed value (W5 asked for text, the core answered with values): patched here to await and take either, the stream told. Then, through the page’s own dispatcher, the Tb₂Pd₂Sn buffer and its twenty files opened in the wasm core and gave the map as the desktop does (19 rows, 301 columns, 2.957 to 4.837 on log, one member apart); and through the user’s path, the twenty files dropped on the page opened as a set of 20 members with the seven views, the Map drawn by the core, the clip’s marks and controls, the members table with its checkboxes, the line that nothing leaves the machine (<code>~/Downloads/interceptor-capture-20261025-100052-92634.png</code>). Two things found for the next orders: a <code>.buf</code> dropped with its files goes to the data reader and is refused (the host must route a buffer or a <code>.drv</code> through <code>plots_open_buffer_from</code> / <code>plots_open_set_from</code>, W5’s <code>plots_names_in</code> telling it which files they name); and the package lacks <code>plots_extent</code>, which Plots’ step 20 added to the app’s Rust side after <code>host.rs</code> was ported from app 0.53.0, so the y toggle’s shared interval is refused in the browser until the core ports it (PL41 (b) gives it properly). Next: core 0.80.0 (W2 the series detector, W5’s text commands and <code>plots_names_in</code>, PL41, <code>plots_extent</code>, W3’s <code>t</code>), the web host’s step 3 (the routing, W6 and W7 with Plots, the proposals offered), then live mode and the public repository.</p>
+<p class="cite">
+core branch 4c5fc3fe (L424) · plots branch 440db714 (README twentieth step, PL13p, PL41) · web branch 1c2e68da (README step 2, W5–W7) · app/ui/host-web/dispatch.js (the await) · core/wasm/tests/map.test.mjs · ~/Downloads/interceptor-capture-20261025-100052-92634.png · L423
+</p>
+<h3 id="l424-core-0.79.0-the-core-in-the-browser-w1-and-a-members-other-variables-w3-plotsopen_from-the-crate-drs-wasm-with-the-plots-modules-commands-the-tb₂pd₂sn-map-to-the-bit-in-node">L424 · Core 0.79.0: the core in the browser (W1) and a member’s other variables (W3): plots::open_from, the crate drs-wasm with the Plots module’s commands, the Tb₂Pd₂Sn map to the bit in node</h3>
+<p><em>2026-10-25 · work</em></p>
+<p>The web stream’s W1 and W3 (I10, R34; L422, L423), in a cloud session: the <code>wasm32-unknown-unknown</code> target and wasm-pack 0.15.0 installed in the session’s container, as they are on the Mac (L423). - W1 (a), a set from files given by name and content, with no path touched: - <code>plots::open_from(&amp;[OpenedFile { name, text, comment, variable }], reader, title)</code> and <code>open_from_with</code> (Data’s operations, the files they name taken by name); <code>OpenedFile</code>‘s <code>comment</code> is a buffer’s text, <code>variable</code> a typed value with its note. - <code>plots::open_with</code> (and so <code>open</code>, <code>open_buf</code>) now reads the paths’ bytes and calls the same reader, <code>members_of</code>, as <code>open_from</code>. It is not routed through <code>open_from</code> itself: a binary file (Bruker RAW, BRML) passed as text would not be its bytes. - <code>SetFile::open_from</code> gives a <code>.drv</code>’s members from files given by name and refuses a missing one by name; <code>open</code> and <code>open_from</code> share <code>open_by</code>. - W3, a member’s other variables with their sources: - <code>Member::others</code> (<code>Other { name, value, found }</code>); in the <code>.drv</code>, <code>variables = { T = { value, source } }</code> in a member’s table, absent by default and written back by <code>to_text</code> and <code>SetFile::of</code>. - Refused: an other variable without its source, the set’s own variable as an other, one given twice. - When the set’s variable is not T and a member types no T, PL2’s sources (the header, the buffer’s comment, the title, the name) fill <code>T</code> with their source. <code>t</code> has no source in the core yet: W2’s. - <code>plots::map</code> gives each row its member’s others as <code>RowOther { name, value, source }</code>, the source in <code>Found::words</code>. - W1 (b), the crate <code>core/wasm</code> (<code>drs-wasm</code> 0.79.0, wasm-bindgen 0.2.129, js-sys): - <code>src/host.rs</code> is the app’s <code>app/src-tauri/src/modules/plots.rs</code> (app 0.53.0) ported. The sets are kept by id and the view rule, <code>SetView</code>, <code>Settings</code> and <code>RegionView</code> are as the app’s, generated from its lines with the changes asserted, so the two can be compared line for line. - Where a browser has no path: <code>plots_open_from</code> (for <code>plots_open_files</code>), <code>plots_open_buffer_from</code>, <code>plots_add_from</code>, <code>plots_open_set_from</code>, <code>plots_temperatures_from</code> take files by name and text. <code>plots_save</code> returns <code>{ relative, text }</code> in place of writing, and <code>plots_derive</code> adds the derived file’s <code>text</code>. - Not ported: Data’s operations and a control file’s λ (the project’s), <code>.seq</code>, the results series, the CSV export, reload, write_text, figure widths. - <code>describe { name, text }</code> gives <code>{ kind, id, name, role, source }</code> from <code>formats::project::describe</code>; the app has no such command to copy. - <code>dispatch(cmd, argsJson)</code> returns a promise of the parsed result, rejected with the core’s words; each command is also exported by its name; <code>commands()</code> and <code>version()</code>. - Built with <code>wasm-pack build --target web --release</code>: 1155 kB for the <code>.wasm</code>, without wasm-opt. The core’s own crate compiles to wasm32 unchanged in what it computes. - Tests: - <code>plots_open_from</code> (3 cases): the Tb₂Pd₂Sn files by name and text give the same set and the same map as by path; the buffer’s comments as <code>open_buf</code> gives them; a typed value; an operation’s file taken by name or refused; a <code>.drv</code>’s members by name equal to <code>SetFile::open</code> from a project on disk; W3 read, written back, opened, carried by the map’s rows, refused. - <code>core/wasm/tests/map.test.mjs</code> (node, <code>npm test</code>, 5 cases): the package loaded; the Tb files as text; the map equal to <code>drs plots map --json</code>’s to the bit, linear and the √ difference map against tb_t20; a region (rows 8–14, columns 30–32), a warning, the set file saved as text and opened again, <code>describe</code>, the stack, the projection, the windows, a derived pattern; refusals in the core’s words; the size printed. - <code>plots_page</code>’s key list of a map row takes <code>others</code> beside the viewer contract’s keys. - The Python package’s version follows the core’s (L411).</p>
+<p class="cite">
+core/src/plots.rs (OpenedFile, open_from, open_from_with, members_of, Other, RowOther, SetMember::variables, SetFile::open_from, open_by) · core/wasm/ (Cargo.toml, src/lib.rs, src/host.rs, tests/map.test.mjs, package.json, README.md) · core/tests/plots_open_from.rs · app/src-tauri/src/modules/plots.rs (ported) · web/REQUESTS.md W1, W3 · L422, L423
+</p>
+<h3 id="l423-i10-green-as-r34-the-analysis-in-the-browser-the-web-stream-opened-w1w4-filed-three-work-orders-at-once-for-the-morning">L423 · I10 green as R34: the analysis in the browser; the web stream opened; W1–W4 filed; three work orders at once for the morning</h3>
+<p><em>2026-10-25 · decision</em></p>
+<p>Josu, on the assessment of I10 (L422): yes to all, let’s start, everything by the morning, the files are waiting to be analysed; the fifth ask answered: a stream of its own. So decided and done here: - R34 appended to the brief (a group of its own, “The analysis in the browser”); I10 green with it. - The web stream opened: <code>web/</code> (README with the charter and the five steps, DESIGN.md with what is settled, REQUESTS.md), branch <code>web</code>, worktree <code>../20261009_diff-ref-str-web</code>; it owns <code>web/</code>, <code>app/ui/host-web/</code> and the Action <code>publish-web.yml</code>; CLAUDE.md’s layout and streams table carry it. The public repository <code>diff-ref-struct-web</code> created empty for step 5, to hold the built app only. - Filed by this session: W1 to the core (a set from names and text, <code>plots::open_from</code>; a <code>drs-wasm</code> crate exporting the plots subset with the Tauri commands’ names and JSON, built with wasm-pack; a node test that the Tb₂Pd₂Sn map equals <code>drs plots map</code>’s to the bit), W2 (the series detector <code>plots::propose</code>, tested on the ESRF run’s 101 files and Tb₂Pd₂Sn’s buffer), W3 (a second variable per member with its source, for the map’s right-hand axis), W4 to Plots (step 0’s controls: the shared/own y toggle, the right axis from W3, the richer members table). - The toolchain on the Mac: the <code>wasm32-unknown-unknown</code> target and <code>wasm-pack</code> installed for the core’s local worktree. The order of work, for speed: three sessions at once — the core (W1 and W3 first, then W2, as 0.79.0 and 0.80.0), Plots (W4, its step 20, the right axis last when 0.79.0 is merged), the web host (step 2 scaffolded on the dispatcher’s stub, the inspector, the file access, then wired to the wasm when W1 is merged); then steps 3 to 5 as the pieces land. Set aside: the Plots stream widened to the browser host (one stream carrying the module and two hosts would serialise what can run in parallel tonight).</p>
+<p class="cite">
+data/ideas.yml I10 · data/brief.yml R34 · web/README.md, DESIGN.md, REQUESTS.md W1–W4 · CLAUDE.md · L422
+</p>
+
+
+<!-- Closes the reading column opened by _gen/docs-nav.html, adds the right
+     "On this page" list, and wires: current-page marking in the left nav,
+     breadcrumbs, the page TOC (from h2/h3 in the reading column) and a
+     scroll-spy. Pure DOM, no library. -->
+  </div>
+  <aside class="docs-toc"><button class="docs-fold" type="button" data-fold="toc" aria-label="Hide the page outline" title="Hide the page outline">›</button><div class="t">On this page</div><ol></ol></aside>
+</div>
+<script>
+(function () {
+  /* 0. The two side panels fold on their chevrons; the choice is remembered in this browser. */
+  var docs = document.querySelector('.docs');
+  if (docs) {
+    var store = {};
+    try { store = JSON.parse(localStorage.getItem('docs-fold') || '{}'); } catch (e) { store = {}; }
+    function apply() {
+      docs.classList.toggle('nav-folded', !!store.nav);
+      docs.classList.toggle('toc-folded', !!store.toc);
+      document.querySelectorAll('.docs-fold').forEach(function (b) {
+        var which = b.getAttribute('data-fold'), folded = !!store[which];
+        b.innerHTML = (which === 'nav') === folded ? '&rsaquo;' : '&lsaquo;';
+        var what = which === 'nav' ? 'the navigation' : 'the page outline';
+        b.title = (folded ? 'Show ' : 'Hide ') + what; b.setAttribute('aria-label', b.title);
+      });
+    }
+    document.querySelectorAll('.docs-fold').forEach(function (b) {
+      b.addEventListener('click', function () {
+        var which = b.getAttribute('data-fold'); store[which] = !store[which];
+        try { localStorage.setItem('docs-fold', JSON.stringify(store)); } catch (e) {}
+        apply();
+      });
+    });
+    apply();
+  }
+  /* 0b. The header ribbon: mark the entry whose section holds this page. Quarto rewrites the hrefs to
+     relative paths, so folders are read from the resolved URLs; the Overview link gives the site root. */
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.site-nav a'));
+    if (!links.length) return;
+    /* a served URL may end in '/' (GitHub Pages: …/about/); read it as …/about/index.html */
+    function folder(path) { if (/\/$/.test(path)) path += 'index.html'; var s = path.split('/').filter(Boolean); return s.length > 1 ? s[s.length - 2] : ''; }
+    var wm = document.querySelector('a.wordmark');            // the wordmark links to the site root
+    var root = folder((wm || links[0]).pathname);
+    var map = { 'focus-literature': 'validation', user: 'manual', theory: 'manual' };
+    function key(path) { var f = folder(path); if (f === root) return 'overview'; if (/^I\d\d$/.test(f)) return 'ideas'; return map[f] || f; }
+    var here = key(location.pathname);
+    links.forEach(function (a) { a.classList.toggle('current', key(a.pathname) === here); });
+  })();
+
+  var main = document.querySelector('.docs-main');
+  var nav = document.querySelector('.docs-nav');
+  var toc = document.querySelector('.docs-toc ol');
+  if (!main || !nav || !toc) return;
+
+  /* 1. Left nav: mark the current page (and section, if the hash matches). */
+  var here = location.pathname.replace(/\/index\.html$/, '/');
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var pageLink = null, hashLink = null;
+  links.forEach(function (a) {
+    var p = a.pathname.replace(/\/index\.html$/, '/');
+    if (p !== here) return;
+    if (!a.hash && !pageLink) pageLink = a;
+    if (a.hash && a.hash === location.hash) hashLink = a;
+  });
+  var cur = hashLink || pageLink;
+  if (cur) {
+    cur.classList.add('current');
+    var det = cur.closest('details.group');
+    if (det) { det.open = true; det.classList.add('has-current'); }
+    /* Breadcrumbs: group title › page (› section). */
+    var crumbs = document.createElement('div');
+    crumbs.className = 'docs-crumbs';
+    var g = det ? det.querySelector('summary.t') : null;
+    var parts = [];
+    function push(t) { if (t && parts[parts.length - 1] !== t) parts.push(t); }
+    if (g) push(g.textContent.trim());
+    if (pageLink && pageLink !== cur) push(pageLink.textContent.trim());
+    push(cur.textContent.trim());
+    crumbs.innerHTML = parts.map(function (t, i) {
+      return (i ? '<span class="sep">›</span>' : '') + '<span>' + t.replace(/</g, '&lt;') + '</span>';
+    }).join('');
+    main.insertBefore(crumbs, main.firstChild);
+  }
+
+  /* 2. Right "On this page": h2 and h3 of the reading column. */
+  var used = {};
+  var heads = Array.prototype.slice.call(main.querySelectorAll('h2, h3')).filter(function (h) {
+    if (h.closest('.site-foot, .featured-band, .msg-grid, [data-toc="no"]')) return false;
+    if (h.classList.contains('unnumbered') || h.id === 'contenido') return false;
+    return h.textContent.trim().length > 0;
+  });
+  heads.forEach(function (h) {
+    if (!h.id) {
+      var s = h.textContent.trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+        .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'sec';
+      while (used[s] || document.getElementById(s)) s += '-';
+      h.id = s;
+    }
+    used[h.id] = true;
+    var li = document.createElement('li');
+    if (h.tagName === 'H3') li.className = 'l3';
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    /* This runs before KaTeX has rendered the headings, so a heading with mathematics still holds TeX
+       source: copy its markup, including the math spans, and let the page's KaTeX pass render the copy. */
+    var copy = h.cloneNode(true);
+    copy.querySelectorAll('.katex-mathml, annotation, .anchorjs-link').forEach(function (n) { n.remove(); });
+    var label = copy.textContent.trim().replace(/\s+/g, ' ');
+    if (copy.querySelector('.math, .math-done, .katex')) a.innerHTML = copy.innerHTML.trim();
+    else a.textContent = label.length > 72 ? label.slice(0, 70).replace(/[\s,;:]+\S*$/, '') + '…' : label;
+    a.title = label;
+    li.appendChild(a);
+    toc.appendChild(li);
+  });
+  if (!heads.length) { document.querySelector('.docs-toc').hidden = true; return; }
+
+  /* 3. Scroll-spy. */
+  var items = Array.prototype.slice.call(toc.querySelectorAll('a'));
+  function spy() {
+    var y = window.scrollY + 120, best = null;
+    heads.forEach(function (h) { if (h.getBoundingClientRect().top + window.scrollY <= y) best = h; });
+    items.forEach(function (a) { a.classList.toggle('current', best && a.getAttribute('href') === '#' + best.id); });
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  window.addEventListener('hashchange', spy);
+  spy();
+})();
+</script>
+<footer class="site-foot">
+  <div class="site-foot__inner">
+    <div class="foot-grid">
+      <div class="foot-about">
+        <h4>What this is</h4>
+        <p>The site of diff-ref-struct Web, a browser tool for many powder diffraction patterns at once. The numbers are computed by the diff-ref-struct core, compiled to WebAssembly and run in your browser; your files are read there and never uploaded. The tool is the Plots module of the diff-ref-struct Mac app for Rietveld refinement.</p>
+        <div class="cite-block">Josu M. Igartua · Departamento de Física, UPV/EHU<br>josu.igartua@ehu.eus</div>
+      </div>
+      <div><h4>This site</h4><ul>
+        <li><a href="../index.html">Overview</a></li><li><a href="../start/index.html">Start</a></li><li><a href="../manual/index.html">Manual</a></li><li><a href="../manual/quick-reference/index.html">Quick reference</a></li><li><a href="../recipes/index.html">Recipes</a></li><li><a href="../how/index.html">How it works</a></li><li><a href="../conventions/index.html">Conventions</a></li><li><a href="../releases/index.html">Releases</a></li><li><a href="../log/index.html">Log</a></li><li><a href="../roadmap/index.html">Roadmap</a></li><li><a href="../requests/index.html">Requests</a></li><li><a href="../about/index.html">About</a></li></ul></div>
+      <div><h4>The tool</h4><ul>
+        <li><a href="https://jmigartua.github.io/diff-ref-struct-web/">Open the app</a></li>
+        <li><a href="../downloads/user-manual.pdf">The manual (PDF)</a></li>
+        <li><a href="../downloads/quick-reference.pdf">Quick reference (PDF)</a></li>
+        <li><a href="https://github.com/jmigartua/diff-ref-struct-web">The source</a></li><li><a href="https://github.com/jmigartua/diff-ref-struct-web/issues">Requests on GitHub</a></li><li><a href="https://jmigartua.github.io/diff-ref-struct-site/">The diff-ref-struct project</a></li></ul></div>
+      <div><h4>Status</h4><ul>
+        <li>Open source: code Apache-2.0, documents CC BY 4.0</li><li>Feeds: <a href="../feeds/releases.xml">releases</a> · <a href="../feeds/log.xml">log</a></li>
+        <li>No account, no tracking, no upload</li>
+        <li>Built from the manuals' sources on every publication</li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Josu M. Igartua · work in progress</span>
+      <span>Quarto · family design kit</span>
+    </div>
+  </div>
+</footer>
+<!-- The screenshots at full size: a click on one (an img with data-zoom, or any image of the manuals) opens the image
+     the browser chose for the theme (its currentSrc, 3× for the views) in a dialog; a click or Escape closes it. -->
+<dialog class="lightbox" aria-label="The screenshot at full size"><img alt=""><p class="lb-cap"></p></dialog>
+<script>
+(function () {
+  var d = document.querySelector("dialog.lightbox"); if (!d || !d.showModal) return;
+  var big = d.querySelector("img"), cap = d.querySelector(".lb-cap");
+  function open(img) {
+    big.src = img.currentSrc || img.src; big.alt = img.alt || "";
+    var fig = img.closest("figure"), c = fig && fig.querySelector("figcaption");
+    cap.textContent = c ? c.textContent : (img.alt || "");
+    d.showModal();
+  }
+  document.querySelectorAll("img[data-zoom], .docs-main > p > img, .docs-main figure img").forEach(function (img) {
+    img.classList.add("zoomable"); img.setAttribute("tabindex", "0"); img.setAttribute("role", "button");
+    img.setAttribute("aria-label", "Show at full size: " + (img.alt || "the screenshot"));
+    img.addEventListener("click", function () { open(img); });
+    img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(img); } });
+  });
+  d.addEventListener("click", function () { d.close(); });
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+    tabsets.forEach(function(tabset) {
+      const tabby = new Tabby('#' + tabset.id);
+    });
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'light-border',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
