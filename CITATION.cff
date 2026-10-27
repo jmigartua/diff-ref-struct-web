@@ -8,6 +8,12 @@ abstract: "Series of powder diffraction patterns in the browser: overlays, stack
 version: "1.0.0"
 date-released: "2026-10-27"
 license: Apache-2.0
+# the concept DOI resolves to the latest version; each version has its own (identifiers)
+doi: 10.5281/zenodo.23682726
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23682727
+    description: "diff-ref-struct Web 1.0.0"
 authors:
   - family-names: Igartua
     given-names: Josu M.

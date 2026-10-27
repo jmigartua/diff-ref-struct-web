@@ -157,6 +157,8 @@ def releases_md(level=2, upto=None):
             tail.append("log " + ", ".join(r["log"]))
         if r.get("evidence"):
             tail.append("evidence: " + r["evidence"])
+        if r.get("doi"):
+            tail.append(f"archived as [doi:{r['doi']}](https://doi.org/{r['doi']})")
         if tail:
             out.append("*" + "; ".join(tail) + ".*\n")
     return "\n".join(out)

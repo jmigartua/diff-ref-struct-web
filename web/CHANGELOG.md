@@ -28,7 +28,7 @@ The page gains its own site, a licence and a citation, a place for requests, and
 - Proposals against time open with each scan's temperature as its variable: open a hold or a run from a .drv that types the times (recipe: A hold).
 - No figure or CSV export in the browser; text formats only.
 
-*Closes W11; log L431, L433, L434; evidence: Web host tests 40 of 40 with the core 0.81.0 package; every guide screenshot taken from the app in both themes; the public PDFs and the guide checked for team data by the leak guard..*
+*Closes W11; log L431, L433, L434; evidence: Web host tests 40 of 40 with the core 0.81.0 package; every guide screenshot taken from the app in both themes; the public PDFs and the guide checked for team data by the leak guard.; archived as [doi:10.5281/zenodo.23682727](https://doi.org/10.5281/zenodo.23682727).*
 
 ## 0.4.0 · The strips take the map's frame
 

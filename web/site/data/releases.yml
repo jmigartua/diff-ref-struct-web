@@ -9,6 +9,7 @@
   core: "0.81.0"
   date: "2026-10-27"
   status: released
+  doi: "10.5281/zenodo.23682727"
   title: "The guide, open source, the record"
   summary: >-
     The page gains its own site, a licence and a citation, a place for requests, and a record (releases, log, roadmap,

@@ -1,5 +1,7 @@
 # diff-ref-struct Web
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23682726.svg)](https://doi.org/10.5281/zenodo.23682726)
+
 Series of powder diffraction patterns in the browser: overlays, stacks, WinPLOTR-style projections, maps of intensity
 against 2θ and temperature or time, difference maps, surfaces and growth curves of chosen peaks. The numbers are
 computed by the diff-ref-struct core, compiled to WebAssembly and run in your browser; your files are read there and
