@@ -139,6 +139,25 @@ document.addEventListener("DOMContentLoaded", function () {
 <h1>Releases</h1>
 <p class="sub">Every version of diff-ref-struct Web, newest first: what it added, changed, fixed, and what it still lacks. The same notes close every manual as its Appendix B, up to the version that manual describes. Feed: <a href="../feeds/releases.xml">releases.xml</a>.</p>
 </div>
+<h2 id="the-2θ-interval-of-the-analysis">1.1.0 · The 2θ interval of the analysis</h2>
+<p><em>2026-10-27 · to be published · core 0.82.0 · build next</em></p>
+<p>On core 0.82.0: a plot set file may cut every member to an interval of 2θ on opening, so that every view, window, map and difference works on the cut set; the core answers the patterns in the app’s words.</p>
+<p><strong>Added</strong></p>
+<ul>
+<li>A set file’s <code>x_interval = [from, to]</code> cuts every member to that interval of 2θ as the set opens (core 0.82.0, PL42): the views, windows, maps, the colour range and the differences are those of the cut set, and a window outside it is refused. A beamstop’s first degree, or a range of no interest, is left out once for the whole analysis. Typed in the .drv for now; a control in the page comes with the Plots module’s step 25.</li>
+</ul>
+<p><strong>Changed</strong></p>
+<ul>
+<li>The core in the page is 0.82.0.</li>
+<li>The core names each pattern’s member as the app does (W11 met); the page’s own rename stays as a fallback.</li>
+</ul>
+<p><strong>Known</strong></p>
+<ul>
+<li>No control in the page for the 2θ interval yet: type <code>x_interval</code> in the set file.</li>
+<li>Proposals against time open with each scan’s temperature as its variable: open a hold or a run from a .drv that types the times (recipe: A hold).</li>
+<li>No figure or CSV export in the browser; text formats only.</li>
+</ul>
+<p><em>Closes W11; log L435, L441, L442; evidence: Web host tests 39 of 39 and the package’s 10 of 10 on core 0.82.0; a Tb₂Pd₂Sn set file cut to 24–36° opened in the page on its Map (24 to 36°, the cut set’s colour range 2.982–4.605 log₁₀ counts); every view drawn; the leak guard clean on the guide, its PDFs and the source..</em></p>
 <h2 id="the-guide-open-source-the-record">1.0.0 · The guide, open source, the record</h2>
 <p><em>2026-10-27 · published · core 0.81.0 · build b4820d8</em></p>
 <p>The page gains its own site, a licence and a citation, a place for requests, and a record (releases, log, roadmap, conventions) that the site and the manuals render; versions become semantic.</p>

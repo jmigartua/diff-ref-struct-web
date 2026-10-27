@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <p class="sub">Every control of the page, what it does and what the core computes behind it; the limits of this version said plainly. Written from the page's code and checked against the core on real data.</p>
 <p class="dl"><a class="cta" href="../downloads/user-manual.pdf">Download the PDF</a> <span class="k">LaTeX, the site's typefaces</span> &nbsp; <a href="quick-reference/index.html">Quick reference</a> · <a href="../downloads/quick-reference.pdf">its PDF</a></p>
 </div>
-<p>For <strong>diff-ref-struct Web 1.0.0 with core 0.81.0</strong>, at <a href="https://jmigartua.github.io/diff-ref-struct-web/" class="uri">https://jmigartua.github.io/diff-ref-struct-web/</a>. The page shows the version it runs at the foot of its start page and in the line under the inspector, and its <strong>Help ▾</strong> menu opens the manual of that version. The manual ends with three appendices made from the guide’s records: <strong>A, Conventions</strong> (the words, files, suffixes and names), <strong>B, Release notes</strong> (every version up to this one) and <strong>C, Roadmap</strong>.</p>
+<p>For <strong>diff-ref-struct Web 1.1.0 with core 0.82.0</strong>, at <a href="https://jmigartua.github.io/diff-ref-struct-web/" class="uri">https://jmigartua.github.io/diff-ref-struct-web/</a>. The page shows the version it runs at the foot of its start page and in the line under the inspector, and its <strong>Help ▾</strong> menu opens the manual of that version. The manual ends with three appendices made from the guide’s records: <strong>A, Conventions</strong> (the words, files, suffixes and names), <strong>B, Release notes</strong> (every version up to this one) and <strong>C, Roadmap</strong>.</p>
 <p>The site’s <strong>Recipes</strong> work through the analyses the page is made for (a temperature ramp, a hold at constant temperature, two patterns compared, a run followed live), and its <strong>Quick reference</strong> fits the controls on one page.</p>
 <h2 id="what-the-page-is">1. What the page is</h2>
 <p>diff-ref-struct Web is the <strong>Plots module</strong> of the diff-ref-struct Mac app, running in a browser page. It shows many powder-diffraction patterns at once as a <strong>plot set</strong>. You can view them as:</p>
@@ -573,6 +573,7 @@ document.addEventListener("DOMContentLoaded", function () {
 <li>the windows, the opacities, the clips and the regions;</li>
 <li>the y interval.</li>
 </ul>
+<p><strong>The 2θ interval of the analysis.</strong> A set file may say <code>x_interval = [2.0, 20.0]</code> among its first lines. Every member is then cut to that interval of 2θ as the set opens: every view, window, map, colour range and difference is that of the cut set, the files untouched, and a window outside the interval is refused. Use it to leave out a beamstop’s first degree, or a range of no interest, once for the whole analysis. In this version it is typed in the set file (a text editor will do); a control in the page comes later (Appendix C).</p>
 <p>It is a plain text (TOML) file, read by the Mac app and the command line <code>drs</code> as well as by this page.</p>
 <p>To open it again later:</p>
 <ol type="1">
@@ -965,7 +966,8 @@ document.addEventListener("DOMContentLoaded", function () {
 <li><p><strong>No Data operations, refinement, Publish or projects</strong>: those are the Mac app’s.</p></li>
 <li><p><strong>Text files only</strong>: binary formats (Bruker RAW and BRML, Rigaku RASX, NeXus/HDF5, zarr) are not read by the browser in this version, even though the core knows them (§21).</p></li>
 <li><p><strong>The strips under the map</strong> (Cursors) may sit slightly off the map’s frame in some window sizes: a peak in the row strip a degree or so left of its column, the strip’s y label saying its scale twice (“counts (log) (log)”). It was seen on the public page on 26 October 2026; in other captures the frames match. Read 2θ on the map itself. A fix is under way.</p></li>
-<li><p><strong>Coming next</strong>: a 2θ interval set once for the whole analysis (to cut away, for example, a beamstop’s first degree everywhere), and the map’s default colour scale linear in place of log.</p></li>
+<li><p><strong>No control in the page for the 2θ interval</strong>: type <code>x_interval = [from, to]</code> in the set file (§13).</p></li>
+<li><p><strong>Coming next</strong>: that control, and the map’s default colour scale linear in place of log.</p></li>
 </ul>
 <h2 id="the-file-formats-the-core-reads">21. The file formats the core reads</h2>
 <p>The core recognises a file by its <strong>content first</strong>, its extension second, and says which reader it chose (hover the file in the tree). Text formats, read in the browser:</p>
@@ -1129,30 +1131,34 @@ document.addEventListener("DOMContentLoaded", function () {
 <td>The points of a scan averaged onto a coarser regular grid (0.01°) by the core as the set opens; the files are untouched.</td>
 </tr>
 <tr class="even">
+<td><strong>x interval</strong></td>
+<td>The interval of 2θ a set is cut to as it opens (<code>x_interval = [from, to]</code> in its set file): every view, window and map then works on the cut set; the files are untouched.</td>
+</tr>
+<tr class="odd">
 <td><strong>clip</strong></td>
 <td>The colour range chosen on the colour bar inside the core’s full range; values beyond it are drawn saturated.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>region</strong></td>
 <td>A named rectangle of a map (2θ and variable), with its own colour range, saved with the set.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>window</strong></td>
 <td>A range of 2θ whose quantities (integral above the background, centroid, strongest peak) the Series view follows through the set.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>reference member</strong></td>
 <td>The member subtracted in the Difference Map and in the Linked zoom’s difference strip.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>view rule</strong></td>
 <td>Normalise… or Convert X…: a change of how the set is drawn; the files are never changed.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td><strong>live set</strong></td>
 <td>A set opened from a proposal that grows with the new scans live mode finds in the folder.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td><strong>the core</strong></td>
 <td>diff-ref-struct’s engine (Rust), here compiled to WebAssembly: it computes every number the page shows.</td>
 </tr>
@@ -1357,7 +1363,26 @@ document.addEventListener("DOMContentLoaded", function () {
 </tbody>
 </table>
 <h2 id="appendix-b.-release-notes">Appendix B. Release notes</h2>
-<p>Every version of diff-ref-struct Web up to 1.0.0, the one this manual describes, newest first.</p>
+<p>Every version of diff-ref-struct Web up to 1.1.0, the one this manual describes, newest first.</p>
+<h3 id="the-2θ-interval-of-the-analysis">1.1.0 · The 2θ interval of the analysis</h3>
+<p><em>2026-10-27 · to be published · core 0.82.0 · build next</em></p>
+<p>On core 0.82.0: a plot set file may cut every member to an interval of 2θ on opening, so that every view, window, map and difference works on the cut set; the core answers the patterns in the app’s words.</p>
+<p><strong>Added</strong></p>
+<ul>
+<li>A set file’s <code>x_interval = [from, to]</code> cuts every member to that interval of 2θ as the set opens (core 0.82.0, PL42): the views, windows, maps, the colour range and the differences are those of the cut set, and a window outside it is refused. A beamstop’s first degree, or a range of no interest, is left out once for the whole analysis. Typed in the .drv for now; a control in the page comes with the Plots module’s step 25.</li>
+</ul>
+<p><strong>Changed</strong></p>
+<ul>
+<li>The core in the page is 0.82.0.</li>
+<li>The core names each pattern’s member as the app does (W11 met); the page’s own rename stays as a fallback.</li>
+</ul>
+<p><strong>Known</strong></p>
+<ul>
+<li>No control in the page for the 2θ interval yet: type <code>x_interval</code> in the set file.</li>
+<li>Proposals against time open with each scan’s temperature as its variable: open a hold or a run from a .drv that types the times (recipe: A hold).</li>
+<li>No figure or CSV export in the browser; text formats only.</li>
+</ul>
+<p><em>Closes W11; log L435, L441, L442; evidence: Web host tests 39 of 39 and the package’s 10 of 10 on core 0.82.0; a Tb₂Pd₂Sn set file cut to 24–36° opened in the page on its Map (24 to 36°, the cut set’s colour range 2.982–4.605 log₁₀ counts); every view drawn; the leak guard clean on the guide, its PDFs and the source..</em></p>
 <h3 id="the-guide-open-source-the-record">1.0.0 · The guide, open source, the record</h3>
 <p><em>2026-10-27 · published · core 0.81.0 · build b4820d8</em></p>
 <p>The page gains its own site, a licence and a citation, a place for requests, and a record (releases, log, roadmap, conventions) that the site and the manuals render; versions become semantic.</p>
@@ -1423,12 +1448,11 @@ document.addEventListener("DOMContentLoaded", function () {
 <h3 id="decided">Decided</h3>
 <ul>
 <li><strong>Proposals against time opened as their set files.</strong> A hold or a run then opens at its times, as the core proposed it; today it opens by temperature. (W10)</li>
-<li><strong>The core answers in the app’s shapes, with a test of the shapes.</strong> So that a renamed field never again breaks a view in the browser (the Overlay, 0.4.0). (W11)</li>
-<li><strong>A 2θ interval set once for the whole analysis.</strong> Every view, window and export then sees the cut set: a beamstop’s first degree left out everywhere. (L434, PL42)</li>
+<li><strong>A test of the shapes the core answers in, command by command.</strong> The patterns’ shape was fixed in 0.82.0 (W11); a test that compares every answer with the app’s would catch the next drift before a release. (W11)</li>
+<li><strong>A control in the page for the 2θ interval.</strong> The core cuts a set to its x_interval from 1.1.0; typing it in the set file is the only way until the Plots module’s control (its step 25). (L434, PL42)</li>
 <li><strong>The map’s colour scale linear by default.</strong> Josu’s ask; a set file that says its scale keeps it. (L434)</li>
 <li><strong>The cursor strips on the map’s frame in every window size.</strong> Seen off by a degree or two on the public page. (L433)</li>
 <li><strong>The inspector’s panels opening their own manual section.</strong> The view’s ? does it from 1.0.0; the members, regions and windows panels need a hook in the Plots module. (W12)</li>
-<li><strong>Screenshots as a release check.</strong> A view drawn blank stops the release; the blank Overlay of 0.4.0 was found this way. (web/site/tools/shots.mjs –check)</li>
 </ul>
 <h3 id="considered">Considered</h3>
 <ul>

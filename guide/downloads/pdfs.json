@@ -1,10 +1,10 @@
 {
   "quick-reference": {
     "built": "2026-10-27",
-    "sha256": "37d70b58f3e0b28f34f815710b0de69ea33b737ec6386f9ce9e18ec49635ca54"
+    "sha256": "e5be9dac4e8e9a6587a9b4f32c96a33521d102d7d2386e1de1859b55077393c6"
   },
   "user-manual": {
     "built": "2026-10-27",
-    "sha256": "9d290bf028f1b12d7ff4b57966d90d5e5103d3a760e4f6e9c875d4f6fa73f41f"
+    "sha256": "ca524c336ba4dad1ffafe0525b43b465ef2de57df9f85dd640035c9bcb69e5e6"
   }
 }
