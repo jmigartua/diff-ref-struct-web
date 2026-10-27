@@ -18,6 +18,7 @@ words:
   - { term: "hold", means: "Three or more scans at the same temperature, followed against the time since the first of them." }
   - { term: "exposure class", means: "Scans counted alike, told apart by the core from the scale of their counts (the median of σ²/y above 2°): long and short scans fall in different classes." }
   - { term: "rebin", means: "The points of a scan averaged onto a coarser regular grid (0.01°) by the core as the set opens; the files are untouched." }
+  - { term: "x interval", means: "The interval of 2θ a set is cut to as it opens (`x_interval = [from, to]` in its set file): every view, window and map then works on the cut set; the files are untouched." }
   - { term: "clip", means: "The colour range chosen on the colour bar inside the core's full range; values beyond it are drawn saturated." }
   - { term: "region", means: "A named rectangle of a map (2θ and variable), with its own colour range, saved with the set." }
   - { term: "window", means: "A range of 2θ whose quantities (integral above the background, centroid, strongest peak) the Series view follows through the set." }

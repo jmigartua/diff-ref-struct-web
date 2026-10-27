@@ -31,6 +31,9 @@ struct Kept {
     rule: ViewRule,
     /// The step the members were rebinned to on opening (W9), kept for the set file.
     rebin: Option<f64>,
+    /// The set as measured (cut to the analysis's interval, not rebinned), kept the first time `rebin` changes the
+    /// step: the browser has no files to read again (the app reads them, `plots_rebin`).
+    raw: Option<PlotSet>,
 }
 
 impl Sets {
@@ -38,7 +41,7 @@ impl Sets {
         let mut g = self.inner.lock().unwrap();
         g.0 += 1;
         let id = g.0;
-        g.1.insert(id, Kept { set, base, rule: ViewRule::default(), rebin: None });
+        g.1.insert(id, Kept { set, base, rule: ViewRule::default(), rebin: None, raw: None });
         id
     }
     fn with<T>(&self, id: u32, f: impl FnOnce(&mut Kept) -> Result<T, String>) -> Result<T, String> {
@@ -105,41 +108,57 @@ pub struct OtherView {
     pub source: String,
 }
 
-/// One member's scan as the view shows it (W9: asked for by the views that draw it, `plots_patterns`, not carried by
-/// every SetView): the reader's after Data's operations, normalised and in the x quantity chosen (x, y, σ; None for a
-/// point with no weight); empty when the view leaves the member out (`shown.left_out`).
+/// One member's scan as the view shows it (W9 (a): asked for by the views that draw it, not carried by every SetView;
+/// the app's `PatternView`): the member by its index in the set, the reader's scan after Data's operations,
+/// normalised and in the x quantity chosen (x, y, σ; None for a point with no weight).
 #[derive(Serialize, Clone, Debug)]
 pub struct PatternView {
-    pub index: usize,
-    pub key: String,
+    pub member: usize,
     pub x: Vec<f64>,
     pub y: Vec<f64>,
     pub sigma: Vec<Option<f64>>,
 }
 
-/// The members' scans as the view shows them (W9, `plots_patterns`): those named by their index in the set, else all.
+/// The members' scans as the view shows them (W9 (a), the app's `patterns`): those named by their index in the set,
+/// else all; a member the view leaves out has none.
 pub fn patterns(sets: &Sets, id: u32, members: Option<Vec<usize>>) -> Result<Vec<PatternView>, String> {
     sets.with(id, |k| {
-        let sh = shown(k, true).ok();
-        let s = &k.set;
-        let wanted: Vec<usize> = members.unwrap_or_else(|| (0..s.members.len()).collect());
-        wanted
-            .into_iter()
-            .map(|i| {
-                let m = s.members.get(i).ok_or(format!("no member {i} in plot set {id}"))?;
-                let p = match &sh {
-                    Some(v) => v.index.iter().position(|&j| j == i).map(|q| &v.set.members[q].pattern),
-                    None => Some(&m.pattern),
-                };
-                Ok(PatternView {
-                    index: i,
-                    key: format!("{}#{}", m.file, m.scan),
-                    x: p.map_or(Vec::new(), |p| p.x.clone()),
-                    y: p.map_or(Vec::new(), |p| p.y.clone()),
-                    sigma: p.map_or(Vec::new(), |p| p.sigma.iter().map(|&e| e.is_finite().then_some(e)).collect()),
-                })
+        let s = shown(k, true)?;
+        Ok(s.index
+            .iter()
+            .enumerate()
+            .filter(|(_, &i)| members.as_ref().is_none_or(|ms| ms.contains(&i)))
+            .map(|(q, &i)| {
+                let p = &s.set.members[q].pattern;
+                PatternView { member: i, x: p.x.clone(), y: p.y.clone(), sigma: p.sigma.iter().map(|&e| e.is_finite().then_some(e)).collect() }
             })
-            .collect()
+            .collect())
+    })
+}
+
+/// The set rebinned to a step (W9 (c), the app's `rebin`; Plots' step 22), or as measured (none): from the set as
+/// measured, kept the first time (the browser cannot read the files again); a set opened rebinned has no measured
+/// scans kept, and changing its step is refused.
+pub fn rebin(sets: &Sets, id: u32, step: Option<f64>) -> Result<SetView, String> {
+    if let Some(s) = step {
+        if !(s.is_finite() && s > 0.0) {
+            return Err(format!("a rebin step of {s}: give a positive number"));
+        }
+    }
+    sets.with(id, |k| {
+        if k.raw.is_none() {
+            if let Some(r) = k.rebin {
+                return Err(format!("the set was opened rebinned to {r}: open its files again to choose another step"));
+            }
+            k.raw = Some(k.set.clone());
+        }
+        let mut set = k.raw.clone().unwrap();
+        if let Some(s) = step {
+            set.rebin(s)?;
+        }
+        k.set = set;
+        k.rebin = step;
+        Ok(view(id, k))
     })
 }
 
@@ -497,12 +516,16 @@ pub fn set_view_rule(sets: &Sets, id: u32, norm: Option<NormChoice>, x: Option<X
 /// (`plots::open_from`), every scan a member; a CSV of several columns gives one member per y column.
 /// With `rebin`, every member rebinned to that step in its x on opening (W9, `PlotSet::rebin`: the counts averaged, σ
 /// propagated, as `drs data op rebin step=… mode=average`), the step kept for the set file.
-pub fn open_from(sets: &Sets, files: Vec<OpenedFile>, reader: Option<&str>, title: Option<String>, rebin: Option<f64>) -> Result<SetView, String> {
+/// With `x_interval`, every member cut to it first (PL42, `PlotSet::cut`, in the members' own x), kept by the set.
+pub fn open_from(sets: &Sets, files: Vec<OpenedFile>, reader: Option<&str>, title: Option<String>, rebin: Option<f64>, x_interval: Option<[f64; 2]>) -> Result<SetView, String> {
     if files.is_empty() {
         return Err("no file chosen".into());
     }
     let (base, files) = relative_to_first(files);
     let mut set = plots::open_from(&files, reader, title)?;
+    if let Some(iv) = x_interval {
+        set.cut(iv, None)?;
+    }
     if let Some(step) = rebin {
         set.rebin(step)?;
     }
@@ -558,7 +581,7 @@ pub fn new_set(sets: &Sets) -> Result<SetView, String> {
 
 /// A WinPLOTR buffer given by its text, its files by name and content (the app's `plots_open_buffer`): its names, its
 /// comments and its title read by the core (`plots::read_buf`), the files it names taken from `files`.
-pub fn open_buffer_from(sets: &Sets, path: Option<&str>, text: &str, files: Vec<OpenedFile>) -> Result<SetView, String> {
+pub fn open_buffer_from(sets: &Sets, path: Option<&str>, text: &str, files: Vec<OpenedFile>, x_interval: Option<[f64; 2]>) -> Result<SetView, String> {
     // the buffer's folder, as the app's `open_buffer` takes it; the names relative to it
     let base = path.and_then(|p| Path::new(p).parent()).map(Path::to_path_buf).unwrap_or_default();
     let b = plots::read_buf(text, &|name| given(&files, &base, name).is_some());
@@ -570,7 +593,11 @@ pub fn open_buffer_from(sets: &Sets, path: Option<&str>, text: &str, files: Vec<
         .iter()
         .map(|(name, comment)| given(&files, &base, name).map(|f| OpenedFile { name: name.clone(), comment: comment.clone(), ..f.clone() }).ok_or(format!("{name}: the buffer names it, and no file of that name was given")))
         .collect::<Result<_, _>>()?;
-    let set = plots::open_from(&opened, None, b.title)?;
+    let mut set = plots::open_from(&opened, None, b.title)?;
+    // the x interval of the analysis (PL42)
+    if let Some(iv) = x_interval {
+        set.cut(iv, None)?;
+    }
     let id = sets.insert(set, base);
     sets.with(id, |k| Ok(view(id, k)))
 }
@@ -589,8 +616,8 @@ pub fn extent(sets: &Sets, id: u32, scale: &str, members: Option<Vec<usize>>) ->
 /// The series the files offer (W2, `plots::propose`): each a set file the host opens as it is, its members' files and
 /// the files left out named relative to the first file's folder (as `open_from` names members), the folder whose
 /// `Plots/` the set file is saved in.
-pub fn propose(files: Vec<OpenedFile>) -> plots::Proposals {
-    plots::propose(&relative_to_first(files).1)
+pub fn propose(files: Vec<OpenedFile>, x_interval: Option<[f64; 2]>) -> plots::Proposals {
+    plots::propose(&relative_to_first(files).1, x_interval)
 }
 
 /// A member's other variable typed with its source (W3; Plots' step 21, the app's `set_other`): kept with the set
@@ -618,8 +645,12 @@ pub fn set_other(sets: &Sets, id: u32, member: usize, name: &str, value: f64, no
 /// Files added to a set (Add Files…, the app's `plots_add`), by name and content: their members joined to the set's,
 /// the whole sorted by the variable again.
 pub fn add_from(sets: &Sets, id: u32, files: Vec<OpenedFile>) -> Result<SetView, String> {
-    let more = plots::open_from(&files, None, None)?;
+    let mut more = plots::open_from(&files, None, None)?;
     sets.with(id, |k| {
+        // a set cut to the analysis's interval (PL42) takes the files added cut alike
+        if let Some(iv) = k.set.x_interval {
+            more.cut(iv, k.set.x_interval_in)?;
+        }
         k.set.members.extend(more.members);
         k.set.sort_by_variable();
         Ok(view(id, k))
@@ -678,6 +709,9 @@ pub struct Settings {
     /// another quantity whose conversion needs a λ the members lack), in its words; the regions are kept as read.
     #[serde(default)]
     pub regions_refused: Option<String>,
+    /// The y interval (PL41, core 0.80.0): "shared" or "own"; none written reads as shared.
+    #[serde(default)]
+    pub y_interval: Option<String>,
 }
 
 /// A region as the window names it (PL37, `plots::Region`): `x_quantity` as a word ("2theta", "d", "q", "stl", "s"), or
@@ -752,6 +786,7 @@ pub fn save(sets: &Sets, id: u32, root: &str, name: &str, st: Settings) -> Resul
         f.projection_scale = st.pscale.as_deref().and_then(YScale::from_word);
         f.map_scale = st.map_scale.as_deref().and_then(YScale::from_word);
         f.y_scale = YScale::from_word(&st.scale).unwrap_or(YScale::Linear);
+        f.y_interval = if st.y_interval.as_deref() == Some("own") { plots::YInterval::Own } else { plots::YInterval::Shared };
         // the view's normalisation and x quantity (PL27), as the view shows the set
         if let Some(c) = &k.rule.norm {
             f.normalisation = normalisation(c, &k.set, k.rule.norm_ref.as_deref())?;
@@ -779,13 +814,17 @@ pub fn save(sets: &Sets, id: u32, root: &str, name: &str, st: Settings) -> Resul
 /// A set file given by its name and text, its members' files by name and content (the app's `plots_open_set`), through
 /// the core (`SetFile::read`, `open_from`): the typed values with their sources, the order; and the settings the file
 /// holds, for the window.
-pub fn open_set_from(sets: &Sets, name: &str, text: &str, files: Vec<OpenedFile>) -> Result<(SetView, Settings), String> {
+/// With `x_interval`, the set cut to it in the file's x quantity after its own (PL42): the file's interval replaced.
+pub fn open_set_from(sets: &Sets, name: &str, text: &str, files: Vec<OpenedFile>, x_interval: Option<[f64; 2]>) -> Result<(SetView, Settings), String> {
     let f = plots::SetFile::read(text).map_err(|d| format!("{name}: {}", d.iter().map(|x| x.message.clone()).collect::<Vec<_>>().join("; ")))?;
     // the folder above Plots/ (`plots::set_base`), as the app's `open_set_file`; each member's file found among those
     // given by the path joined to it, or by its own name; one not given is named by the core as missing
     let base = plots::set_base(Path::new(name));
     let named: Vec<OpenedFile> = f.members.iter().filter_map(|m| given(&files, &base, &m.file).map(|g| OpenedFile { name: m.file.clone(), ..g.clone() })).collect();
-    let set = f.open_from(&named, None, &|_| Vec::new())?;
+    let mut set = f.open_from(&named, None, &|_| Vec::new())?;
+    if let Some(iv) = x_interval {
+        set.cut(iv, f.x_quantity())?;
+    }
     let reference = f.reference_in(&set);
     let opacity = set.members.iter().map(|m| f.members.iter().find(|x| x.file == m.file && x.scan.is_none_or(|s| s == m.scan + 1)).and_then(|x| if x.visible == Some(false) { Some(0.0) } else { x.opacity })).collect();
     let words = |d: Displacement| match d {
@@ -820,6 +859,7 @@ pub fn open_set_from(sets: &Sets, name: &str, text: &str, files: Vec<OpenedFile>
         regions: f.regions.iter().map(RegionView::of_core).collect(),
         // a region the core refuses on this set (its conversion needs a λ the members lack) is said, the set still opened
         regions_refused: f.check_regions(&set).err(),
+        y_interval: Some(f.y_interval.word().to_string()),
     };
     // the view's normalisation and x quantity the file keeps (PL27), as the window's rule; the members' typed λs are
     // not kept by the file

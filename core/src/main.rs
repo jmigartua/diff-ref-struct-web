@@ -231,6 +231,10 @@ USAGE:
   drs data constant-time <file.uxd|file.xrdml> --time <s> [--out <file.xys>]
       The scans of a multi-scan file brought to one counting time per point and joined (PL6, WinPLOTR's constant time
       normalisation): counts × time / the scan's counting time, σ alike; at an x an earlier scan has, the earlier kept.
+  drs plots <command> … --x-interval a:b
+      Every drs plots command that opens a set takes the x interval of the analysis (PL42): every member cut to a ≤ x
+      ≤ b on opening (in the .drv's x quantity, else the files' own), the files untouched, as a set file's x_interval;
+      a member that holds no point inside is refused by name; save writes it, propose gives it to its proposals.
   drs plots save <file.buf | file.drv | data files…> [--out <Plots/set.drv>] [--name <set>]
       The set as a plot set file (PL12): Plots/<set>.drv by default (the file dictionary), the control file's TOML
       subset, the files relative to the project's folder. Every drs plots command opens a .drv as it opens a .buf:
@@ -3408,7 +3412,7 @@ fn print_json<T>(_: &T) -> Result<(), String> {
 /// `drs plots`: several files as one set (R32; PL1–PL5, PL9, PL11, PL17).
 /// The series a run's files offer (W2): each file read alone, with its modification time as a browser's host gives it,
 /// a buffer's files with its comments; the proposals' titles, the classes and the files left out, or the whole as JSON.
-fn plots_propose(files: &[String], json: bool) -> Result<(), String> {
+fn plots_propose(files: &[String], json: bool, x_interval: Option<[f64; 2]>) -> Result<(), String> {
     use drs::plots::{self, OpenedFile};
     let opened = |path: &std::path::Path, name: String, comment: Option<String>| -> Result<OpenedFile, String> {
         let bytes = std::fs::read(path).map_err(|e| format!("{}: {e}", path.display()))?;
@@ -3423,7 +3427,7 @@ fn plots_propose(files: &[String], json: bool) -> Result<(), String> {
     } else {
         files.iter().map(|f| opened(std::path::Path::new(f), f.clone(), None)).collect::<Result<_, _>>()?
     };
-    let p = plots::propose(&given);
+    let p = plots::propose(&given, x_interval);
     if json {
         return print_json(&p);
     }
@@ -3481,7 +3485,7 @@ fn cmd_plots(args: &[String]) -> Result<(), String> {
                 sets.push((k.parse::<usize>().map_err(|_| format!("--set {v}"))?, num(val, "--set")?, note.to_string()));
                 i += 2;
             }
-            "--range" | "--reference" | "--members" | "--out" | "--name" | "--window" | "--background" | "--log-lambda" | "--at" | "--order" | "--floor" | "--parameter" => i += 2,
+            "--range" | "--reference" | "--members" | "--out" | "--name" | "--window" | "--background" | "--log-lambda" | "--at" | "--order" | "--floor" | "--parameter" | "--x-interval" => i += 2,
             "--csv" | "--long" | "--browser" | "--no-open" | "--no-patterns" => i += 1,
             "--x" | "--wavelength" | "--temperatures" | "--by" | "--to" | "--within" | "--member" | "--lambda-from" | "--lambda" | "--view" => i += 2,
             "--sum" | "--average" | "--weighted-average" | "--difference" => i += 1,
@@ -3494,8 +3498,16 @@ fn cmd_plots(args: &[String]) -> Result<(), String> {
     if sub == "seq" {
         return plots_seq(&files[0], opt_value(args, "--parameter"), json);
     }
+    // The x interval of the analysis (PL42): every member cut to it on opening, as a set file's `x_interval`.
+    let x_interval = match opt_value(args, "--x-interval") {
+        Some(v) => {
+            let (a, b) = v.split_once(':').ok_or("--x-interval a:b")?;
+            Some([num(a, "--x-interval")?, num(b, "--x-interval")?])
+        }
+        None => None,
+    };
     if sub == "propose" {
-        return plots_propose(&files, json);
+        return plots_propose(&files, json, x_interval);
     }
     let mut set_file = None;
     let mut set = if files.len() == 1 && files[0].to_lowercase().ends_with(".buf") {
@@ -3514,6 +3526,13 @@ fn cmd_plots(args: &[String]) -> Result<(), String> {
     } else {
         plots::open(std::path::Path::new(""), &files.iter().map(|f| (f.clone(), None)).collect::<Vec<_>>(), reader.as_deref(), None)?
     };
+    if let Some(iv) = x_interval {
+        // in the set file's x quantity, else in the members' own
+        set.cut(iv, set_file.as_ref().and_then(|f: &plots::SetFile| f.x_quantity()))?;
+        if let Some(f) = set_file.as_mut() {
+            f.x_interval = set.x_interval;
+        }
+    }
     // FullProf's temperatures file as the variable's source (PL21): each member its file names takes its value.
     if let Some(f) = opt_value(args, "--temperatures") {
         let t = plots::read_temperatures(&std::fs::read_to_string(&f).map_err(|e| format!("{f}: {e}"))?);

@@ -4,12 +4,11 @@
 - status: decided
   items:
     - { title: "Proposals against time opened as their set files", why: "A hold or a run then opens at its times, as the core proposed it; today it opens by temperature.", source: "W10" }
-    - { title: "The core answers in the app's shapes, with a test of the shapes", why: "So that a renamed field never again breaks a view in the browser (the Overlay, 0.4.0).", source: "W11" }
-    - { title: "A 2θ interval set once for the whole analysis", why: "Every view, window and export then sees the cut set: a beamstop's first degree left out everywhere.", source: "L434, PL42" }
+    - { title: "A test of the shapes the core answers in, command by command", why: "The patterns' shape was fixed in 0.82.0 (W11); a test that compares every answer with the app's would catch the next drift before a release.", source: "W11" }
+    - { title: "A control in the page for the 2θ interval", why: "The core cuts a set to its x_interval from 1.1.0; typing it in the set file is the only way until the Plots module's control (its step 25).", source: "L434, PL42" }
     - { title: "The map's colour scale linear by default", why: "Josu's ask; a set file that says its scale keeps it.", source: "L434" }
     - { title: "The cursor strips on the map's frame in every window size", why: "Seen off by a degree or two on the public page.", source: "L433" }
     - { title: "The inspector's panels opening their own manual section", why: "The view's ? does it from 1.0.0; the members, regions and windows panels need a hook in the Plots module.", source: "W12" }
-    - { title: "Screenshots as a release check", why: "A view drawn blank stops the release; the blank Overlay of 0.4.0 was found this way.", source: "web/site/tools/shots.mjs --check" }
 - status: considered
   items:
     - { title: "Spanish and Basque editions of the guide and the manuals", why: "Asked for later; English only for now. Basque through the EHU rules (EHULKU), with the decimal comma." }

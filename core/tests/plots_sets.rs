@@ -15,6 +15,10 @@
 //!   the set file, its refusals, and `plots::map_region`'s block of the Tb₂Pd₂Sn map, a region in 2θ and the same in d.
 //! - PL41 (W4): the y interval kept by the set file (`y_interval = "own"`, absent shared) and `plots::extent`, the
 //!   set's counts on a scale, equal to the map's colour range on the log scale.
+//! - PL42 (L434): the x interval of the analysis kept by the set file (`x_interval = [a, b]`) and applied on opening,
+//!   every member cut to it: on the ESRF run's names a map spanning exactly 2–20° and a window outside refused, a
+//!   member that does not reach it refused by name; the Tb₂Pd₂Sn set cut to 18–34° giving the whole map's block of
+//!   those columns (`map_region`), `drs plots map --x-interval` the same.
 
 use drs::data::Pattern;
 use drs::data_ops::{Normalization, Operation};
@@ -251,7 +255,7 @@ fn stand_in(g: &Grid, scale: YScale) -> plots::Map {
             modified: None,
         })
         .collect();
-    let set = plots::PlotSet { title: None, variable_name: g.b.clone(), variable_unit: String::new(), members };
+    let set = plots::PlotSet { title: None, variable_name: g.b.clone(), variable_unit: String::new(), members, x_interval: None, x_interval_in: None };
     plots::map(&set, &g.xa, scale, None).unwrap()
 }
 
@@ -619,4 +623,89 @@ fn pl41_the_y_interval_and_the_sets_extent() {
     let lin = plots::extent(&set, YScale::Linear, None).unwrap();
     assert!(lin.0 <= one.0 && one.1 <= lin.1);
     assert_eq!(plots::extent(&set, YScale::Linear, Some(&[])), None, "no member, no extent");
+}
+
+/// The ESRF run's names (`plots_esrf`), each file written here from 0 to 27° in 0.01° steps.
+fn esrf_like(name: &str, from: f64) -> plots::OpenedFile {
+    let text: String = (0..=((27.0 - from) / 0.01).round() as usize).map(|i| format!("{:.2} {} 10.0\n", from + 0.01 * i as f64, 100 + i % 50)).collect();
+    plots::OpenedFile { name: name.into(), text, ..Default::default() }
+}
+
+const ESRF_CUT: &str = r#"format = "drs plot set 1"
+title = "three ESRF names, cut"
+variable = { name = "T", unit = "°C" }
+x_interval = [2.0, 20.0]
+
+[[member]]
+file = "scan_001_T0900C_t00000s_long.xye"
+
+[[member]]
+file = "scan_002_T0925C_t00810s_long.xye"
+
+[[member]]
+file = "scan_003_T0950C_t01622s_long.xye"
+"#;
+
+#[test]
+fn pl42_the_x_interval_of_the_analysis() {
+    use plots::{MapX, Region, Window, WindowBackground};
+    let files: Vec<plots::OpenedFile> = ["scan_001_T0900C_t00000s_long.xye", "scan_002_T0925C_t00810s_long.xye", "scan_003_T0950C_t01622s_long.xye"].iter().map(|n| esrf_like(n, 0.0)).collect();
+    // Read, written, described; a .drv without the field reads as before and writes none.
+    let f = SetFile::read(ESRF_CUT).unwrap();
+    assert_eq!(f.x_interval, Some([2.0, 20.0]));
+    assert!(f.to_text().contains("x_interval = [2.0, 20.0]\n"), "{}", f.to_text());
+    assert_eq!(SetFile::read(&f.to_text()).unwrap(), f);
+    assert!(f.words().iter().any(|w| w == "the analysis cut to 2theta 2 to 20 on opening: every member's points outside it left out, the files untouched"), "{:?}", f.words());
+    let old = SetFile::read(EXAMPLE).unwrap();
+    assert_eq!(old.x_interval, None);
+    assert!(!old.to_text().contains("x_interval"));
+    assert!(SetFile::read(&ESRF_CUT.replace("[2.0, 20.0]", "[20.0, 2.0]")).unwrap_err()[0].message.contains("x_interval = [20, 2] runs backwards"));
+    // Opened: every member cut to 2–20°, the map's columns spanning exactly that, in °C from the names (W8).
+    let set = f.open_from(&files, Some("xye"), &|_| Vec::new()).unwrap();
+    assert_eq!(set.x_interval, Some([2.0, 20.0]));
+    assert!(set.members.iter().all(|m| m.facts.range == (2.0, 20.0) && m.facts.points == 1801), "{:?}", set.members[0].facts.range);
+    let grid = plots::common_grid(&set, plots::GridRange::Overlap, plots::GridStep::Finest).unwrap();
+    let map = plots::map(&set, &grid, YScale::Linear, None).unwrap();
+    assert_eq!((map.x[0], *map.x.last().unwrap(), map.x.len()), (2.0, 20.0, 1801));
+    assert_eq!(map.rows.iter().map(|r| r.value).collect::<Vec<_>>(), [900.0, 925.0, 950.0]);
+    // A window outside the interval refused as such; one inside read.
+    let beamstop = Window { name: "beamstop".into(), from: 0.5, to: 1.5 };
+    let e = plots::windows(&set, &[beamstop], &WindowBackground::Line, &[]).unwrap_err();
+    assert_eq!(e, "window \"beamstop\", 0.5 to 1.5, lies outside the analysis's x interval 2 to 20");
+    assert!(plots::windows(&set, &[Window { name: "in".into(), from: 5.0, to: 6.0 }], &WindowBackground::Line, &[]).is_ok());
+    // Kept by the set file written from the set, and by the proposals the host asks with it.
+    assert_eq!(SetFile::of(&set).x_interval, Some([2.0, 20.0]));
+    let p = plots::propose(&files, Some([2.0, 20.0]));
+    assert_eq!(p.proposals.iter().map(|x| (x.kind.as_str(), x.set.x_interval)).collect::<Vec<_>>(), [("by_temperature", Some([2.0, 20.0])), ("against_time", Some([2.0, 20.0]))]);
+    // A member whose range does not reach the interval refused by name; the files themselves untouched.
+    let mut late = files.clone();
+    late[1] = esrf_like("scan_002_T0925C_t00810s_long.xye", 21.0);
+    assert_eq!(f.open_from(&late, Some("xye"), &|_| Vec::new()).unwrap_err(), "scan_002_T0925C_t00810s_long.xye: its range, 21 to 27, does not reach the x interval 2 to 20");
+    assert!(files[0].text.starts_with("0.00 "));
+    // Tb₂Pd₂Sn cut to 18–34°: the map of the cut set is the whole map's block of those columns (map_region).
+    let names: Vec<(String, Option<String>)> = (1..=20).map(|k| (format!("tb_t{k:02}.dat"), None)).collect();
+    let whole = plots::open(&tb(), &names, None, None).unwrap();
+    let mut cut = whole.clone();
+    cut.cut([18.0, 34.0], None).unwrap();
+    let wmap = plots::map(&whole, &plots::common_grid(&whole, plots::GridRange::Overlap, plots::GridStep::Finest).unwrap(), YScale::Linear, None).unwrap();
+    let cmap = plots::map(&cut, &plots::common_grid(&cut, plots::GridRange::Overlap, plots::GridStep::Finest).unwrap(), YScale::Linear, None).unwrap();
+    let region = Region { name: "18–34°".into(), x: [18.0, 34.0], x_quantity: None, variable: [0.0, 100.0], map_range: None, difference_range: None, window: None };
+    let block = plots::map_region(&wmap, &region, &MapX::of(&whole)).unwrap();
+    assert_eq!(cmap.x, block.columns.iter().map(|&j| wmap.x[j]).collect::<Vec<_>>());
+    assert_eq!(block.rows.len(), cmap.rows.len());
+    for (r, &w) in block.rows.iter().enumerate() {
+        assert_eq!(cmap.z[r], block.columns.iter().map(|&j| wmap.z[w][j]).collect::<Vec<_>>(), "row {r}");
+    }
+    let finite = cmap.z.iter().flatten().flatten().copied();
+    assert_eq!(finite.fold((f64::INFINITY, f64::NEG_INFINITY), |(a, b), v| (a.min(v), b.max(v))), block.range);
+    // drs plots map --x-interval gives the same columns; describe says the cut.
+    let o = drs(&["plots", "map", tb().join("Tb_vs_T.buf").to_str().unwrap(), "--x-interval", "18:34", "--json"]);
+    assert!(o.status.success(), "{}", String::from_utf8_lossy(&o.stderr));
+    let m: plots::Map = serde_json::from_slice(&o.stdout).unwrap();
+    assert_eq!(m.x, cmap.x);
+    let d = project("pl42");
+    let path = d.join("Plots/pl42.drv");
+    std::fs::write(&path, EXAMPLE).unwrap();
+    let o = drs(&["plots", "describe", path.to_str().unwrap(), "--x-interval", "18:34"]);
+    assert!(String::from_utf8_lossy(&o.stdout).contains("the analysis cut to 2theta 18 to 34 on opening"), "{}{}", String::from_utf8_lossy(&o.stdout), String::from_utf8_lossy(&o.stderr));
 }

@@ -235,6 +235,27 @@ L428: `drs plots propose` on the ESRF run's 101 files offers the three sets of i
 - The app's `plots_patterns` binding and the module's drawing from it are Plots' (W9): until then the package's members carry no pattern.
 - `plots_propose` on the 101 ESRF files takes 10 s in node; `plots_open_from` 9.7 s, 2.4 s with the proposal's reader.
 
+## 0.82.0 — 2026-10-26 — The x interval of the analysis, set once (PL42; L435)
+
+L435: a set file may cut every member to an interval of x on opening, so that every view, window, derived file, export, page and proposal works on the cut set; `drs plots … --x-interval a:b` the same.
+
+### Added
+
+- `SetFile::x_interval` (`x_interval = [from, to]`), `PlotSet::cut`, `PlotSet::interval_of`, `PlotSet::x_interval`; `propose(files, x_interval)`.
+- `--x-interval a:b` on every `drs plots` command that opens a set.
+- drs-wasm: `xInterval` on `plots_open_from`, `plots_open_buffer_from`, `plots_open_set_from`, `plots_propose`; `plots_rebin` (the app's, step 22).
+- Test `pl42_the_x_interval_of_the_analysis` (plots_sets); `map.test.mjs` 10 cases.
+
+### Changed
+
+- `windows` refuses a window outside a cut set's interval in those words.
+- drs-wasm's `plots_patterns` answers in the app's `PatternView` (`member`, the members shown); `Settings` carries `y_interval`.
+
+### Known limitations
+
+- `open`, `open_from` and `open_buf` keep their signatures: their callers cut (the app's three opening bindings take the argument in Plots' step 25).
+- Publish draws the cut set already; its notes do not yet say the cut.
+
 ## 0.75.0 — 2026-10-21 — The cell's box for any phase (Explore's E22, L401)
 
 

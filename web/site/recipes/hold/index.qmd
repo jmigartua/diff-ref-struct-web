@@ -31,7 +31,7 @@ for f in fs:
     s = int(re.search(r"_t(\d+)s", f).group(1))
     print(f'[[member]]\nfile = "{f}"\nvariable = {{ value = {(s - first) / 60:.2f}, source = "minutes since {fs[0].split("/")[-1]}, from the elapsed seconds in the names" }}\n')
 EOF</code></pre>
-Change <code>T1270C</code> to your hold's tag. Checked on a hold of 39 synchrotron scans: the page opens it with t from 0 to 166.43&nbsp;min.</li>
+Change <code>T1270C</code> to your hold's tag. To leave a beamstop's first degree out of the whole analysis, add <code>x_interval = [0.5, 27.0]</code> after <code>rebin = 0.01</code> (from 1.1.0). Checked on a hold of 39 synchrotron scans: the page opens it with t from 0 to 166.43&nbsp;min.</li>
 <li><b>For large scans</b>, the line <code>rebin = 0.01</code> (written by the script above; add it under the first line of any other <code>.drv</code>) makes the core average each scan onto a 0.01° grid as it opens (the files untouched), and the map draws in a fraction of a second. On a hold of 39 synchrotron scans of 27 000 points: 2699 columns, the core's range 0&ndash;28.3&nbsp;√counts, opened in about 5&nbsp;s.</li>
 </ol>
 

@@ -1,7 +1,7 @@
 [package]
 name = "drs-python"
 # The core's version: the wheel is the core's (L380).
-version = "0.81.0"
+version = "0.82.0"
 edition = "2021"
 description = "Python bindings to the diff-ref-struct core (P53, Q1/L021)"
 license = "UNLICENSED"

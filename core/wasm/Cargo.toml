@@ -1,7 +1,7 @@
 [package]
 name = "drs-wasm"
 # The core's version: the package is the core's (W1, L424).
-version = "0.81.0"
+version = "0.82.0"
 edition = "2021"
 description = "The diff-ref-struct core in the browser: the Plots module's commands in WebAssembly (W1, I10, R34)"
 license = "UNLICENSED"

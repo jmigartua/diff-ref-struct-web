@@ -177,15 +177,48 @@ test("W2, W8, W9: the ESRF folder's 101 files give L021's three sets, opened reb
   assert.ok(all.members.every((m) => m.x === undefined && m.y === undefined), "no pattern in the SetView");
   assert.ok(all.members.every((m) => m.points > 2690 && m.points < 2705), String(all.members[0].points));
   const pats = await call("plots_patterns", { id: all.id, members: [0, 99] });
-  assert.deepStrictEqual(pats.map((q) => [q.index, q.x.length, q.y.length]), [[0, all.members[0].points, all.members[0].points], [99, all.members[99].points, all.members[99].points]]);
+  assert.deepStrictEqual(pats.map((q) => [q.member, q.x.length, q.y.length]), [[0, all.members[0].points, all.members[0].points], [99, all.members[99].points, all.members[99].points]]);
   // the map from the rebinned set, without the patterns ever crossing
   const map = await call("plots_map", { id: all.id, scale: "log", reference: null });
   assert.equal(map.map.rows.length, 100);
 });
 
+test("PL42: the x interval of the analysis on every opening, kept by the set file; W9's patterns and rebin as the app's", async () => {
+  const xInterval = [18, 34];
+  const whole = await call("plots_open_buffer_from", { path: `${local}/Tb_vs_T.buf`, text: buf, files: localFiles });
+  const cut = await call("plots_open_buffer_from", { path: `${local}/Tb_vs_T.buf`, text: buf, files: localFiles, xInterval });
+  assert.ok(cut.members.every((m) => m.range[0] >= 18 - 1e-9 && m.range[1] <= 34 + 1e-9 && m.points < whole.members[0].points), JSON.stringify(cut.members[0].range));
+  const cmap = await call("plots_map", { id: cut.id, scale: "linear", reference: null });
+  const cli = JSON.parse(drs(["plots", "map", path.join(tb, "Tb_vs_T.buf"), "--x-interval", "18:34", "--json"]));
+  assert.deepStrictEqual(cmap.map, cli, "the cut map to the bit, as drs plots map --x-interval");
+  const byName = await call("plots_open_from", { files, xInterval });
+  const pointsOf = (v) => Object.fromEntries(v.members.map((m) => [m.label, m.points]));
+  assert.deepStrictEqual(pointsOf(byName), pointsOf(cut), "the same cut by names and text as by the buffer");
+  // saved with it, opened again from the text with it; a narrower one asked on opening cuts again
+  const settings = { order: "variable", rule: "none", dx: 0, dy: 0, scale: "linear", reference: null, windows: [], opacity: [] };
+  const saved = await call("plots_save_text", { id: cut.id, root: local, name: "cut", settings });
+  assert.match(saved.text, /\nx_interval = \[18\.0, 34\.0\]\n/);
+  const [again] = await call("plots_open_set_from", { path: `${local}/Plots/cut.drv`, text: saved.text, files: localFiles });
+  assert.deepStrictEqual(again.members.map((m) => m.points), cut.members.map((m) => m.points));
+  const [narrower] = await call("plots_open_set_from", { path: `${local}/Plots/cut.drv`, text: saved.text, files: localFiles, xInterval: [20, 30] });
+  assert.ok(narrower.members.every((m) => m.range[0] >= 20 - 1e-9 && m.range[1] <= 30 + 1e-9));
+  await assert.rejects(call("plots_open_from", { files, xInterval: [50, 60] }), (e) => String(e).includes("does not reach the x interval 50 to 60"));
+  // the proposals carry the interval the host gives
+  const { files: named } = await call("plots_names_in", { path: `${local}/Tb_vs_T.buf`, text: buf });
+  const p = await call("plots_propose", { files: localFiles.filter((f) => named.includes(f.name)), xInterval });
+  assert.deepStrictEqual(p.proposals.map((x) => x.set.x_interval), [xInterval]);
+  // W9 as the app serves it: the patterns of the members shown, by member; the set rebinned and back as measured
+  const pats = await call("plots_patterns", { id: cut.id, members: [2] });
+  assert.deepStrictEqual(pats.map((q) => [q.member, q.x.length]), [[2, cut.members[2].points]]);
+  const coarse = await call("plots_rebin", { id: cut.id, step: 0.5 });
+  assert.ok(coarse.members[0].points < cut.members[0].points / 4, String(coarse.members[0].points));
+  const back = await call("plots_rebin", { id: cut.id, step: null });
+  assert.deepStrictEqual(back.members.map((m) => m.points), cut.members.map((m) => m.points));
+});
+
 test("dispatch serves the commands by name and rejects in the core's words", async () => {
   const served = commands();
-  for (const c of ["plots_open_from", "plots_patterns", "plots_set_other", "plots_names_in", "plots_extent", "plots_propose", "plots_save_text", "plots_open_buffer_from", "plots_map", "plots_displace", "plots_project", "plots_windows", "plots_derive", "plots_map_region", "plots_range_warning", "plots_save", "plots_open_set_from", "describe"]) assert.ok(served.includes(c), c);
+  for (const c of ["plots_open_from", "plots_patterns", "plots_rebin", "plots_set_other", "plots_names_in", "plots_extent", "plots_propose", "plots_save_text", "plots_open_buffer_from", "plots_map", "plots_displace", "plots_project", "plots_windows", "plots_derive", "plots_map_region", "plots_range_warning", "plots_save", "plots_open_set_from", "describe"]) assert.ok(served.includes(c), c);
   await assert.rejects(call("plots_map", { id: 9999, scale: "linear", reference: null }), (e) => e === "no plot set 9999");
   await assert.rejects(call("plots_open_files", { paths: [] }), (e) => String(e).startsWith('no command "plots_open_files"'));
   await assert.rejects(call("plots_map", { id: 1 }), (e) => String(e).startsWith("the command's arguments:"));

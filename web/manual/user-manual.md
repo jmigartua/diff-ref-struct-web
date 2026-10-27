@@ -1,6 +1,6 @@
 # diff-ref-struct Web — user manual
 
-For **diff-ref-struct Web 1.0.0 with core 0.81.0**, at <https://jmigartua.github.io/diff-ref-struct-web/>. The page
+For **diff-ref-struct Web 1.1.0 with core 0.82.0**, at <https://jmigartua.github.io/diff-ref-struct-web/>. The page
 shows the version it runs at the foot of its start page and in the line under the inspector, and its **Help ▾** menu
 opens the manual of that version. The manual ends with three appendices made from the guide's records: **A, Conventions**
 (the words, files, suffixes and names), **B, Release notes** (every version up to this one) and **C, Roadmap**.
@@ -551,6 +551,12 @@ to your Downloads folder: nothing is written into the folder you opened. The `.d
 - the windows, the opacities, the clips and the regions;
 - the y interval.
 
+**The 2θ interval of the analysis.** A set file may say `x_interval = [2.0, 20.0]` among its first lines. Every member
+is then cut to that interval of 2θ as the set opens: every view, window, map, colour range and difference is that of
+the cut set, the files untouched, and a window outside the interval is refused. Use it to leave out a beamstop's first
+degree, or a range of no interest, once for the whole analysis. In this version it is typed in the set file (a text
+editor will do); a control in the page comes later (Appendix C).
+
 It is a plain text (TOML) file, read by the Mac app and the command line `drs` as well as by this page.
 
 To open it again later:
@@ -820,8 +826,8 @@ roadmap (Appendix C) with what is decided about it.
   strip a degree or so left of its column, the strip's y label saying its scale twice ("counts (log) (log)"). It was
   seen on the public page on 26 October 2026; in other captures the frames match. Read 2θ on the map itself. A fix is
   under way.
-- **Coming next**: a 2θ interval set once for the whole analysis (to cut away, for example, a beamstop's first degree
-  everywhere), and the map's default colour scale linear in place of log.
+- **No control in the page for the 2θ interval**: type `x_interval = [from, to]` in the set file (§13).
+- **Coming next**: that control, and the map's default colour scale linear in place of log.
 
 ## 21. The file formats the core reads
 

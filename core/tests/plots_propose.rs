@@ -25,7 +25,7 @@ fn tb_files() -> Vec<OpenedFile> {
 
 #[test]
 fn w2_the_tb_buffer_offers_one_set_by_temperature() {
-    let p = plots::propose(&tb_files());
+    let p = plots::propose(&tb_files(), None);
     assert_eq!(p.proposals.len(), 1, "{:?}", p.proposals.iter().map(|x| &x.title).collect::<Vec<_>>());
     let by_t = &p.proposals[0];
     assert_eq!(by_t.kind, "by_temperature");
@@ -74,7 +74,7 @@ fn run() -> Vec<OpenedFile> {
 
 #[test]
 fn w2_a_run_offers_its_series() {
-    let p = plots::propose(&run());
+    let p = plots::propose(&run(), None);
     let titles: Vec<&str> = p.proposals.iter().map(|x| x.title.as_str()).collect();
     // Two exposure classes by the counts' scale σ²/y, the long first (the smaller scale).
     assert_eq!(p.classes.iter().map(|c| c.scans).collect::<Vec<_>>(), [11, 2]);
@@ -125,18 +125,18 @@ fn w2_times_from_the_host_when_the_names_give_none() {
         .enumerate()
         .map(|(k, f)| OpenedFile { name: f.name.replace("run_", "scan").replace('s', "x"), modified: Some(1_700_000_000.0 + 600.0 * k as f64), ..f })
         .collect();
-    let p = plots::propose(&files);
+    let p = plots::propose(&files, None);
     let t = p.proposals.iter().find(|x| x.kind == "against_time").unwrap();
     assert_eq!(t.set.members.len(), 13);
     assert_eq!(t.set.members[1].value.as_ref().map(|v| (v.0, v.1.words())), Some((10.0, format!("typed: the time since {}, from typed: the file's modification time", files[0].name))));
     // Files checked out or copied together carry one write's time (within `SAME_WRITE`): no time taken from any, no
     // set against time, the rest as before.
     let copied: Vec<OpenedFile> = files.iter().enumerate().map(|(k, f)| OpenedFile { modified: Some(1_761_400_000.0 + 0.01 * k as f64), ..f.clone() }).collect();
-    let c = plots::propose(&copied);
+    let c = plots::propose(&copied, None);
     assert!(c.proposals.iter().all(|x| x.kind == "by_temperature"), "{:?}", c.proposals.iter().map(|x| &x.title).collect::<Vec<_>>());
     assert_eq!(c.proposals[0].set.members.len(), 8);
     let tb_on_disk: Vec<OpenedFile> = tb_files().into_iter().map(|f| OpenedFile { modified: Some(1_761_400_000.0), ..f }).collect();
-    assert_eq!(plots::propose(&tb_on_disk).proposals.iter().map(|x| x.kind.as_str()).collect::<Vec<_>>(), ["by_temperature"], "a checkout's times");
+    assert_eq!(plots::propose(&tb_on_disk, None).proposals.iter().map(|x| x.kind.as_str()).collect::<Vec<_>>(), ["by_temperature"], "a checkout's times");
 }
 
 #[test]
@@ -172,5 +172,5 @@ fn w2_drs_plots_propose() {
     assert!(out.contains(". by_temperature: 19 scans by temperature, 4 to 30 K\n   left out tb_t01.dat: no temperature: neither its header, a buffer's comment, its title nor its name gives one\n"), "{out}");
     let j = std::process::Command::new(env!("CARGO_BIN_EXE_drs")).args(["plots", "propose"]).arg(tb().join("Tb_vs_T.buf")).arg("--json").output().unwrap();
     let p: plots::Proposals = serde_json::from_slice(&j.stdout).unwrap();
-    assert_eq!(p, plots::propose(&tb_files().into_iter().map(|f| OpenedFile { modified: std::fs::metadata(tb().join(&f.name)).unwrap().modified().ok().map(|t| t.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs_f64()), ..f }).collect::<Vec<_>>()));
+    assert_eq!(p, plots::propose(&tb_files().into_iter().map(|f| OpenedFile { modified: std::fs::metadata(tb().join(&f.name)).unwrap().modified().ok().map(|t| t.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs_f64()), ..f }).collect::<Vec<_>>(), None));
 }

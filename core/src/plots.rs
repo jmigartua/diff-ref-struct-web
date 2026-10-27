@@ -132,6 +132,70 @@ impl PlotSet {
 }
 
 impl PlotSet {
+    /// The set cut to the x interval of the analysis (PL42): every member keeps its points from `interval[0]` to
+    /// `interval[1]` and only those, the files untouched; the facts' points, range and step those of the cut scan. The
+    /// interval is in `quantity` (the set file's x; none: each member's own), converted to a member's own x with its
+    /// file's λ when the two differ (as a region's bounds are, PL37); a member that needs a λ it lacks, holds fewer
+    /// than two points inside, or is in TOF or energy while the interval is in another quantity, is refused by name.
+    /// Cutting a cut set cuts it again (the narrower interval kept).
+    pub fn cut(&mut self, interval: [f64; 2], quantity: Option<XQuantity>) -> Result<(), String> {
+        let [a, b] = interval;
+        if !(a.is_finite() && b.is_finite() && a < b) {
+            return Err(format!("x interval {a} to {b}: give the smaller end first, two numbers"));
+        }
+        for m in self.members.iter_mut() {
+            let own = match m.facts.axis {
+                Axis::TwoTheta => Some(XQuantity::TwoTheta),
+                Axis::D => Some(XQuantity::D),
+                Axis::Q => Some(XQuantity::Q),
+                _ => None,
+            };
+            let (lo, hi) = match (quantity, own) {
+                (None, _) => (a, b),
+                (Some(q), Some(o)) => {
+                    if needs_lambda(q, o) && m.facts.wavelength.is_none() {
+                        return Err(format!("{}: the x interval is in {} and the file in {}, and the file states no wavelength to convert it", m.label, q.word(), o.word()));
+                    }
+                    bounds_in(interval, q, o, m.facts.wavelength).map_err(|e| format!("{}: {e}", m.label))?
+                }
+                (Some(q), None) => return Err(format!("{}: the x interval is in {}, and the file's x ({}) is not converted", m.label, q.word(), m.facts.axis.label())),
+            };
+            let p = &m.pattern;
+            let keep: Vec<usize> = (0..p.len()).filter(|&i| p.x[i] >= lo && p.x[i] <= hi).collect();
+            if keep.len() < 2 {
+                let (f, t) = m.facts.range;
+                return Err(format!("{}: its range, {f} to {t}, does not reach the x interval {a} to {b}", m.label));
+            }
+            m.pattern = crate::data::Pattern { x: keep.iter().map(|&i| p.x[i]).collect(), y: keep.iter().map(|&i| p.y[i]).collect(), sigma: keep.iter().map(|&i| p.sigma[i]).collect() };
+            m.facts.points = m.pattern.len();
+            m.facts.range = crate::data::extent(&m.pattern.x).unwrap_or((0.0, 0.0));
+            m.facts.step = m.pattern.mean_step();
+        }
+        self.x_interval = Some(match self.x_interval {
+            Some([c, d]) if self.x_interval_in == quantity => [a.max(c), b.min(d)],
+            _ => interval,
+        });
+        self.x_interval_in = quantity;
+        Ok(())
+    }
+
+    /// The interval of the analysis in a member's own x (PL42): `x_interval` converted with its file's λ when the set
+    /// file's quantity is another; none when the set is not cut or the conversion has no value.
+    pub fn interval_of(&self, member: usize) -> Option<(f64, f64)> {
+        let iv = self.x_interval?;
+        let m = self.members.get(member)?;
+        let own = match m.facts.axis {
+            Axis::TwoTheta => XQuantity::TwoTheta,
+            Axis::D => XQuantity::D,
+            Axis::Q => XQuantity::Q,
+            _ => return self.x_interval_in.is_none().then_some((iv[0], iv[1])),
+        };
+        match self.x_interval_in {
+            None => Some((iv[0], iv[1])),
+            Some(q) => bounds_in(iv, q, own, m.facts.wavelength).ok(),
+        }
+    }
+
     /// Every member rebinned to `step` in its x (W9): the counts averaged over each new bin, σ propagated
     /// (`data_ops::rebin_step`, as `drs data op rebin step=… mode=average`); the facts' points, range and step those of
     /// the rebinned scan.
@@ -224,6 +288,13 @@ pub struct PlotSet {
     pub variable_name: String,
     pub variable_unit: String,
     pub members: Vec<Member>,
+    /// The x interval of the analysis (PL42), as given in the set's x quantity, when the set was cut to it on opening
+    /// (`cut`): every member holds its points inside it only; the files are untouched.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub x_interval: Option<[f64; 2]>,
+    /// The quantity `x_interval` is in (the set file's x); none: each member's own.
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub x_interval_in: Option<XQuantity>,
 }
 
 /// A WinPLOTR buffer file (`.buf`), as WinPLOTR's documents give it (`manuals/fullprof/1-WinPLOTR/docs/`):
@@ -553,7 +624,7 @@ fn members_of(given: Vec<(String, Option<String>, Option<(f64, String)>, Vec<u8>
         }
     }
     let unit = temperature_unit(&members);
-    let mut set = PlotSet { title, variable_name: "T".into(), variable_unit: "K".into(), members };
+    let mut set = PlotSet { title, variable_name: "T".into(), variable_unit: "K".into(), members, x_interval: None, x_interval_in: None };
     set.temperatures_in(unit);
     set.sort_by_variable();
     // W3's t from the elapsed seconds the names give, when they all give them
@@ -1318,6 +1389,16 @@ pub fn window_value(p: &Pattern, b: &[f64], line: bool, w: &Window, peaks: &[Fou
 
 /// The windows of every member of a set (PL5), each on its own points, and the background at the chosen x.
 pub fn windows(set: &PlotSet, list: &[Window], background: &WindowBackground, at: &[f64]) -> Result<Windows, String> {
+    // A set cut to the analysis's interval (PL42) has no point outside it: a window that leaves it is refused as such.
+    if let Some([a, b]) = set.x_interval {
+        for k in 0..set.members.len() {
+            let Some((lo, hi)) = set.interval_of(k) else { continue };
+            let tol = 1e-9 * (hi - lo).abs().max(1.0);
+            if let Some(w) = list.iter().find(|w| w.from < lo - tol || w.to > hi + tol) {
+                return Err(format!("window \"{}\", {} to {}, lies outside the analysis's x interval {a} to {b}", w.name, w.from, w.to));
+            }
+        }
+    }
     let mut members = Vec::new();
     for (k, mb) in set.members.iter().enumerate() {
         let p = &mb.pattern;
@@ -1608,6 +1689,11 @@ pub struct SetFile {
     /// averaged over each new bin and σ propagated, as `drs data op rebin step=… mode=average`; none by default.
     #[cfg_attr(feature = "serde", serde(default))]
     pub rebin: Option<f64>,
+    /// The x interval of the analysis (PL42), `x_interval = [from, to]` in the set's x quantity: every member cut to
+    /// it on opening (`PlotSet::cut`), so that every view, window, derived file, export and page sees the cut set; the
+    /// files untouched; none by default (the files' whole range).
+    #[cfg_attr(feature = "serde", serde(default))]
+    pub x_interval: Option<[f64; 2]>,
     /// The view's normalisation (PL6, PL25, PL27); none by default.
     #[cfg_attr(feature = "serde", serde(default))]
     pub normalisation: Normalisation,
@@ -2115,6 +2201,7 @@ impl Default for SetFile {
             map_scale: None,
             y_interval: YInterval::Shared,
             rebin: None,
+            x_interval: None,
             normalisation: Normalisation::None,
             reference: None,
             windows: Vec::new(),
@@ -2295,7 +2382,7 @@ impl SetFile {
             return Err(doc.diagnostics);
         }
         let root = doc.tables.first().ok_or_else(|| bad(Default::default(), "an empty file"))?;
-        known_keys(&root.entries, &["format", "title", "variable", "x", "y_scale", "order", "displacement", "projection", "map_scale", "y_interval", "rebin", "normalisation", "reference", "windows", "map_range", "difference_range"], "the top of a plot set")?;
+        known_keys(&root.entries, &["format", "title", "variable", "x", "y_scale", "order", "displacement", "projection", "map_scale", "y_interval", "rebin", "x_interval", "normalisation", "reference", "windows", "map_range", "difference_range"], "the top of a plot set")?;
         match root.get("format") {
             Some(e) if text_of(e)? == SET_FORMAT => {}
             Some(e) => return Err(bad(e.value.span, format!("format is \"{SET_FORMAT}\""))),
@@ -2366,6 +2453,9 @@ impl SetFile {
                 "own" => YInterval::Own,
                 _ => return Err(bad(e.value.span, "y_interval is \"shared\" (the whole set's) or \"own\" (each member's)")),
             };
+        }
+        if let Some(e) = root.get("x_interval") {
+            f.x_interval = Some(pair_of(e, "x_interval")?);
         }
         if let Some(e) = root.get("rebin") {
             let v = number_of(e)?;
@@ -2512,6 +2602,9 @@ impl SetFile {
         if self.y_interval != YInterval::Shared {
             t.push_str(&format!("y_interval = {}\n", string(self.y_interval.word())));
         }
+        if let Some([a, b]) = self.x_interval {
+            t.push_str(&format!("x_interval = [{}, {}]\n", float(a), float(b)));
+        }
         if let Some(r) = self.rebin {
             t.push_str(&format!("rebin = {}\n", float(r)));
         }
@@ -2639,7 +2732,11 @@ impl SetFile {
                 members.push(x);
             }
         }
-        let mut set = PlotSet { title: self.title.clone(), variable_name: self.variable_name.clone(), variable_unit: self.variable_unit.clone(), members };
+        let mut set = PlotSet { title: self.title.clone(), variable_name: self.variable_name.clone(), variable_unit: self.variable_unit.clone(), members, x_interval: None, x_interval_in: None };
+        // the analysis's x interval (PL42), before the rebin: the members cut to it, in the file's x quantity
+        if let Some(iv) = self.x_interval {
+            set.cut(iv, self.x_quantity())?;
+        }
         if let Some(step) = self.rebin {
             set.rebin(step)?;
         }
@@ -2702,6 +2799,9 @@ impl SetFile {
             YInterval::Shared => "the curves' y interval: the whole set's".into(),
             YInterval::Own => "the curves' y interval: each member's own".into(),
         });
+        if let Some([a, b]) = self.x_interval {
+            w.push(format!("the analysis cut to {} {a} to {b} on opening: every member's points outside it left out, the files untouched", self.x));
+        }
         if let Some(r) = self.rebin {
             w.push(format!("the members rebinned on opening to a step of {r} in their x, the counts averaged, σ propagated"));
         }
@@ -2768,7 +2868,7 @@ impl SetFile {
                 ..Default::default()
             })
             .collect();
-        SetFile { title: set.title.clone(), variable_name: set.variable_name.clone(), variable_unit: set.variable_unit.clone(), members, ..Default::default() }
+        SetFile { title: set.title.clone(), variable_name: set.variable_name.clone(), variable_unit: set.variable_unit.clone(), members, x_interval: set.x_interval, ..Default::default() }
     }
 }
 
@@ -3329,12 +3429,20 @@ fn counts_scale(m: &Member) -> f64 {
 /// other variable (W3) with its source. A proposal whose members have more than `LARGE_SCAN` points in 2θ is rebinned
 /// to `LARGE_STEP` on opening (`SetFile::rebin`), its title saying so. A file the registry cannot read, or a scan in
 /// no set, is named with why: by its file as given, and its scan in brackets when the file holds several.
-pub fn propose(files: &[OpenedFile]) -> Proposals {
+///
+/// With `x_interval` (PL42, in 2θ, the set files' x), every file is cut to it as it is read, the facts are the cut
+/// scans', and every proposal's set file carries the interval; a file the interval leaves without points is named.
+pub fn propose(files: &[OpenedFile], x_interval: Option<[f64; 2]>) -> Proposals {
     let mut left_out: Vec<(String, String)> = Vec::new();
     let mut facts: Vec<Fact> = Vec::new();
+    let quantity = XQuantity::from_word(&SetFile::default().x);
     for f in files {
-        match open_from(std::slice::from_ref(f), None, None) {
-            Err(e) => left_out.push((f.name.clone(), format!("not read: {e}"))),
+        let opened = open_from(std::slice::from_ref(f), None, None).map_err(|e| format!("not read: {e}")).and_then(|mut set| match x_interval {
+            Some(iv) => set.cut(iv, quantity).map(|_| set).map_err(|e| format!("outside the x interval: {e}")),
+            None => Ok(set),
+        });
+        match opened {
+            Err(e) => left_out.push((f.name.clone(), e)),
             Ok(set) => {
                 for m in &set.members {
                     let time = elapsed_in_name(&m.file).map(|(v, t)| (v, Found::FileName(t))).or(m.modified.map(|t| (t, Found::Typed("the file's modification time".into()))));
@@ -3522,8 +3630,9 @@ pub fn propose(files: &[OpenedFile]) -> Proposals {
         let title = format!("the hold at {t} {unit}: {} scans against time, {} {} from {first}{}{others}", members.len(), rounded((he - hs) / per.1), per.0, class_words(class));
         proposals.push(Proposal { kind: "hold".into(), title: title.clone(), class: several.then_some(class), set: time_set(members, per.0, title), left_out: Vec::new(), reader: None });
     }
-    // A large set rebinned on opening (W9), its title saying so; the reader its members share.
+    // A large set rebinned on opening (W9), its title saying so; the reader its members share; the interval (PL42).
     for p in proposals.iter_mut() {
+        p.set.x_interval = x_interval;
         let formats: Vec<&str> = p.set.members.iter().filter_map(|m| facts.iter().find(|f| f.file == m.file).map(|f| f.format.as_str())).collect();
         p.reader = formats.first().filter(|f| formats.iter().all(|g| g == *f)).map(|f| f.to_string());
         let big = p.set.members.iter().any(|m| facts.iter().any(|f| f.file == m.file && f.points > LARGE_SCAN));

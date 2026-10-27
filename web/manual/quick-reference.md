@@ -1,6 +1,6 @@
 # diff-ref-struct Web — quick reference
 
-For diff-ref-struct Web 1.0.0 with core 0.81.0; every control in full in [the manual](user-manual.md).
+For diff-ref-struct Web 1.1.0 with core 0.82.0; every control in full in [the manual](user-manual.md).
 
 ## Bring files in
 
@@ -79,6 +79,7 @@ For diff-ref-struct Web 1.0.0 with core 0.81.0; every control in full in [the ma
 - **Save Plot Set**: the `.drv` is downloaded; put it in the folder's `Plots/`.
 - The address keeps the set, view, scale, zoom, clip and region: reload it or send it.
 - ⌘S is the browser's Save Page, not Save Plot Set.
+- `x_interval = [from, to]` in a set file: every member cut to that 2θ interval on opening.
 
 ## Live mode (Chrome, Edge, Arc)
 

@@ -31,7 +31,7 @@ const NOT_HERE: [(&str, &str); 10] = [
 
 /// Commands served here that the app is to gain, with the request that asks for them: the app's binding is the Plots
 /// stream's to write (accepted here whether or not the app has it yet).
-const AHEAD: [(&str, &str); 1] = [("plots_patterns", "W9 (a): the members' scans out of every SetView, asked for by the views that draw them; the app's #[tauri::command] in app/src-tauri/src/modules/plots.rs is Plots'")];
+const AHEAD: [(&str, &str); 0] = [];
 
 /// The browser's own commands, which the app has no reason to have.
 const OWN: [&str; 4] = ["plots_names_in", "plots_save_text", "plots_propose", "describe"];

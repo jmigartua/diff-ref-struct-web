@@ -42,6 +42,8 @@ struct Files {
     title: Option<String>,
     #[serde(default)]
     rebin: Option<f64>,
+    #[serde(default, rename = "xInterval", alias = "x_interval")]
+    x_interval: Option<[f64; 2]>,
 }
 
 #[derive(Deserialize)]
@@ -51,6 +53,13 @@ struct SetOther {
     name: String,
     value: f64,
     note: String,
+}
+
+#[derive(Deserialize)]
+struct Rebin {
+    id: u32,
+    #[serde(default)]
+    step: Option<f64>,
 }
 
 #[derive(Deserialize)]
@@ -77,6 +86,8 @@ struct Extent {
 #[derive(Deserialize)]
 struct Propose {
     files: Vec<OpenedFile>,
+    #[serde(default, rename = "xInterval", alias = "x_interval")]
+    x_interval: Option<[f64; 2]>,
 }
 
 #[derive(Deserialize)]
@@ -92,6 +103,8 @@ struct BufferFrom {
     path: Option<String>,
     text: String,
     files: Vec<OpenedFile>,
+    #[serde(default, rename = "xInterval", alias = "x_interval")]
+    x_interval: Option<[f64; 2]>,
 }
 
 /// A set file by its name (`name`, or W5's `path`) and text.
@@ -101,6 +114,8 @@ struct SetFrom {
     name: String,
     text: String,
     files: Vec<OpenedFile>,
+    #[serde(default, rename = "xInterval", alias = "x_interval")]
+    x_interval: Option<[f64; 2]>,
 }
 
 #[derive(Deserialize)]
@@ -236,12 +251,13 @@ fn describe_file(name: &str, text: &str) -> serde_json::Value {
 
 /// The commands, by their names: the app's (`plots_*`), with `_from` for those that take files by name and content
 /// in place of paths, and `describe`.
-pub const COMMANDS: [&str; 29] = [
+pub const COMMANDS: [&str; 30] = [
     "plots_open_from",
     "plots_names_in",
     "plots_extent",
     "plots_propose",
     "plots_patterns",
+    "plots_rebin",
     "plots_save_text",
     "plots_new",
     "plots_open_buffer_from",
@@ -273,7 +289,7 @@ pub fn call(cmd: &str, json: &str) -> Result<String, String> {
     SETS.with(|s| match cmd {
         "plots_open_from" => {
             let a: Files = args(json)?;
-            out(host::open_from(s, a.files, a.reader.as_deref(), a.title, a.rebin)?)
+            out(host::open_from(s, a.files, a.reader.as_deref(), a.title, a.rebin, a.x_interval)?)
         }
         "plots_names_in" => {
             let a: NamesIn = args(json)?;
@@ -283,10 +299,17 @@ pub fn call(cmd: &str, json: &str) -> Result<String, String> {
             let a: Extent = args(json)?;
             out(host::extent(s, a.id, &a.scale, a.members)?)
         }
-        "plots_propose" => out(host::propose(args::<Propose>(json)?.files)),
+        "plots_propose" => {
+            let a: Propose = args(json)?;
+            out(host::propose(a.files, a.x_interval))
+        }
         "plots_set_other" => {
             let a: SetOther = args(json)?;
             out(host::set_other(s, a.id, a.member, &a.name, a.value, &a.note)?)
+        }
+        "plots_rebin" => {
+            let a: Rebin = args(json)?;
+            out(host::rebin(s, a.id, a.step)?)
         }
         "plots_patterns" => {
             let a: Patterns = args(json)?;
@@ -295,7 +318,7 @@ pub fn call(cmd: &str, json: &str) -> Result<String, String> {
         "plots_new" => out(host::new_set(s)?),
         "plots_open_buffer_from" => {
             let a: BufferFrom = args(json)?;
-            out(host::open_buffer_from(s, a.path.as_deref(), &a.text, a.files)?)
+            out(host::open_buffer_from(s, a.path.as_deref(), &a.text, a.files, a.x_interval)?)
         }
         "plots_add_from" => {
             let a: IdFiles = args(json)?;
@@ -313,7 +336,7 @@ pub fn call(cmd: &str, json: &str) -> Result<String, String> {
         }
         "plots_open_set_from" => {
             let a: SetFrom = args(json)?;
-            out(host::open_set_from(s, &a.name, &a.text, a.files)?)
+            out(host::open_set_from(s, &a.name, &a.text, a.files, a.x_interval)?)
         }
         "plots_proposed_step" => {
             let a: Scale = args(json)?;
@@ -417,6 +440,7 @@ export!(
     plots_extent,
     plots_propose,
     plots_patterns,
+    plots_rebin,
     plots_save_text,
     plots_new,
     plots_open_buffer_from,
