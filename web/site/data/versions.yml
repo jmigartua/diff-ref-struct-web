@@ -1,0 +1,48 @@
+# The versions of diff-ref-struct Web, newest first: what each brought, as the web stream's README and the project's
+# log record them (web/README.md steps; the log entries named in `source`). tools/build.py writes the versions page.
+- web: "next"
+  core: "0.81.0"
+  date: "2026-10-26"
+  current: true
+  title: "The guide: this site, the manual in HTML and PDF, a quick reference"
+  summary: "The page gains its own site, linked from its start page and its ? button."
+  added:
+    - "This site at /guide/: overview, a five-minute start with a check of what your browser supports, the manual, a one-page quick reference, five recipes, how the page works, the formats, the versions."
+    - "The manual and the quick reference as PDF, typeset by LaTeX in the site's typefaces."
+  fixed:
+    - "The Overlay draws its curves again: the browser's core names each pattern's member `index` where the page reads `member`; the page now reads both (a rename, no number touched; the core asked to answer as the app does)."
+    - "Sum, Average and Difference of Members download their file (they were computed and lost)."
+  known:
+    - "Proposals against time open with each scan's temperature as its variable: open a hold or a run from a .drv that types the times (recipe: A hold)."
+- web: "a1c308d"
+  core: "0.81.0"
+  date: "2026-10-26"
+  title: "The strips take the map's frame"
+  summary: "The Plots module's step 23: the row strip under the map takes the map's frame, so a peak sits under its column; the scale's word said once."
+  known:
+    - "The Overlay draws no curves (the patterns' member named otherwise by the browser's core); the Stack and the maps are not affected."
+    - "On the public page, in some window sizes, the strips may still sit off the map's frame (seen on 26 October 2026)."
+- web: "24d8619"
+  core: "0.81.0"
+  date: "2026-10-25"
+  title: "Public: diff-ref-struct Web at jmigartua.github.io/diff-ref-struct-web"
+  summary: "The first publication by its Action, after the page's steps 4 and 5."
+  added:
+    - "Live mode (Chromium): the folder read again every 2 to 60 s, new files described, sets opened from a proposal grown with the new scans."
+    - "Offline: the page keeps its 36 files (4.4 MB) and opens without the network; installable as an app."
+    - "The view in the address: the set, view, colour scale, zoom, clip and region kept in the link."
+    - "Series recognised by the core: one scan per temperature, the holds, the run against time; exposure classes from the counts' scale σ²/y; large scans rebinned to 0.01° on opening."
+    - "A hundred raw synchrotron scans opened and overlaid in seconds: the patterns asked when drawn, the overlay drawn in slices."
+- web: "step 3"
+  core: "0.79.0"
+  date: "2026-10-25"
+  title: "The core in the browser: files described, buffers and set files routed"
+  added:
+    - "The core compiled to WebAssembly answers every command; each file described by the core (its kind in the tree, listed by folders or by kinds)."
+    - "A .drv or a .buf among the files opens as itself, its members taken from the folder."
+- web: "step 2"
+  core: "—"
+  date: "2026-10-25"
+  title: "The browser host"
+  added:
+    - "The app's Plots module loaded as it is, in a page: the inspector, the folder's tree, the separator, the views."

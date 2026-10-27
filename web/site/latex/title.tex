@@ -1,0 +1,23 @@
+% The title page of a manual (pdf.sh passes \doctitle, \docsub, \docversion, \docaudience).
+\begin{titlepage}
+\raggedright
+\vspace*{3cm}
+{\sffamily\small\color{drsgreen}\MakeUppercase{diff-ref-struct Web}\par}
+\vspace{6pt}
+{\color{drsgreen}\rule{3cm}{1.2pt}\par}
+\vspace{18pt}
+{\drshead\fontsize{34}{40}\selectfont \doctitle\par}
+\vspace{14pt}
+{\drsserif\Large\color{drssoft} \docsub\par}
+\vfill
+{\small\color{drssoft}
+\docaudience\par
+\vspace{10pt}
+\docversion\par
+Josu M. Igartua · Departamento de Física, UPV/EHU · josu.igartua@ehu.eus\par
+\vspace{4pt}
+\textcolor{drsgreen}{jmigartua.github.io/diff-ref-struct-web} (the app) · \textcolor{drsgreen}{…/guide} (this manual online)\par}
+\end{titlepage}
+\setcounter{tocdepth}{1}
+{\hypersetup{linkcolor=drsink}\tableofcontents}
+\clearpage

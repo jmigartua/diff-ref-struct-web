@@ -1,0 +1,67 @@
+% diff-ref-struct Web · the manuals' PDF preamble (tools/pdf.sh, LuaLaTeX through pandoc): the site's typefaces (the
+% family kit's Source Sans 3 for the text, Source Serif 4 for the headings, IBM Plex Mono; all SIL OFL, fetched by
+% pdf.sh into .fonts/), the app's green, symbols the faces lack taken from the system's fallbacks.
+\usepackage{fontspec}
+\directlua{
+  luaotfload.add_fallback("drsfallback", {"Apple Symbols:mode=harf;", "Arial Unicode MS:mode=harf;", "Menlo:mode=harf;"})
+}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont{SourceSans3}[Path=\fontpath/, Extension=.otf, UprightFont=*-Regular, ItalicFont=*-It,
+  BoldFont=*-Semibold, BoldItalicFont=*-SemiboldIt, RawFeature={fallback=drsfallback}]
+\setsansfont{SourceSans3}[Path=\fontpath/, Extension=.otf, UprightFont=*-Regular, ItalicFont=*-It,
+  BoldFont=*-Semibold, BoldItalicFont=*-SemiboldIt, RawFeature={fallback=drsfallback}]
+\newfontfamily\drshead{SourceSerif4}[Path=\fontpath/, Extension=.otf, UprightFont=*-Semibold, ItalicFont=*-SemiboldIt,
+  BoldFont=*-Bold, BoldItalicFont=*-BoldIt, RawFeature={fallback=drsfallback}]
+\newfontfamily\drsserif{SourceSerif4}[Path=\fontpath/, Extension=.otf, UprightFont=*-Regular, ItalicFont=*-It,
+  BoldFont=*-Semibold, RawFeature={fallback=drsfallback}]
+\setmonofont{IBMPlexMono}[Path=\fontpath/, Extension=.otf, UprightFont=*-Regular, ItalicFont=*-Italic,
+  BoldFont=*-Medium, Scale=0.88, RawFeature={fallback=drsfallback}]
+
+\usepackage{xcolor}
+\definecolor{drsgreen}{HTML}{0A7F6F}
+\definecolor{drsink}{HTML}{22262B}
+\definecolor{drssoft}{HTML}{565C64}
+\definecolor{drsfaint}{HTML}{7F858D}
+\definecolor{drsline}{HTML}{DBD8D2}
+\definecolor{drstint}{HTML}{F6F5F2}
+\color{drsink}
+
+% headings: the kit's serif, the green kicker rule under sections
+\addtokomafont{disposition}{\drshead\color{drsink}}
+\addtokomafont{section}{\Large}
+\addtokomafont{subsection}{\large}
+\addtokomafont{subsubsection}{\normalsize}
+\RedeclareSectionCommand[beforeskip=-2.2\baselineskip, afterskip=0.6\baselineskip]{section}
+\RedeclareSectionCommand[beforeskip=-1.4\baselineskip, afterskip=0.4\baselineskip]{subsection}
+
+% running heads
+\usepackage[headsepline=0.4pt]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+\setkomafont{pageheadfoot}{\small\color{drsfaint}}
+\setkomafont{pagenumber}{\small\color{drsfaint}}
+\ihead{diff-ref-struct \textcolor{drsgreen}{Web} · \doctitleshort}
+\ohead{\docversion}
+\ofoot{\pagemark}
+\ifoot{jmigartua.github.io/diff-ref-struct-web/guide}
+\addtokomafont{headsepline}{\color{drsline}}
+
+% links, quotes as a green bar, tables with air, code on the tint
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, linkcolor=drsgreen, urlcolor=drsgreen, citecolor=drsgreen, pdfauthor={Josu M. Igartua}}
+\usepackage{framed}
+\renewenvironment{quote}{\def\FrameCommand{{\color{drsgreen}\vrule width 2pt}\hspace{10pt}}\MakeFramed{\advance\hsize-\width\FrameRestore}\color{drssoft}}{\endMakeFramed}
+\usepackage{longtable}
+\renewcommand{\arraystretch}{1.25}
+\setlength{\LTpre}{8pt}\setlength{\LTpost}{10pt}
+\usepackage{etoolbox}
+\AtBeginEnvironment{longtable}{\small}
+\AtBeginEnvironment{Shaded}{\small}
+\usepackage{enumitem}
+\setlist{itemsep=2pt, topsep=4pt}
+\setlength{\parskip}{4pt}
+\setlength{\parindent}{0pt}
+\usepackage{caption}
+\captionsetup{font={small,color=drssoft}, labelformat=empty, justification=raggedright, singlelinecheck=false}
+\raggedbottom
+\sloppy

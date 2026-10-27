@@ -1,0 +1,22 @@
+<!-- The screenshots at full size: a click on one (an img with data-zoom, or any image of the manuals) opens the image
+     the browser chose for the theme (its currentSrc, 3× for the views) in a dialog; a click or Escape closes it. -->
+<dialog class="lightbox" aria-label="The screenshot at full size"><img alt=""><p class="lb-cap"></p></dialog>
+<script>
+(function () {
+  var d = document.querySelector("dialog.lightbox"); if (!d || !d.showModal) return;
+  var big = d.querySelector("img"), cap = d.querySelector(".lb-cap");
+  function open(img) {
+    big.src = img.currentSrc || img.src; big.alt = img.alt || "";
+    var fig = img.closest("figure"), c = fig && fig.querySelector("figcaption");
+    cap.textContent = c ? c.textContent : (img.alt || "");
+    d.showModal();
+  }
+  document.querySelectorAll("img[data-zoom], .docs-main > p > img, .docs-main figure img").forEach(function (img) {
+    img.classList.add("zoomable"); img.setAttribute("tabindex", "0"); img.setAttribute("role", "button");
+    img.setAttribute("aria-label", "Show at full size: " + (img.alt || "the screenshot"));
+    img.addEventListener("click", function () { open(img); });
+    img.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(img); } });
+  });
+  d.addEventListener("click", function () { d.close(); });
+})();
+</script>

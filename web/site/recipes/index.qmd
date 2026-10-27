@@ -1,0 +1,29 @@
+---
+title: "Recipes"
+pagetitle: "Recipes · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>Recipes: the analyses the page is made for</h1>
+<p class="sub">Each recipe is one question about a series of patterns, the controls that answer it in order, what to look at, and the traps. They were written while working real in-situ runs (a laboratory series at low temperature, a synchrotron run of 101 scans to 1300&nbsp;°C) and use numbers from them where numbers help.</p>
+
+<div class="shelf shelf-2">
+  <div class="shelf-item"><div class="num">1 · in situ</div><h3><a href="ramp/index.html">A ramp: when does a phase appear?</a></h3><p>One pattern per temperature on the map; the onset bracketed between two rows, then checked on the patterns themselves.</p></div>
+  <div class="shelf-item"><div class="num">2 · kinetics</div><h3><a href="hold/index.html">A hold: growth curves</a></h3><p>A window on a clean reflection, its integral above the background against time, with &sigma;; the first scan above 3&sigma;.</p></div>
+  <div class="shelf-item"><div class="num">3 · comparison</div><h3><a href="compare/index.html">Two patterns: what changed?</a></h3><p>Linked zoom's difference strip, the Difference Map, a background scan subtracted, in d instead of 2&theta;.</p></div>
+  <div class="shelf-item"><div class="num">4 · at the instrument</div><h3><a href="live/index.html">Live at the instrument</a></h3><p>The output folder read again every few seconds, the map growing with every scan, at a beamline without network.</p></div>
+  <div class="shelf-item"><div class="num">5 · with the team</div><h3><a href="share/index.html">Share a view, keep a set</a></h3><p>A link that brings back the view on a colleague's copy of the files; a <code>.drv</code> for the Mac app and the command line.</p></div>
+</div>
+
+<h2>Before any recipe</h2>
+<ul>
+<li><b>Name the files so that the core can read them.</b> A temperature (<code>_300K</code>, <code>T300</code>, <code>T0900C</code>) and an elapsed time (<code>t16530s</code>) in each name let the core order and place every scan without a logbook. A sortable sequence number keeps the folder in acquisition order.</li>
+<li><b>Keep the originals.</b> Rename copies, never the files as delivered; the page never writes into a folder, but other tools do.</li>
+<li><b>Know your first degree.</b> A beamstop's shadow and the direct beam's tail are not the sample: zoom past them before reading colours or maxima.</li>
+</ul>
+</article>
+```

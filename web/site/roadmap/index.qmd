@@ -1,0 +1,16 @@
+---
+title: "Roadmap"
+pagetitle: "Roadmap · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="manual-head">
+<h1>Roadmap</h1>
+<p class="sub">What is decided, what is considered, and what was set aside, each with its reason and where it was decided. Done items move to the <a href="../releases/index.html">release notes</a>; requests from users enter here when they are taken up. The same list closes every manual as its Appendix C.</p>
+</div>
+```
+
+{{< include ../_gen/roadmap.md >}}

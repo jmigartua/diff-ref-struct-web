@@ -1,0 +1,439 @@
+# CIF written by diff-ref-struct 0.66.0 (drs): phase Sr2ScSbO6 of a_modes 2026-10-11 12.00.00
+
+data_Sr2ScSbO6
+_pd_block_id                      'a_modes 2026-10-11 12.00.00|phase 1'
+_pd_block_diffractogram_id        'a_modes 2026-10-11 12.00.00|pattern'
+_pd_phase_name                    Sr2ScSbO6
+_audit_creation_method            'diff-ref-struct 0.66.0 (drs)'
+_computing_structure_refinement   'diff-ref-struct 0.66.0'
+_computing_publication_material   'diff-ref-struct 0.66.0'
+_computing_data_collection        ?
+_computing_structure_solution     ?
+_computing_molecular_graphics     ?
+_publ_section_title
+;
+SrScLRRT P21/n modes LR RT
+;
+_publ_contact_author_name         ?
+_publ_contact_author_email        ?
+_journal_name_full                ?
+_chemical_name_systematic         ?
+_chemical_formula_sum             'O6 Sb Sc Sr2'
+_cell_formula_units_Z             2
+_space_group_IT_number            14
+_space_group_name_H-M_alt         'P 21/n'
+_space_group_name_Hall            '-P 2yn'
+_space_group_crystal_system       monoclinic
+loop_
+_space_group_symop_id
+_space_group_symop_operation_xyz
+1 'x,y,z'
+2 '-x,-y,-z'
+3 '-x+1/2,y+1/2,-z+1/2'
+4 'x+1/2,-y+1/2,z+1/2'
+_cell_length_a                     5.69436(11)
+_cell_length_b                     5.68004(11)
+_cell_length_c                     8.02616(15)
+_cell_angle_alpha                  90
+_cell_angle_beta                   90.050(4)
+_cell_angle_gamma                  90
+_cell_volume                      259.600(9)
+_cell_measurement_temperature     ?
+_diffrn_radiation_probe           neutron
+_diffrn_radiation_wavelength      1.59509
+_diffrn_ambient_temperature       ?
+_diffrn_measurement_device_type   ?
+_pd_meas_number_of_points         3199
+_pd_meas_2theta_range_min         0
+_pd_meas_2theta_range_max         159.9
+_pd_meas_2theta_range_inc         0.05
+_refine_ls_structure_factor_coef  Inet
+_pd_proc_ls_prof_R_factor         0.048
+_pd_proc_ls_prof_wR_factor        0.0641
+_pd_proc_ls_prof_wR_expected      0.0446
+_refine_ls_goodness_of_fit_all    1.437
+_refine_ls_R_I_factor             0.0619
+_refine_ls_R_factor_all           0.0447
+_refine_ls_R_Fsqd_factor          0.101
+_refine_ls_number_parameters      17
+_refine_ls_number_restraints      0
+_refine_ls_number_constraints     0
+_refine_ls_number_reflns          497
+_refine_ls_weighting_scheme       sigma
+_refine_ls_weighting_details      'w = 1/sigma^2^(y~obs~)'
+_refine_ls_shift/su_max           0.916
+_refine_special_details
+;
+Standard uncertainties from the inverse of the least-squares normal matrix at the final values, multiplied by
+chi^2^ = S/(N - P) = 2.0656 over all the points used (Prince, 2004, eq. 6.4.3); those of derived quantities
+(positions of a mode phase, distances, angles, the volume) propagated through the full covariance. Values
+fixed by symmetry or by a constraint carry none. su's rounded up, the IUCr's 2-19 rule (Schwarzenbach et al.,
+1995).
+;
+_pd_proc_ls_profile_function      'Thompson-Cox-Hastings pseudo-Voigt (Thompson, Cox & Hastings, 1987), H~G~^2^ = U tan^2^\q + V tan\q + W + I~G~/cos^2^\q, H~L~ = X tan\q + Y/cos\q; asymmetry (Berar & Baldinozzi, 1993)'
+_pd_proc_ls_background_function   'linear interpolation between 33 points'
+_pd_proc_ls_pref_orient_corr      none
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+_atom_site_U_iso_or_equiv
+_atom_site_adp_type
+_atom_site_occupancy
+_atom_site_site_symmetry_multiplicity
+_atom_site_Wyckoff_symbol
+Sb1 Sb 0 0 0 0.00178 Uiso 1 2 a
+Sc1 Sc 0 0 0.5 0.00178 Uiso 1 2 d
+Sr1 Sr 0 0.5096(5) 0.25 0.00413 Uiso 1 4 e
+O11 O 0.2265(3) 0.2615(3) 0.02562(10) 0.00623 Uiso 1 4 e
+O11_2 O 0.44876(19) 0.5045(8) 0.74400(19) 0.00623 Uiso 1 4 e
+O11_3 O 0.7385(3) 0.2265(3) 0.97438(10) 0.00623 Uiso 1 4 e
+loop_
+_geom_bond_atom_site_label_1
+_geom_bond_atom_site_label_2
+_geom_bond_site_symmetry_2
+_geom_bond_distance
+_geom_bond_publ_flag
+Sb1 O11 . 1.9777(16) yes
+Sb1 O11 2_555 1.9777(16) yes
+Sb1 O11_2 3_545 1.9804(16) yes
+Sb1 O11_2 4_454 1.9804(16) yes
+Sb1 O11_3 1_454 1.9784(16) yes
+Sb1 O11_3 2_656 1.9784(16) yes
+Sc1 O11 3_545 2.0745(15) yes
+Sc1 O11 4_455 2.0745(15) yes
+Sc1 O11_2 3_546 2.0752(15) yes
+Sc1 O11_2 4_454 2.0752(15) yes
+Sc1 O11_3 3_546 2.0738(15) yes
+Sc1 O11_3 4_454 2.0738(15) yes
+Sr1 O11 . 2.6264(18) yes
+Sr1 O11 2_565 2.8710(16) yes
+Sr1 O11 3_555 2.7767(19) yes
+Sr1 O11_2 2_566 2.5572(11) yes
+Sr1 O11_2 4_454 2.935(5) yes
+Sr1 O11_2 4_464 2.776(5) yes
+Sr1 O11_3 2_666 2.7769(19) yes
+Sr1 O11_3 3_556 2.8742(16) yes
+Sr1 O11_3 4_454 2.6235(17) yes
+O11 O11_2 1_554 2.936(3) yes
+O11 O11_2 2_666 2.932(3) yes
+O11 O11_2 3_545 2.794(4) yes
+O11 O11_2 4_454 2.804(4) yes
+O11 O11_3 1_454 2.816(3) yes
+O11 O11_3 1_554 2.951(3) yes
+O11 O11_3 2_656 2.779(3) yes
+O11 O11_3 2_666 2.915(3) yes
+O11_2 O11_3 . 2.938(4) yes
+O11_2 O11_3 2_667 2.930(4) yes
+O11_2 O11_3 3_656 2.800(3) yes
+O11_2 O11_3 4_454 2.799(4) yes
+loop_
+_geom_angle_atom_site_label_1
+_geom_angle_atom_site_label_2
+_geom_angle_atom_site_label_3
+_geom_angle_site_symmetry_1
+_geom_angle_site_symmetry_3
+_geom_angle
+_geom_angle_publ_flag
+O11 Sb1 O11 . 2_555 180 yes
+O11 Sb1 O11_2 . 3_545 89.80(10) yes
+O11 Sb1 O11_2 . 4_454 90.20(10) yes
+O11 Sb1 O11_3 . 1_454 90.753(5) yes
+O11 Sb1 O11_3 . 2_656 89.247(5) yes
+O11 Sb1 O11_2 2_555 3_545 90.20(10) yes
+O11 Sb1 O11_2 2_555 4_454 89.80(10) yes
+O11 Sb1 O11_3 2_555 1_454 89.247(5) yes
+O11 Sb1 O11_3 2_555 2_656 90.753(5) yes
+O11_2 Sb1 O11_2 3_545 4_454 180 yes
+O11_2 Sb1 O11_3 3_545 1_454 90.02(9) yes
+O11_2 Sb1 O11_3 3_545 2_656 89.98(9) yes
+O11_2 Sb1 O11_3 4_454 1_454 89.98(9) yes
+O11_2 Sb1 O11_3 4_454 2_656 90.02(9) yes
+O11_3 Sb1 O11_3 1_454 2_656 180 yes
+O11 Sc1 O11 3_545 4_455 180 yes
+O11 Sc1 O11_2 3_545 3_546 90.07(8) yes
+O11 Sc1 O11_2 3_545 4_454 89.93(8) yes
+O11 Sc1 O11_3 3_545 3_546 90.712(5) yes
+O11 Sc1 O11_3 3_545 4_454 89.288(5) yes
+O11 Sc1 O11_2 4_455 3_546 89.93(8) yes
+O11 Sc1 O11_2 4_455 4_454 90.07(8) yes
+O11 Sc1 O11_3 4_455 3_546 89.288(5) yes
+O11 Sc1 O11_3 4_455 4_454 90.712(5) yes
+O11_2 Sc1 O11_2 3_546 4_454 180 yes
+O11_2 Sc1 O11_3 3_546 3_546 90.15(9) yes
+O11_2 Sc1 O11_3 3_546 4_454 89.85(9) yes
+O11_2 Sc1 O11_3 4_454 3_546 89.85(9) yes
+O11_2 Sc1 O11_3 4_454 4_454 90.15(9) yes
+O11_3 Sc1 O11_3 3_546 4_454 180 yes
+O11 Sr1 O11 . 2_565 86.29(5) yes
+O11 Sr1 O11 . 3_555 116.470(15) yes
+O11 Sr1 O11_2 . 2_566 119.17(8) yes
+O11 Sr1 O11_2 . 4_454 60.24(8) yes
+O11 Sr1 O11_2 . 4_464 124.99(6) yes
+O11 Sr1 O11_3 . 2_666 65.23(6) yes
+O11 Sr1 O11_3 . 3_556 172.08(9) yes
+O11 Sr1 O11_3 . 4_454 86.68(8) yes
+O11 Sr1 O11 2_565 3_555 121.19(9) yes
+O11 Sr1 O11_2 2_565 2_566 65.19(7) yes
+O11 Sr1 O11_2 2_565 4_454 113.16(5) yes
+O11 Sr1 O11_2 2_565 4_464 59.28(7) yes
+O11 Sr1 O11_3 2_565 2_666 59.78(6) yes
+O11 Sr1 O11_3 2_565 3_556 100.76(7) yes
+O11 Sr1 O11_3 2_565 4_454 172.94(6) yes
+O11 Sr1 O11_2 3_555 2_566 124.32(8) yes
+O11 Sr1 O11_2 3_555 4_454 125.37(6) yes
+O11 Sr1 O11_2 3_555 4_464 63.76(8) yes
+O11 Sr1 O11_3 3_555 2_666 80.90(7) yes
+O11 Sr1 O11_3 3_555 3_556 62.95(6) yes
+O11 Sr1 O11_3 3_555 4_454 61.86(6) yes
+O11_2 Sr1 O11_2 2_566 4_454 82.52(10) yes
+O11_2 Sr1 O11_2 2_566 4_464 85.78(10) yes
+O11_2 Sr1 O11_3 2_566 2_666 124.44(8) yes
+O11_2 Sr1 O11_3 2_566 3_556 61.71(8) yes
+O11_2 Sr1 O11_3 2_566 4_454 119.19(8) yes
+O11_2 Sr1 O11_2 4_454 4_464 168.10(5) yes
+O11_2 Sr1 O11_3 4_454 2_666 125.43(6) yes
+O11_2 Sr1 O11_3 4_454 3_556 113.08(5) yes
+O11_2 Sr1 O11_3 4_454 4_454 63.51(8) yes
+O11_2 Sr1 O11_3 4_464 2_666 60.56(8) yes
+O11_2 Sr1 O11_3 4_464 3_556 62.45(7) yes
+O11_2 Sr1 O11_3 4_464 4_454 125.07(6) yes
+O11_3 Sr1 O11_3 2_666 3_556 121.46(9) yes
+O11_3 Sr1 O11_3 2_666 4_454 116.331(14) yes
+O11_3 Sr1 O11_3 3_556 4_454 86.30(5) yes
+Sb1 O11 Sc1 . 3_555 165.86(5) yes
+Sb1 O11 Sr1 . . 98.84(6) yes
+Sb1 O11 Sr1 . 2_565 88.13(6) yes
+Sb1 O11 Sr1 . 3_545 92.63(7) yes
+Sb1 O11 O11_2 . 1_554 123.68(7) yes
+Sb1 O11 O11_2 . 2_666 144.77(7) yes
+Sb1 O11 O11_2 . 3_545 45.14(5) yes
+Sb1 O11 O11_2 . 4_454 44.94(5) yes
+Sb1 O11 O11_3 . 1_454 44.633(3) yes
+Sb1 O11 O11_3 . 1_554 125.39(8) yes
+Sb1 O11 O11_3 . 2_656 45.387(3) yes
+Sb1 O11 O11_3 . 2_666 142.54(8) yes
+Sc1 O11 Sr1 3_555 . 94.97(7) yes
+Sc1 O11 Sr1 3_555 2_565 87.98(5) yes
+Sc1 O11 Sr1 3_555 3_545 88.86(6) yes
+Sc1 O11 O11_2 3_555 1_554 44.97(4) yes
+Sc1 O11 O11_2 3_555 2_666 45.05(5) yes
+Sc1 O11 O11_2 3_555 3_545 122.15(6) yes
+Sc1 O11 O11_2 3_555 4_454 146.91(6) yes
+Sc1 O11 O11_3 3_555 1_454 140.57(8) yes
+Sc1 O11 O11_3 3_555 1_554 44.634(3) yes
+Sc1 O11 O11_3 3_555 2_656 126.70(8) yes
+Sc1 O11 O11_3 3_555 2_666 45.346(3) yes
+Sr1 O11 Sr1 . 2_565 93.71(5) yes
+Sr1 O11 Sr1 . 3_545 96.16(3) yes
+Sr1 O11 O11_2 . 1_554 119.20(10) yes
+Sr1 O11 O11_2 . 2_666 68.54(7) yes
+Sr1 O11 O11_2 . 3_545 129.51(6) yes
+Sr1 O11 O11_2 . 4_454 65.35(9) yes
+Sr1 O11 O11_3 . 1_454 69.68(5) yes
+Sr1 O11 O11_3 . 1_554 128.13(6) yes
+Sr1 O11 O11_3 . 2_656 124.79(6) yes
+Sr1 O11 O11_3 . 2_666 59.88(7) yes
+Sr1 O11 Sr1 2_565 3_545 169.86(4) yes
+Sr1 O11 O11_2 2_565 1_554 52.24(5) yes
+Sr1 O11 O11_2 2_565 2_666 124.28(9) yes
+Sr1 O11 O11_2 2_565 3_545 58.66(10) yes
+Sr1 O11 O11_2 2_565 4_454 118.19(6) yes
+Sr1 O11 O11_3 2_565 1_454 58.45(6) yes
+Sr1 O11 O11_3 2_565 1_554 111.49(4) yes
+Sr1 O11 O11_3 2_565 2_656 118.93(6) yes
+Sr1 O11 O11_3 2_565 2_666 65.09(6) yes
+Sr1 O11 O11_2 3_545 1_554 119.97(7) yes
+Sr1 O11 O11_2 3_545 2_666 58.10(9) yes
+Sr1 O11 O11_2 3_545 3_545 115.66(10) yes
+Sr1 O11 O11_2 3_545 4_454 68.49(6) yes
+Sr1 O11 O11_3 3_545 1_454 127.68(6) yes
+Sr1 O11 O11_3 3_545 1_554 60.14(6) yes
+Sr1 O11 O11_3 3_545 2_656 56.36(7) yes
+Sr1 O11 O11_3 3_545 2_666 118.40(6) yes
+O11_2 O11 O11_2 1_554 2_666 90.020(5) yes
+O11_2 O11 O11_2 1_554 3_545 78.66(4) yes
+O11_2 O11 O11_2 1_554 4_454 168.05(6) yes
+O11_2 O11 O11_3 1_554 1_454 110.29(8) yes
+O11_2 O11 O11_3 1_554 1_554 59.86(3) yes
+O11_2 O11 O11_3 1_554 2_656 115.97(10) yes
+O11_2 O11 O11_3 1_554 2_666 60.10(8) yes
+O11_2 O11 O11_2 2_666 3_545 161.78(6) yes
+O11_2 O11 O11_2 2_666 4_454 101.88(5) yes
+O11_2 O11 O11_3 2_666 1_454 138.22(7) yes
+O11_2 O11 O11_3 2_666 1_554 59.73(3) yes
+O11_2 O11 O11_3 2_666 2_656 114.02(9) yes
+O11_2 O11 O11_3 2_666 2_666 60.31(8) yes
+O11_2 O11 O11_2 3_545 4_454 90.077(5) yes
+O11_2 O11 O11_3 3_545 1_454 59.88(2) yes
+O11_2 O11 O11_3 3_545 1_554 102.07(6) yes
+O11_2 O11 O11_3 3_545 2_656 60.29(8) yes
+O11_2 O11 O11_3 3_545 2_666 123.07(9) yes
+O11_2 O11 O11_3 4_454 1_454 59.74(3) yes
+O11_2 O11 O11_3 4_454 1_554 127.49(9) yes
+O11_2 O11 O11_3 4_454 2_656 60.20(8) yes
+O11_2 O11 O11_3 4_454 2_666 125.18(8) yes
+O11_3 O11 O11_3 1_454 1_554 161.76(6) yes
+O11_3 O11 O11_3 1_454 2_656 90.0198(4) yes
+O11_3 O11 O11_3 1_454 2_666 97.92(8) yes
+O11_3 O11 O11_3 1_554 2_656 82.07(8) yes
+O11_3 O11 O11_3 1_554 2_666 89.9801(3) yes
+O11_3 O11 O11_3 2_656 2_666 171.97(8) yes
+Sb1 O11_2 Sc1 3_555 3_556 163.38(7) yes
+Sb1 O11_2 Sr1 3_555 2_566 99.57(5) yes
+Sb1 O11_2 Sr1 3_555 4_555 89.35(13) yes
+Sb1 O11_2 Sr1 3_555 4_565 90.82(13) yes
+Sb1 O11_2 O11 3_555 1_556 145.00(17) yes
+Sb1 O11_2 O11 3_555 2_666 122.41(10) yes
+Sb1 O11_2 O11 3_555 3_555 45.06(5) yes
+Sb1 O11_2 O11 3_555 4_555 44.86(5) yes
+Sb1 O11_2 O11_3 3_555 . 122.17(13) yes
+Sb1 O11_2 O11_3 3_555 2_667 145.45(18) yes
+Sb1 O11_2 O11_3 3_555 3_656 44.96(4) yes
+Sb1 O11_2 O11_3 3_555 4_454 44.98(5) yes
+Sc1 O11_2 Sr1 3_556 2_566 96.93(6) yes
+Sc1 O11_2 Sr1 3_556 4_555 87.57(12) yes
+Sc1 O11_2 Sr1 3_556 4_565 88.87(13) yes
+Sc1 O11_2 O11 3_556 1_556 44.95(5) yes
+Sc1 O11_2 O11 3_556 2_666 45.03(4) yes
+Sc1 O11_2 O11 3_556 3_555 145.40(18) yes
+Sc1 O11_2 O11 3_556 4_555 122.24(12) yes
+Sc1 O11_2 O11_3 3_556 . 44.91(5) yes
+Sc1 O11_2 O11_3 3_556 2_667 45.05(5) yes
+Sc1 O11_2 O11_3 3_556 3_656 122.44(10) yes
+Sc1 O11_2 O11_3 3_556 4_454 145.03(17) yes
+Sr1 O11_2 Sr1 2_566 4_555 93.89(12) yes
+Sr1 O11_2 Sr1 2_566 4_565 97.81(12) yes
+Sr1 O11_2 O11 2_566 1_556 62.57(7) yes
+Sr1 O11_2 O11 2_566 2_666 129.19(10) yes
+Sr1 O11_2 O11 2_566 3_555 71.01(6) yes
+Sr1 O11_2 O11 2_566 4_555 124.00(11) yes
+Sr1 O11_2 O11_3 2_566 . 122.14(11) yes
+Sr1 O11_2 O11_3 2_566 2_667 68.74(7) yes
+Sr1 O11_2 O11_3 2_566 3_656 131.46(10) yes
+Sr1 O11_2 O11_3 2_566 4_454 64.73(6) yes
+Sr1 O11_2 Sr1 4_555 4_565 168.10(5) yes
+Sr1 O11_2 O11 4_555 1_556 64.06(9) yes
+Sr1 O11_2 O11 4_555 2_666 112.21(7) yes
+Sr1 O11_2 O11 4_555 3_555 124.61(10) yes
+Sr1 O11_2 O11 4_555 4_555 54.41(8) yes
+Sr1 O11_2 O11_3 4_555 . 53.07(7) yes
+Sr1 O11_2 O11_3 4_555 2_667 122.85(9) yes
+Sr1 O11_2 O11_3 4_555 3_656 113.27(8) yes
+Sr1 O11_2 O11_3 4_555 4_454 65.71(10) yes
+Sr1 O11_2 O11 4_565 1_556 119.96(9) yes
+Sr1 O11_2 O11 4_565 2_666 58.14(8) yes
+Sr1 O11_2 O11 4_565 3_555 62.06(10) yes
+Sr1 O11_2 O11 4_565 4_555 119.16(8) yes
+Sr1 O11_2 O11_3 4_565 . 117.68(8) yes
+Sr1 O11_2 O11_3 4_565 2_667 60.42(9) yes
+Sr1 O11_2 O11_3 4_565 3_656 59.74(8) yes
+Sr1 O11_2 O11_3 4_565 4_454 121.63(10) yes
+O11 O11_2 O11 1_556 2_666 89.980(5) yes
+O11 O11_2 O11 1_556 3_555 133.47(5) yes
+O11 O11_2 O11 1_556 4_555 118.15(15) yes
+O11 O11_2 O11_3 1_556 . 60.33(5) yes
+O11 O11_2 O11_3 1_556 2_667 59.592(6) yes
+O11 O11_2 O11_3 1_556 3_656 165.58(6) yes
+O11 O11_2 O11_3 1_556 4_454 100.98(11) yes
+O11 O11_2 O11 2_666 3_555 118.44(15) yes
+O11 O11_2 O11 2_666 4_555 106.42(5) yes
+O11 O11_2 O11_3 2_666 . 59.550(7) yes
+O11 O11_2 O11_3 2_666 2_667 60.46(5) yes
+O11 O11_2 O11_3 2_666 3_656 77.85(8) yes
+O11 O11_2 O11_3 2_666 4_454 165.72(6) yes
+O11 O11_2 O11 3_555 4_555 89.923(5) yes
+O11 O11_2 O11_3 3_555 . 165.57(6) yes
+O11 O11_2 O11_3 3_555 2_667 101.25(12) yes
+O11 O11_2 O11_3 3_555 3_656 60.45(5) yes
+O11 O11_2 O11_3 3_555 4_454 59.589(6) yes
+O11 O11_2 O11_3 4_555 . 77.70(9) yes
+O11 O11_2 O11_3 4_555 2_667 165.73(6) yes
+O11 O11_2 O11_3 4_555 3_656 59.463(7) yes
+O11 O11_2 O11_3 4_555 4_454 60.34(6) yes
+O11_3 O11_2 O11_3 . 2_667 89.960(5) yes
+O11_3 O11_2 O11_3 . 3_656 106.20(5) yes
+O11_3 O11_2 O11_3 . 4_454 118.32(15) yes
+O11_3 O11_2 O11_3 2_667 3_656 118.70(15) yes
+O11_3 O11_2 O11_3 2_667 4_454 133.25(6) yes
+O11_3 O11_2 O11_3 3_656 4_454 89.943(5) yes
+Sb1 O11_3 Sc1 1_656 3_556 165.87(5) yes
+Sb1 O11_3 Sr1 1_656 2_666 90.83(6) yes
+Sb1 O11_3 Sr1 1_656 3_546 89.85(6) yes
+Sb1 O11_3 Sr1 1_656 4_555 97.35(7) yes
+Sb1 O11_3 O11 1_656 1_556 140.60(8) yes
+Sb1 O11_3 O11 1_656 1_656 44.614(3) yes
+Sb1 O11_3 O11 1_656 2_656 45.366(3) yes
+Sb1 O11_3 O11 1_656 2_666 126.68(8) yes
+Sb1 O11_3 O11_2 1_656 . 146.85(6) yes
+Sb1 O11_3 O11_2 1_656 2_667 122.23(6) yes
+Sb1 O11_3 O11_2 1_656 3_646 45.02(5) yes
+Sb1 O11_3 O11_2 1_656 4_555 45.04(4) yes
+Sc1 O11_3 Sr1 3_556 2_666 90.67(7) yes
+Sc1 O11_3 Sr1 3_556 3_546 86.26(6) yes
+Sc1 O11_3 Sr1 3_556 4_555 96.45(6) yes
+Sc1 O11_3 O11 3_556 1_556 44.654(3) yes
+Sc1 O11_3 O11 3_556 1_656 125.38(8) yes
+Sc1 O11_3 O11 3_556 2_656 142.57(8) yes
+Sc1 O11_3 O11 3_556 2_666 45.366(3) yes
+Sc1 O11_3 O11_2 3_556 . 44.95(5) yes
+Sc1 O11_3 O11_2 3_556 2_667 45.09(5) yes
+Sc1 O11_3 O11_2 3_556 3_646 144.73(7) yes
+Sc1 O11_3 O11_2 3_556 4_555 123.66(7) yes
+Sr1 O11_3 Sr1 2_666 3_546 169.89(4) yes
+Sr1 O11_3 Sr1 2_666 4_555 96.22(3) yes
+Sr1 O11_3 O11 2_666 1_556 125.76(6) yes
+Sr1 O11_3 O11 2_666 1_656 61.77(5) yes
+Sr1 O11_3 O11 2_666 2_656 119.99(6) yes
+Sr1 O11_3 O11 2_666 2_666 54.89(7) yes
+Sr1 O11_3 O11_2 2_666 . 66.60(6) yes
+Sr1 O11_3 O11_2 2_666 2_667 114.49(10) yes
+Sr1 O11_3 O11_2 2_666 3_646 59.70(9) yes
+Sr1 O11_3 O11_2 2_666 4_555 121.68(7) yes
+Sr1 O11_3 Sr1 3_546 4_555 93.70(5) yes
+Sr1 O11_3 O11 3_546 1_556 56.91(5) yes
+Sr1 O11_3 O11 3_546 1_656 112.63(5) yes
+Sr1 O11_3 O11 3_546 2_656 66.82(6) yes
+Sr1 O11_3 O11 3_546 2_666 117.38(6) yes
+Sr1 O11_3 O11_2 3_546 . 116.70(6) yes
+Sr1 O11_3 O11_2 3_546 2_667 57.13(9) yes
+Sr1 O11_3 O11_2 3_546 3_646 126.16(9) yes
+Sr1 O11_3 O11_2 3_546 4_555 53.57(6) yes
+Sr1 O11_3 O11 4_555 1_556 67.62(5) yes
+Sr1 O11_3 O11 4_555 1_656 130.28(5) yes
+Sr1 O11_3 O11 4_555 2_656 61.78(7) yes
+Sr1 O11_3 O11 4_555 2_666 123.05(6) yes
+Sr1 O11_3 O11_2 4_555 . 63.42(9) yes
+Sr1 O11_3 O11_2 4_555 2_667 127.42(6) yes
+Sr1 O11_3 O11_2 4_555 3_646 70.68(6) yes
+Sr1 O11_3 O11_2 4_555 4_555 120.79(11) yes
+O11 O11_3 O11 1_556 1_656 161.76(6) yes
+O11 O11_3 O11 1_556 2_656 97.93(8) yes
+O11 O11_3 O11 1_556 2_666 90.0199(3) yes
+O11 O11_3 O11_2 1_556 . 59.81(3) yes
+O11 O11_3 O11_2 1_556 2_667 59.81(2) yes
+O11 O11_3 O11_2 1_556 3_646 138.28(7) yes
+O11 O11_3 O11_2 1_556 4_555 110.23(8) yes
+O11 O11_3 O11 1_656 2_656 89.9802(4) yes
+O11 O11_3 O11 1_656 2_666 82.08(8) yes
+O11 O11_3 O11_2 1_656 . 127.42(9) yes
+O11 O11_3 O11_2 1_656 2_667 102.14(6) yes
+O11 O11_3 O11_2 1_656 3_646 59.67(4) yes
+O11 O11_3 O11_2 1_656 4_555 59.92(4) yes
+O11 O11_3 O11 2_656 2_666 171.97(8) yes
+O11 O11_3 O11_2 2_656 . 125.19(8) yes
+O11 O11_3 O11_2 2_656 2_667 123.11(9) yes
+O11 O11_3 O11_2 2_656 3_646 60.34(8) yes
+O11 O11_3 O11_2 2_656 4_555 60.12(8) yes
+O11 O11_3 O11_2 2_666 . 60.14(8) yes
+O11 O11_3 O11_2 2_666 2_667 60.31(8) yes
+O11 O11_3 O11_2 2_666 3_646 113.95(9) yes
+O11 O11_3 O11_2 2_666 4_555 116.01(10) yes
+O11_2 O11_3 O11_2 . 2_667 90.040(5) yes
+O11_2 O11_3 O11_2 . 3_646 101.84(5) yes
+O11_2 O11_3 O11_2 . 4_555 168.05(6) yes
+O11_2 O11_3 O11_2 2_667 3_646 161.79(6) yes
+O11_2 O11_3 O11_2 2_667 4_555 78.68(4) yes
+O11_2 O11_3 O11_2 3_646 4_555 90.057(5) yes

@@ -1,0 +1,10 @@
+{
+  "name": "drs-wasm-tests",
+  "private": true,
+  "description": "The diff-ref-struct core in the browser (W1): the wasm package built and tested in node against the command line",
+  "type": "module",
+  "scripts": {
+    "build": "wasm-pack build --target web --release",
+    "test": "wasm-pack build --target web --release && node --test tests/*.test.mjs"
+  }
+}

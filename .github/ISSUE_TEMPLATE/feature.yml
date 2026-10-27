@@ -1,0 +1,18 @@
+name: A feature
+description: Something you would like the page to do.
+title: "Feature: "
+labels: [feature]
+body:
+  - type: textarea
+    id: want
+    attributes: { label: "What you want to do", description: "The analysis, not the button: what question about your patterns it would answer." }
+    validations: { required: true }
+  - type: textarea
+    id: data
+    attributes: { label: "With which data", description: "Instrument, number of scans, format (no files, please)." }
+  - type: textarea
+    id: today
+    attributes: { label: "What you do today instead" }
+  - type: input
+    id: version
+    attributes: { label: "Version", description: "diff-ref-struct Web x.y.z (the foot of the start page)." }

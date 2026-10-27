@@ -1,0 +1,167 @@
+<!doctype html>
+<!-- diff-ref-struct · the Map viewer's page (Plots' step 18, I08 step 5; L409, PL38): one self-contained page the
+     core writes beside a plot set (`drs plots show <set.drv> --browser`), or the app's Export ▸ Viewer Page… (Dev).
+     Nothing fetched: the page's data is the JSON in the data element (the core's `page_data`), the viewer the classic
+     script after it (core/assets/viewer/map.js). The two markers below are replaced by the writer. The kit's colours
+     are inlined, light and dark by the system. The page has no core to ask: "range from the view" works with the saved
+     regions' blocks only, and says so; what is changed on the page (a clip, a region) is not written back. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>diff-ref-struct · map</title>
+<style>
+:root { --bg: #fbfbfa; --panel: #f1f1ee; --panel2: #e9e9e5; --ink: #1d1d1f; --muted: #6e6e73; --line: #d2d2cf; --obs: #c4372f; --diff: #2f6fbf; --accent: #0a7f6f; --accent-ink: #ffffff; --sel: #d9ece8; --phase-0: #0a7f6f; --phase-1: #b26b00; --phase-2: #7a3fb8; --phase-3: #2f6fbf; --phase-4: #b03a6c; --marker-scale: 1; color-scheme: light dark; }
+@media (prefers-color-scheme: dark) { :root { --bg: #1c1c1e; --panel: #242426; --panel2: #2c2c2e; --ink: #f2f2f2; --muted: #9a9aa0; --line: #3a3a3c; --obs: #ff6b5e; --diff: #64a6ff; --accent: #3fd0b8; --accent-ink: #0f1f1c; --sel: #243b37; --phase-0: #3fd0b8; --phase-1: #f0a23a; --phase-2: #c08cf0; --phase-3: #64a6ff; --phase-4: #f07aa6; } }
+* { box-sizing: border-box; }
+html, body { height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--ink); font: 13px/1.4 -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif; display: flex; flex-direction: column; }
+header { flex: none; display: flex; align-items: baseline; gap: 12px; padding: 8px 14px; border-bottom: 1px solid var(--line); background: var(--panel); flex-wrap: wrap; }
+header h1 { font-size: 14px; font-weight: 600; margin: 0; }
+header .sub { color: var(--muted); font-size: 12px; }
+.ctabs { flex: none; display: flex; align-items: center; gap: 8px; padding: 6px 14px; flex-wrap: wrap; }
+.ctab { padding: 4px 10px; border-radius: 6px 6px 0 0; color: var(--muted); cursor: default; }
+.ctab.active { color: var(--ink); background: var(--panel2); }
+button { padding: 3px 9px; border-radius: 6px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; font-size: 12px; cursor: pointer; }
+button:hover { border-color: var(--accent); }
+button.on { background: var(--sel); border-color: var(--accent); }
+.sub { color: var(--muted); font-size: 12px; }
+main { flex: 1; min-height: 0; display: grid; grid-template-columns: 1fr 220px; gap: 0; }
+.areas { flex: 1; min-height: 0; display: flex; gap: 6px; padding: 0 8px 0 14px; container-type: size; }
+.mapcol { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; gap: 6px; }
+.plotarea { position: relative; flex: 1; min-height: 0; min-width: 0; }
+.plotarea canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: crosshair; }
+.readout { position: absolute; top: 8px; right: 16px; color: var(--muted); font-variant-numeric: tabular-nums; pointer-events: none; font-size: 12px; }
+.rowstrip { flex: 0 0 30%; }
+.colstrip { flex: 0 0 28%; }
+@container (max-height: 260px) { .rowstrip { display: none; } }
+@container (max-width: 520px) { .colstrip { display: none; } }
+aside { border-left: 1px solid var(--line); background: var(--panel); padding: 10px 12px; overflow: auto; font-size: 12px; }
+aside h2 { font-size: 12px; font-weight: 600; margin: 8px 0 4px; color: var(--muted); }
+.region { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; padding: 3px 6px; border-radius: 4px; cursor: default; }
+.region.sel { background: var(--sel); }
+.region .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.region .x { padding: 0 5px; }
+.member { gap: 5px; }
+.member .pick { margin: 0; }
+.member .kind { flex: none; color: var(--muted); }
+.ctl { margin: 2px 0 4px; }
+.ctl select { font: inherit; font-size: 12px; }
+.note { flex: none; padding: 6px 14px 8px; font-size: 11px; line-height: 1.4; color: var(--muted); }
+.status { flex: none; padding: 4px 14px 8px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--line); min-height: 26px; }
+.status.bad { color: var(--obs); }
+.col { display: flex; flex-direction: column; min-height: 0; }
+</style>
+</head>
+<body>
+<header><h1 id="title">map</h1><span class="sub" id="where"></span><span class="sub" id="stamp"></span></header>
+<main>
+  <div class="col">
+    <div class="ctabs">
+      <span class="ctab active" data-which="map">Map</span><span class="ctab" data-which="difference">Difference Map</span>
+      <span class="sub">colour <span id="clip-text">the core's range</span></span>
+      <button id="btn-range" title="Set Colour Range: the range shown on the colour scale, typed; the two marks on the colour bar drag it; a double-click on the bar returns to the core's range">Range…</button>
+      <button id="btn-reset" title="Reset Colour Range: the core's range again">Reset</button>
+      <button id="btn-cursors" class="on" title="Row and Column Cursors: the row under the pointer below the map, the column beside it; a click pins them">Cursors</button>
+      <button id="btn-follow" title="Range from the View: on this page the colour range can follow a saved region's block only (the page has no core to ask)">Range from view</button>
+      <button id="btn-region" title="Save Region: the rectangle shown named, on this page only (not written to the set file)">Save region…</button>
+      <button id="btn-yint" title="The y interval of the row strip: shared by the whole set (the set's extent, the core's) or adapted to the row shown">y: shared</button>
+    </div>
+    <div class="areas">
+      <div class="mapcol">
+        <div class="plotarea"><canvas id="map"></canvas><div class="readout" id="readout"></div></div>
+        <div class="plotarea rowstrip" id="rowstrip" hidden><canvas id="rowcanvas"></canvas><div class="readout" id="rowreadout"></div></div>
+      </div>
+      <div class="plotarea colstrip" id="colstrip" hidden><canvas id="colcanvas"></canvas><div class="readout" id="colreadout"></div></div>
+    </div>
+    <div class="note" id="note"></div>
+    <div class="status" id="status"></div>
+  </div>
+  <aside>
+    <h2>Regions</h2>
+    <div id="regions"></div>
+    <h2>Members</h2>
+    <div class="sub ctl"><label>order <select id="sort"><option value="set">the set's</option><option value="variable">by the variable</option><option value="time">by the file's time</option><option value="name">by name</option></select></label></div>
+    <div class="sub ctl"><button id="btn-all" title="Every member chosen">all</button> <button id="btn-none" title="No member chosen">none</button> <button id="btn-class" title="The members of one exposure class (the counting time the files state)">class…</button> <button id="btn-range" title="The members whose variable lies in a range">range…</button></div>
+    <div id="members"></div>
+    <h2>The page</h2>
+    <div class="sub" id="about"></div>
+  </aside>
+</main>
+<script id="drs-page-data" type="application/json"><!--DRS_PAGE_DATA--></script>
+<script><!--DRS_VIEWER_BUNDLE--></script>
+<script>
+(function () {
+  "use strict";
+  const $ = (id) => document.getElementById(id);
+  let data;
+  try { data = JSON.parse($("drs-page-data").textContent); } catch (e) { $("status").textContent = "The page holds no data: " + e; $("status").className = "status bad"; return; }
+  if (typeof createMapViewer !== "function" || typeof exposureClasses !== "function") { $("status").textContent = "The page holds no viewer (the bundle is missing)."; $("status").className = "status bad"; return; }
+  // the state the viewer reads and writes, seeded from the file's clip and regions (PL37)
+  const mapScale = data.maps.map ? data.maps.map.scale : "linear";
+  const state = {
+    clip: { map: data.clip && data.clip.map ? { from: data.clip.map.from, to: data.clip.map.to, scale: mapScale } : null, difference: data.clip && data.clip.difference && data.maps.difference ? { from: data.clip.difference.from, to: data.clip.difference.to, scale: data.maps.difference.scale } : null },
+    clipBefore: { map: null, difference: null }, cursors: true, pin: null, cell: null, mapZoom: null, rangeFromView: false,
+    regions: (data.regions || []).map((r) => ({ name: r.name, x: r.x, x_quantity: r.x_quantity || null, variable: r.variable, map_range: r.map_range || null, difference_range: r.difference_range || null, window: r.window || null, refused: r.refused || null })),
+    selregion: null, regionsRefused: data.regions_refused || null,
+    yInterval: "shared", sel: [], sortBy: "set",
+  };
+  let which = "map";
+  const host = {
+    // the page has no core: a region's block is the one the core wrote for it; the view's rectangle has none
+    mapRegion: (region, ctx) => new Promise((ok, no) => {
+      const saved = (data.regions || []).find((r) => r.name === region.name && r.x[0] === region.x[0] && r.x[1] === region.x[1] && r.variable[0] === region.variable[0] && r.variable[1] === region.variable[1]);
+      const b = saved && saved.blocks ? saved.blocks[ctx.key] : null;
+      if (b) ok(b); else if (saved && saved.refused) no(new Error(saved.refused)); else no(new Error("the page has no core to ask (plots::map_region): a block is known for the saved regions only, as the core wrote them; the app, or drs plots region, gives it for any rectangle"));
+    }),
+    rangeWarning: () => Promise.resolve(null),
+    status: (text, bad) => { $("status").textContent = text; $("status").className = "status" + (bad ? " bad" : ""); },
+    onChange: () => render(),
+    ask: (question, value) => Promise.resolve(window.prompt(question, value)),
+  };
+  const viewer = createMapViewer({
+    canvas: $("map"), readout: $("readout"), rowEl: $("rowstrip"), rowCanvas: $("rowcanvas"), rowReadout: $("rowreadout"), colEl: $("colstrip"), colCanvas: $("colcanvas"), colReadout: $("colreadout"),
+    note: $("note"), clipText: $("clip-text"), regions: $("regions"), members: $("members"),
+  }, host, state);
+  function render() {
+    document.querySelectorAll(".ctab").forEach((t) => t.classList.toggle("active", t.dataset.which === which));
+    $("btn-cursors").classList.toggle("on", !!state.cursors); $("btn-follow").classList.toggle("on", !!state.rangeFromView);
+    $("btn-yint").textContent = `y: ${state.yInterval === "own" ? "own" : "shared"}`; $("sort").value = state.sortBy || "set";
+    viewer.show(data, which);
+  }
+  $("btn-yint").onclick = () => viewer.toggleYInterval();
+  $("sort").onchange = () => viewer.setSort($("sort").value);
+  $("btn-all").onclick = () => viewer.pickAll(true);
+  $("btn-none").onclick = () => viewer.pickAll(false);
+  $("btn-class").onclick = () => {
+    const classes = exposureClasses(data.members || []);
+    const v = window.prompt(`The exposure classes (the counting time the files state):\n${classes.map((c, i) => `${i + 1}: ${c.label}, ${c.members.length} member(s)`).join("\n")}\nWhich (its number)?`, "1");
+    if (v == null) return; const i = parseInt(v, 10) - 1; if (classes[i]) viewer.pickClass(i);
+  };
+  $("btn-range").onclick = () => {
+    const v = window.prompt(`The members whose ${data.variable ? data.variable.name : "variable"} lies in a range: "from to".`, "");
+    if (v == null) return; const p = v.trim().split(/[\s,;]+/).map((s) => parseFloat(s)); if (p.length > 1 && isFinite(p[0]) && isFinite(p[1])) viewer.pickRange(p[0], p[1]);
+  };
+  document.querySelectorAll(".ctab").forEach((t) => { t.onclick = () => { if (t.dataset.which === "difference" && !data.maps.difference) { host.status("The page holds no difference map: the set file names no reference member.", true); return; } which = t.dataset.which; render(); }; });
+  $("btn-cursors").onclick = () => viewer.toggleCursors();
+  $("btn-follow").onclick = () => viewer.toggleFollow();
+  $("btn-region").onclick = () => viewer.saveRegion();
+  $("btn-reset").onclick = () => viewer.resetClip(which);
+  $("btn-range").onclick = () => {
+    const m = data.maps[which]; if (!m) return;
+    const cur = state.clip[which];
+    const v = window.prompt(`The colour range shown, on the ${m.scale} scale, inside the core's range ${m.map.range[0].toFixed(3)} to ${m.map.range[1].toFixed(3)}: "from to" (one left empty keeps the core's end; empty, the core's range).`, cur ? `${cur.from} ${cur.to}` : "");
+    if (v == null) return;
+    const parts = v.trim().split(/[\s,;]+/).filter(Boolean).map((s) => parseFloat(s));
+    viewer.typedClip(which, parts.length ? parts[0] : null, parts.length > 1 ? parts[1] : null);
+  };
+  $("title").textContent = data.title || "plot set";
+  $("where").textContent = data.path || "";
+  $("stamp").textContent = [data.core ? `core ${data.core}` : "", data.written || ""].filter(Boolean).join(" · ");
+  $("about").textContent = "The app's Map view in a page: the core's numbers from the JSON inside, nothing fetched. Drag a rectangle to zoom both axes, the wheel over an axis to zoom it, a double-click to see the whole; drag the marks on the colour bar to clip the range. A clip or a region changed here is not written to the set file.";
+  render();   // the members' list is the viewer's (step 20): an icon by the file's kind, a checkbox, the facts on hover
+  window.__drsViewer = viewer;   // the browser's console, and a check's hand
+})();
+</script>
+</body>
+</html>

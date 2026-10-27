@@ -1,0 +1,42 @@
+---
+title: "About"
+pagetitle: "About · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>About</h1>
+<p class="sub">Who makes it, what it belongs to, and what it owes to others.</p>
+
+<h2>The project</h2>
+<p>diff-ref-struct Web is part of <a href="https://jmigartua.github.io/diff-ref-struct-site/">diff-ref-struct</a>, a macOS app for Rietveld refinement of powder diffraction data (laboratory X-rays, synchrotron, neutrons) in the line of FullProf and GSAS-II, built in the open after a study of the programs the community uses. The page is that app's Plots module and its core, put in a browser so that anyone with a folder of patterns can look at them without installing anything; it came from the need to read an in-situ synchrotron run of a hundred scans with its experimental team.</p>
+<div class="facts">
+<span class="k">Author</span><span>Josu M. Igartua, Departamento de Física, Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU)</span>
+<span class="k">Contact</span><span>josu.igartua@ehu.eus</span>
+<span class="k">Address</span><span><a href="https://jmigartua.github.io/diff-ref-struct-web/">jmigartua.github.io/diff-ref-struct-web</a> (the app) · <a href="../index.html">/guide/</a> (this site)</span>
+<span class="k">Status</span><span>work in progress, published as it grows; the versions on <a href="../releases/index.html">the release notes</a></span>
+<span class="k">Licence</span><span>the code under the <a href="https://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</a>; the guide, the manuals, the screenshots and the example data under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>: reuse them freely, with credit</span>
+<span class="k">Source</span><span><a href="https://github.com/jmigartua/diff-ref-struct-web">github.com/jmigartua/diff-ref-struct-web</a>, published from the project at each release; its issues are the <a href="../requests/index.html">requests</a></span>
+</div>
+
+<h2>Credits</h2>
+<ul>
+<li><b>The example in the app</b> (Try the example) is synthetic: a heating run computed by the core from public structures, under CC BY 4.0 with the rest.</li>
+<li><b>Example data.</b> The Tb<sub>2</sub>Pd<sub>2</sub>Sn neutron patterns used on this site and in the screenshots are those of the WinPLOTR tutorial distributed with the <a href="https://www.ill.eu/sites/fullprof/">FullProf Suite</a> (J. Rodríguez-Carvajal, Institut Laue-Langevin; WinPLOTR by T. Roisnel). They are not redistributed here: the start page says where to get them.</li>
+<li><b>Libraries in the page</b>: dockview-core 4.13.1 (the tabs and panels) and three.js 0.186.1 (the surface), both under the MIT licence; their texts are in the published page's <code>LICENCES.md</code>.</li>
+<li><b>This site</b>: Quarto, the family design kit; the typefaces Source Serif 4 and Source Sans 3 (Adobe) and IBM Plex Mono (IBM), all under the SIL Open Font Licence, here and in the PDFs.</li>
+</ul>
+
+<h2>Citing</h2>
+<p>Cite the version you used: the numbers are that version's core's. <i>J. M. Igartua, diff-ref-struct Web 1.0.0 (core 0.81.0), https://jmigartua.github.io/diff-ref-struct-web/</i>, with the version shown at the foot of the start page. The repository's <code>CITATION.cff</code> gives the same in the Citation File Format (GitHub's "Cite this repository"), and each release is archived by Zenodo with a DOI of its own once the archive is linked. In the app, <b>Help ▾ ▸ Cite this view</b> copies a line with the versions, the date and the view's address, for a lab book or a paper's methods.</p>
+
+<h2>How it was made</h2>
+<p>diff-ref-struct and diff-ref-struct Web are written with AI assistance: Claude (Anthropic), used through Claude Code, writes code and documents under the direction of Josu M. Igartua, who sets the requirements, reads the results and decides every change. Nothing is accepted on the assistant's word: every number the tool shows is computed by the core and checked by its tests against reference programs and published data, and every change is recorded in the project's log with its evidence (<a href="../log/index.html">the log</a>). The responsibility for the tool and its results is the author's.</p>
+
+<h2>Reporting a problem, asking for a feature</h2>
+<p>From the app, <b>Help ▾ ▸ Report a problem…</b> or <b>Ask for a feature…</b> opens the form with the version, the browser and the view's address filled in; or see <a href="../requests/index.html">Requests</a>. Without a GitHub account, write to the address above with the same three things. Never attach unpublished data.</p>
+</article>
+```

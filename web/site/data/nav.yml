@@ -1,0 +1,37 @@
+# Left navigation of the site; tools/build.py turns it into _gen/docs-nav.html. Hrefs root-absolute (Quarto rewrites
+# them). The groups are the entries of the header ribbon (assets/includes/site-header.html), in the same order.
+- title: Overview
+  items:
+    - { text: Overview, href: /index.html }
+- title: Start
+  items:
+    - { text: "Start in five minutes", href: /start/index.html }
+- title: Manual
+  items:
+    - { text: "The manual", href: /manual/index.html }
+    - { text: "Quick reference", href: /manual/quick-reference/index.html }
+    - { text: "Conventions", href: /conventions/index.html }
+- title: Recipes
+  items:
+    - { text: "Recipes: the analyses", href: /recipes/index.html }
+    - { text: "A ramp: when does a phase appear?", href: /recipes/ramp/index.html }
+    - { text: "A hold: growth curves", href: /recipes/hold/index.html }
+    - { text: "Two patterns: what changed?", href: /recipes/compare/index.html }
+    - { text: "Live at the instrument", href: /recipes/live/index.html }
+    - { text: "Share a view, keep a set", href: /recipes/share/index.html }
+- title: "How it works"
+  items:
+    - { text: "How it works", href: /how/index.html }
+    - { text: "File formats", href: /how/formats/index.html }
+- title: "Releases / Log"
+  items:
+    - { text: "Releases", href: /releases/index.html }
+    - { text: "Log", href: /log/index.html }
+- title: "Roadmap / Requests"
+  items:
+    - { text: "Roadmap", href: /roadmap/index.html }
+    - { text: "Requests: bugs and features", href: /requests/index.html }
+- title: About
+  items:
+    - { text: "About, licence, citing", href: /about/index.html }
+    - { text: "Privacy and accessibility", href: /about/privacy/index.html }

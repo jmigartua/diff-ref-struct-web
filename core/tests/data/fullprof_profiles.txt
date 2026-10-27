@@ -1,0 +1,363 @@
+# Index of the .prf files of manuals/fullprof/ and of the mode course (manuals/bcs) for the test fullprof_profiles; written by make_fullprof_profiles.py. Do not edit.
+COMPARE manuals/bcs/mode-crystallography-manual/course-um6p-2024/04_tools_materials/1_sr2scsbo6_300K_structure_014_data_LR/srsclrrt.prf manuals/bcs/mode-crystallography-manual/course-um6p-2024/04_tools_materials/1_sr2scsbo6_300K_structure_014_data_LR/srsclrrt.pcr 7 3199 exact
+COMPARE manuals/bcs/mode-crystallography-manual/course-um6p-2024/04_tools_materials/1_sr2scsbo6_300K_structure_014_data_LR/srsclrrt_modes_sb_to_origin.prf manuals/bcs/mode-crystallography-manual/course-um6p-2024/04_tools_materials/1_sr2scsbo6_300K_structure_014_data_LR/srsclrrt_modes_sb_to_origin.pcr 7 3199 exact
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0.prf magnetic phase (Jbt = 1, line 102 of la0.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0120.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0120.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0120.prf magnetic phase (Jbt = 1, line 102 of la0_120.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0121.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0121.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0121.prf magnetic phase (Jbt = 1, line 102 of la0_121.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0122.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0122.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0122.prf magnetic phase (Jbt = 1, line 102 of la0_122.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0123.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0123.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0123.prf magnetic phase (Jbt = 1, line 102 of la0_123.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0124.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0124.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0124.prf magnetic phase (Jbt = 1, line 102 of la0_124.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0125.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0125.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0125.prf magnetic phase (Jbt = 1, line 102 of la0_125.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0126.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0126.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0126.prf magnetic phase (Jbt = 1, line 102 of la0_126.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0127.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0127.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0127.prf magnetic phase (Jbt = 1, line 102 of la0_127.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0128.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0128.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0128.prf magnetic phase (Jbt = 1, line 102 of la0_128.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0129.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0129.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0129.prf magnetic phase (Jbt = 1, line 102 of la0_129.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0130.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0130.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0130.prf magnetic phase (Jbt = 1, line 102 of la0_130.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0131.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0131.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0131.prf magnetic phase (Jbt = 1, line 102 of la0_131.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0132.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0132.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0132.prf magnetic phase (Jbt = 1, line 102 of la0_132.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0133.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0133.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0133.prf magnetic phase (Jbt = 1, line 102 of la0_133.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0134.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0134.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0134.prf magnetic phase (Jbt = 1, line 102 of la0_134.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0135.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0135.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0135.prf magnetic phase (Jbt = 1, line 102 of la0_135.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0136.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0136.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0136.prf magnetic phase (Jbt = 1, line 102 of la0_136.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0137.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0137.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0137.prf magnetic phase (Jbt = 1, line 102 of la0_137.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0138.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0138.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0138.prf magnetic phase (Jbt = 1, line 102 of la0_138.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0139.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0139.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0139.prf magnetic phase (Jbt = 1, line 102 of la0_139.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0140.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0140.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0140.prf magnetic phase (Jbt = 1, line 102 of la0_140.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0141.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0141.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0141.prf magnetic phase (Jbt = 1, line 102 of la0_141.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0142.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0142.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0142.prf magnetic phase (Jbt = 1, line 102 of la0_142.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0143.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0143.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0143.prf magnetic phase (Jbt = 1, line 102 of la0_143.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0144.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0144.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0144.prf magnetic phase (Jbt = 1, line 102 of la0_144.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0145.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0145.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0145.prf magnetic phase (Jbt = 1, line 102 of la0_145.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0146.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0146.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0146.prf magnetic phase (Jbt = 1, line 102 of la0_146.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0147.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0147.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0147.prf magnetic phase (Jbt = 1, line 102 of la0_147.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0148.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0148.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0148.prf magnetic phase (Jbt = 1, line 102 of la0_148.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0149.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0149.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0149.prf magnetic phase (Jbt = 1, line 102 of la0_149.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0150.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0150.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0150.prf magnetic phase (Jbt = 1, line 102 of la0_150.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0151.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0151.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0151.prf magnetic phase (Jbt = 1, line 102 of la0_151.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0152.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0152.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0152.prf magnetic phase (Jbt = 1, line 102 of la0_152.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0153.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0153.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0153.prf magnetic phase (Jbt = 1, line 102 of la0_153.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0154.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0154.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0154.prf magnetic phase (Jbt = 1, line 102 of la0_154.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0155.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0155.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0155.prf magnetic phase (Jbt = 1, line 102 of la0_155.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0156.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0156.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0156.prf magnetic phase (Jbt = 1, line 102 of la0_156.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0157.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0157.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0157.prf magnetic phase (Jbt = 1, line 102 of la0_157.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0158.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0158.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0158.prf magnetic phase (Jbt = 1, line 102 of la0_158.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0159.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0159.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0159.prf magnetic phase (Jbt = 1, line 102 of la0_159.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0160.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0160.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0160.prf magnetic phase (Jbt = 1, line 102 of la0_160.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0161.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0161.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0161.prf magnetic phase (Jbt = 1, line 102 of la0_161.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0162.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0162.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0162.prf magnetic phase (Jbt = 1, line 102 of la0_162.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0163.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0163.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0163.prf magnetic phase (Jbt = 1, line 102 of la0_163.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0164.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0164.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0164.prf magnetic phase (Jbt = 1, line 102 of la0_164.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0165.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0165.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0165.prf magnetic phase (Jbt = 1, line 102 of la0_165.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0166.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0166.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0166.prf magnetic phase (Jbt = 1, line 102 of la0_166.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0167.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0167.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0167.prf magnetic phase (Jbt = 1, line 102 of la0_167.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0168.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0168.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0168.prf magnetic phase (Jbt = 1, line 102 of la0_168.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0169.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0169.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0169.prf magnetic phase (Jbt = 1, line 102 of la0_169.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0170.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0170.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0170.prf magnetic phase (Jbt = 1, line 102 of la0_170.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0171.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0171.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0171.prf magnetic phase (Jbt = 1, line 102 of la0_171.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0172.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0172.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0172.prf magnetic phase (Jbt = 1, line 102 of la0_172.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0173.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0173.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0173.prf magnetic phase (Jbt = 1, line 102 of la0_173.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0174.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0174.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0174.prf magnetic phase (Jbt = 1, line 102 of la0_174.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0175.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0175.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0175.prf magnetic phase (Jbt = 1, line 102 of la0_175.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0176.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0176.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0176.prf magnetic phase (Jbt = 1, line 102 of la0_176.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0177.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0177.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0177.prf magnetic phase (Jbt = 1, line 102 of la0_177.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0178.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0178.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0178.prf magnetic phase (Jbt = 1, line 102 of la0_178.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0179.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0179.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0179.prf magnetic phase (Jbt = 1, line 102 of la0_179.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0180.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0180.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0180.prf magnetic phase (Jbt = 1, line 102 of la0_180.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0181.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0181.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0181.prf magnetic phase (Jbt = 1, line 102 of la0_181.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0182.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0182.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0182.prf magnetic phase (Jbt = 1, line 102 of la0_182.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0183.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0183.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0183.prf magnetic phase (Jbt = 1, line 102 of la0_183.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0184.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0184.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0184.prf magnetic phase (Jbt = 1, line 102 of la0_184.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0185.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0185.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0185.prf magnetic phase (Jbt = 1, line 102 of la0_185.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0186.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0186.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0186.prf magnetic phase (Jbt = 1, line 102 of la0_186.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0187.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0187.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0187.prf magnetic phase (Jbt = 1, line 102 of la0_187.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0188.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0188.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0188.prf magnetic phase (Jbt = 1, line 102 of la0_188.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0189.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0189.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0189.prf magnetic phase (Jbt = 1, line 102 of la0_189.pcr): magnetic structure factors are not calculated yet
+DATA manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0190.prf manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0190.dat 3 7 1535
+SKIP manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0190.prf magnetic phase (Jbt = 1, line 102 of la0_190.pcr): magnetic structure factors are not calculated yet
+COMPARE manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LBF_lmopr.prf manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LBF_lmopr.pcr 7 2510 lebail
+COMPARE manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3_cub.prf manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3_cub.pcr 7 2510 exact
+COMPARE manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3ref.prf manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3ref.pcr 7 2510 inconsistent
+SKIP manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san.prf integrated intensities (columns Sinthet/lamb, Gobs, Gcal: simulated annealing), no profile
+SKIP manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_prof.prf simulated annealing on integrated intensities (Cry = 3 in the .pcr): the profile is FullProf's cluster profile (.spr), not a model to rebuild
+SKIP manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_spr.prf integrated intensities (columns Sinthet/lamb, Gobs, Gcal: simulated annealing), no profile
+COMPARE manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/PM/P21c/citric-acid-sls_1.prf manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/PM/P21c/citric-acid-sls_1.pcr 7 30819 exact
+COMPARE manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/PM/citric-acid-sls_1.prf manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/PM/citric-acid-sls_1.pcr 7 30819 exact
+COMPARE manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.prf manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.pcr 7 30819 exact
+SKIP manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.prf integrated intensities (columns Sinthet/lamb, Gobs, Gcal: simulated annealing), no profile
+COMPARE manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Prof_Match/P21c/PPH3-sls_1.prf manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Prof_Match/P21c/PPH3-sls_1.pcr 7 30819 exact
+COMPARE manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Prof_Match/PPH3-sls_1.prf manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Prof_Match/PPH3-sls_1.pcr 7 30819 exact
+COMPARE manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.prf manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.pcr 7 30819 exact
+SKIP manuals/fullprof/runs/CeO2_PEARL/CeO2_PEARL.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is CeO2_PEARL_calc.prf
+COMPARE manuals/fullprof/runs/CeO2_PEARL/CeO2_PEARL_calc.prf manuals/fullprof/runs/CeO2_PEARL/CeO2_PEARL.pcr 7 2523 exact
+SKIP manuals/fullprof/runs/Co-YBCO/Cocus-asym.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is Cocus-asym_calc.prf
+COMPARE manuals/fullprof/runs/Co-YBCO/Cocus-asym_calc.prf manuals/fullprof/runs/Co-YBCO/Cocus-asym.pcr 6 3000 exact
+SKIP manuals/fullprof/runs/Co-YBCO/Cocus-asym_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+SKIP manuals/fullprof/runs/Co-YBCO-LeBail/Cocuc_LeBail_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: none (Le Bail: fullprof_le_bail uses the tutorial's file)
+SKIP manuals/fullprof/runs/Egypt/Egypt_qa_Rietveld.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is Egypt_qa_Rietveld_calc.prf
+COMPARE manuals/fullprof/runs/Egypt/Egypt_qa_Rietveld_calc.prf manuals/fullprof/runs/Egypt/Egypt_qa_Rietveld.pcr 7 7001 exact
+SKIP manuals/fullprof/runs/Egypt/Egypt_qa_Rietveld_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+SKIP manuals/fullprof/runs/K2NaAgCN/k2na1p5_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_restraints
+SKIP manuals/fullprof/runs/LaB6/LaB6rx.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is LaB6rx_calc.prf
+COMPARE manuals/fullprof/runs/LaB6/LaB6rx_calc.prf manuals/fullprof/runs/LaB6/LaB6rx.pcr 5 7245 exact
+SKIP manuals/fullprof/runs/LaB6/LaB6rx_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+SKIP manuals/fullprof/runs/LaMnO3-3t2/lamn_3t2_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_restraints
+SKIP manuals/fullprof/runs/MgAl2O4-LeBail/MgAl2O4s_LeBail_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: none (Le Bail: fullprof_le_bail uses the tutorial's file)
+SKIP manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s_Rietveld.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is MgAl2O4s_Rietveld_calc.prf
+COMPARE manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s_Rietveld_calc.prf manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s_Rietveld.pcr 7 2395 exact
+SKIP manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s_Rietveld_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+SKIP manuals/fullprof/runs/NdNi-HTO/NdNi_HTO.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is NdNi_HTO_calc.prf
+SKIP manuals/fullprof/runs/NdNi-HTO/NdNi_HTO_calc.prf magnetic phase (phase 2, Jbt = 1, Nvk = 1, NdNi_HTO.pcr): magnetic structure factors are not calculated yet; its nuclear phase is checked in fullprof_microstructure
+SKIP manuals/fullprof/runs/NdNi-HTO/NdNi_HTO_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+SKIP manuals/fullprof/runs/NdNi-LTOa/NdNi_LTOa.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is NdNi_LTOa_calc.prf
+SKIP manuals/fullprof/runs/NdNi-LTOa/NdNi_LTOa_calc.prf magnetic phase (phase 2, Jbt = −1, NdNi_LTOa.pcr): magnetic structure factors are not calculated yet; the anisotropic strain of its nuclear phase (Str = 1, strain model 3) is checked reflection by reflection in fullprof_anisotropic_strain
+SKIP manuals/fullprof/runs/NdNi-LTOb/NdNi_LTOb.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is NdNi_LTOb_calc.prf
+SKIP manuals/fullprof/runs/NdNi-LTOb/NdNi_LTOb_calc.prf FullProf's strain model 6 (Str = 0, Str1–Str2), described in words, not by an equation (manual pp. 28–30): not calculated (L211)
+SKIP manuals/fullprof/runs/Pd3MnD/pdfinal.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is pdfinal_calc.prf
+COMPARE manuals/fullprof/runs/Pd3MnD/pdfinal_calc.prf manuals/fullprof/runs/Pd3MnD/pdfinal.pcr 7 2392 exact
+SKIP manuals/fullprof/runs/Sr-ox-rest/sr-ox-rest_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_restraints
+SKIP manuals/fullprof/runs/Sr-ox-test/sr-ox-test_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_restraints
+SKIP manuals/fullprof/runs/Y2O3/y2o3_structure.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is y2o3_structure_calc.prf
+COMPARE manuals/fullprof/runs/Y2O3/y2o3_structure_calc.prf manuals/fullprof/runs/Y2O3/y2o3_structure.pcr 7 13091 exact
+SKIP manuals/fullprof/runs/Y2O3/y2o3_structure_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+SKIP manuals/fullprof/runs/YVO3/YVO3a.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is YVO3a_calc.prf
+COMPARE manuals/fullprof/runs/YVO3/YVO3a_calc.prf manuals/fullprof/runs/YVO3/YVO3a.pcr 5 6245 exact
+SKIP manuals/fullprof/runs/YVO3/YVO3a_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+SKIP manuals/fullprof/runs/Yb2ZrWO8/ybfluo_Riet_IRF.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is ybfluo_Riet_IRF_calc.prf
+COMPARE manuals/fullprof/runs/Yb2ZrWO8/ybfluo_Riet_IRF_calc.prf manuals/fullprof/runs/Yb2ZrWO8/ybfluo_Riet_IRF.pcr 5 3251 exact
+SKIP manuals/fullprof/runs/Yb2ZrWO8/ybfluo_Riet_IRF_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+COMPARE manuals/fullprof/runs/Yb2ZrWO8-PO-March/ybfluo_Riet_IRF_calc.prf manuals/fullprof/runs/Yb2ZrWO8-PO-March/ybfluo_Riet_IRF.pcr 5 3251 exact
+SKIP manuals/fullprof/runs/alum/alum.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is alum_calc.prf
+COMPARE manuals/fullprof/runs/alum/alum_calc.prf manuals/fullprof/runs/alum/alum.pcr 7 3879 exact
+COMPARE manuals/fullprof/runs/alum/alum_noq.prf manuals/fullprof/runs/alum/alum_noq.pcr.in 7 3879 exact
+SKIP manuals/fullprof/runs/arg_si/arg_si.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is arg_si_calc.prf
+COMPARE manuals/fullprof/runs/arg_si/arg_si_abs1.prf manuals/fullprof/runs/arg_si/arg_si_abs1.pcr.in 7 5600 exact
+COMPARE manuals/fullprof/runs/arg_si/arg_si_abs3.prf manuals/fullprof/runs/arg_si/arg_si_abs3.pcr.in 7 5600 exact
+COMPARE manuals/fullprof/runs/arg_si/arg_si_calc.prf manuals/fullprof/runs/arg_si/arg_si.pcr 7 5600 exact
+COMPARE manuals/fullprof/runs/arg_si/arg_si_ext10.prf manuals/fullprof/runs/arg_si/arg_si_ext10.pcr.in 7 5600 exact
+COMPARE manuals/fullprof/runs/arg_si/arg_si_ext100.prf manuals/fullprof/runs/arg_si/arg_si_ext100.pcr.in 7 5600 exact
+COMPARE manuals/fullprof/runs/arg_si/arg_si_invd.prf manuals/fullprof/runs/arg_si/arg_si_invd.pcr.in 7 5600 exact
+COMPARE manuals/fullprof/runs/arg_si/arg_si_plain.prf manuals/fullprof/runs/arg_si/arg_si_plain.pcr.in 7 5600 exact
+COMPARE manuals/fullprof/runs/arg_si/arg_si_plain90.prf manuals/fullprof/runs/arg_si/arg_si_plain90.pcr.in 7 5600 exact
+SKIP manuals/fullprof/runs/background/y2o3_bacfirst.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_bacpairs.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_lin16.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_lin6.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_lin62.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_spl16.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_spl31.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_spl6.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_spl62.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_spl6beyond.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_spl6early.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_spl6thmax.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background/y2o3_spl8.prf a background run (background_runs.py, L079): Backg and chi2 compared in background_points (L082)
+SKIP manuals/fullprof/runs/background_terms/nac_3t2.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is nac_3t2_calc.prf
+COMPARE manuals/fullprof/runs/background_terms/nac_3t2_calc.prf manuals/fullprof/runs/background_terms/nac_3t2.pcr 7 2510 exact
+COMPARE manuals/fullprof/runs/background_terms/nac_3t2_debye.prf manuals/fullprof/runs/background_terms/nac_3t2_debye.pcr.in 7 2510 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_bac_b1b2.prf manuals/fullprof/runs/background_terms/y2o3_bac_b1b2.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_bac_b3b4.prf manuals/fullprof/runs/background_terms/y2o3_bac_b3b4.pcr.in 7 13091 exact
+SKIP manuals/fullprof/runs/background_terms/y2o3_filter.prf Nba = -2, the Fourier filtering of the background: not reproduced (background_terms, L353), not calculated
+COMPARE manuals/fullprof/runs/background_terms/y2o3_more2.prf manuals/fullprof/runs/background_terms/y2o3_more2.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_more2_two.prf manuals/fullprof/runs/background_terms/y2o3_more2_two.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_more3.prf manuals/fullprof/runs/background_terms/y2o3_more3.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_poly12_b1.prf manuals/fullprof/runs/background_terms/y2o3_poly12_b1.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_poly12_b10.prf manuals/fullprof/runs/background_terms/y2o3_poly12_b10.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_poly12_b11.prf manuals/fullprof/runs/background_terms/y2o3_poly12_b11.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_poly12_b12.prf manuals/fullprof/runs/background_terms/y2o3_poly12_b12.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_poly12_b2.prf manuals/fullprof/runs/background_terms/y2o3_poly12_b2.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_poly12_b7.prf manuals/fullprof/runs/background_terms/y2o3_poly12_b7.pcr.in 7 13091 exact
+COMPARE manuals/fullprof/runs/background_terms/y2o3_poly12_b9.prf manuals/fullprof/runs/background_terms/y2o3_poly12_b9.pcr.in 7 13091 exact
+SKIP manuals/fullprof/runs/ce/ce.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is ce_calc.prf
+COMPARE manuals/fullprof/runs/ce/ce_calc.prf manuals/fullprof/runs/ce/ce.pcr 5 4721 exact
+SKIP manuals/fullprof/runs/ce2/ce2.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is ce2_calc.prf
+COMPARE manuals/fullprof/runs/ce2/ce2_calc.prf manuals/fullprof/runs/ce2/ce2.pcr 5 4721 exact
+SKIP manuals/fullprof/runs/cuf1k/cuf1k.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is cuf1k_calc.prf
+SKIP manuals/fullprof/runs/cuf1k/cuf1k_calc.prf magnetic phase (phase 2, Jbt = 1, cuf1k.pcr): magnetic structure factors are not calculated yet; the monoclinic strain of its nuclear phase is checked reflection by reflection in fullprof_anisotropic_size (L267)
+SKIP manuals/fullprof/runs/gabriela/gabriela_1.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is gabriela_calc_1.prf
+SKIP manuals/fullprof/runs/gabriela/gabriela_2.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is gabriela_calc_2.prf
+SKIP manuals/fullprof/runs/gabriela/gabriela_3.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is gabriela_calc_3.prf
+COMPARE manuals/fullprof/runs/gabriela/gabriela_calc_1.prf manuals/fullprof/runs/gabriela/gabriela.pcr#1 7 5500 exact
+COMPARE manuals/fullprof/runs/gabriela/gabriela_calc_2.prf manuals/fullprof/runs/gabriela/gabriela.pcr#2 9 28333 exact
+COMPARE manuals/fullprof/runs/gabriela/gabriela_calc_3.prf manuals/fullprof/runs/gabriela/gabriela.pcr#3 9 20519 exact
+SKIP manuals/fullprof/runs/highpress/highpress.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is highpress_calc.prf
+SKIP manuals/fullprof/runs/highpress/highpress_calc.prf hkl-dependent peak shifts (Sol = 1, ModS = 1, Shift1 −0.02439 along [0 0 1]: highpress.pcr, lines 81–84) are P26, not calculated (L267); its platelet size is (Size-Model 1), and its user scattering factors are checked in pattern_terms (L239)
+SKIP manuals/fullprof/runs/lac/lac.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is lac_calc.prf
+SKIP manuals/fullprof/runs/lac/lac_calc.prf magnetic phase (phase 2, Jbt = 1, lac.pcr): magnetic structure factors are not calculated yet; the tetragonal strain of its nuclear phase is checked reflection by reflection in fullprof_anisotropic_size (L267)
+SKIP manuals/fullprof/runs/lamn_pol/lamn_pol.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is lamn_pol_calc.prf
+COMPARE manuals/fullprof/runs/lamn_pol/lamn_pol_calc.prf manuals/fullprof/runs/lamn_pol/lamn_pol.pcr 7 3789 exact
+COMPARE manuals/fullprof/runs/lamn_pol/lamn_pol_irf.prf manuals/fullprof/runs/lamn_pol/lamn_pol_irf.pcr.in 7 3788 exact
+SKIP manuals/fullprof/runs/modes/A_coords/a_coords.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is a_coords_calc.prf
+COMPARE manuals/fullprof/runs/modes/A_coords/a_coords_calc.prf manuals/fullprof/runs/modes/A_coords/a_coords.pcr 7 3199 exact
+SKIP manuals/fullprof/runs/modes/A_modes/a_modes.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is a_modes_calc.prf
+COMPARE manuals/fullprof/runs/modes/A_modes/a_modes_calc.prf manuals/fullprof/runs/modes/A_modes/a_modes.pcr 7 3199 exact
+SKIP manuals/fullprof/runs/modes/B_article/b_article.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is b_article_calc.prf
+COMPARE manuals/fullprof/runs/modes/B_article/b_article_calc.prf manuals/fullprof/runs/modes/B_article/b_article.pcr 7 3218 exact
+SKIP manuals/fullprof/runs/modes/B_parent_1/b_parent_1.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is b_parent_1_calc.prf
+COMPARE manuals/fullprof/runs/modes/B_parent_1/b_parent_1_calc.prf manuals/fullprof/runs/modes/B_parent_1/b_parent_1.pcr 7 3218 exact
+SKIP manuals/fullprof/runs/modes/B_parent_2/b_parent_2.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is b_parent_2_calc.prf
+COMPARE manuals/fullprof/runs/modes/B_parent_2/b_parent_2_calc.prf manuals/fullprof/runs/modes/B_parent_2/b_parent_2.pcr 7 3218 exact
+SKIP manuals/fullprof/runs/modes/B_thesis/b_thesis.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is b_thesis_calc.prf
+COMPARE manuals/fullprof/runs/modes/B_thesis/b_thesis_calc.prf manuals/fullprof/runs/modes/B_thesis/b_thesis.pcr 7 3218 exact
+SKIP manuals/fullprof/runs/modes/D/d.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is d_calc.prf
+COMPARE manuals/fullprof/runs/modes/D/d_calc.prf manuals/fullprof/runs/modes/D/d.pcr 7 1280 exact
+SKIP manuals/fullprof/runs/modes/E/e.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is e_calc.prf
+COMPARE manuals/fullprof/runs/modes/E/e_calc.prf manuals/fullprof/runs/modes/E/e.pcr 7 1576 exact
+SKIP manuals/fullprof/runs/nabd4/nabd4.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is nabd4_calc.prf
+COMPARE manuals/fullprof/runs/nabd4/nabd4_calc.prf manuals/fullprof/runs/nabd4/nabd4.pcr 7 3200 exact
+SKIP manuals/fullprof/runs/nabd4_lambda/nabd4_lambda.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is nabd4_lambda_calc.prf
+COMPARE manuals/fullprof/runs/nabd4_lambda/nabd4_lambda_calc.prf manuals/fullprof/runs/nabd4_lambda/nabd4_lambda.pcr 7 3200 exact
+SKIP manuals/fullprof/runs/nac_osiris/nac-osiris.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is nac-osiris_calc.prf
+COMPARE manuals/fullprof/runs/nac_osiris/nac-osiris_calc.prf manuals/fullprof/runs/nac_osiris/nac-osiris.pcr 7 7017 exact
+SKIP manuals/fullprof/runs/pbb/pbb_1.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is pbb_calc_1.prf
+SKIP manuals/fullprof/runs/pbb/pbb_2.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is pbb_calc_2.prf
+COMPARE manuals/fullprof/runs/pbb/pbb_calc_1.prf manuals/fullprof/runs/pbb/pbb.pcr#1 7 2910 exact
+COMPARE manuals/fullprof/runs/pbb/pbb_calc_2.prf manuals/fullprof/runs/pbb/pbb.pcr#2 7 6001 exact
+SKIP manuals/fullprof/runs/prba10k/prba10k.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is prba10k_calc.prf
+COMPARE manuals/fullprof/runs/prba10k/prba10k_calc.prf manuals/fullprof/runs/prba10k/prba10k.pcr 7 5612 exact
+SKIP manuals/fullprof/runs/prbaco/prbaco_1.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is prbaco_calc_1.prf
+SKIP manuals/fullprof/runs/prbaco/prbaco_2.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is prbaco_calc_2.prf
+COMPARE manuals/fullprof/runs/prbaco/prbaco_calc_1.prf manuals/fullprof/runs/prbaco/prbaco.pcr#1 7 5610 exact
+COMPARE manuals/fullprof/runs/prbaco/prbaco_calc_2.prf manuals/fullprof/runs/prbaco/prbaco.pcr#2 7 3340 exact
+SKIP manuals/fullprof/runs/rigid/PPH3-sls.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is PPH3-sls_calc.prf
+COMPARE manuals/fullprof/runs/rigid/PPH3-sls_calc.prf manuals/fullprof/runs/rigid/PPH3-sls.pcr 7 30819 exact
+SKIP manuals/fullprof/runs/rigid/citric-acid-sls_1.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is citric-acid-sls_1_calc.prf
+COMPARE manuals/fullprof/runs/rigid/citric-acid-sls_1_calc.prf manuals/fullprof/runs/rigid/citric-acid-sls_1.pcr 7 30819 exact
+COMPARE manuals/fullprof/runs/rigid/citric_core.prf manuals/fullprof/runs/rigid/citric_core.pcr.in 7 30819 exact
+SKIP manuals/fullprof/runs/rigid/hmt.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is hmt_calc.prf
+COMPARE manuals/fullprof/runs/rigid/hmt_calc.prf manuals/fullprof/runs/rigid/hmt.pcr 5 7751 exact
+SKIP manuals/fullprof/runs/rigid/pdd.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is pdd_calc.prf
+COMPARE manuals/fullprof/runs/rigid/pdd_calc.prf manuals/fullprof/runs/rigid/pdd.pcr 7 3181 exact
+COMPARE manuals/fullprof/runs/rigid/pdd_l.prf manuals/fullprof/runs/rigid/pdd_l.pcr.in 7 3181 exact
+COMPARE manuals/fullprof/runs/rigid/pdd_t.prf manuals/fullprof/runs/rigid/pdd_t.pcr.in 7 3181 exact
+COMPARE manuals/fullprof/runs/rigid/pdd_t_rot.prf manuals/fullprof/runs/rigid/pdd_t_rot.pcr.in 7 3181 exact
+SKIP manuals/fullprof/runs/rigid/urea.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is urea_calc.prf
+COMPARE manuals/fullprof/runs/rigid/urea_calc.prf manuals/fullprof/runs/rigid/urea.pcr 5 4751 exact
+SKIP manuals/fullprof/runs/rigid/urea_conv.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is urea_conv_calc.prf
+COMPARE manuals/fullprof/runs/rigid/urea_conv_calc.prf manuals/fullprof/runs/rigid/urea_conv.pcr 5 4751 exact
+COMPARE manuals/fullprof/runs/rigid/urea_notls.prf manuals/fullprof/runs/rigid/urea_notls.pcr.in 5 4751 exact
+SKIP manuals/fullprof/runs/rigid/urea_test.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is urea_test_calc.prf
+COMPARE manuals/fullprof/runs/rigid/urea_test_calc.prf manuals/fullprof/runs/rigid/urea_test.pcr 5 4751 exact
+SKIP manuals/fullprof/runs/rigid/ureac.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is ureac_calc.prf
+COMPARE manuals/fullprof/runs/rigid/ureac_calc.prf manuals/fullprof/runs/rigid/ureac.pcr 5 4751 exact
+SKIP manuals/fullprof/runs/rigid/ureacyl.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is ureacyl_calc.prf
+COMPARE manuals/fullprof/runs/rigid/ureacyl_calc.prf manuals/fullprof/runs/rigid/ureacyl.pcr 5 4751 exact
+SKIP manuals/fullprof/runs/rigid/ureaz.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is ureaz_calc.prf
+COMPARE manuals/fullprof/runs/rigid/ureaz_calc.prf manuals/fullprof/runs/rigid/ureaz.pcr 5 4751 exact
+SKIP manuals/fullprof/runs/rutile-anatase/rutana_tch.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is rutana_tch_calc.prf
+COMPARE manuals/fullprof/runs/rutile-anatase/rutana_tch_calc.prf manuals/fullprof/runs/rutile-anatase/rutana_tch.pcr 5 7901 exact
+SKIP manuals/fullprof/runs/rutile-anatase/rutana_tch_conv.prf a converged refinement (CODE_conv, L052, L056): drawn from the parameters of its cycle before the last, and no CODE_conv_calc pass exists; its pattern is checked through chi2 at FullProf's values in: fullprof_refinements
+SKIP manuals/fullprof/runs/scor_rxn/scor_rxn_1.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is scor_rxn_calc_1.prf
+SKIP manuals/fullprof/runs/scor_rxn/scor_rxn_2.prf pass 1 of a joint run (the refinement): drawn from the parameters of its cycle before the last; the reference is scor_rxn_calc_2.prf
+COMPARE manuals/fullprof/runs/scor_rxn/scor_rxn_calc_1.prf manuals/fullprof/runs/scor_rxn/scor_rxn.pcr#1 7 3070 exact
+COMPARE manuals/fullprof/runs/scor_rxn/scor_rxn_calc_2.prf manuals/fullprof/runs/scor_rxn/scor_rxn.pcr#2 7 2376 exact
+COMPARE manuals/fullprof/runs/texture/yb_nor2.prf manuals/fullprof/runs/texture/yb_nor2.pcr.in 5 3251 exact
+COMPARE manuals/fullprof/runs/texture/yb_nor2_g2.prf manuals/fullprof/runs/texture/yb_nor2_g2.pcr.in 5 3251 exact
+COMPARE manuals/fullprof/runs/texture/yb_nor2_one.prf manuals/fullprof/runs/texture/yb_nor2_one.pcr.in 5 3251 exact
+COMPARE manuals/fullprof/runs/texture/yb_nor3.prf manuals/fullprof/runs/texture/yb_nor3.pcr.in 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/irf1_narrow_x0.645_wdt20/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/irf1_narrow_x0.645_wdt20/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w4_x0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w4_x0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w4_x0.1/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w4_x0.1/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w4_x0.3/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w4_x0.3/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w4_x0.645/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w4_x0.645/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w4_x0.645_y0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w4_x0.645_y0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w4_x0.645_y0_g0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w4_x0.645_y0_g0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w4_x0_y0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w4_x0_y0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w4_x1.5/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w4_x1.5/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w8_x0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w8_x0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/w8_x0.645/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/w8_x0.645/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/wdt10_x0.645_narrow/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/wdt10_x0.645_narrow/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/wdt10_x0_narrow/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/wdt10_x0_narrow/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/wdt20_x0.645_narrow/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/wdt20_x0.645_narrow/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/wdt20_x0_narrow/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/wdt20_x0_narrow/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/wdt40_x0.645_narrow/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/wdt40_x0.645_narrow/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/wdt40_x0_narrow/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/wdt40_x0_narrow/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/wdt4_x0.645_narrow/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/wdt4_x0.645_narrow/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/wdt4_x0_narrow/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/wdt4_x0_narrow/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_FCJ_x0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_FCJ_x0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_FCJ_x0.645/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_FCJ_x0.645/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_K2_x0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_K2_x0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_K2_x0.645/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_K2_x0.645/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_all_x0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_all_x0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_all_x0.645/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_all_x0.645/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_irf1_x0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_irf1_x0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_irf1_x0.645/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_irf1_x0.645/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_plain_x0/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_plain_x0/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yb_plain_x0.645/ybfluo_Riet_IRF.prf manuals/fullprof/runs/window_experiments/yb_plain_x0.645/input.pcr 5 3251 exact
+COMPARE manuals/fullprof/runs/window_experiments/yvo3_X0/YVO3a.prf manuals/fullprof/runs/window_experiments/yvo3_X0/input.pcr 5 6245 exact
+COMPARE manuals/fullprof/runs/window_experiments/yvo3_base_w4/YVO3a.prf manuals/fullprof/runs/window_experiments/yvo3_base_w4/input.pcr 5 6245 exact
+COMPARE manuals/fullprof/runs/window_experiments/yvo3_noK2/YVO3a.prf manuals/fullprof/runs/window_experiments/yvo3_noK2/input.pcr 5 6245 exact
+COMPARE manuals/fullprof/runs/window_experiments/yvo3_noK2_noasym/YVO3a.prf manuals/fullprof/runs/window_experiments/yvo3_noK2_noasym/input.pcr 5 6245 exact
+COMPARE manuals/fullprof/runs/window_experiments/yvo3_noXins/YVO3a.prf manuals/fullprof/runs/window_experiments/yvo3_noXins/input.pcr 5 6245 exact
+COMPARE manuals/fullprof/runs/window_experiments/yvo3_noasym/YVO3a.prf manuals/fullprof/runs/window_experiments/yvo3_noasym/input.pcr 5 6245 exact
+SKIP manuals/fullprof/runs/y2o3_fprime/y2o3_fprime.prf pass 1 of a run (the refinement): drawn from the parameters of its cycle before the last; the reference is y2o3_fprime_calc.prf
+COMPARE manuals/fullprof/runs/y2o3_fprime/y2o3_fprime_calc.prf manuals/fullprof/runs/y2o3_fprime/y2o3_fprime.pcr 7 13091 exact

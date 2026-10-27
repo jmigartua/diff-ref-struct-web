@@ -1,0 +1,4 @@
+# wasm-pack's output (W1), built by web/tools/build-wasm.sh: not committed; the manifest says whether it is here
+*
+!.gitignore
+!manifest.json

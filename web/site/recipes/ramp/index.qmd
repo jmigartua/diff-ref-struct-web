@@ -1,0 +1,43 @@
+---
+title: "A ramp: when does a phase appear?"
+pagetitle: "A ramp · Recipes · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>A ramp: when does a phase appear?</h1>
+<p class="sub">A series measured while the temperature steps up (or down): find the rows between which something appears, disappears or moves, and check it on the patterns.</p>
+
+<div class="recipe-facts">
+<span class="k">You have</span><span>one or more scans per temperature step, the temperature in each file's name or header</span>
+<span class="k">You get</span><span>the onset bracketed between two temperatures; a named region and a link that bring it back</span>
+<span class="k">Views</span><span>Map, Cursors, Stack, Overlay with Linked zoom</span>
+<span class="k">Time</span><span>a few minutes once the folder is described</span>
+</div>
+
+<h2>Steps</h2>
+<ol class="steps">
+<li><b>Open the folder</b> and wait for <b>Sets in this folder</b>. Open the proposal <i>N scans by temperature, from … to …</i>: one scan per temperature, the longest exposure where several share one. The core places each scan at its temperature, with the temperature's source on hover.</li>
+<li><b>Map</b>, <b>colour √</b>. √ compresses strong peaks less than log and keeps weak ones visible; try log too.</li>
+<li><b>Zoom past the first degree</b> if the data come from a 2D detector with a beamstop: drag a rectangle from just above it, or turn the wheel over the 2&theta; band.</li>
+<li><b>Clip the colour range</b> on the colour bar until the background is a quiet colour and the weak features stand out. A good start is just under the median background to two or three times it: on a synchrotron run whose median cell was about 12&nbsp;√counts (about 150 counts), 10&ndash;25&nbsp;√counts showed the broad features that the full range (0&ndash;47) hid.</li>
+<li><b>Find the change.</b> Read the map upwards: a stripe that starts at a row is a reflection appearing at that temperature; one that ends, disappearing; one that bends, moving. Row heights follow the temperature steps, so an uneven ramp shows as uneven rows.</li>
+<li><b>Cursors</b>, then click on the stripe to pin them: the column strip at the right is that angle's intensity against temperature; the onset is where it leaves the background.</li>
+<li><b>Bracket it.</b> Zoom to the change (a rectangle a few degrees wide and a few rows high), switch <b>Range from view</b> on, and <b>Save region…</b> with a name that says what it is (<i>onset, broad maxima 7&ndash;10.5°</i>). The region keeps its zoom and colours.</li>
+<li><b>Check on the patterns.</b> <b>Stack</b> the set and look at the rows on either side of the onset; or <b>Overlay</b>, choose the two scans that bracket it (click, ⌘-click), <b>Linked zoom</b>, and read the difference strip.</li>
+</ol>
+
+<h2>What to watch for</h2>
+<ul>
+<li><b>Nominal temperatures.</b> Set points in file names are not thermocouple readings. Say so when you report an onset.</li>
+<li><b>Exposure.</b> Scans counted for different times have different noise: the core tells them apart (exposure classes, from the counts' scale σ²/y) and takes the longest at each temperature in its proposal. Do not compare a short scan's weak peaks with a long scan's.</li>
+<li><b>A scan out of line.</b> A scan whose noise or total differs from its neighbours' (a partial scan, a beam loss) shows as a row of another texture. Hover it for its facts, solo it in the Overlay (⌥-click) against its neighbours, and dim or untick it.</li>
+<li><b>Members drawn apart.</b> A file without a temperature is drawn as a separate row under the map. Give it one with Set Temperature…, with its source, or leave it out.</li>
+</ul>
+
+<p class="sub">In the manual: §7 the proposals, §11 the map in detail, §10 the views.</p>
+</article>
+```

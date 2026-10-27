@@ -1,0 +1,37 @@
+---
+title: "Two patterns: what changed?"
+pagetitle: "Compare · Recipes · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>Two patterns: what changed?</h1>
+<p class="sub">Differences show what plain overlays hide: a broad hump growing under the peaks, a shoulder, a small shift. Four ways, from two scans to a whole series.</p>
+
+<h2>Two scans: the difference strip</h2>
+<ol class="steps">
+<li>Open the two (choose them in the tree, <b>Open 2 as Plot Set</b>), or choose them in a larger set.</li>
+<li><b>Overlay</b>, <b>Linked zoom</b>. Click the first in the members, ⌘-click the second.</li>
+<li>The strip under the zoom is <b>the first chosen less the second</b>. Drag across the left plot to move the zoomed window along the pattern.</li>
+</ol>
+
+<h2>A whole series against one scan: the Difference Map</h2>
+<ol class="steps">
+<li>Click the member to subtract (a scan before the change) and <b>Set Reference</b>. The view switches to the <b>Difference Map</b>: every member less the reference.</li>
+<li>Colour √ (signed: positive and negative apart). Log is not offered for differences.</li>
+<li>Read it as the map: a positive stripe is intensity gained since the reference; a negative one, lost; a pair of opposite stripes side by side, a peak that moved.</li>
+</ol>
+<p>Broad features (a poorly crystalline phase, a transition phase) often show far better on the Difference Map from a scan taken just before they appear than on the plain map, where the strong peaks take the colour range.</p>
+
+<h2>The sample without its container: a background scan</h2>
+<p>An empty-capillary (or empty-holder) scan under the same conditions subtracts the container's scattering. Open the sample scan and the background together, <b>Overlay</b>, <b>Linked zoom</b>, the sample first: the strip is the sample's own pattern. Check first that the two are on the same scale (their totals, a monitor, the same counting time); otherwise <b>Normalise…</b> both by the monitor or the counting time first.</p>
+
+<h2>In d instead of 2θ</h2>
+<p>To compare with tabulated d-spacings: <b>Convert X…</b> ▸ <i>d (Å)</i>. A file that states no wavelength asks for one, typed with its source (<i>λ from the calibrant</i>, <i>λ_eff from the indexed reflections of scan 100</i>). An effective wavelength fitted to peak positions absorbs a zero offset: right for comparing lines, not for absolute cell parameters.</p>
+
+<p class="sub">In the manual: §10 the views, §11 the Difference Map, §12 Convert X and Normalise.</p>
+</article>
+```

@@ -1,0 +1,17 @@
+---
+title: "The manual"
+pagetitle: "Manual · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="manual-head">
+<h1>The manual</h1>
+<p class="sub">Every control of the page, what it does and what the core computes behind it; the limits of this version said plainly. Written from the page's code and checked against the core on real data.</p>
+<p class="dl"><a class="cta" href="../downloads/user-manual.pdf">Download the PDF</a> <span class="k">LaTeX, the site's typefaces</span> &nbsp; <a href="quick-reference/index.html">Quick reference</a> &middot; <a href="../downloads/quick-reference.pdf">its PDF</a></p>
+</div>
+```
+
+{{< include ../_gen/user-manual.md >}}

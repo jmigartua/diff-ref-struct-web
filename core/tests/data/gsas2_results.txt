@@ -1,0 +1,5 @@
+# What GSAS-II (commit 305a159) reads from the core's results file and structure CIF, for the test results_file;
+# written by make_gsas2_results.py. Do not edit.
+profile 3199 255760.05 1523239.0 13.585808266961589 0.0 0.0 1.0 159.9 212.0 0.004717123535804854 1.59509
+phase a_modes_results.cif 5.69436 5.68004 8.02616 90.0 90.05 90.0 P21/n 6 5.40986
+phase a_modes_phase.cif 5.69436 5.68004 8.02616 90.0 90.05 90.0 P21/n 6 5.40986

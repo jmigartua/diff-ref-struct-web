@@ -1,0 +1,175 @@
+# diff-ref-struct control file (https://jmigartua.github.io/diff-ref-struct-site/)
+format = "diff-ref-struct 1"
+title = "Yb2ZrWO8  D500  / Crystallite size"
+radiation = "x-ray"                     # x-ray or neutron
+
+[pattern]
+data = "../../../../manuals/fullprof/runs/Yb2ZrWO8/Yb2ZrWO8.dat" # relative to this file
+reader = "xys"                          # drs data formats
+wavelength_1 = 1.5406                   # Å
+wavelength_2 = 1.5406                   # Å
+wavelength_ratio = 1.0
+zero_shift = -0.03289                   # deg 2θ
+sample_displacement = 0.0               # deg 2θ
+sample_transparency = 0.0               # deg 2θ
+geometry = "debye-scherrer"             # corrected, debye-scherrer, flat-plate-psd, transmission, synchrotron
+monochromator_polarisation = 0.7899
+polarisation_fraction = 0.0
+absorption_mur = 0.0
+peak_window = 25.0                      # FWHM
+asymmetry_limit = 40.0                  # deg 2θ
+preferred_orientation_function = "march-dollase" # march-dollase or exponential
+weighting = "variance"                  # variance, maximum-likelihood or unit
+excluded_regions = []                   # deg 2θ
+
+[pattern.background]
+function = "points"                     # points, polynomial, chebyshev or fourier
+interpolation = "linear"                # linear or spline
+background_points = [
+  [16.476, 213.8816],
+  [18.795, 195.4578],
+  [21.056, 194.9628],
+  [22.796, 212.6652],
+  [24.477, 243.5636],
+  [26.159, 169.821],
+  [39.32, 151.9862],
+  [42.277, 194.8339],
+  [54.174, 200.7787],
+  [68.785, 151.3374],
+  [77.187, 140.802],
+  [88.667, 158.651],
+  [97.364, 162.3624],
+  [109.521, 145.3905],
+  [118.334, 164.5274],
+  [132.133, 192.1639],
+  [144.899, 225.2335],
+] # [2θ (deg), counts]
+
+[pattern.resolution]
+function = "table"                      # the widths at given angles
+instrument_resolution = [
+  [21.3615, 0.0696, 0.0015],
+  [30.3957, 0.0639, 0.0037],
+  [37.4561, 0.0617, 0.0063],
+  [43.525, 0.0619, 0.0046],
+  [48.977, 0.0621, 0.0068],
+  [54.0088, 0.0633, 0.0079],
+  [63.2364, 0.0674, 0.009],
+  [67.5672, 0.0685, 0.0113],
+  [71.769, 0.0666, 0.0147],
+  [75.867, 0.0664, 0.0194],
+  [83.8703, 0.0691, 0.0221],
+  [87.8146, 0.0713, 0.0201],
+  [99.6633, 0.0728, 0.0325],
+  [107.7723, 0.067, 0.0462],
+  [116.2643, 0.0743, 0.05],
+  [130.4253, 0.0657, 0.0855],
+  [141.7995, 0.0828, 0.1107],
+  [148.7056, 0.049, 0.1579],
+] # [2θ, H_G, H_L] (deg)
+
+[pattern.fullprof]                     # as the imported .pcr wrote them, for the export back to FullProf
+range = [15.0, 0.040013, 145.0]         # Thmin, Step, Thmax (deg 2θ)
+
+[[phase]]
+name = "Structure Fluorine    Yb2ZrWO8"
+space_group = "F m -3 m"                # Hermann–Mauguin
+hall = "-F 4 2 3"                       # Hall symbol: the operators
+cell_a = 5.185379                       # Å
+cell_b = 5.185379                       # Å
+cell_c = 5.185379                       # Å
+cell_alpha = 90.0                       # deg
+cell_beta = 90.0                        # deg
+cell_gamma = 90.0                       # deg
+profile = "thompson-cox-hastings"       # gaussian, lorentzian, pseudo-voigt, thompson-cox-hastings
+scale_factor = 2.750664e-6              # arbitrary
+overall_b = 0.0                         # Å²
+pv_eta0 = 0.0
+caglioti_u = 0.0                        # deg²
+caglioti_v = 0.0                        # deg²
+caglioti_w = 0.0                        # deg²
+lorentzian_strain = 0.0                 # deg
+lorentzian_size = 0.246755              # deg
+gaussian_size = 0.051474                # deg²
+berar_baldinozzi = [0.00901, 0.0, 0.0, 0.0] # P1 P2 P3 P4
+axial_divergence_s_l = 0.0
+axial_divergence_d_l = 0.0
+po_g1 = 1.0
+po_g2 = 0.0
+po_direction = [1.0, 1.0, 0.0]          # reciprocal-lattice components
+qpa_atz = 1726030.5                     # g/mol
+brindley_coefficient = 1.0
+le_bail = false                         # intensities extracted (profile matching)
+
+[[phase.atom]]
+label = "Yb"
+species = "Yb+3"
+atom_position = [0.0, 0.0, 0.0]         # fraction of the cell edge
+atom_biso = 2.15649                     # Å²
+atom_occupancy = 0.5
+
+[[phase.atom]]
+label = "Zr"
+species = "Zr+4"
+atom_position = [0.0, 0.0, 0.0]         # fraction of the cell edge
+atom_biso = 2.15649                     # Å²
+atom_occupancy = 0.25
+
+[[phase.atom]]
+label = "W"
+species = "W+6"
+atom_position = [0.0, 0.0, 0.0]         # fraction of the cell edge
+atom_biso = 2.15649                     # Å²
+atom_occupancy = 0.25
+
+[[phase.atom]]
+label = "O"
+species = "O-2"
+atom_position = [0.25, 0.25, 0.25]      # fraction of the cell edge
+atom_biso = 5.93618                     # Å²
+atom_occupancy = 2.0
+
+[refine]
+cycles = 6
+convergence = 0.3                       # every |shift| below this times its esd
+# Each parameter: the values it moves and their multipliers (value = multiplier × parameter); it is named by
+# its first value. The values the symmetry ties to these follow by themselves.
+parameters = [
+  ["pattern1.zero_shift", 1.0],
+  ["pattern1.background_points.0", 1.0],
+  ["pattern1.background_points.1", 1.0],
+  ["pattern1.background_points.2", 1.0],
+  ["pattern1.background_points.3", 1.0],
+  ["pattern1.background_points.4", 1.0],
+  ["pattern1.background_points.5", 1.0],
+  ["pattern1.background_points.6", 1.0],
+  ["pattern1.background_points.7", 1.0],
+  ["pattern1.background_points.8", 1.0],
+  ["pattern1.background_points.9", 1.0],
+  ["pattern1.background_points.10", 1.0],
+  ["pattern1.background_points.11", 1.0],
+  ["pattern1.background_points.12", 1.0],
+  ["pattern1.background_points.13", 1.0],
+  ["pattern1.background_points.14", 1.0],
+  ["pattern1.background_points.15", 1.0],
+  ["pattern1.background_points.16", 1.0],
+  ["phase1.scale_factor", 2.0],
+  ["phase1.lorentzian_size", 1.0],
+  ["phase1.gaussian_size", 1.0],
+  ["phase1.cell_a", 1.0, "phase1.cell_b", 1.0, "phase1.cell_c", 1.0],
+  ["phase1.Yb.atom_biso", 1.0, "phase1.Zr.atom_biso", 1.0, "phase1.W.atom_biso", 1.0],
+  ["phase1.O.atom_biso", 1.0],
+]
+
+[convention]
+# true: FullProf's rule where it departs from the papers (the compatibility layer); false: the papers' (L050).
+lorentz_polarisation = false
+berar_baldinozzi = false
+axial_divergence = false
+preferred_orientation = false
+excluded_points = false
+peak_window = true
+reflections = true
+microstructure = false
+angle_restraints = false
+window_edge = true

@@ -1,0 +1,242 @@
+# diff-ref-struct control file (https://jmigartua.github.io/diff-ref-struct-site/)
+format = "diff-ref-struct 1"
+title = "WDICVOL04 solution (Automatic generated PCR file)"
+radiation = "x-ray"                     # x-ray or neutron
+
+[pattern]
+data = "../../../../manuals/fullprof/runs/Y2O3/y2o3.dat" # relative to this file
+reader = "free_steps"                   # drs data formats
+wavelength_1 = 1.5406                   # Å
+wavelength_2 = 1.5444                   # Å
+wavelength_ratio = 0.5
+zero_shift = 0.0025                     # deg 2θ
+sample_displacement = 0.0               # deg 2θ
+sample_transparency = 0.0               # deg 2θ
+geometry = "debye-scherrer"             # corrected, debye-scherrer, flat-plate-psd, transmission, synchrotron
+monochromator_polarisation = 0.78
+polarisation_fraction = 0.0
+absorption_mur = 0.0
+peak_window = 40.0                      # FWHM
+asymmetry_limit = 30.0                  # deg 2θ
+preferred_orientation_function = "march-dollase" # march-dollase or exponential
+weighting = "variance"                  # variance, maximum-likelihood or unit
+excluded_regions = []                   # deg 2θ
+
+[pattern.background]
+function = "points"                     # points, polynomial, chebyshev or fourier
+interpolation = "linear"                # linear or spline
+background_points = [
+  [15.48, 19.1834],
+  [18.03, 17.7419],
+  [19.61, 17.3902],
+  [22.78, 15.9509],
+  [24.37, 18.2692],
+  [26.0, 16.6811],
+  [27.79, 12.9658],
+  [31.03, 12.3576],
+  [32.55, 14.538],
+  [34.84, 14.1905],
+  [36.56, 15.8822],
+  [39.37, 16.7623],
+  [42.7, 16.5544],
+  [45.03, 16.6233],
+  [46.15, 18.1297],
+  [47.64, 14.8861],
+  [49.67, 14.3015],
+  [51.16, 18.0999],
+  [52.13, 17.4128],
+  [53.86, 17.6089],
+  [55.34, 17.6189],
+  [59.79, 15.445],
+  [61.23, 16.3014],
+  [63.87, 15.6827],
+  [65.25, 15.7881],
+  [66.49, 16.6122],
+  [67.95, 16.0934],
+  [69.13, 17.7404],
+  [70.5, 14.331],
+  [71.68, 15.4058],
+  [73.08, 15.0633],
+  [74.41, 15.1097],
+  [75.61, 16.178],
+  [77.03, 14.5938],
+  [79.9, 16.1178],
+  [82.87, 16.5895],
+  [84.3, 15.289],
+  [86.42, 15.9609],
+  [88.73, 17.1124],
+  [92.73, 14.3168],
+  [95.12, 16.113],
+  [97.32, 14.8812],
+  [100.25, 16.4823],
+  [103.64, 14.3793],
+  [106.37, 14.5358],
+  [108.1, 16.4562],
+  [112.3, 16.6165],
+  [115.39, 15.5432],
+  [120.79, 16.8523],
+  [123.59, 15.684],
+  [125.26, 16.3233],
+  [126.62, 14.644],
+  [129.96, 18.7943],
+  [131.26, 17.255],
+  [134.56, 16.0133],
+  [136.23, 15.1833],
+  [138.26, 14.8259],
+  [139.97, 15.3598],
+  [141.96, 16.3609],
+  [143.11, 17.6656],
+  [144.14, 18.1878],
+  [144.97, 18.1292],
+] # [2θ (deg), counts]
+
+[pattern.fullprof]                     # as the imported .pcr wrote them, for the export back to FullProf
+range = [25.0, 0.01, 95.9]             # Thmin, Step, Thmax (deg 2θ)
+excluded_regions = [
+  [0.0, 14.45],
+  [150.0, 180.0],
+] # deg 2θ, under FullProf's rule
+
+[[phase]]
+name = "phase 1:"
+space_group = "I a -3"                  # Hermann–Mauguin
+hall = "-I 2b 2c 3"                     # Hall symbol: the operators
+cell_a = 10.604939                      # Å
+cell_b = 10.604939                      # Å
+cell_c = 10.604939                      # Å
+cell_alpha = 90.0                       # deg
+cell_beta = 90.0                        # deg
+cell_gamma = 90.0                       # deg
+profile = "pseudo-voigt"                # gaussian, lorentzian, pseudo-voigt, thompson-cox-hastings
+scale_factor = 0.00002614092            # arbitrary
+overall_b = 0.0                         # Å²
+pv_eta0 = 0.53328
+caglioti_u = 0.014185                   # deg²
+caglioti_v = -0.003434                  # deg²
+caglioti_w = 0.010206                   # deg²
+pv_eta_slope = 0.003508                 # 1/deg
+lorentzian_size = 0.0                   # deg
+gaussian_size = 0.0                     # deg²
+berar_baldinozzi = [0.10605, 0.01772, 0.0, 0.0] # P1 P2 P3 P4
+axial_divergence_s_l = 0.0
+axial_divergence_d_l = 0.0
+po_g1 = 1.0
+po_g2 = 0.0
+po_direction = [0.0, 0.0, 1.0]          # reciprocal-lattice components
+qpa_atz = 3612.787                      # g/mol
+brindley_coefficient = 1.0
+le_bail = false                         # intensities extracted (profile matching)
+
+[[phase.atom]]
+label = "Y"
+species = "Y"
+atom_position = [0.25, 0.25, 0.25]      # fraction of the cell edge
+atom_biso = 0.23928                     # Å²
+atom_occupancy = 0.16666
+
+[[phase.atom]]
+label = "Y"
+species = "Y"
+atom_position = [-0.03252, 0.0, 0.25]   # fraction of the cell edge
+atom_biso = 0.225                       # Å²
+atom_occupancy = 0.5
+
+[[phase.atom]]
+label = "O"
+species = "O"
+atom_position = [0.39074, 0.15204, 0.38012] # fraction of the cell edge
+atom_biso = 0.2667                      # Å²
+atom_occupancy = 1.0
+
+[refine]
+cycles = 15
+convergence = 0.2                       # every |shift| below this times its esd
+# Each parameter: the values it moves and their multipliers (value = multiplier × parameter); it is named by
+# its first value. The values the symmetry ties to these follow by themselves.
+parameters = [
+  ["pattern1.zero_shift", 1.0],
+  ["pattern1.background_points.0", 1.0],
+  ["pattern1.background_points.1", 1.0],
+  ["pattern1.background_points.2", 1.0],
+  ["pattern1.background_points.3", 1.0],
+  ["pattern1.background_points.4", 1.0],
+  ["pattern1.background_points.5", 1.0],
+  ["pattern1.background_points.6", 1.0],
+  ["pattern1.background_points.7", 1.0],
+  ["pattern1.background_points.8", 1.0],
+  ["pattern1.background_points.9", 1.0],
+  ["pattern1.background_points.10", 1.0],
+  ["pattern1.background_points.11", 1.0],
+  ["pattern1.background_points.12", 1.0],
+  ["pattern1.background_points.13", 1.0],
+  ["pattern1.background_points.14", 1.0],
+  ["pattern1.background_points.15", 1.0],
+  ["pattern1.background_points.16", 1.0],
+  ["pattern1.background_points.17", 1.0],
+  ["pattern1.background_points.18", 1.0],
+  ["pattern1.background_points.19", 1.0],
+  ["pattern1.background_points.20", 1.0],
+  ["pattern1.background_points.21", 1.0],
+  ["pattern1.background_points.22", 1.0],
+  ["pattern1.background_points.23", 1.0],
+  ["pattern1.background_points.24", 1.0],
+  ["pattern1.background_points.25", 1.0],
+  ["pattern1.background_points.26", 1.0],
+  ["pattern1.background_points.27", 1.0],
+  ["pattern1.background_points.28", 1.0],
+  ["pattern1.background_points.29", 1.0],
+  ["pattern1.background_points.30", 1.0],
+  ["pattern1.background_points.31", 1.0],
+  ["pattern1.background_points.32", 1.0],
+  ["pattern1.background_points.33", 1.0],
+  ["pattern1.background_points.34", 1.0],
+  ["pattern1.background_points.35", 1.0],
+  ["pattern1.background_points.36", 1.0],
+  ["pattern1.background_points.37", 1.0],
+  ["pattern1.background_points.38", 1.0],
+  ["pattern1.background_points.39", 1.0],
+  ["pattern1.background_points.40", 1.0],
+  ["pattern1.background_points.41", 1.0],
+  ["pattern1.background_points.42", 1.0],
+  ["pattern1.background_points.43", 1.0],
+  ["pattern1.background_points.44", 1.0],
+  ["pattern1.background_points.45", 1.0],
+  ["pattern1.background_points.46", 1.0],
+  ["pattern1.background_points.47", 1.0],
+  ["pattern1.background_points.48", 1.0],
+  ["pattern1.background_points.49", 1.0],
+  ["pattern1.background_points.50", 1.0],
+  ["pattern1.background_points.51", 1.0],
+  ["pattern1.background_points.52", 1.0],
+  ["pattern1.background_points.53", 1.0],
+  ["pattern1.background_points.54", 1.0],
+  ["pattern1.background_points.55", 1.0],
+  ["pattern1.background_points.56", 1.0],
+  ["pattern1.background_points.57", 1.0],
+  ["pattern1.background_points.58", 1.0],
+  ["pattern1.background_points.59", 1.0],
+  ["pattern1.background_points.60", 1.0],
+  ["pattern1.background_points.61", 1.0],
+  ["phase1.scale_factor", 2.0],
+  ["phase1.pv_eta0", 1.0],
+  ["phase1.caglioti_u", 1.0],
+  ["phase1.caglioti_v", 1.0],
+  ["phase1.caglioti_w", 1.0],
+  ["phase1.pv_eta_slope", 1.0],
+  ["phase1.cell_a", 1.0, "phase1.cell_b", 1.0, "phase1.cell_c", 1.0],
+  ["phase1.berar_baldinozzi.1", 1.0],
+  ["phase1.berar_baldinozzi.2", 1.0, "phase1.berar_baldinozzi.1", 3.0],
+]
+
+[convention]
+# true: FullProf's rule where it departs from the papers (the compatibility layer); false: the papers' (L050).
+lorentz_polarisation = false
+berar_baldinozzi = false
+axial_divergence = false
+preferred_orientation = false
+excluded_points = false
+peak_window = true
+reflections = true
+microstructure = false
+angle_restraints = false
+window_edge = true

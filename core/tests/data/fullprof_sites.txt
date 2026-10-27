@@ -1,0 +1,173 @@
+# fullprof_sites.txt: FullProf atom-site data, the reference for the core's site tests.
+# Written by make_fullprof_sites.py (core/tests/data) from the files under manuals/fullprof; do not edit.
+# Every value is a string copied from a FullProf file; each line ends with <file>:<line> (repository-relative).
+# MULT "<Hall symbol>" <label> <x> <y> <z> <multiplicity>   (.out, Initial parameters table; Mult column)
+# BETA "<space group symbol>" <label> <x> <y> <z> <b11> <b22> <b33> <b12> <b13> <b23> <c11> <c22> <c33> <c12> <c13> <c23>
+#      (.pcr, atoms with N_t = 2; b = anisotropic betas, c = their codewords; line = the betas line)
+MULT "-P 2ac 2n" La1 0.00000 0.25000 0.50000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3_cub.out:205
+MULT "-P 2ac 2n" Mn1 0.00000 0.00000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3_cub.out:207
+MULT "-P 2ac 2n" O1 0.25000 0.00000 0.25000 8 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3_cub.out:209
+MULT "-P 2ac 2n" O1_2 0.00000 0.25000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3_cub.out:211
+MULT "-P 2ac 2n" La1 0.00000 0.25000 0.50000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3ref.out:184
+MULT "-P 2ac 2n" Mn1 0.00000 0.00000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3ref.out:186
+MULT "-P 2ac 2n" O1 0.25000 0.00000 0.25000 8 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3ref.out:188
+MULT "-P 2ac 2n" O1_2 0.00000 0.25000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3ref.out:190
+MULT "-P 2ac 2n" La1 0.00000 0.25000 0.50000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san.out:83
+MULT "-P 2ac 2n" Mn1 0.00000 0.00000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san.out:85
+MULT "-P 2ac 2n" O1 0.25000 0.00000 0.25000 8 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san.out:87
+MULT "-P 2ac 2n" O1_2 0.00000 0.25000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san.out:89
+MULT "-P 2ac 2n" La1 0.00000 0.25000 0.50000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_prof.out:83
+MULT "-P 2ac 2n" Mn1 0.00000 0.00000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_prof.out:85
+MULT "-P 2ac 2n" O1 0.25000 0.00000 0.25000 8 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_prof.out:87
+MULT "-P 2ac 2n" O1_2 0.00000 0.25000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_prof.out:89
+MULT "-P 2ac 2n" La1 0.00000 0.25000 0.50000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_spr.out:83
+MULT "-P 2ac 2n" Mn1 0.00000 0.00000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_spr.out:85
+MULT "-P 2ac 2n" O1 0.25000 0.00000 0.25000 8 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_spr.out:87
+MULT "-P 2ac 2n" O1_2 0.00000 0.25000 0.00000 4 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/SimulatedAnnealing/Lmo_san_spr.out:89
+MULT "-P 2ybc" A1 0.90015 0.04487 0.08871 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:160
+MULT "-P 2ybc" A2 0.82136 0.06166 0.15945 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:164
+MULT "-P 2ybc" A3 0.76168 0.30632 0.16245 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:168
+MULT "-P 2ybc" A4 0.69611 0.29207 0.24736 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:172
+MULT "-P 2ybc" A5 0.65184 0.53227 0.26995 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:176
+MULT "-P 2ybc" A6 0.66791 0.36839 0.04553 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:180
+MULT "-P 2ybc" A7 0.75696 -0.06580 0.13672 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:184
+MULT "-P 2ybc" A8 0.87540 0.02291 0.23131 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:188
+MULT "-P 2ybc" A9 0.62199 0.18789 0.22115 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:192
+MULT "-P 2ybc" A10 0.75428 0.22766 0.31808 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:196
+MULT "-P 2ybc" A11 0.99260 -0.18221 0.02742 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:200
+MULT "-P 2ybc" A12 0.66432 0.72279 0.38497 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:204
+MULT "-P 2ybc" A13 0.51397 0.26965 -0.05586 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:208
+MULT "-P 2ybc" A14 0.86620 0.53278 0.14368 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:212
+MULT "-P 2ybc" A15 0.93601 -0.16936 0.07775 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:216
+MULT "-P 2ybc" A16 0.92870 0.22132 0.04530 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:220
+MULT "-P 2ybc" A17 0.68823 0.57488 0.37750 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:224
+MULT "-P 2ybc" A18 0.59052 0.67166 0.19961 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:228
+MULT "-P 2ybc" A19 0.56892 0.22931 0.01449 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:232
+MULT "-P 2ybc" A20 0.68487 0.52570 -0.01079 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:236
+MULT "-P 2ybc" A21 0.85205 0.48700 0.20034 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.out:240
+MULT "-P 2ybc" A1 0.90015 0.04487 0.08871 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:97
+MULT "-P 2ybc" A2 0.82187 0.06122 0.15993 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:107
+MULT "-P 2ybc" A3 0.76212 0.30568 0.16323 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:111
+MULT "-P 2ybc" A4 0.69715 0.29101 0.24857 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:115
+MULT "-P 2ybc" A5 0.65289 0.53101 0.27144 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:119
+MULT "-P 2ybc" A6 0.66784 0.36769 0.04653 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:123
+MULT "-P 2ybc" A7 0.75755 -0.06641 0.13741 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:127
+MULT "-P 2ybc" A8 0.87623 0.02250 0.23166 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:131
+MULT "-P 2ybc" A9 0.62309 0.18662 0.22262 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:135
+MULT "-P 2ybc" A10 0.75564 0.22663 0.31915 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:139
+MULT "-P 2ybc" A11 0.99227 -0.18175 0.02687 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:143
+MULT "-P 2ybc" A12 0.66583 0.72131 0.38665 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:147
+MULT "-P 2ybc" A13 0.51370 0.26864 -0.05439 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:151
+MULT "-P 2ybc" A14 0.86618 0.53254 0.14403 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:155
+MULT "-P 2ybc" A15 0.93604 -0.16921 0.07754 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:159
+MULT "-P 2ybc" A16 0.92828 0.22153 0.04514 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:163
+MULT "-P 2ybc" A17 0.68977 0.57349 0.37903 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:167
+MULT "-P 2ybc" A18 0.59120 0.67035 0.20128 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:171
+MULT "-P 2ybc" A19 0.56896 0.22833 0.01583 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:175
+MULT "-P 2ybc" A20 0.68434 0.52519 -0.00993 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:179
+MULT "-P 2ybc" A21 0.85240 0.48658 0.20084 4 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/SAN/P21c/ZMatrix/citric-acid-sls_1_SAN.out:183
+MULT "-P 2ybc" A1 0.14126 0.46213 0.21731 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:160
+MULT "-P 2ybc" A2 0.16503 0.36868 0.31891 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:164
+MULT "-P 2ybc" A3 0.06512 0.34852 0.40739 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:168
+MULT "-P 2ybc" A4 -0.02539 0.38021 0.41673 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:172
+MULT "-P 2ybc" A5 0.09348 0.27512 0.47834 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:176
+MULT "-P 2ybc" A6 0.01851 0.26414 0.53904 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:180
+MULT "-P 2ybc" A7 0.22068 0.22083 0.46248 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:184
+MULT "-P 2ybc" A8 0.24645 0.16656 0.51335 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:188
+MULT "-P 2ybc" A9 0.32171 0.24053 0.37535 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:192
+MULT "-P 2ybc" A10 0.39901 0.20925 0.36315 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:196
+MULT "-P 2ybc" A11 0.29377 0.31317 0.30355 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:200
+MULT "-P 2ybc" A12 0.35328 0.33038 0.23986 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:204
+MULT "-P 2ybc" A13 0.21201 0.55705 0.30459 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:208
+MULT "-P 2ybc" A14 0.20412 0.64030 0.25159 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:212
+MULT "-P 2ybc" A15 0.16668 0.64839 0.17400 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:216
+MULT "-P 2ybc" A16 0.26519 0.71510 0.30767 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:220
+MULT "-P 2ybc" A17 0.25780 0.76962 0.26985 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:224
+MULT "-P 2ybc" A18 0.33833 0.70741 0.41777 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:228
+MULT "-P 2ybc" A19 0.38000 0.75784 0.45333 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:232
+MULT "-P 2ybc" A20 0.34793 0.62546 0.47194 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:236
+MULT "-P 2ybc" A21 0.39981 0.62000 0.55387 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:240
+MULT "-P 2ybc" A22 0.28444 0.55189 0.41574 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:244
+MULT "-P 2ybc" A23 0.29679 0.49886 0.45884 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:248
+MULT "-P 2ybc" A24 -0.07175 0.48063 0.20867 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:252
+MULT "-P 2ybc" A25 -0.15300 0.52791 0.29076 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:256
+MULT "-P 2ybc" A26 -0.09787 0.55734 0.36261 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:260
+MULT "-P 2ybc" A27 -0.31584 0.53689 0.27777 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:264
+MULT "-P 2ybc" A28 -0.36350 0.57374 0.33377 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:268
+MULT "-P 2ybc" A29 -0.39640 0.49949 0.18268 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:272
+MULT "-P 2ybc" A30 -0.49044 0.51050 0.16956 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:276
+MULT "-P 2ybc" A31 -0.31762 0.45485 0.09913 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:280
+MULT "-P 2ybc" A32 -0.37353 0.42989 0.02204 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:284
+MULT "-P 2ybc" A33 -0.15428 0.44512 0.11181 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:288
+MULT "-P 2ybc" A34 -0.09398 0.41249 0.05883 4 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.out:292
+BETA "B m a b" O2 0.00000 0.06458 0.18077 0.01730 0.00831 0.00150 0.00000 0.00000 0.00071 241.00 251.00 261.00 0.00 0.00 271.00 manuals/fullprof/6-Microstructure/Nd2NiO4/PCR-files/NdNi_HTO.pcr:57
+BETA "P 21/a" C1 0.08203 0.01917 0.32971 0.00416 0.00383 0.00236 -0.00059 0.00261 -0.00016 291.00 381.00 391.00 401.00 411.00 421.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:31
+BETA "P 21/a" C2 0.11257 0.16423 0.22355 0.00285 0.00401 0.00209 -0.00113 0.00187 -0.00075 431.00 441.00 451.00 461.00 471.00 481.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:35
+BETA "P 21/a" C3 0.04795 0.10604 0.03755 0.00228 0.00294 0.00170 -0.00049 0.00158 -0.00038 491.00 501.00 511.00 521.00 531.00 541.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:39
+BETA "P 21/a" C4 0.07702 0.25240 -0.07535 0.00324 0.00287 0.00254 -0.00034 0.00249 0.00021 551.00 561.00 571.00 581.00 591.00 601.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:43
+BETA "P 21/a" C5 0.01371 0.19120 -0.25489 0.00299 0.00444 0.00255 -0.00016 0.00232 0.00017 331.00 611.00 621.00 631.00 641.00 651.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:47
+BETA "P 21/a" H1 0.13114 0.06821 0.47147 0.01261 0.01492 0.00522 -0.00234 0.00605 -0.00190 341.00 661.00 671.00 681.00 691.00 701.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:51
+BETA "P 21/a" H2 0.18708 0.32655 0.27973 0.01307 0.00913 0.00783 -0.00492 0.00614 -0.00315 351.00 711.00 721.00 731.00 741.00 751.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:55
+BETA "P 21/a" H4 0.15114 0.41468 -0.01693 0.01025 0.00734 0.00876 -0.00368 0.00553 -0.00135 361.00 761.00 771.00 781.00 791.00 801.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:59
+BETA "P 21/a" H5 0.03909 0.30353 -0.33880 0.01311 0.01336 0.00794 -0.00231 0.00763 0.00138 371.00 811.00 821.00 321.00 311.00 301.00 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Naphthalene/na5k-aniso-free.pcr:63
+BETA "P n m a" O1 0.50239 0.25000 0.50002 0.00130 0.00079 0.00740 0.00000 0.00261 0.00000 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:55
+BETA "P n m a" N1 0.36117 0.49964 0.16488 0.00124 0.00245 0.00330 0.00006 0.00008 -0.00038 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:59
+BETA "P n m a" Cl2 0.24930 0.25000 0.90027 0.00058 0.00192 0.00248 0.00000 0.00043 0.00000 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:63
+BETA "P n m a" Cl3 0.39427 0.00976 0.67645 0.00104 0.00093 0.00409 0.00000 0.00053 -0.00008 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:67
+BETA "P n m a" Cl4 0.27454 0.25000 0.42476 0.00101 0.00241 0.00225 0.00000 -0.00037 0.00000 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:71
+BETA "P n m a" Cl5 0.49323 0.25000 0.95814 0.00088 0.00181 0.00397 0.00000 -0.00075 0.00000 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:75
+BETA "P n m a" H1 0.53415 0.17168 0.44982 0.00344 0.00535 0.01440 0.00049 0.00143 -0.00040 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:79
+BETA "P n m a" H2A 0.63450 0.99215 0.68748 0.00550 0.01027 0.01397 -0.00040 0.00038 0.00051 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:83
+BETA "P n m a" H3A 0.61105 0.08360 0.88100 0.00903 0.00510 0.02220 0.00101 0.00473 -0.00016 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:87
+BETA "P n m a" H4A 0.10386 0.58292 0.60889 0.00537 0.00630 0.01759 0.00119 -0.00143 0.00252 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:91
+BETA "P n m a" H5A 0.28795 0.01009 0.13611 0.00331 0.01907 0.02415 0.00043 -0.00283 0.00497 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:95
+BETA "P n m a" H2B 0.56510 1.00164 0.79884 0.00266 0.00991 0.01917 -0.00009 -0.00062 -0.00020 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:99
+BETA "P n m a" H3B 0.64066 0.49066 0.98020 0.00566 0.01553 0.01368 -0.00123 -0.00022 0.00078 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:103
+BETA "P n m a" H4B 0.17096 0.08312 0.72226 0.00395 0.00764 0.02652 -0.00074 -0.00234 -0.00384 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:107
+BETA "P n m a" H5B 0.17081 0.91702 0.71043 0.00362 0.00662 0.02858 0.00118 -0.00144 0.00294 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/100K_c_vert-fr0.pcr:111
+BETA "F m 3 m" Ce 0.00000 0.00000 0.00000 0.00392 0.00392 0.00392 0.00000 0.00000 0.00000 161.00 161.00 161.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/ce1.pcr:45
+BETA "F m 3 m" O 0.25000 0.25000 0.25000 0.00785 0.00785 0.00785 0.00000 0.00000 0.00000 171.00 171.00 171.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/ce1.pcr:49
+BETA "F m m m" Pr 0.50000 0.50000 0.35339 0.00724 0.00724 0.00084 0.00000 0.00000 0.00000 21.00 21.00 141.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/monte.pcr:28
+BETA "F m m m" Ni 0.00000 0.00000 0.00000 0.00297 0.00297 0.00150 0.00000 0.00000 0.00000 31.00 31.00 151.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/monte.pcr:32
+BETA "F m m m" O1 0.25000 0.25000 0.00000 0.00507 0.00507 0.00415 0.00000 0.00000 0.00000 101.00 101.00 161.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/monte.pcr:36
+BETA "F m m m" O2 0.00000 0.00000 0.16998 0.01745 0.01745 0.00047 0.00000 0.00000 0.00000 41.00 41.00 121.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/monte.pcr:40
+BETA "F m m m" Oi 0.25000 0.25000 0.25000 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/monte.pcr:44
+BETA "F m m m" Od 0.09685 0.09682 0.14875 0.00000 0.00000 0.00000 0.00000 0.00000 0.00000 0.00 0.00 0.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/monte.pcr:48
+BETA "I 21 3" Ca1 0.46641 0.00000 0.25000 0.00118 0.00123 0.00118 0.00000 0.00000 0.00000 161.00 171.00 161.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/nac_3t2.pcr:47
+BETA "I 21 3" Al1 0.24818 0.24818 0.24818 0.00114 0.00114 0.00114 -0.00012 -0.00012 -0.00012 181.00 181.00 181.00 191.00 191.00 191.00 manuals/fullprof/FP_tests/nac_3t2.pcr:51
+BETA "I 21 3" Na1 0.08438 0.08438 0.08438 0.00474 0.00474 0.00474 -0.00161 -0.00161 -0.00161 201.00 201.00 201.00 211.00 211.00 211.00 manuals/fullprof/FP_tests/nac_3t2.pcr:55
+BETA "I 21 3" F1 0.13862 0.30637 0.12072 0.00196 0.00225 0.00200 -0.00000 -0.00059 0.00063 241.00 251.00 261.00 271.00 281.00 291.00 manuals/fullprof/FP_tests/nac_3t2.pcr:59
+BETA "I 21 3" F2 0.36400 0.36299 0.18743 0.00228 0.00250 0.00281 -0.00107 0.00002 0.00052 301.00 311.00 321.00 331.00 341.00 351.00 manuals/fullprof/FP_tests/nac_3t2.pcr:63
+BETA "I 21 3" F3 0.46149 0.46149 0.46149 0.00168 0.00168 0.00168 0.00012 0.00012 0.00012 221.00 221.00 221.00 231.00 231.00 231.00 manuals/fullprof/FP_tests/nac_3t2.pcr:67
+BETA "B m a b" O2 0.00000 0.06448 0.18160 0.01771 0.00831 0.00156 0.00000 0.00000 0.00052 241.00 251.00 261.00 0.00 0.00 271.00 manuals/fullprof/FP_tests/ndni_htr.pcr:50
+BETA "P n m a" Pb 0.18770 0.25000 0.16743 0.00342 0.01302 0.00656 0.00000 0.00050 0.00000 281.00 291.00 301.00 0.00 311.00 0.00 manuals/fullprof/FP_tests/pb_ho.pcr:108
+BETA "P n m a" S 0.06419 0.25000 0.68419 0.00175 0.00670 0.00352 0.00000 0.00164 0.00000 321.00 821.00 831.00 0.00 841.00 0.00 manuals/fullprof/FP_tests/pb_ho.pcr:112
+BETA "P n m a" O1 0.90855 0.25000 0.59566 0.00342 0.02393 0.00974 0.00000 -0.00392 0.00000 851.00 861.00 871.00 0.00 881.00 0.00 manuals/fullprof/FP_tests/pb_ho.pcr:116
+BETA "P n m a" O2 0.19342 0.25000 0.54312 0.00463 0.01729 0.00658 0.00000 0.00319 0.00000 891.00 901.00 911.00 0.00 921.00 0.00 manuals/fullprof/FP_tests/pb_ho.pcr:120
+BETA "P n m a" O3 0.08082 0.02723 0.80869 0.00441 0.01033 0.00664 0.00118 0.00085 0.00309 931.00 941.00 951.00 961.00 971.00 981.00 manuals/fullprof/FP_tests/pb_ho.pcr:124
+BETA "P n m a" Pb 0.18793 0.25000 0.16735 0.00441 0.01499 0.00870 0.00000 0.00062 0.00000 281.00 291.00 301.00 0.00 311.00 0.00 manuals/fullprof/FP_tests/pbb.pcr:90
+BETA "P n m a" S 0.06433 0.25000 0.68399 0.00282 0.00744 0.00526 0.00000 0.00165 0.00000 321.00 511.00 521.00 0.00 531.00 0.00 manuals/fullprof/FP_tests/pbb.pcr:94
+BETA "P n m a" O1 0.90855 0.25000 0.59530 0.00360 0.02638 0.01014 0.00000 -0.00387 0.00000 541.00 551.00 561.00 0.00 571.00 0.00 manuals/fullprof/FP_tests/pbb.pcr:98
+BETA "P n m a" O2 0.19329 0.25000 0.54279 0.00456 0.01979 0.00664 0.00000 0.00384 0.00000 491.00 481.00 471.00 0.00 461.00 0.00 manuals/fullprof/FP_tests/pbb.pcr:102
+BETA "P n m a" O3 0.08076 0.02716 0.80859 0.00488 0.01102 0.00796 0.00084 0.00121 0.00273 451.00 441.00 431.00 421.00 341.00 331.00 manuals/fullprof/FP_tests/pbb.pcr:106
+BETA "P n m a" Pb 0.18788 0.25000 0.16722 0.00376 0.01777 0.00659 0.00000 0.00039 0.00000 161.00 341.00 351.00 0.00 371.00 0.00 manuals/fullprof/FP_tests/pbso4.pcr:52
+BETA "P n m a" O1 0.90887 0.25000 0.59560 0.00375 0.02588 0.01044 0.00000 -0.00395 0.00000 311.00 411.00 421.00 0.00 441.00 0.00 manuals/fullprof/FP_tests/pbso4.pcr:58
+BETA "P n m a" O2 0.19323 0.25000 0.54326 0.00493 0.01743 0.00700 0.00000 0.00332 0.00000 301.00 461.00 451.00 0.00 431.00 0.00 manuals/fullprof/FP_tests/pbso4.pcr:62
+BETA "P n m a" O3 0.08086 0.02718 0.80845 0.00501 0.00916 0.00771 0.00094 0.00083 0.00297 281.00 401.00 391.00 381.00 361.00 331.00 manuals/fullprof/FP_tests/pbso4.pcr:66
+BETA "P n m a" Pb 0.18793 0.25000 0.16719 0.00376 0.01719 0.00670 0.00000 0.00028 0.00000 161.00 351.00 361.00 0.00 381.00 0.00 manuals/fullprof/FP_tests/pbso4_cheb.pcr:59
+BETA "P n m a" S 0.06442 0.25000 0.68506 0.00205 0.00662 0.00493 0.00000 0.00071 0.00000 291.00 401.00 411.00 0.00 431.00 0.00 manuals/fullprof/FP_tests/pbso4_cheb.pcr:63
+BETA "P n m a" O1 0.90911 0.25000 0.59549 0.00395 0.02564 0.00981 0.00000 -0.00398 0.00000 311.00 451.00 461.00 0.00 481.00 0.00 manuals/fullprof/FP_tests/pbso4_cheb.pcr:67
+BETA "P n m a" O2 0.19294 0.25000 0.54309 0.00498 0.01747 0.00676 0.00000 0.00299 0.00000 301.00 501.00 511.00 0.00 491.00 0.00 manuals/fullprof/FP_tests/pbso4_cheb.pcr:71
+BETA "P n m a" O3 0.08091 0.02725 0.80820 0.00504 0.00970 0.00747 0.00082 0.00070 0.00284 281.00 471.00 441.00 421.00 391.00 371.00 manuals/fullprof/FP_tests/pbso4_cheb.pcr:75
+BETA "P n m a" Pb 0.18790 0.25000 0.16719 0.00374 0.01772 0.00664 0.00000 0.00038 0.00000 301.00 311.00 321.00 0.00 331.00 0.00 manuals/fullprof/FP_tests/pbso4a.pcr:45
+BETA "P n m a" S 0.06436 0.25000 0.68515 0.00242 0.00741 0.00394 0.00000 0.00015 0.00000 341.00 351.00 361.00 0.00 371.00 0.00 manuals/fullprof/FP_tests/pbso4a.pcr:49
+BETA "P n m a" O1 0.90892 0.25000 0.59565 0.00382 0.02585 0.01036 0.00000 -0.00394 0.00000 381.00 391.00 401.00 0.00 411.00 0.00 manuals/fullprof/FP_tests/pbso4a.pcr:53
+BETA "P n m a" O2 0.19322 0.25000 0.54319 0.00496 0.01733 0.00694 0.00000 0.00316 0.00000 421.00 431.00 441.00 0.00 451.00 0.00 manuals/fullprof/FP_tests/pbso4a.pcr:57
+BETA "P n m a" O3 0.08086 0.02720 0.80844 0.00506 0.00907 0.00764 0.00096 0.00081 0.00304 461.00 471.00 481.00 291.00 281.00 161.00 manuals/fullprof/FP_tests/pbso4a.pcr:61
+BETA "F m m m" Pr 0.50000 0.50000 0.35973 0.00710 0.00710 0.00084 0.00000 0.00000 0.00000 21.00 21.00 141.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/prnio.pcr:29
+BETA "F m m m" Ni 0.00000 0.00000 0.00000 0.00280 0.00280 0.00151 0.00000 0.00000 0.00000 31.00 31.00 151.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/prnio.pcr:33
+BETA "F m m m" O1 0.25000 0.25000 0.00000 0.00500 0.00500 0.00413 -0.00140 0.00000 0.00000 101.00 101.00 111.00 181.00 0.00 0.00 manuals/fullprof/FP_tests/prnio.pcr:37
+BETA "F m m m" O2 0.00000 0.00000 0.17385 0.01716 0.01716 0.00045 0.00000 0.00000 0.00000 41.00 41.00 121.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/prnio.pcr:41
+BETA "F m m m" Oi 0.25000 0.25000 0.25000 0.01044 0.01177 0.00098 0.00000 0.00000 0.00000 191.00 201.00 161.00 0.00 0.00 0.00 manuals/fullprof/FP_tests/prnio.pcr:45
+# .pcr phases: 438, without atoms: 38, read: 218
+# MULT records: 96, BETA records: 69, files read: 295, phases skipped: 182 (magnetic (Jbt=-1) 9, magnetic (Jbt=-10) 1, magnetic (Jbt=-7) 1, magnetic (Jbt=1) 92, magnetic (Jbt=5) 2, magnetic (Jbt=7) 5, no plain '<--Space group symbol' line 4, rigid body (Jbt=4) 17, symmetry modes (Jbt=-6) 12, symmetry modes (Jbt=6) 26, symmetry operators (Isy=-1) 11, symmetry operators (Isy=2) 2)

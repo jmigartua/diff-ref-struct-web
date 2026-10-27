@@ -1,0 +1,38 @@
+---
+title: "Privacy and accessibility"
+pagetitle: "Privacy and accessibility · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>Privacy and accessibility</h1>
+<p class="sub">What the page keeps, what it sends (nothing), and how it can be used without a mouse or without sight.</p>
+
+<h2>Privacy</h2>
+<ul>
+<li><b>Your files are never sent.</b> The page reads the files you open in your browser, when the core needs them. It has no server to send them to: it is a set of static files served by GitHub Pages.</li>
+<li><b>Nothing is fetched from elsewhere.</b> The page loads its own files from its own address and nothing from other sites: no fonts, scripts, counters or analytics. (The guide loads its typefaces from Google Fonts and its formulas' script from jsDelivr; the app does not.)</li>
+<li><b>What your browser keeps</b>, on your machine only:
+  <ul>
+  <li>the page's own files and the guide's, for offline use (the service worker's caches <code>drs-web-…</code> and <code>drs-guide-…</code>), never a data file;</li>
+  <li>your choices, in local storage: the theme (<code>drs-web.theme</code>), the inspector's width (<code>drs-web.inspector</code>), the tree's order (<code>drs-web.tree.by</code>), live mode (<code>drs-web.live</code>), and the guide's folded panels (<code>docs-fold</code>);</li>
+  <li>the view in the page's address, which holds names and numbers on screen, never a file's content.</li>
+  </ul>
+  Clear the site's data in your browser to remove all of it.</li>
+<li><b>Requests</b> go where you send them: a GitHub issue is public; an e-mail goes to the author. The forms ask for the version, the browser and the view's address, and remind you never to attach unpublished data.</li>
+<li>GitHub Pages, which serves the page, keeps its own access logs under GitHub's privacy statement; the project reads none.</li>
+</ul>
+
+<h2>Accessibility</h2>
+<ul>
+<li>The page's controls are buttons and menus with their roles and names for screen readers; the folder's tree is a tree, the menus are menus, the separator is a separator that the arrow keys move.</li>
+<li>The status line announces what each action did, politely, so that a screen reader reads the result of a command.</li>
+<li>Every menu command is reachable with the keyboard; Escape closes a menu.</li>
+<li>The page and the guide follow the system's light or dark appearance, or the one chosen; the screenshots of the guide come in both.</li>
+<li>Known gaps: the plots themselves are images (a canvas) with their readout in text, not a description of every curve; the map's colours are a perceptually uniform ramp (viridis), but no alternative to colour is offered yet. Report what blocks you: it enters the roadmap.</li>
+</ul>
+</article>
+```

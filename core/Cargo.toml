@@ -1,0 +1,26 @@
+[package]
+name = "drs"
+version = "0.81.0"
+edition = "2021"
+description = "diff-ref-struct core: crystallography and Rietveld refinement of powder diffraction data"
+license = "UNLICENSED"
+publish = false
+
+[lib]
+name = "drs"
+path = "src/lib.rs"
+
+[[bin]]
+name = "drs"
+path = "src/main.rs"
+
+[dependencies]
+# The model written and read as text (the app's request 1, L058): `--features serde`.
+serde = { version = "1", features = ["derive"], optional = true }
+serde_json = { version = "1", optional = true, features = ["float_roundtrip"] }
+
+[features]
+# On by default so that `cargo test` round-trips the model; `--no-default-features` builds the core with no
+# dependency at all.
+default = ["serde"]
+serde = ["dep:serde", "dep:serde_json"]

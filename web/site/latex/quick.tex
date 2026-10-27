@@ -1,0 +1,9 @@
+% The quick reference: one A4 landscape page, three columns, the manual's preamble with tighter type.
+\usepackage{multicol}
+\setlength{\columnsep}{18pt}
+\setlength{\columnseprule}{0.3pt}
+\def\columnseprulecolor{\color{drsline}}
+\RedeclareSectionCommand[beforeskip=-0.7\baselineskip, afterskip=0.15\baselineskip, font=\drshead\normalsize\color{drsgreen}]{section}
+\setlist{itemsep=0pt, topsep=1pt, leftmargin=10pt, label={\color{drsfaint}\textbullet}}
+\setlength{\parskip}{1pt}
+\pagestyle{empty}

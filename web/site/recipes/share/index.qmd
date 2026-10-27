@@ -1,0 +1,35 @@
+---
+title: "Share a view, keep a set"
+pagetitle: "Share · Recipes · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>Share a view, keep a set</h1>
+<p class="sub">Two things travel: a link, which carries a view and no data; and a plot set file, which carries a whole set's choices for the page, the Mac app and the command line.</p>
+
+<h2>A link</h2>
+<p>The page's address always holds what is on screen: the folder's name, where the set came from, the view, the colour scale, the zoom, the clip and the region. For example:</p>
+<pre><code>https://jmigartua.github.io/diff-ref-struct-web/#folder=1_Tb2pd2sn&amp;set=buf%3ATb_vs_T.buf&amp;view=map&amp;scale=log&amp;zoom=24%2C36%2C4%2C30&amp;clip=3.2%2C4.5</code></pre>
+<ol class="steps">
+<li>Copy the address and send it, or bookmark it.</li>
+<li>Whoever opens it opens <b>their copy of the same folder</b>: the set opens as it was, and the view comes back. Missing files are named.</li>
+<li>For this to work across a team, keep <b>one layout and one folder name</b> (for instance <code>run/</code> with <code>Data/</code> and <code>Plots/</code>), and the same file names.</li>
+</ol>
+<p>The link holds names and numbers already on screen, never a file's content: it can go in an e-mail without sending the data.</p>
+
+<h2>A plot set file</h2>
+<ol class="steps">
+<li><b>Plots ▾ ▸ Save Plot Set</b>. The <code>.drv</code> (plain text) is downloaded: members by file name, each typed value with its source, order, steps, scales, reference, windows, opacities, clips, regions.</li>
+<li>Put it in the folder's <code>Plots/</code>. Opened from the tree, it brings everything back; in the Mac app's Plots module and with <code>drs plots open</code> it opens the same.</li>
+<li>Send the <code>.drv</code> (a few kB) to whoever makes the figures: the regions and clips you chose become the publication's.</li>
+</ol>
+
+<h2>Figures</h2>
+<p>This version does not export figures. <b>Figure look</b> shows how a view prints (white, open axes, a scale bar for stacks); a screenshot of it serves a draft. Publication figures come from the Mac app's Publish module, typeset by LaTeX, from the same <code>.drv</code>.</p>
+<p class="sub">In the manual: §13 saving and exporting, §16 the view in the address.</p>
+</article>
+```

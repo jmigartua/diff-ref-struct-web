@@ -1,0 +1,32 @@
+name: A problem
+description: Something the page does wrong, or does not do as the manual says.
+title: "Problem: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Thank you. **Never attach unpublished data**: a description and the view's address are enough. From the app, Help ▾ ▸ Report a problem… fills in the three fields below."
+  - type: textarea
+    id: what
+    attributes: { label: "What happened", description: "What you did, step by step, and what the page did (the status line's words help)." }
+    validations: { required: true }
+  - type: textarea
+    id: expected
+    attributes: { label: "What you expected", description: "Or what the manual says it should do (with its §)." }
+  - type: input
+    id: version
+    attributes: { label: "Version", description: "diff-ref-struct Web x.y.z, core x.y.z (the foot of the start page)." }
+    validations: { required: true }
+  - type: input
+    id: browser
+    attributes: { label: "Browser" }
+  - type: input
+    id: address
+    attributes: { label: "The view's address", description: "The page's address when it happened: it names files and views, never their contents. Delete what you prefer not to show." }
+  - type: checkboxes
+    id: nodata
+    attributes:
+      label: Data
+      options:
+        - label: "I have not attached unpublished data."
+          required: true

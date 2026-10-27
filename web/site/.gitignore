@@ -1,0 +1,8 @@
+_site/
+_gen/
+.quarto/
+.fonts/
+*_files/
+
+/.quarto/
+**/*.quarto_ipynb

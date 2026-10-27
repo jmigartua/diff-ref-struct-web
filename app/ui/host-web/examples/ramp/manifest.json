@@ -1,0 +1,136 @@
+{
+  "title": "Synthetic in-situ heating run: periclase MgO with corundum growing above 1000 K, 300 to 1300 K",
+  "licence": "CC BY 4.0",
+  "note": "The counts are simulated, not measured.",
+  "files": [
+    {
+      "name": "example_01_300K.xys",
+      "size": 49414,
+      "temperature_K": 300,
+      "seed": 1
+    },
+    {
+      "name": "example_02_350K.xys",
+      "size": 49414,
+      "temperature_K": 350,
+      "seed": 2
+    },
+    {
+      "name": "example_03_400K.xys",
+      "size": 49414,
+      "temperature_K": 400,
+      "seed": 3
+    },
+    {
+      "name": "example_04_450K.xys",
+      "size": 49414,
+      "temperature_K": 450,
+      "seed": 4
+    },
+    {
+      "name": "example_05_500K.xys",
+      "size": 49414,
+      "temperature_K": 500,
+      "seed": 5
+    },
+    {
+      "name": "example_06_550K.xys",
+      "size": 49414,
+      "temperature_K": 550,
+      "seed": 6
+    },
+    {
+      "name": "example_07_600K.xys",
+      "size": 49414,
+      "temperature_K": 600,
+      "seed": 7
+    },
+    {
+      "name": "example_08_650K.xys",
+      "size": 49414,
+      "temperature_K": 650,
+      "seed": 8
+    },
+    {
+      "name": "example_09_700K.xys",
+      "size": 49414,
+      "temperature_K": 700,
+      "seed": 9
+    },
+    {
+      "name": "example_10_750K.xys",
+      "size": 49415,
+      "temperature_K": 750,
+      "seed": 10
+    },
+    {
+      "name": "example_11_800K.xys",
+      "size": 49415,
+      "temperature_K": 800,
+      "seed": 11
+    },
+    {
+      "name": "example_12_850K.xys",
+      "size": 49415,
+      "temperature_K": 850,
+      "seed": 12
+    },
+    {
+      "name": "example_13_900K.xys",
+      "size": 49415,
+      "temperature_K": 900,
+      "seed": 13
+    },
+    {
+      "name": "example_14_950K.xys",
+      "size": 49415,
+      "temperature_K": 950,
+      "seed": 14
+    },
+    {
+      "name": "example_15_1000K.xys",
+      "size": 49416,
+      "temperature_K": 1000,
+      "seed": 15
+    },
+    {
+      "name": "example_16_1050K.xys",
+      "size": 49416,
+      "temperature_K": 1050,
+      "seed": 16
+    },
+    {
+      "name": "example_17_1100K.xys",
+      "size": 49416,
+      "temperature_K": 1100,
+      "seed": 17
+    },
+    {
+      "name": "example_18_1150K.xys",
+      "size": 49416,
+      "temperature_K": 1150,
+      "seed": 18
+    },
+    {
+      "name": "example_19_1200K.xys",
+      "size": 49416,
+      "temperature_K": 1200,
+      "seed": 19
+    },
+    {
+      "name": "example_20_1250K.xys",
+      "size": 49416,
+      "temperature_K": 1250,
+      "seed": 20
+    },
+    {
+      "name": "example_21_1300K.xys",
+      "size": 49416,
+      "temperature_K": 1300,
+      "seed": 21
+    }
+  ],
+  "generated_by": "drs 0.81.0",
+  "seed_rule": "drs simulate --seed n for scan n (1 to 21, in temperature order)",
+  "command": "python3 web/examples/tools/make_example.py"
+}

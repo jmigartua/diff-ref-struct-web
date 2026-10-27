@@ -1,0 +1,17 @@
+---
+title: "Requests"
+pagetitle: "Requests · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="manual-head">
+<h1>Requests: bugs and features</h1>
+<p class="sub">The place to report a problem or ask for a feature, and what came of each request. Requests are public issues of the source repository: read, answered, and, when taken up, entered in the roadmap; the release that does one names it.</p>
+<p class="dl"><a class="cta" href="https://github.com/jmigartua/diff-ref-struct-web/issues/new?template=bug.yml">Report a problem</a> <a class="cta quiet" href="https://github.com/jmigartua/diff-ref-struct-web/issues/new?template=feature.yml">Ask for a feature</a></p>
+</div>
+```
+
+{{< include ../_gen/requests.md >}}

@@ -1,0 +1,56 @@
+---
+title: "A hold: growth curves"
+pagetitle: "A hold · Recipes · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>A hold: growth curves</h1>
+<p class="sub">Scans repeated at one temperature: follow a phase's reflections through time, as integrals above the background with their σ, and find the first scan where each one is real.</p>
+
+<div class="recipe-facts">
+<span class="k">You have</span><span>three or more scans at the same temperature, the time of each in its name or in a set file</span>
+<span class="k">You get</span><span>for each reflection, its integral against time with σ; the onset at 3σ; regions of the map</span>
+<span class="k">Views</span><span>Map, Series, Overlay with Linked zoom</span>
+</div>
+
+<h2>Open the hold against time</h2>
+<p>The core finds holds by itself (<i>the hold at 1270 °C: 39 scans against time, 166.433 min …</i>). In this version, though, a proposal against time opens with each scan's <b>temperature</b> as its variable, so all the rows of a hold sit at one temperature and the map collapses (<a href="../../roadmap/index.html">Versions</a>). Until that is fixed, open the hold from a <b>plot set file</b> (<code>.drv</code>) that types each scan's time:</p>
+<ol class="steps">
+<li><b>A <code>.drv</code> already made</b> (in the Mac app, with <code>drs</code>, or by a colleague): put it in the folder's <code>Plots/</code>, with the scans where it names them (usually <code>Data/</code> beside <code>Plots/</code>), open the folder and double-click it. Its members open at their times, each with its source (<i>minutes since the first scan of the hold, from the elapsed seconds in the scan's name</i>).</li>
+<li><b>Write one</b>: a <code>.drv</code> is plain text. This short script, run in the folder that holds <code>Data/</code> and <code>Plots/</code>, writes one for the scans of a hold whose names carry the set point and the elapsed seconds (<code>…_T1270C_t16530s_…</code>), each scan's time in minutes since the first with its source:
+<pre><code>python3 - &gt; Plots/hold.drv &lt;&lt;'EOF'
+import glob, re
+fs = sorted(glob.glob("Data/*_T1270C_*.xye"))
+first = int(re.search(r"_t(\d+)s", fs[0]).group(1))
+print('format = "drs plot set 1"\ntitle = "the hold at 1270 °C"\nvariable = { name = "t", unit = "min" }\nx = "2theta"\nrebin = 0.01\n')
+for f in fs:
+    s = int(re.search(r"_t(\d+)s", f).group(1))
+    print(f'[[member]]\nfile = "{f}"\nvariable = {{ value = {(s - first) / 60:.2f}, source = "minutes since {fs[0].split("/")[-1]}, from the elapsed seconds in the names" }}\n')
+EOF</code></pre>
+Change <code>T1270C</code> to your hold's tag. Checked on a hold of 39 synchrotron scans: the page opens it with t from 0 to 166.43&nbsp;min.</li>
+<li><b>For large scans</b>, the line <code>rebin = 0.01</code> (written by the script above; add it under the first line of any other <code>.drv</code>) makes the core average each scan onto a 0.01° grid as it opens (the files untouched), and the map draws in a fraction of a second. On a hold of 39 synchrotron scans of 27 000 points: 2699 columns, the core's range 0&ndash;28.3&nbsp;√counts, opened in about 5&nbsp;s.</li>
+</ol>
+
+<h2>Steps</h2>
+<ol class="steps">
+<li><b>Map</b>, colour √, and a clip that quiets the background. Read upwards in time: a reflection growing is a stripe brightening row by row.</li>
+<li><b>Choose clean reflections.</b> A reflection that sits on another phase's peak will give a curve of both. Zoom on each candidate and check, in the <b>Overlay</b> with <b>Linked zoom</b>, that its neighbourhood is flat in the first scans.</li>
+<li><b>Series</b>, <b>+ window</b> for each: a name (<i>(113)</i>), and From and To about one peak width either side of its centre. Narrow windows (±0.025° at 0.001° steps, 50 points) follow one line; wider ones take its tails and more background noise.</li>
+<li><b>quantity</b> <i>integral above the background</i>, <b>background</b> <i>line between the ends</i> for a line on a smooth background, <i>automatic</i> (arPLS) for one on a curved background.</li>
+<li>Read the curves: each point is a scan, its σ bar the core's; <b>open points are below 2σ</b>. The <b>onset</b> is the first scan whose integral stands above 3σ and stays there.</li>
+<li>Name the map's regions for the record (<b>Save region…</b>), and <b>Save Plot Set</b>: the windows, regions and clips go into the <code>.drv</code>, which the Mac app and <code>drs</code> read.</li>
+</ol>
+
+<h2>What to watch for</h2>
+<ul>
+<li><b>Background.</b> A straight line between the window's ends is the plainest background and the easiest to state; it differs from a background taken from flanking windows, so integrals from two methods differ while onsets should agree.</li>
+<li><b>The time's origin.</b> Say what t = 0 is: the hold's first scan, the run's first, the moment the set point was reached. A set file says it in each value's source.</li>
+<li><b>Overlapping phases.</b> If no reflection is clean, follow two and say which overlaps what.</li>
+</ul>
+<p class="sub">In the manual: §12 windows and the Series view, §13 saving.</p>
+</article>
+```

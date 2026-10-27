@@ -1,0 +1,171 @@
+# What FullProf reads from the data files of manuals/fullprof/, for the test data_formats; written by
+# make_fullprof_reads.py. Do not edit. READ <id> <Ins> <data> <prf> <first line> <points> <SumwYobsSQ> <N-P+C> <Iwg>;
+# FILE <id> <Ins> <data> (no .prf).
+READ ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0190.dat manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0.prf 7 1535 - - 1
+READ ill_d2b 6 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3.dat manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LBF_lmopr.prf 7 2510 0.1450E+07 2461 0
+READ ill_d2b 6 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3.dat manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3_cub.prf 7 2510 0.1442E+07 2357 0
+READ ill_d2b 6 manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3.dat manuals/fullprof/7-FullProf-Tutorial-SymmetryModes/LaMnO3/LaMnO3ref.prf 7 2510 0.1442E+07 2349 0
+READ xys 10 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/PM/P21c/citric-acid-sls.dat manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/PM/P21c/citric-acid-sls_1.prf 7 30819 0.6432E+09 9261 0
+READ xys 10 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/PM/citric-acid-sls.dat manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/PM/citric-acid-sls_1.prf 7 30819 0.6432E+09 9261 0
+READ xys 10 manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.dat manuals/fullprof/9-SAnn-OrganicCompounds/CitricAcid_example/Rietveld/citric-acid-sls_1.prf 7 30819 0.1142E+10 30397 0
+READ xys 10 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Prof_Match/P21c/PPH3-sls.dat manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Prof_Match/P21c/PPH3-sls_1.prf 7 30819 0.1833E+09 9223 0
+READ xys 10 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Prof_Match/PPH3-sls.dat manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Prof_Match/PPH3-sls_1.prf 7 30819 0.1833E+09 9223 0
+READ xys 10 manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.dat manuals/fullprof/9-SAnn-OrganicCompounds/PPH3/Rietveld/PPH3-sls.prf 7 30819 0.3021E+09 29750 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/Co-YBCO/Cocuc.dat manuals/fullprof/runs/Co-YBCO/Cocus-asym.prf 6 3000 0.1609E+07 2870 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/Co-YBCO/Cocuc.dat manuals/fullprof/runs/Co-YBCO/Cocus-asym_calc.prf 6 3000 0.1609E+07 2870 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/Co-YBCO/Cocuc.dat manuals/fullprof/runs/Co-YBCO/Cocus-asym_conv.prf 6 3000 0.1609E+07 2870 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/Co-YBCO-LeBail/Cocuc.dat manuals/fullprof/runs/Co-YBCO-LeBail/Cocuc_LeBail_conv.prf 6 3000 0.1563E+07 2700 0
+READ xys 10 manuals/fullprof/runs/Egypt/EgyptMakeUp.xys manuals/fullprof/runs/Egypt/Egypt_qa_Rietveld.prf 7 7001 0.6936E+07 6786 0
+READ xys 10 manuals/fullprof/runs/Egypt/EgyptMakeUp.xys manuals/fullprof/runs/Egypt/Egypt_qa_Rietveld_calc.prf 7 7001 0.6936E+07 6786 0
+READ xys 10 manuals/fullprof/runs/Egypt/EgyptMakeUp.xys manuals/fullprof/runs/Egypt/Egypt_qa_Rietveld_conv.prf 7 7001 0.6936E+07 6786 0
+READ psi_dmc 8 manuals/fullprof/runs/K2NaAgCN/k2na1p5.dat manuals/fullprof/runs/K2NaAgCN/k2na1p5_conv.prf 6 3200 0.3850E+07 3062 0
+READ xys 10 manuals/fullprof/runs/LaB6/LaB6.dat manuals/fullprof/runs/LaB6/LaB6rx.prf 5 7245 0.1151E+07 7226 1
+READ xys 10 manuals/fullprof/runs/LaB6/LaB6.dat manuals/fullprof/runs/LaB6/LaB6rx_calc.prf 5 7245 0.1153E+07 7226 1
+READ xys 10 manuals/fullprof/runs/LaB6/LaB6.dat manuals/fullprof/runs/LaB6/LaB6rx_conv.prf 5 7245 0.1151E+07 7226 1
+READ ill_d2b 6 manuals/fullprof/runs/LaMnO3-3t2/lamn_3t2.dat manuals/fullprof/runs/LaMnO3-3t2/lamn_3t2_conv.prf 7 2510 0.1433E+07 2247 1
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/MgAl2O4-LeBail/MgAl2O4s.dat manuals/fullprof/runs/MgAl2O4-LeBail/MgAl2O4s_LeBail_conv.prf 7 2395 0.1054E+07 2395 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s.dat manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s_Rietveld.prf 7 2395 0.1054E+07 2350 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s.dat manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s_Rietveld_calc.prf 7 2395 0.1054E+07 2350 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s.dat manuals/fullprof/runs/MgAl2O4-s/MgAl2O4s_Rietveld_conv.prf 7 2395 0.1054E+07 2350 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/NdNi-HTO/NdNi_HTO.dat manuals/fullprof/runs/NdNi-HTO/NdNi_HTO.prf 8 2990 0.3628E+07 2948 1
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/NdNi-HTO/NdNi_HTO.dat manuals/fullprof/runs/NdNi-HTO/NdNi_HTO_calc.prf 8 2990 0.3628E+07 2948 1
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/NdNi-HTO/NdNi_HTO.dat manuals/fullprof/runs/NdNi-HTO/NdNi_HTO_conv.prf 8 2990 0.3628E+07 2948 1
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/NdNi-LTOa/NdNi_LTO.dat manuals/fullprof/runs/NdNi-LTOa/NdNi_LTOa.prf 7 3000 0.3398E+07 2960 1
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/NdNi-LTOa/NdNi_LTO.dat manuals/fullprof/runs/NdNi-LTOa/NdNi_LTOa_calc.prf 7 3000 0.3397E+07 2960 1
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/NdNi-LTOb/NdNi_LTO.dat manuals/fullprof/runs/NdNi-LTOb/NdNi_LTOb.prf 7 3000 0.3398E+07 2961 1
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/NdNi-LTOb/NdNi_LTO.dat manuals/fullprof/runs/NdNi-LTOb/NdNi_LTOb_calc.prf 7 3000 0.3398E+07 2961 1
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/Pd3MnD/pd3mnd.dat manuals/fullprof/runs/Pd3MnD/pdfinal.prf 7 2392 0.1293E+07 2185 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/Pd3MnD/pd3mnd.dat manuals/fullprof/runs/Pd3MnD/pdfinal_calc.prf 7 2392 0.1293E+07 2185 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/Sr-ox-rest/sr-ox.dat manuals/fullprof/runs/Sr-ox-rest/sr-ox-rest_conv.prf 5 2395 0.6371E+07 2314 0
+READ ill_d1a_d2b_old 1 manuals/fullprof/runs/Sr-ox-test/sr-ox.dat manuals/fullprof/runs/Sr-ox-test/sr-ox-test_conv.prf 5 2395 0.6371E+07 2318 0
+READ free_steps 0 manuals/fullprof/runs/Y2O3/y2o3.dat manuals/fullprof/runs/Y2O3/y2o3_structure.prf 7 13091 0.1015E+07 13019 0
+READ free_steps 0 manuals/fullprof/runs/Y2O3/y2o3.dat manuals/fullprof/runs/Y2O3/y2o3_structure_calc.prf 7 13091 0.1015E+07 13019 0
+READ free_steps 0 manuals/fullprof/runs/Y2O3/y2o3.dat manuals/fullprof/runs/Y2O3/y2o3_structure_conv.prf 7 13091 0.1015E+07 13019 0
+READ xys 10 manuals/fullprof/runs/YVO3/YVO3xl.dat manuals/fullprof/runs/YVO3/YVO3a.prf 5 6245 0.1747E+07 6213 0
+READ xys 10 manuals/fullprof/runs/YVO3/YVO3xl.dat manuals/fullprof/runs/YVO3/YVO3a_calc.prf 5 6245 0.1747E+07 6213 0
+READ xys 10 manuals/fullprof/runs/YVO3/YVO3xl.dat manuals/fullprof/runs/YVO3/YVO3a_conv.prf 5 6245 0.1747E+07 6213 0
+READ xys 10 manuals/fullprof/runs/Yb2ZrWO8/Yb2ZrWO8.dat manuals/fullprof/runs/Yb2ZrWO8/ybfluo_Riet_IRF.prf 5 3251 0.1112E+07 3227 0
+READ xys 10 manuals/fullprof/runs/Yb2ZrWO8/Yb2ZrWO8.dat manuals/fullprof/runs/Yb2ZrWO8/ybfluo_Riet_IRF_calc.prf 5 3251 0.1112E+07 3227 0
+READ xys 10 manuals/fullprof/runs/Yb2ZrWO8/Yb2ZrWO8.dat manuals/fullprof/runs/Yb2ZrWO8/ybfluo_Riet_IRF_conv.prf 5 3251 0.1112E+07 3227 0
+READ xys 10 manuals/fullprof/runs/Yb2ZrWO8-PO-March/Yb2ZrWO8.dat manuals/fullprof/runs/Yb2ZrWO8-PO-March/ybfluo_Riet_IRF_calc.prf 5 3251 0.1112E+07 3227 0
+READ free_steps 0 manuals/fullprof/runs/rutile-anatase/rutana.dat manuals/fullprof/runs/rutile-anatase/rutana_tch.prf 5 7901 0.7123E+06 7881 0
+READ free_steps 0 manuals/fullprof/runs/rutile-anatase/rutana.dat manuals/fullprof/runs/rutile-anatase/rutana_tch_calc.prf 5 7901 0.7123E+06 7881 0
+READ free_steps 0 manuals/fullprof/runs/rutile-anatase/rutana.dat manuals/fullprof/runs/rutile-anatase/rutana_tch_conv.prf 5 7901 0.7123E+06 7881 0
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0120.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0121.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0122.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0123.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0124.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0125.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0126.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0127.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0128.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0129.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0130.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0131.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0132.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0133.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0134.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0135.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0136.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0137.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0138.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0139.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0140.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0141.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0142.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0143.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0144.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0145.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0146.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0147.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0148.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0149.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0150.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0151.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0152.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0153.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0154.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0155.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0156.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0157.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0158.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0159.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0160.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0161.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0162.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0163.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0164.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0165.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0166.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0167.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0168.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0169.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0170.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0171.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0172.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0173.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0174.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0175.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0176.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0177.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0178.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0179.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0180.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0181.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0182.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0183.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0184.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0185.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0186.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0187.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0188.dat
+FILE ill_d1b_d20 3 manuals/fullprof/1-WinPLOTR/2_FP_sequential_refinements/LaMnO3_D20/la0189.dat
+FILE ill_d1a_d2b_old 1 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Sr-ox/sr-ox.dat
+FILE free_steps 0 manuals/fullprof/8-FullProf-Tutorial-RigidBodies/Urea/urea.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/Al2O3H_sim.dat
+FILE ill_d1a_d2b_old 1 manuals/fullprof/FP_tests/Ca2MnO4_300k.dat
+FILE ill_d1b_d20 3 manuals/fullprof/FP_tests/hobk.dat
+FILE gsas 12 manuals/fullprof/FP_tests/CeO2_PEARL.dat
+FILE xys 10 manuals/fullprof/FP_tests/DyFeO3_D2B_5K_hr.xys
+FILE xys 10 manuals/fullprof/FP_tests/DyFeO3_D2B_78K_hr.xys
+FILE xys 10 manuals/fullprof/FP_tests/DyFeO3_1p6K.xys
+FILE psi_dmc 8 manuals/fullprof/FP_tests/dy.dat
+FILE ill_d2b 6 manuals/fullprof/FP_tests/lamn_3t2.dat
+FILE ill_d1a_d2b_old 1 manuals/fullprof/FP_tests/MgAl2O4s.dat
+FILE xys 10 manuals/fullprof/FP_tests/alum.dat
+FILE gsas 12 manuals/fullprof/FP_tests/arg_si.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/b8p.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/ceo2.dat
+FILE xys 10 manuals/fullprof/FP_tests/cecoal.dat
+FILE xys 10 manuals/fullprof/FP_tests/cecual.dat
+FILE xys 10 manuals/fullprof/FP_tests/cedif4rf.dat
+FILE xys 10 manuals/fullprof/FP_tests/ceo2_dl.dat
+FILE ill_d2b 6 manuals/fullprof/FP_tests/cuf1k.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/highpress.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/hmt.dat
+FILE ill_d1b_d20 3 manuals/fullprof/FP_tests/hocu.dat
+FILE psi_dmc 8 manuals/fullprof/FP_tests/k2na1p5.dat
+FILE ill_d1b_d20 3 manuals/fullprof/FP_tests/la.dat
+FILE xys 10 manuals/fullprof/FP_tests/lamn_pol.dat
+FILE ill_d2b 6 manuals/fullprof/FP_tests/maghem.dat
+FILE psi_dmc 8 manuals/fullprof/FP_tests/nabd4.dat
+FILE xys 10 manuals/fullprof/FP_tests/nac-osiris.dat
+FILE ill_d2b 6 manuals/fullprof/FP_tests/nac_3t2.dat
+FILE ill_d1a_d2b_old 1 manuals/fullprof/FP_tests/ndni_htr.dat
+FILE ill_d1a_d2b_old 1 manuals/fullprof/FP_tests/ndni_ltr.dat
+FILE ill_d1a_d2b_old 1 manuals/fullprof/FP_tests/ndni_ltm.dat
+FILE ill_d2b 6 manuals/fullprof/FP_tests/pbso4.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/pbsox.dat
+FILE ill_d1a_d2b_old 1 manuals/fullprof/FP_tests/pdd.dat
+FILE xys 10 manuals/fullprof/FP_tests/piro-a.dat
+FILE gsas 12 manuals/fullprof/FP_tests/prbaco10k.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/rutana.dat
+FILE ill_d2b 6 manuals/fullprof/FP_tests/scn.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/scx.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/si3n4r.dat
+FILE ill_d2b 6 manuals/fullprof/FP_tests/sin_3t2.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/tbbaco.dat
+FILE xys 10 manuals/fullprof/FP_tests/timerev.dat
+FILE free_steps 0 manuals/fullprof/FP_tests/urea.dat
+FILE ill_d2b 6 manuals/fullprof/FP_tests/ybacud1a.dat

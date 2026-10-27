@@ -1,0 +1,9 @@
+{
+  "title": "diff-ref-struct Web",
+  "upload_type": "software",
+  "description": "Series of powder diffraction patterns in the browser: overlays, stacks, projections, maps against temperature or time, difference maps and growth curves, computed by the diff-ref-struct core compiled to WebAssembly; the user's files are read in the browser and never uploaded. Guide: https://jmigartua.github.io/diff-ref-struct-web/guide/",
+  "creators": [{ "name": "Igartua, Josu M.", "affiliation": "Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU)" }],
+  "license": "Apache-2.0",
+  "keywords": ["powder diffraction", "in situ", "Rietveld", "WebAssembly", "data visualisation"],
+  "related_identifiers": [{ "identifier": "https://jmigartua.github.io/diff-ref-struct-web/guide/", "relation": "isDocumentedBy", "resource_type": "publication-other" }]
+}

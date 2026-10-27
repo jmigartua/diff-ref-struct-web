@@ -1,0 +1,4 @@
+{
+  "package": null,
+  "why": "the core's WebAssembly build is request W1 (web/REQUESTS.md); web/tools/build-wasm.sh writes the package here and names it in this file"
+}

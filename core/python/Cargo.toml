@@ -1,0 +1,18 @@
+[package]
+name = "drs-python"
+# The core's version: the wheel is the core's (L380).
+version = "0.81.0"
+edition = "2021"
+description = "Python bindings to the diff-ref-struct core (P53, Q1/L021)"
+license = "UNLICENSED"
+publish = false
+
+[lib]
+name = "_drs"
+crate-type = ["cdylib"]
+
+[dependencies]
+drs = { path = "..", features = ["serde"] }
+# The stable ABI from Python 3.9: one wheel for every later Python.
+pyo3 = { version = "0.23", features = ["extension-module", "abi3-py39"] }
+serde_json = { version = "1", features = ["float_roundtrip"] }

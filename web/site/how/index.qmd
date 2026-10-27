@@ -1,0 +1,71 @@
+---
+title: "How it works"
+pagetitle: "How it works · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>How it works</h1>
+<p class="sub">One engine, in your browser, on files that stay where they are. What runs where, what is kept, what is checked.</p>
+
+<div class="flow" role="img" aria-label="Your files are read by the browser and passed as text to the core in WebAssembly, which returns numbers that the Plots module draws. Nothing goes to a server.">
+<svg viewBox="0 0 920 230" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+  <rect class="box" x="10" y="40" width="170" height="92" rx="6"/>
+  <text class="lab" x="24" y="68">Your folder</text>
+  <text class="sm" x="24" y="90">on your disk or a share</text>
+  <text class="sm" x="24" y="108">read, never written</text>
+  <rect class="box" x="250" y="40" width="190" height="92" rx="6"/>
+  <text class="lab" x="264" y="68">The browser</text>
+  <text class="sm" x="264" y="90">reads a file's text when</text>
+  <text class="sm" x="264" y="108">the core asks for it</text>
+  <rect class="box core" x="510" y="22" width="190" height="128" rx="6"/>
+  <text class="lab" x="524" y="50">The core</text>
+  <text class="sm" x="524" y="72">Rust, compiled to</text>
+  <text class="sm" x="524" y="90">WebAssembly (1.3 MB)</text>
+  <text class="sm" x="524" y="108">reads, places, maps,</text>
+  <text class="sm" x="524" y="126">differences, integrals</text>
+  <rect class="box" x="760" y="40" width="150" height="92" rx="6"/>
+  <text class="lab" x="774" y="68">Plots module</text>
+  <text class="sm" x="774" y="90">draws the numbers</text>
+  <text class="sm" x="774" y="108">computes none</text>
+  <path class="arr" d="M180,86 L246,86"/>
+  <path class="arr" d="M440,86 L506,86"/>
+  <path class="arr" d="M700,86 L756,86"/>
+  <path class="arr no" d="M345,132 L345,196"/>
+  <text class="sm" x="360" y="190">no server: nothing uploaded</text>
+</svg>
+</div>
+
+<h2>One engine</h2>
+<p>diff-ref-struct is a Rietveld refinement project for the Mac: a core in Rust (the engine, with the command line <code>drs</code>), an app around it, and modules. The page runs the core's plotting part compiled to WebAssembly with <code>wasm-bindgen</code>, and the app's Plots module unchanged. The module asks the core with the same commands, names and data as in the Mac app; in the page a dispatcher answers them from the WebAssembly package instead of the app's process. So there is no second implementation of anything: a map, a step, a temperature read from a name is what the Mac app and <code>drs</code> give.</p>
+<p>The browser does two things besides drawing: it reads files and saves downloads. Every calculation is the core's, including the ones that look small (a colour range, a stack's step, the rows' edges on a map).</p>
+
+<h2>Checked, not assumed</h2>
+<ul>
+<li><b>The same numbers as the command line.</b> A test runs the WebAssembly core under Node on the Tb<sub>2</sub>Pd<sub>2</sub>Sn files, given by name and text as the browser gives them, and requires its map to equal <code>drs plots map --json</code>'s to the bit.</li>
+<li><b>The same commands as the app.</b> A test requires the package to serve the commands the app's Plots module uses, by name.</li>
+<li><b>Real runs.</b> The ESRF in-situ run of 101 scans (112&nbsp;MB) is the test of the series detector: its three sets found scan for scan as they had been built by hand, the exposure classes told apart.</li>
+<li><b>The page's own parts</b> (the file tree, the address, live mode's reading, the offline list) are tested under Node on every publication; the publication stops if a test fails.</li>
+</ul>
+
+<h2>Your files</h2>
+<ul>
+<li><b>Read where they are.</b> Open Folder… gives the page a handle to read the folder (Chrome, Edge, Arc) or a list of its files (Firefox, Safari). A file's text is read when the core needs it, then handed to the core inside the page. Files over 64&nbsp;MB are not read.</li>
+<li><b>Never sent.</b> The page has no server to send to: it is a set of static files. It loads its own files from its own address and nothing from elsewhere (no web fonts, no scripts from other sites, no counters).</li>
+<li><b>Never written.</b> The page asks only to read. What you save (a <code>.drv</code>, a viewer page) is downloaded to your Downloads folder.</li>
+<li><b>Kept in your browser.</b> The page's address keeps the view (names and numbers on screen, never content); local storage keeps your choices of theme, inspector width, tree order and live mode. Clear the site's data in the browser to forget them.</li>
+</ul>
+
+<h2>Offline</h2>
+<p>A service worker keeps the page's own files: the list of every file the page loads (36 files, 4.4&nbsp;MB with the core) is written by a tool that walks the page's links and imports, and a test fails when it is not the page's. It never keeps a data file and never fetches one. A new version installs beside the old and replaces it; a tab open on the old one keeps it until reloaded.</p>
+
+<h2>Published</h2>
+<p>The page and this site are built by one GitHub Action from the project's repository on every change: the core compiled to WebAssembly, the tests run, the files staged, this site rendered with Quarto, a guard run against any trace of a team's unpublished data, all pushed to the public repository <code>diff-ref-struct-web</code> (branch <code>gh-pages</code>), served by GitHub Pages. The page is at the root, this site at <code>/guide/</code>. The source the page is built from goes to the same repository's <code>main</code> at each release, by a second Action, under the Apache License 2.0; the documents under CC BY 4.0.</p>
+
+<p class="sub">See also: <a href="formats/index.html">the file formats</a>, <a href="../releases/index.html">the releases</a>, <a href="../conventions/index.html">the conventions</a>.</p>
+</article>
+```

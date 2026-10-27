@@ -1,0 +1,24 @@
+# The roadmap of diff-ref-struct Web: the single source of the guide's Roadmap page and of Appendix C of every manual.
+# Status: decided (to be done, with its reason), considered (worth doing, not decided), set-aside (with why). What is
+# done goes to releases.yml. Sources: the project's log (L…), the web stream's requests (W…), public issues (#…).
+- status: decided
+  items:
+    - { title: "Proposals against time opened as their set files", why: "A hold or a run then opens at its times, as the core proposed it; today it opens by temperature.", source: "W10" }
+    - { title: "The core answers in the app's shapes, with a test of the shapes", why: "So that a renamed field never again breaks a view in the browser (the Overlay, 0.4.0).", source: "W11" }
+    - { title: "A 2θ interval set once for the whole analysis", why: "Every view, window and export then sees the cut set: a beamstop's first degree left out everywhere.", source: "L434, PL42" }
+    - { title: "The map's colour scale linear by default", why: "Josu's ask; a set file that says its scale keeps it.", source: "L434" }
+    - { title: "The cursor strips on the map's frame in every window size", why: "Seen off by a degree or two on the public page.", source: "L433" }
+    - { title: "The inspector's panels opening their own manual section", why: "The view's ? does it from 1.0.0; the members, regions and windows panels need a hook in the Plots module.", source: "W12" }
+    - { title: "Screenshots as a release check", why: "A view drawn blank stops the release; the blank Overlay of 0.4.0 was found this way.", source: "web/site/tools/shots.mjs --check" }
+- status: considered
+  items:
+    - { title: "Spanish and Basque editions of the guide and the manuals", why: "Asked for later; English only for now. Basque through the EHU rules (EHULKU), with the decimal comma." }
+    - { title: "Figure export in the browser (PDF, SVG, PNG)", why: "The Mac app's Export ▸ Plot; in the browser a screenshot of Figure look serves a draft." }
+    - { title: "CSV export, sequences (.seq) and results series in the browser", why: "The core has them; its WebAssembly build does not serve them yet." }
+    - { title: "Binary formats in the browser (Bruker RAW and BRML, Rigaku RASX, HDF5)", why: "The page reads files as text; reading bytes needs the host and the core's package to pass them." }
+    - { title: "The page's interface translated", why: "After the manuals; the shell has no translation layer yet." }
+- status: set-aside
+  items:
+    - { title: "Hosting FullProf's WinPLOTR tutorial files as the example", why: "They are the ILL's to distribute; the example the core computes needs no permission, and the tutorial stays linked as the second example." }
+    - { title: "A request form on a third-party service", why: "It would send users' words to a server we do not control; the issues are public and need no data." }
+    - { title: "The whole private repository made public", why: "It holds other programs' manuals and a team's unpublished data; the public repository takes the subset the page is built from, by an Action." }

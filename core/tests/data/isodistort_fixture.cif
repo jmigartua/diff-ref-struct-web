@@ -1,0 +1,57 @@
+# A FIXTURE written by the core stream (L263) to the tags GSAS-II's importer reads from an ISODISTORT mode CIF.
+# It is NOT an output of ISODISTORT: none is in manuals/ and iso.byu.edu could not be reached. It tests the
+# reader's mechanics (loops, IDs, label parts, norms, the matrix) only. SrTiO3's octahedral tilt, Pm-3m -> I4/mcm.
+data_isodistort-output
+
+_cell_length_a      5.51543
+_cell_length_b      5.51543
+_cell_length_c      7.80000
+_cell_angle_alpha   90.0
+_cell_angle_beta    90.0
+_cell_angle_gamma   90.0
+_symmetry_space_group_name_H-M "I 4/m c m"
+
+loop_
+_atom_site_label
+_atom_site_type_symbol
+_atom_site_fract_x
+_atom_site_fract_y
+_atom_site_fract_z
+Sr1 Sr 0.00000 0.50000 0.25000
+Ti1 Ti 0.00000 0.00000 0.00000
+O1  O  0.00000 0.00000 0.25000
+O2  O  0.24100 0.74100 0.00000
+
+loop_
+_iso_displacivemode_ID
+_iso_displacivemode_label
+_iso_displacivemode_value
+   1 Pm-3m[1/2,1/2,1/2]R4+(a,0,0)[O1:d:dsp]Eu(a)    0.14040
+   2 Pm-3m[0,0,0]GM1+(a)[O1:d:dsp]A1g(a)             0.00000
+
+loop_
+_iso_displacivemodenorm_ID
+_iso_displacivemodenorm_value
+   1   0.06410
+   2   0.04533
+
+loop_
+_iso_deltacoordinate_ID
+_iso_deltacoordinate_label
+_iso_deltacoordinate_value
+   1 O2_dx  -0.00900
+   2 O2_dy  -0.00900
+
+loop_
+_iso_coordinate_label
+_iso_coordinate_formula
+O2_x  "1/4 + O2_dx"
+O2_y  "3/4 + O2_dy"
+
+loop_
+_iso_displacivemodematrix_row
+_iso_displacivemodematrix_col
+_iso_displacivemodematrix_value
+   1   1  -7.80000
+   1   2  -7.80000
+   2   1   0.00000

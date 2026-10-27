@@ -1,0 +1,16 @@
+---
+title: "Releases"
+pagetitle: "Releases · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="manual-head">
+<h1>Releases</h1>
+<p class="sub">Every version of diff-ref-struct Web, newest first: what it added, changed, fixed, and what it still lacks. The same notes close every manual as its Appendix B, up to the version that manual describes. Feed: <a href="../feeds/releases.xml">releases.xml</a>.</p>
+</div>
+```
+
+{{< include ../_gen/releases.md >}}

@@ -1,0 +1,1 @@
+{ "web": "dev", "built": null, "note": "web/tools/stage.sh writes the commit and the date here for the published site; dev is a local checkout" }

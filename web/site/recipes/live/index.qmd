@@ -1,0 +1,42 @@
+---
+title: "Live at the instrument"
+pagetitle: "Live · Recipes · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<article class="page-article">
+<h1>Live at the instrument</h1>
+<p class="sub">Watch a run as it is measured: the page reads the output folder again every few seconds, and the set you are looking at grows with each new scan.</p>
+
+<div class="recipe-facts">
+<span class="k">You need</span><span>Chrome, Edge or Arc (they open a folder in place); the output folder reachable from your laptop: a mounted share, a synced folder, a disk</span>
+<span class="k">Network</span><span>none, once the page has been opened before: it keeps itself offline</span>
+</div>
+
+<h2>Before the beamtime</h2>
+<ol class="steps">
+<li><b>Open the page once</b> with network, then <b>install it</b> (Chrome: the install icon in the address bar). It now opens offline.</li>
+<li><b>Agree the file names</b> with whoever writes them: a sequence number, the set point <code>T&lt;value&gt;C</code> or <code>&lt;value&gt;K</code>, the elapsed time <code>t&lt;seconds&gt;s</code>. With them the core needs no logbook.</li>
+<li><b>Try it</b> on a copy of an earlier run: copy its files one by one into an empty folder and watch the set grow.</li>
+</ol>
+
+<h2>During the run</h2>
+<ol class="steps">
+<li><b>Open Folder…</b> on the output folder. <b>Live</b> is on, every 10&nbsp;s; choose 30&nbsp;s for large scans (re-proposing reads every file again: tens of seconds for a hundred synchrotron scans).</li>
+<li>When <b>Sets in this folder</b> lists <i>… scans by temperature</i>, <b>Open</b> it. It is marked <i>live</i>: each new scan at a new temperature is added and the map computed again.</li>
+<li>Keep the tab in front. Browsers slow a background tab's timers (to once a minute after five minutes).</li>
+<li>A file that vanishes (moved, renamed by the acquisition) is said in the live line; it stays in its set as read.</li>
+</ol>
+
+<h2>What to watch for</h2>
+<ul>
+<li>Only sets <b>opened from a proposal</b> grow; a set of files you chose stays as you opened it.</li>
+<li>In this version, open the <b>by-temperature</b> proposal live; proposals against time open by temperature (<a href="../hold/index.html">recipe: a hold</a>).</li>
+<li>Firefox and Safari read the folder once: open it again to see new scans.</li>
+</ul>
+<p class="sub">In the manual: §15 live mode, §17 offline and installed.</p>
+</article>
+```

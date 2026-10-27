@@ -1,0 +1,16 @@
+[build-system]
+requires = ["maturin>=1.5,<2"]
+build-backend = "maturin"
+
+[project]
+name = "diff-ref-struct"
+description = "Python scripting interface to the diff-ref-struct core: Rietveld refinement of powder diffraction data (P53, Q1/L021)"
+requires-python = ">=3.9"
+dynamic = ["version"]
+license = { text = "UNLICENSED" }
+
+[tool.maturin]
+python-source = "python"
+module-name = "drs._drs"
+# The drs command line, built from the same core, travels inside the package (build_wheel.sh puts it in drs/bin).
+include = [{ path = "python/drs/bin/drs", format = "wheel" }]

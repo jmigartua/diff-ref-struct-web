@@ -1,0 +1,17 @@
+---
+title: "Quick reference"
+pagetitle: "Quick reference · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="manual-head">
+<h1>Quick reference</h1>
+<p class="sub">The page's controls on one sheet: print it and keep it beside the instrument.</p>
+<p class="dl"><a class="cta" href="../../downloads/quick-reference.pdf">Download the one-page PDF</a> <span class="k">A4 landscape</span> &nbsp; <a href="../index.html">The full manual</a></p>
+</div>
+```
+
+{{< include ../../_gen/quick-reference.md >}}

@@ -1,0 +1,16 @@
+---
+title: "Log"
+pagetitle: "Log · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="manual-head">
+<h1>Log</h1>
+<p class="sub">The dated record of the work on this tool: findings, decisions with their reasons and the options set aside, work done. Taken from the diff-ref-struct project's log, which records every step of the project. Feed: <a href="../feeds/log.xml">log.xml</a>.</p>
+</div>
+```
+
+{{< include ../_gen/log.md >}}

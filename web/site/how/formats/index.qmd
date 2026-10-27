@@ -1,0 +1,16 @@
+---
+title: "File formats"
+pagetitle: "File formats · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="manual-head">
+<h1>File formats</h1>
+<p class="sub">What the core reads, as the manual lists it (§21). The tree's <b>kinds</b> view shows what the core made of each of your files; hover a file for the reader it chose.</p>
+</div>
+```
+
+{{< include ../../_gen/formats.md >}}

@@ -1,0 +1,23 @@
+# The citation of diff-ref-struct Web (Citation File Format 1.2.0). The version and the date are the release's
+# (web/site/data/releases.yml); web/site/tools/release.py checks they agree.
+cff-version: 1.2.0
+message: "If you use diff-ref-struct Web, please cite it with the version you used (shown at the foot of its start page)."
+type: software
+title: "diff-ref-struct Web"
+abstract: "Series of powder diffraction patterns in the browser: overlays, stacks, projections, maps against temperature or time, difference maps and growth curves, computed by the diff-ref-struct core compiled to WebAssembly; the user's files are read in the browser and never uploaded."
+version: "1.0.0"
+date-released: "2026-10-27"
+license: Apache-2.0
+authors:
+  - family-names: Igartua
+    given-names: Josu M.
+    email: josu.igartua@ehu.eus
+    affiliation: "Departamento de Física, Universidad del País Vasco / Euskal Herriko Unibertsitatea (UPV/EHU)"
+repository-code: "https://github.com/jmigartua/diff-ref-struct-web"
+url: "https://jmigartua.github.io/diff-ref-struct-web/"
+keywords:
+  - powder diffraction
+  - in situ
+  - Rietveld
+  - WebAssembly
+  - data visualisation

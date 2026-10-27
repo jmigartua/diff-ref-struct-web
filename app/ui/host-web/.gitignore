@@ -1,0 +1,2 @@
+# Interceptor writes its captures into the folder it was started from
+interceptor-screenshot-*.png

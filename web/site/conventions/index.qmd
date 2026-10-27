@@ -1,0 +1,16 @@
+---
+title: "Conventions"
+pagetitle: "Conventions · diff-ref-struct Web"
+title-block-style: none
+page-layout: full
+toc: false
+---
+
+```{=html}
+<div class="manual-head">
+<h1>Conventions</h1>
+<p class="sub">The words, the files and their suffixes, how to name scans so that the core reads them, the units, the versions and ids. The same tables close every manual as its Appendix A; the files come from the project's file dictionary, the table the core itself names its files by.</p>
+</div>
+```
+
+{{< include ../_gen/conventions.md >}}

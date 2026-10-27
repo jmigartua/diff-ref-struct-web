@@ -1,0 +1,61 @@
+# Conventions (the open-tool kit's vocabulary appendix): the words, files, names, units and ids of diff-ref-struct Web.
+# One source: tools/build.py renders it as the guide's Conventions page and as Appendix A of every manual (site and PDF).
+# The files section takes the project's file dictionary (ecosystem/data/files.yml, which also generates the core's
+# file_table.rs) for the kinds named in `dictionary`, so the manual, the core and the guide never disagree on a suffix;
+# `files` adds what the dictionary does not hold (formats of other programs, the page's own).
+title: Conventions
+intro: >-
+  The words the page and its manuals use, the files it meets and what their suffixes mean, how to name scans so that
+  the core reads them, the units and signs, and what the versions and ids mean.
+
+words:
+  - { term: "plot set", means: "Several data files shown together; each is a member, with its value of the set's variable." }
+  - { term: "member", means: "One pattern of a plot set: a file (or one scan of a file of several), its value of the variable and its source." }
+  - { term: "variable", means: "What orders the members and places them on the map: a temperature, a time, or a value typed with its source." }
+  - { term: "source (of a value)", means: "Where a value comes from: a file's header, its name, its title, a temperatures file, or a note typed with it. Every value keeps one." }
+  - { term: "second variable", means: "Another value per member (the temperature of a scan in a set against time), shown on the map's right-hand axis." }
+  - { term: "proposal", means: "A plot set the core finds in a folder: by temperature, a hold against time, the whole run against time." }
+  - { term: "hold", means: "Three or more scans at the same temperature, followed against the time since the first of them." }
+  - { term: "exposure class", means: "Scans counted alike, told apart by the core from the scale of their counts (the median of σ²/y above 2°): long and short scans fall in different classes." }
+  - { term: "rebin", means: "The points of a scan averaged onto a coarser regular grid (0.01°) by the core as the set opens; the files are untouched." }
+  - { term: "clip", means: "The colour range chosen on the colour bar inside the core's full range; values beyond it are drawn saturated." }
+  - { term: "region", means: "A named rectangle of a map (2θ and variable), with its own colour range, saved with the set." }
+  - { term: "window", means: "A range of 2θ whose quantities (integral above the background, centroid, strongest peak) the Series view follows through the set." }
+  - { term: "reference member", means: "The member subtracted in the Difference Map and in the Linked zoom's difference strip." }
+  - { term: "view rule", means: "Normalise… or Convert X…: a change of how the set is drawn; the files are never changed." }
+  - { term: "live set", means: "A set opened from a proposal that grows with the new scans live mode finds in the folder." }
+  - { term: "the core", means: "diff-ref-struct's engine (Rust), here compiled to WebAssembly: it computes every number the page shows." }
+
+dictionary: [data, processed_data, derived_data, plot_set, publication_set, control, app_state]
+files:
+  - { suffix: ".buf", name: "WinPLOTR buffer", means: "A list of data files with a value each, written by FullProf's WinPLOTR; opens as a plot set, its files taken from its folder." }
+  - { suffix: ".xye, .xy, .dat, .xys, .qye, .chi, .gsas, .xrdml, .ras, .cif …", name: "Data files", means: "Read by the core's readers by their content first, their extension second (Manual §21)." }
+  - { suffix: "the address after #", name: "A view link", means: "folder, set, view, scale, zoom, clip, region of the view shown: names and numbers, never a file's content (Manual §16)." }
+
+naming:
+  intro: >-
+    The core places a scan without help when its name says the temperature or the time. A sequence number first keeps
+    the folder in acquisition order. Examples are file names the core reads as shown.
+  rows:
+    - { form: "_300K, T300, 1p5K", means: "a temperature in K (1p5K is 1.5 K)" }
+    - { form: "T0900C, 900C, 900°C", means: "a temperature in °C; a set whose every value is in °C stays in °C" }
+    - { form: "t16530s", means: "the elapsed time in seconds (a lower-case t before the seconds)" }
+    - { form: "_long, _short", means: "words only: the core finds exposure classes from the counts, not from the name" }
+    - { form: "scan_001_T0900C_t00000s_long.xye", means: "sequence, temperature, time, exposure: sortable and read by the core" }
+
+units:
+  - { quantity: "2θ", unit: "degrees" }
+  - { quantity: "d", unit: "Å" }
+  - { quantity: "Q = 4π sin θ / λ, sin θ / λ, 1/d", unit: "Å⁻¹" }
+  - { quantity: "intensity", unit: "counts as read; √counts or log₁₀ counts on those colour scales" }
+  - { quantity: "a window's integral", unit: "counts·° above the background, with σ" }
+  - { quantity: "temperature", unit: "K, or °C when every value of the set is in °C" }
+  - { quantity: "time", unit: "s, min or h since the set's first scan, as the set says" }
+  - { quantity: "numbers", unit: "a decimal point" }
+
+ids:
+  - { form: "diff-ref-struct Web 1.0.0", means: "the tool's version (semantic: major.minor.patch); its release notes say what each brought" }
+  - { form: "core 0.81.0", means: "the version of the core compiled into the page; every number is that core's" }
+  - { form: "build a1c308d", means: "the commit the page was built from" }
+  - { form: "#12", means: "a request (bug or feature) in the public repository's issues" }
+  - { form: "L429, I10, W11", means: "the project's log entries, ideas and the web stream's requests, cited by the release notes and the roadmap" }

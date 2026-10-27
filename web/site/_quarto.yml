@@ -1,0 +1,59 @@
+# diff-ref-struct Web · the tool's own site (family design kit): what the page is, how to start, the manual (HTML and
+# PDF), recipes for the analyses it is made for, how it works, its versions. Published with the app by
+# publish-web.yml at https://jmigartua.github.io/diff-ref-struct-web/guide/ (the app stays at the root, so that its
+# links and installed copies hold). Build: `cd web/site && quarto render` (tools/build.py runs first); the PDFs:
+# `web/site/tools/pdf.sh`. Kit files copied unchanged from ecosystem/site: theme.css, site.css, fonts.html,
+# docs-close.html; this site's rules in project.css only.
+project:
+  type: website
+  output-dir: _site
+  render:
+    - "**/*.qmd"
+    - "!_gen/"
+    - "!latex/"
+    - "!data/"
+  pre-render:
+    - python3 tools/build.py
+  post-render:
+    - python3 tools/offline.py
+
+resources:
+  - assets/**
+  - downloads/**
+  - feeds/**
+
+lang: en
+pagetitle: "{{< meta title >}} · diff-ref-struct Web"
+
+website:
+  title: "diff-ref-struct Web · powder diffraction series in the browser"
+  description: "A browser tool for many powder diffraction patterns at once: overlays, stacks, projections, maps against temperature or time, difference maps and growth curves, computed by the diff-ref-struct core in WebAssembly. Your files are read in your browser and never uploaded."
+  favicon: assets/favicon.svg
+  navbar: false
+  search: false
+  page-navigation: false
+  page-footer: ""
+
+format:
+  html:
+    theme: none
+    css:
+      - assets/styles/theme.css
+      - assets/styles/site.css
+      - assets/styles/project.css
+    include-in-header:
+      - assets/includes/fonts.html
+    include-before-body:
+      - assets/includes/site-header.html
+      - _gen/docs-nav.html
+    include-after-body:
+      - assets/includes/docs-close.html
+      - assets/includes/site-footer.html
+      - assets/includes/lightbox.html
+    toc: false
+    section-divs: false
+    html-math-method: katex
+    smooth-scroll: true
+    link-external-newwindow: true
+    code-copy: false
+    anchor-sections: false

@@ -1,0 +1,19 @@
+# The broken files (make_broken.py): file, what is broken, and the .pcr export next to it (or why there is none).
+syntax.drc	a number written with two decimal points	no export: drs: /home/user/diff-ref-struct/core/tests/data/broken/syntax.drc:12:14: "0.0025.1" is not a number, true, false or a quoted string
+unknown-name.drc	a key misspelt (zero_shft)	no export: drs: /home/user/diff-ref-struct/core/tests/data/broken/unknown-name.drc:12:1: "zero_shft" is not a key of [pattern]; did you mean "zero_shift"?
+unit.drc	a value commented in another unit than the dictionary's (Å for a zero shift in deg 2θ)	unit.pcr
+range.drc	a negative scale factor	range.pcr
+data-missing.drc	the data file misnamed	no export: drs: /home/user/diff-ref-struct/core/tests/data/broken/../../../../manuals/fullprof/runs/Y2O3/y2o3.dta: No such file or directory (os error 2)
+wavelength.drc	a wavelength of zero	wavelength.pcr
+range-data.drc	Thmin and Thmax of another pattern (25–95° for data from 15° to 145.9°)	range-data.pcr
+occupancy.drc	a second atom (Gd) on the full site of Y at 1/4 1/4 1/4	occupancy.pcr
+symmetry-fixed.drc	the x of Y at 1/4 1/4 1/4 (fixed by its site, 8b of I a -3) set free	symmetry-fixed.pcr
+no-reflections.drc	a cell of 0.5 Å, whose reflections all fall beyond 2θ = 180°	no-reflections.pcr
+refinement.drc	the Caglioti U given to two parameters	refinement.pcr
+no-effect.drc	G2 refined with G1 = 1 (March–Dollase: P = 1 whatever G2)	no-effect.pcr
+singular--overall-b.drc	the overall B refined with the B of every atom	singular--overall-b.pcr
+correlation.drc	the sample displacement refined with the zero shift	correlation.pcr
+singular.drc	the Gaussian size I_G of Yb2ZrWO8 (TCH) refined with U and W (1/cos²θ = tan²θ + 1)	singular.pcr
+parameter-hole.pcr	no codeword uses parameter 3 (Aut = 0)	(itself a .pcr)
+parameter-count.pcr	two more parameters declared than the codewords number (Aut = 0)	(itself a .pcr)
+irf-missing.pcr	a resolution file that is not there	(itself a .pcr)

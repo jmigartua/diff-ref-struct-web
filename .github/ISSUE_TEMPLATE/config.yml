@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: The guide (manual, recipes, roadmap)
+    url: https://jmigartua.github.io/diff-ref-struct-web/guide/
+    about: Read the manual and the roadmap first; the answer may be there.
+  - name: Write instead
+    url: mailto:josu.igartua@ehu.eus
+    about: Without a GitHub account, write with the version, the browser and the view's address.
